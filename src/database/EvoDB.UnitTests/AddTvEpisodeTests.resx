@@ -1,0 +1,1487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="testInitializeAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before 
+each test method (unit test) in this test class is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+
+DELETE FROM evo.genre_videos;
+DELETE FROM evo.person_videos;
+DELETE FROM evo.person_roles;
+DELETE FROM evo.genre_tv_episodes;
+DELETE FROM evo.person_tv_episodes;
+
+DELETE FROM evo.persons;
+DELETE FROM evo.roles;
+DELETE FROM evo.genres;
+DELETE FROM evo.ratings;
+DELETE FROM evo.tv_episodes;
+DELETE FROM evo.videos;
+
+DBCC CHECKIDENT ('evo.evo.videos', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.tv_episodes', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.genres', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.ratings', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.persons', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.roles', RESEED, 0);
+</value>
+  </data>
+  <data name="ShouldCreateSeriesInVideo_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT video_id
+FROM evo.videos
+WHERE imdb_id = @series_imdb_id;</value>
+  </data>
+  <data name="ShouldCreateEntryInTvEpisodeWhenNotExist_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT *
+FROM evo.tv_episodes
+WHERE tv_episode_imdb_id = @episode_imdb_id;</value>
+  </data>
+  <metadata name="expectedSchemaCondition1.Configuration" xml:space="preserve">
+    <value>Press to configure</value>
+  </metadata>
+  <data name="expectedSchemaCondition1.Schema" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
+        PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
+        YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
+        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAIcgPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
+        dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
+        cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
+        cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
+        YXRhOklzRGF0YVNldD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0iZW4tVVMiPg0KICAgIDx4czpjb21wbGV4
+        VHlwZT4NCiAgICAgIDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+
+        DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5
+        cGU+DQogICAgICAgICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5h
+        bWU9ImltZGJfaWQiIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5P
+        Y2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9Im1vdmllX3RpdGxlIiB0
+        eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0K
+        ICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJtb3ZpZV9yYXRpbmciIHR5cGU9InhzOnN0cmlu
+        ZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAg
+        IDx4czplbGVtZW50IG5hbWU9InJ1bnRpbWUiIHR5cGU9InhzOmRlY2ltYWwiIG1zZGF0YTp0YXJnZXRO
+        YW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1l
+        PSJwbG90IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJz
+        PSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJyZWxlYXNlX2RhdGUiIHR5cGU9
+        InhzOmRhdGVUaW1lIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAg
+        ICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icmVzb2x1dGlvbiIgdHlwZT0ieHM6c3RyaW5nIiBt
+        c2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhz
+        OmVsZW1lbnQgbmFtZT0iY29kZWMiIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFj
+        ZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9ImdlbnJl
+        X25hbWUiIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9
+        IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9ImZpcnN0X25hbWUiIHR5cGU9Inhz
+        OnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAg
+        ICAgICAgIDx4czplbGVtZW50IG5hbWU9Im1pZGRsZV9uYW1lIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0
+        YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxl
+        bWVudCBuYW1lPSJsYXN0X25hbWUiIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFj
+        ZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InN1ZmZp
+        eCIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIg
+        Lz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icGVyc29uX3JvbGUiIHR5cGU9InhzOnN0
+        cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAg
+        ICAgIDx4czplbGVtZW50IG5hbWU9InJhdGluZ19zb3VyY2UiIHR5cGU9InhzOnN0cmluZyIgbXNkYXRh
+        OnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVt
+        ZW50IG5hbWU9InJhdGluZ192YWx1ZSIgdHlwZT0ieHM6ZGVjaW1hbCIgbXNkYXRhOnRhcmdldE5hbWVz
+        cGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICA8L3hzOnNlcXVlbmNlPg0KICAgICAg
+        ICAgIDwveHM6Y29tcGxleFR5cGU+DQogICAgICAgIDwveHM6ZWxlbWVudD4NCiAgICAgICAgPHhzOmVs
+        ZW1lbnQgbmFtZT0iVGFibGUxIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5cGU+DQogICAgICAgICAg
+        ICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9ImVwaXNvZGVfaW1k
+        Yl9pZCIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0i
+        MCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0ic2Vhc29uX251bWJlciIgdHlwZT0i
+        eHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAg
+        ICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iZXBpc29kZV9udW1iZXIiIHR5cGU9InhzOmludCIgbXNkYXRh
+        OnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVt
+        ZW50IG5hbWU9ImVwaXNvZGVfbmFtZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNw
+        YWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icmVs
+        ZWFzZV9kYXRlIiB0eXBlPSJ4czpkYXRlVGltZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5P
+        Y2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InBsb3QiIHR5cGU9Inhz
+        OnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAg
+        ICAgICAgIDx4czplbGVtZW50IG5hbWU9InJlc29sdXRpb24iIHR5cGU9InhzOnN0cmluZyIgbXNkYXRh
+        OnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVt
+        ZW50IG5hbWU9ImNvZGVjIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIg
+        bWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJmaXJzdF9uYW1l
+        IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAv
+        Pg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJtaWRkbGVfbmFtZSIgdHlwZT0ieHM6c3Ry
+        aW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAg
+        ICAgPHhzOmVsZW1lbnQgbmFtZT0ibGFzdF9uYW1lIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJn
+        ZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBu
+        YW1lPSJzdWZmaXgiIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5P
+        Y2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InBlcnNvbl9yb2xlIiB0
+        eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0K
+        ICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJnZW5yZV9uYW1lIiB0eXBlPSJ4czpzdHJpbmci
+        IG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8
+        eHM6ZWxlbWVudCBuYW1lPSJyYXRpbmdfc291cmNlIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJn
+        ZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBu
+        YW1lPSJyYXRpbmdfdmFsdWUiIHR5cGU9InhzOmRlY2ltYWwiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
+        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgPC94czpzZXF1ZW5jZT4NCiAgICAgICAgICA8
+        L3hzOmNvbXBsZXhUeXBlPg0KICAgICAgICA8L3hzOmVsZW1lbnQ+DQogICAgICA8L3hzOmNob2ljZT4N
+        CiAgICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8L3hzOmVsZW1lbnQ+DQo8L3hzOnNjaGVtYT4GBQAAAIAB
+        PGRpZmZncjpkaWZmZ3JhbSB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206eG1s
+        LW1zZGF0YSIgeG1sbnM6ZGlmZmdyPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1kaWZmZ3Jh
+        bS12MSIgLz4EAwAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZfQnVpbGQJX1Jldmlz
+        aW9uAAAAAAgICAgCAAAAAAAAAP//////////Cw==
+</value>
+  </data>
+  <data name="ShouldReturnExpectedSchema_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;</value>
+  </data>
+  <data name="ShouldInsertNewEpisodeWithDifferentResolution_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '10801p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT resolution
+FROM evo.tv_episodes;</value>
+  </data>
+  <data name="ShouldInsertNewEpisodeWithDifferentResolution_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO evo.videos(imdb_id, title, mpaa_rating, plot, video_type, release_date)
+	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
+
+INSERT INTO evo.tv_episodes(video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec)
+	VALUES(1, @episode_imdb_id, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @resolution, @codec);</value>
+  </data>
+  <data name="ShouldInsertNewEpisodeWithDifferentCodec_TestAction.SqlScript" xml:space="preserve">
+    <value>
+
+	/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x264',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT codec
+FROM evo.tv_episodes;</value>
+  </data>
+  <data name="ShouldInsertNewEpisodeWithDifferentCodec_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO evo.videos(imdb_id, title, mpaa_rating, plot, video_type, release_date)
+	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
+
+INSERT INTO evo.tv_episodes(video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec)
+	VALUES(1, @episode_imdb_id, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @resolution, @codec);
+</value>
+  </data>
+  <data name="ShouldInsertNewEpisodeWithExtended_TestAction.SqlScript" xml:space="preserve">
+    <value>
+
+	/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = 'REPACK';
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT extended_edition
+FROM evo.tv_episodes;</value>
+  </data>
+  <data name="ShouldInsertNewEpisodeWithExtended_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO evo.videos(imdb_id, title, mpaa_rating, plot, video_type, release_date)
+	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
+
+INSERT INTO evo.tv_episodes(video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec)
+	VALUES(1, @episode_imdb_id, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @resolution, @codec);
+</value>
+  </data>
+  <data name="ShouldNotDoAnythingWhenInsertingDuplicateEpisode_TestAction.SqlScript" xml:space="preserve">
+    <value>
+
+	/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT 1
+FROM evo.tv_episodes
+WHERE added IS NOT NULL
+	AND modified IS NULL;</value>
+  </data>
+  <data name="ShouldNotDoAnythingWhenInsertingDuplicateEpisode_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO evo.videos(imdb_id, title, mpaa_rating, plot, video_type, release_date)
+	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
+
+INSERT INTO evo.tv_episodes(video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec)
+	VALUES(1, @episode_imdb_id, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @resolution, @codec);
+</value>
+  </data>
+  <data name="ShouldUpdateEpisodeIfDataChanges_TestAction.SqlScript" xml:space="preserve">
+    <value>
+
+	/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT * FROM evo.tv_episodes;
+
+SELECT 1 FROM evo.tv_episodes WHERE modified IS NOT NULL;</value>
+  </data>
+  <data name="ShouldUpdateEpisodeIfDataChanges_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode that also has a spelling mistake',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO evo.videos(imdb_id, title, mpaa_rating, plot, video_type, release_date)
+	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
+
+INSERT INTO evo.tv_episodes(video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec)
+	VALUES(1, @episode_imdb_id, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @resolution, @codec);</value>
+  </data>
+  <data name="ShouldInsertRatingsOfTvEpisode_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '10801p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 99.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT video_id, tv_episode_id
+FROM evo.ratings;</value>
+  </data>
+  <data name="ShouldLinkEpisodesWithGenres_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '10801p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror'); --ID: 1
+INSERT INTO @GENRES(name) VALUES('Comedy'); --ID: 3
+INSERT INTO @GENRES(name) VALUES('Adventure'); --ID: 4
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 99.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT genre_id
+	FROM evo.genre_tv_episodes;
+
+SELECT DISTINCT tv_episode_id
+	FROM evo.genre_tv_episodes;</value>
+  </data>
+  <data name="ShouldLinkEpisodesWithGenres_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+INSERT INTO evo.genres(name) 
+	VALUES('Horror');
+
+INSERT INTO evo.genres(name) 
+	VALUES('Action');
+</value>
+  </data>
+  <data name="ShouldLinkPersonsWithIndividualEpisodes_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for evo.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [evo].[GenreTableType], 
+	@PERSONS AS [evo].[PersonTableType], 
+	@RATINGS AS [evo].[RatingTableType];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '10801p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror'); --ID: 1
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('First', 'M.', 'Last', 'Jr.', 'Publisher');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 99.34);
+
+EXECUTE @RC = [evo].[usp_add_tv_episode] 
+	@series_imdb_id,
+	@series_title,
+	@mpaa_rating,
+	@series_plot,
+	@series_release_date,
+	@episode_imdb_id,
+	@runtime,
+	@episode_release_date,
+	@season_number,
+	@episode_number,
+	@episode_name,
+	@plot,
+	@resolution,
+	@codec,
+	@extended,
+	@GENRES,
+	@PERSONS,
+	@RATINGS;
+
+SELECT person_id
+	FROM evo.person_tv_episodes;
+
+SELECT DISTINCT tv_episode_id
+	FROM evo.person_tv_episodes;</value>
+  </data>
+  <data name="ShouldLinkPersonsWithIndividualEpisodes_PretestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before
+the test script is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+INSERT INTO evo.persons(first_name, middle_name, last_name, suffix)
+	VALUES('First', 'M.', 'Last', 'Sr.');
+
+INSERT INTO evo.persons(first_name, middle_name, last_name, suffix)
+	VALUES('First', 'M.', 'Last', 'Jr.');</value>
+  </data>
+  <data name="testCleanupAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here that you want to run before 
+each test method (unit test) in this test class is run.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+
+DELETE FROM evo.genre_videos;
+DELETE FROM evo.person_videos;
+DELETE FROM evo.person_roles;
+DELETE FROM evo.genre_tv_episodes;
+DELETE FROM evo.person_tv_episodes;
+
+DELETE FROM evo.persons;
+DELETE FROM evo.roles;
+DELETE FROM evo.genres;
+DELETE FROM evo.ratings;
+DELETE FROM evo.tv_episodes;
+DELETE FROM evo.videos;
+
+DBCC CHECKIDENT ('evo.evo.videos', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.tv_episodes', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.genres', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.ratings', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.persons', RESEED, 0);
+DBCC CHECKIDENT ('evo.evo.roles', RESEED, 0);
+</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

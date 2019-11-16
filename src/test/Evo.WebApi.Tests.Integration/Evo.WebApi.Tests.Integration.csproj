@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <PackageReference Include="FluentAssertions" Version="5.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+    <PackageReference Include="Pickles.CommandLine" Version="2.20.1" />
+    <PackageReference Include="SpecFlow" Version="3.1.62" />
+    <PackageReference Include="SpecFlow.Autofac" Version="3.1.62" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.1.62" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.62" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Evo.WebApi.Tests.Helpers\Evo.WebApi.Tests.Helpers.csproj" />
+    <ProjectReference Include="..\Evo.WebApi\Evo.WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Features\UserWantsAccessToVideos.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Steps\Assertions\" />
+    <Folder Include="Features\Steps\RequestBuilder\" />
+  </ItemGroup>
+</Project>
