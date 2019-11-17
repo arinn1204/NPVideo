@@ -1,4 +1,4 @@
-﻿CREATE TABLE [evo].[videos] (
+﻿CREATE TABLE [video].[videos] (
     [video_id]     INT            IDENTITY (1, 1) NOT NULL,
     [imdb_id]      VARCHAR (32)   NOT NULL,
     [title]        VARCHAR (64)   NOT NULL,

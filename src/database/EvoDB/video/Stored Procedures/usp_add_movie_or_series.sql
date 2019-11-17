@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [evo].[usp_add_movie_or_series] (
+﻿CREATE PROCEDURE [video].[usp_add_movie_or_series] (
 	@imdb_id VARCHAR(32),
     @title VARCHAR(64),
     @mpaa_rating VARCHAR(8),
@@ -31,7 +31,7 @@ BEGIN
 		BEGIN TRANSACTION
 
 			IF ((SELECT video_id
-					FROM evo.videos
+					FROM video.videos
 					WHERE imdb_id = @imdb_id
 						AND title = @title
 						AND mpaa_rating = @mpaa_rating
@@ -45,7 +45,7 @@ BEGIN
 				BEGIN
 					INSERT INTO #Video(id, category)
 						SELECT video_id, 'VIDEO_ID'
-						FROM evo.videos
+						FROM video.videos
 						WHERE imdb_id = @imdb_id
 							AND title = @title
 							AND mpaa_rating = @mpaa_rating
@@ -59,7 +59,7 @@ BEGIN
 				END
 			ELSE
 				BEGIN
-					MERGE evo.videos AS target
+					MERGE video.videos AS target
 					USING (SELECT @imdb_id AS 'imdb_id',
 								@title AS 'title',
 								@mpaa_rating AS 'mpaa',
@@ -73,10 +73,10 @@ BEGIN
 								@created_time AS 'ctime',
 								@created_user AS 'cuser') AS source
 					ON ((SELECT video_id
-						FROM evo.videos 
+						FROM video.videos 
 						WHERE imdb_id = @imdb_id) IS NOT NULL 
 						AND (SELECT 1
-							FROM evo.videos
+							FROM video.videos
 							WHERE imdb_id = @imdb_id
 								AND title = @title
 								AND mpaa_rating = @mpaa_rating
@@ -110,14 +110,14 @@ BEGIN
 				FROM #Video
 				WHERE category = 'VIDEO_ID');
 
-            MERGE INTO evo.ratings AS target
+            MERGE INTO video.ratings AS target
 			USING (SELECT DISTINCT r.source AS 'ratings_source', r.value AS 'ratings_value' FROM @RATINGS r) AS source
 			ON target.video_id = @video_id
 			WHEN NOT MATCHED THEN
 				INSERT (video_id, source, value, added, created_by)
 					VALUES(@video_id, source.ratings_source, source.ratings_value, @created_time, @created_user);
 
-            MERGE INTO evo.genres AS target
+            MERGE INTO video.genres AS target
             USING (SELECT DISTINCT name FROM @GENRES) AS source
 			ON target.name = source.name
             WHEN NOT MATCHED THEN
@@ -127,17 +127,17 @@ BEGIN
 			INSERT INTO #Video(id, name, category)
 				SELECT g.genre_id, g.name, 'GENRE_ID'
 				FROM @GENRES genre
-				JOIN evo.genres g
+				JOIN video.genres g
 					ON genre.name = g.name;
 
-			MERGE INTO evo.genre_videos AS target
+			MERGE INTO video.genre_videos AS target
 			USING (SELECT id AS genre_id FROM #Video WHERE category = 'GENRE_ID') AS source
 			ON target.genre_id = source.genre_id AND target.video_id = @video_id
 			WHEN NOT MATCHED THEN
 				INSERT (video_id, genre_id)
 				VALUES (@video_id, source.genre_id);
 
-			MERGE INTO evo.roles AS target
+			MERGE INTO video.roles AS target
 			USING (SELECT DISTINCT role_name FROM @PERSONS) AS source
 			ON source.role_name = target.role_name
 			WHEN NOT MATCHED THEN
@@ -146,11 +146,11 @@ BEGIN
 
 			INSERT INTO #Video(id, name, category)
 				SELECT r.role_id, p.role_name, 'ROLE_ID'
-				FROM evo.roles r
+				FROM video.roles r
 				JOIN (SELECT DISTINCT role_name FROM @PERSONS) p
 					ON r.role_name = p.role_name;
 
-            MERGE INTO evo.persons AS target
+            MERGE INTO video.persons AS target
             USING (SELECT DISTINCT first_name, middle_name, last_name, suffix FROM @PERSONS) AS source
             ON (source.first_name = target.first_name
                 AND
@@ -164,14 +164,14 @@ BEGIN
 			INSERT INTO #Video(id, name, category)
 				SELECT p.person_id, persons_tt.role_name, 'PERSON_ID'
 				FROM @PERSONS persons_tt
-				JOIN evo.persons p
+				JOIN video.persons p
 					ON (p.first_name = persons_tt.first_name
 					AND (p.middle_name = persons_tt.middle_name OR (p.middle_name IS NULL AND persons_tt.middle_name IS NULL))
 					AND (p.last_name = persons_tt.last_name OR (p.last_name IS NULL AND persons_tt.last_name IS NULL))
 					AND (p.suffix = persons_tt.suffix OR (p.suffix IS NULL AND persons_tt.suffix IS NULL)))
 
 
-			MERGE INTO evo.person_roles AS target
+			MERGE INTO video.person_roles AS target
 			USING (SELECT DISTINCT person.id AS 'person_id', role.id AS 'role_id'
 				FROM @PERSONS p
 				JOIN #Video person
@@ -187,7 +187,7 @@ BEGIN
 					VALUES(source.person_id, source.role_id);
 
 					
-			MERGE INTO evo.person_videos AS target
+			MERGE INTO video.person_videos AS target
 			USING (SELECT DISTINCT id FROM #Video WHERE category = 'PERSON_ID') AS source
 			ON target.person_id = source.id
 				AND target.video_id = @video_id
@@ -200,7 +200,7 @@ BEGIN
 
 		SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
 			genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
-		FROM evo.vw_movies
+		FROM video.vw_movies
 		WHERE video_id = @video_id;
 
 		RETURN @video_id;

@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evo.WebApi.Tests.Helpers", 
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EvoDB", "database\EvoDB\EvoDB.sqlproj", "{00C63D7A-1FFC-4384-9AC9-F3A3DB70AEB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoDB.UnitTests", "database\EvoDB.UnitTests\EvoDB.UnitTests.csproj", "{79F7D389-A906-4C79-B792-0EEA94E3D62B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9BD389FC-2163-441A-BAAC-017ED0F28201}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoDB.UnitTests", "database\EvoDB.UnitTests\EvoDB.UnitTests.csproj", "{79F7D389-A906-4C79-B792-0EEA94E3D62B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

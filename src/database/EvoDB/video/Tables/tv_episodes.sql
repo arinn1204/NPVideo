@@ -1,4 +1,4 @@
-﻿CREATE TABLE [evo].[tv_episodes] (
+﻿CREATE TABLE [video].[tv_episodes] (
     [tv_episode_id]      INT            IDENTITY (1, 1) NOT NULL,
     [video_id]           INT            NOT NULL,
     [tv_episode_imdb_id] VARCHAR (32)   NOT NULL,
@@ -15,6 +15,6 @@
     [modified_by]        VARCHAR (32)   NULL,
     [created_by] VARCHAR(32) NULL, 
     CONSTRAINT [pk_tv_episodes_tv_episode_id] PRIMARY KEY CLUSTERED ([tv_episode_id] ASC),
-    CONSTRAINT [fk_tv_episodes_video_id] FOREIGN KEY ([video_id]) REFERENCES [evo].[videos] ([video_id])
+    CONSTRAINT [fk_tv_episodes_video_id] FOREIGN KEY ([video_id]) REFERENCES [video].[videos] ([video_id])
 );
 

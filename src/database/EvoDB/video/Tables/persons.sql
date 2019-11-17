@@ -1,4 +1,4 @@
-﻿CREATE TABLE [evo].[persons] (
+﻿CREATE TABLE [video].[persons] (
     [person_id]   INT          IDENTITY (1, 1) NOT NULL,
     [first_name]  VARCHAR (64) NOT NULL,
     [middle_name] VARCHAR (64) NULL,

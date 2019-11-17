@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [evo].[usp_add_tv_episode] (
+﻿CREATE PROCEDURE [video].[usp_add_tv_episode] (
 	@series_imdb_id VARCHAR(32),
     @series_title VARCHAR(64),
     @mpaa_rating VARCHAR(8),
@@ -32,7 +32,7 @@ BEGIN
 				category VARCHAR(MAX)
 			);
 
-			EXECUTE @series_video_id = evo.usp_add_movie_or_series
+			EXECUTE @series_video_id = video.usp_add_movie_or_series
 				@series_imdb_id,
 				@series_title,
 				@mpaa_rating,
@@ -48,7 +48,7 @@ BEGIN
 				@RATINGS;
 
 			IF ((SELECT 1
-				FROM evo.tv_episodes
+				FROM video.tv_episodes
 				WHERE video_id = @series_video_id
 					AND tv_episode_imdb_id = @episode_imdb_id
 					AND season_number = @season_number
@@ -62,7 +62,7 @@ BEGIN
 				BEGIN
 					INSERT INTO #Episode(id, category)
 						SELECT tv_episode_id, 'TV_EPISODE_ID'
-						FROM evo.tv_episodes
+						FROM video.tv_episodes
 						WHERE video_id = @series_video_id
 							AND tv_episode_imdb_id = @episode_imdb_id
 							AND season_number = @season_number
@@ -76,7 +76,7 @@ BEGIN
 				END
 			ELSE
 				BEGIN
-					MERGE evo.tv_episodes AS target
+					MERGE video.tv_episodes AS target
 					USING (SELECT @series_video_id AS 'video_id', 
 								@episode_imdb_id AS 'imdb_id', 
 								@season_number AS 'season_number', 
@@ -90,7 +90,7 @@ BEGIN
 								@created_time AS 'ctime',
 								@created_user AS 'cuser') AS source
 					ON ((SELECT 1
-							FROM evo.tv_episodes
+							FROM video.tv_episodes
 							WHERE video_id = @series_video_id
 								AND tv_episode_imdb_id = @episode_imdb_id
 								AND season_number = @season_number
@@ -124,7 +124,7 @@ BEGIN
 									WHERE category = 'TV_EPISODE_ID');
 
 			
-            MERGE INTO evo.ratings AS target
+            MERGE INTO video.ratings AS target
 			USING (SELECT DISTINCT r.source AS 'ratings_source', r.value AS 'ratings_value' FROM @RATINGS r) AS source
 			ON target.video_id = @series_video_id
 				AND target.tv_episode_id = @tv_episode_id
@@ -133,9 +133,9 @@ BEGIN
 					VALUES(@series_video_id, @tv_episode_id, source.ratings_source, source.ratings_value, @created_time, @created_user);
 
 		
-			MERGE INTO evo.genre_tv_episodes AS target
+			MERGE INTO video.genre_tv_episodes AS target
 			USING (SELECT genre_id
-					FROM evo.genres g
+					FROM video.genres g
 					JOIN @GENRES gtt
 						ON gtt.name = g.name) AS source
 			ON target.genre_id = source.genre_id AND target.tv_episode_id = @tv_episode_id
@@ -144,10 +144,10 @@ BEGIN
 				VALUES (@tv_episode_id, source.genre_id);
 
 			
-			MERGE INTO evo.person_tv_episodes AS target
+			MERGE INTO video.person_tv_episodes AS target
 			USING (SELECT p.person_id
 					FROM @PERSONS ptt
-					JOIN evo.persons p
+					JOIN video.persons p
 					ON (p.first_name = ptt.first_name
 						AND (p.middle_name = ptt.middle_name OR (p.middle_name IS NULL AND ptt.middle_name IS NULL))
 						AND (p.last_name = ptt.last_name OR (p.last_name IS NULL AND ptt.last_name IS NULL))
@@ -163,7 +163,7 @@ BEGIN
 
 		SELECT episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec,
 			first_name, middle_name, last_name, suffix, person_role, genre_name, rating_source, rating_value
-		FROM evo.vw_tv_episodes
+		FROM video.vw_tv_episodes
 		WHERE tv_episode_id = @tv_episode_id;
 
 		RETURN 0;

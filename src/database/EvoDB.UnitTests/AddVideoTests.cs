@@ -10,10 +10,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EvoDB.UnitTests
 {
     [TestClass()]
-    public class EvoAddVideoTests : SqlDatabaseTestClass
+    public class AddVideoTests : SqlDatabaseTestClass
     {
 
-        public EvoAddVideoTests()
+        public AddVideoTests()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace EvoDB.UnitTests
         {
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoReturnsInsertedVideoAsResultSet_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition expectedSchemaCondition2;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EvoAddVideoTests));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVideoTests));
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoReturnsInsertedVideoAsResultSet_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoInsertsIntoVideoTable_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition2;
@@ -1461,6 +1461,10 @@ namespace EvoDB.UnitTests
             // 
             resources.ApplyResources(InsertingDuplicateVideoDoesNotUpdate_PretestAction, "InsertingDuplicateVideoDoesNotUpdate_PretestAction");
             // 
+            // testCleanupAction
+            // 
+            resources.ApplyResources(testCleanupAction, "testCleanupAction");
+            // 
             // AddVideoReturnsInsertedVideoAsResultSetData
             // 
             this.AddVideoReturnsInsertedVideoAsResultSetData.PosttestAction = null;
@@ -1599,11 +1603,7 @@ namespace EvoDB.UnitTests
             this.InsertingDuplicateVideoDoesNotUpdateData.PretestAction = InsertingDuplicateVideoDoesNotUpdate_PretestAction;
             this.InsertingDuplicateVideoDoesNotUpdateData.TestAction = InsertingDuplicateVideoDoesNotUpdate_TestAction;
             // 
-            // testCleanupAction
-            // 
-            resources.ApplyResources(testCleanupAction, "testCleanupAction");
-            // 
-            // EvoAddVideoTests
+            // AddVideoTests
             // 
             this.TestCleanupAction = testCleanupAction;
             this.TestInitializeAction = testInitializeAction;

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [evo].[roles] (
+﻿CREATE TABLE [video].[roles] (
     [role_id]     INT          IDENTITY (1, 1) NOT NULL,
     [role_name]        VARCHAR (16) NOT NULL,
     [added]       DATETIME     NULL,
