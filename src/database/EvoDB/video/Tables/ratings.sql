@@ -6,8 +6,8 @@
     [value]       DECIMAL (5, 2) NOT NULL,
     [added]       DATETIME       NULL,
     [modified]    DATETIME       NULL,
-    [modified_by] VARCHAR (32)   NULL,
-    [created_by] VARCHAR(32) NULL, 
+    [modified_by] VARCHAR (64)   NULL,
+    [created_by] VARCHAR(64) NULL, 
     CONSTRAINT [pk_ratings_rating_id] PRIMARY KEY CLUSTERED ([rating_id] ASC),
     CONSTRAINT [fk_ratings_video_id] FOREIGN KEY ([video_id]) REFERENCES [video].[videos] ([video_id]),
 	CONSTRAINT [fk_ratings_tv_episode_id] FOREIGN KEY ([tv_episode_id]) REFERENCES [video].[tv_episodes] ([tv_episode_id])

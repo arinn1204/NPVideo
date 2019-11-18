@@ -6,6 +6,8 @@ using System.Text;
 using Microsoft.Data.Tools.Schema.Sql.UnitTesting;
 using Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace EvoDB.UnitTests
 {
@@ -609,12 +611,16 @@ namespace EvoDB.UnitTests
         // You can use the following additional attributes as you write your tests:
         //
         // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
+        //[ClassInitialize()]
+        //public static void MyClassInitialize(TestContext testContext) 
+        //{
+        //}
         //
         // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
+        //[ClassCleanup()]
+        //public static void MyClassCleanup() 
+        //{ 
+        //}
         //
         #endregion
 

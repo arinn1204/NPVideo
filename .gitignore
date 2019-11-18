@@ -16,3 +16,4 @@ Reports/**
 *.sqlproj.user
 *.refactorlog
 *.publish.xml
+src/packages

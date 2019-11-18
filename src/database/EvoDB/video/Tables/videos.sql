@@ -12,8 +12,8 @@
     [extended_edition] VARCHAR(16) NULL, 
     [added]        DATETIME       NULL,
     [modified]     DATETIME       NULL,
-    [modified_by]  VARCHAR (32)   NULL,
-    [created_by] VARCHAR(32) NULL, 
+    [modified_by]  VARCHAR (64)   NULL,
+    [created_by] VARCHAR(64) NULL, 
     CONSTRAINT [pk_videos_video_id] PRIMARY KEY CLUSTERED ([video_id] ASC)
 );
 

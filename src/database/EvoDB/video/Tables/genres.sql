@@ -3,8 +3,8 @@
     [name]        VARCHAR (32) NULL,
     [added]       DATETIME     NULL,
     [modified]    DATETIME     NULL,
-    [modified_by] VARCHAR (32) NULL,
-    [created_by] VARCHAR(32) NULL, 
+    [modified_by] VARCHAR (64) NULL,
+    [created_by] VARCHAR(64) NULL, 
     CONSTRAINT [pk_genres_genre_id] PRIMARY KEY CLUSTERED ([genre_id] ASC)
 );
 
