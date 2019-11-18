@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Evo.WebApi\Evo.WebApi.csproj" />
+    <ProjectReference Include="..\..\main\VideoDB.WebApi\VideoDB.WebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

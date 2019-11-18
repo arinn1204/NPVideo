@@ -4,7 +4,6 @@ using Evo.WebApi.Controllers;
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
 using Evo.WebApi.Services.Interfaces;
-using Evo.WebApi.Tests.Helpers.Models.Requests;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +29,11 @@ namespace Evo.WebApi.Tests.Controllers
         [Test]
         public async Task ShouldReturnCreatedWhenSuccessfulCreation()
         {
-            var request = FakeVideoRequests.CreateVideoRequest("tt1234");
+            var request = new VideoRequest()
+            {
+                VideoId = "tt1234"
+            };
+
             _service.Setup(s => s.UpsertVideo(request))
                 .ReturnsAsync(new VideoViewModel
                 {

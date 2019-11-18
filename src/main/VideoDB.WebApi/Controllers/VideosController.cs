@@ -53,7 +53,7 @@ namespace Evo.WebApi.Controllers
                     Error = JsonConvert.SerializeObject(e)
                 };
 
-                return StatusCode(500, @"<html>Hello! This is not ready.</html>");
+                return StatusCode(500, response);
             }
 
             return Created($"/videos/{request.VideoId}", result);

@@ -176,7 +176,4 @@
     <Build Include="video\Views\vw_movies.sql" />
     <Build Include="video\Views\vw_tv_episodes.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="EvoDB.refactorlog" />
-  </ItemGroup>
 </Project>

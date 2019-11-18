@@ -17,11 +17,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Evo.WebApi\Evo.WebApi.csproj" />
+      <ProjectReference Include="..\..\main\VideoDB.WebApi\VideoDB.WebApi.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\Evo.WebApi\appsettings.json">
+      <Content Include="..\..\main\VideoDB.WebApi\appsettings.json">
         <Link>appsettings.json</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
