@@ -17,7 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Evo.WebApi.Tests.Helpers\Evo.WebApi.Tests.Helpers.csproj" />
       <ProjectReference Include="..\Evo.WebApi\Evo.WebApi.csproj" />
     </ItemGroup>
 

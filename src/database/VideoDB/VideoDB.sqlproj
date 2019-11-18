@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>EvoDB</Name>
+    <Name>VideoDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{00c63d7a-1ffc-4384-9ac9-f3a3db70aeb1}</ProjectGuid>
@@ -84,6 +84,7 @@
     <EnableFullTextSearch>True</EnableFullTextSearch>
     <QueryStoreCaptureMode>All</QueryStoreCaptureMode>
     <DefaultSchema>video</DefaultSchema>
+    <TargetDatabase>VideoDB</TargetDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -177,9 +178,5 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EvoDB.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="EvoDB.development.publish.xml" />
-    <None Include="EvoDB.TestDB.publish.xml" />
   </ItemGroup>
 </Project>
