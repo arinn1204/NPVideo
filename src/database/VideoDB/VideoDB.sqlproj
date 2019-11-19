@@ -11,8 +11,8 @@
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>EvoDB</RootNamespace>
-    <AssemblyName>EvoDB</AssemblyName>
+    <RootNamespace>VideoDB</RootNamespace>
+    <AssemblyName>VideoDB</AssemblyName>
     <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>

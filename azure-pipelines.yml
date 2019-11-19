@@ -31,4 +31,4 @@ steps:
     aadSqlPassword: $(db_password)
     deployType: DacpacTask
     deploymentAction: Publish
-    dacpacFile: "src/database/VideoDB/$(buildConfiguration)/*.dacpac"
+    dacpacFile: '**/*.dacpac'
