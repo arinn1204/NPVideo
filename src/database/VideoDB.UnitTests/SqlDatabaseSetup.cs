@@ -35,7 +35,7 @@ namespace EvoDB.UnitTests
             var connectionStringBuilder = new SqlConnectionStringBuilder
             {
                 ["Data Source"] = Environment.GetEnvironmentVariable("db_source"),
-                ["Initial Catalog"] = Environment.GetEnvironmentVariable("db_catalog"),
+                ["Initial Catalog"] = Environment.GetEnvironmentVariable("testCatalog"),
                 ["User ID"] = Environment.GetEnvironmentVariable("db_username"),
                 ["Password"] = Environment.GetEnvironmentVariable("db_password"),
                 ["Authentication"] = "Active Directory Password",

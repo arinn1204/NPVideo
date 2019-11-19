@@ -14,19 +14,20 @@ variables:
   sqlproj: '**/*.sqlproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  testCatalog: $(db_catalog)_Test
 
 steps:
 - task: MSBuild@1
   inputs:
     configuration: $(buildConfiguration)
-    solution: '**/*.sqlproj'
+    solution: $(sqlproj)
 
 - task: SqlAzureDacpacDeployment@1
   inputs:
     azureSubscription: $(azure_subscription)
     authenticationType: server
     serverName: $(db_source)
-    databaseName: $(db_catalog)_Test
+    databaseName: $(testCatalog)
     sqlUsername: $(db_username)
     sqlPassword: $(db_password)
     deployType: DacpacTask
