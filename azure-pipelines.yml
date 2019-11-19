@@ -24,11 +24,11 @@ steps:
 - task: SqlAzureDacpacDeployment@1
   inputs:
     azureSubscription: $(azure_subscription)
-    authenticationType: aadAuthenticationPassword
+    authenticationType: server
     serverName: $(db_source)
     databaseName: $(db_catalog)_Test
-    aadSqlUsername: $(db_username)
-    aadSqlPassword: $(db_password)
+    sqlUsername: $(db_username)
+    sqlPassword: $(db_password)
     deployType: DacpacTask
     deploymentAction: Publish
     dacpacFile: '**/*.dacpac'
