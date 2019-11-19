@@ -18,12 +18,12 @@ variables:
 steps:
 - task: MSBuild@1
   inputs:
-    msbuildVersion: 15.0
     configuration: $(buildConfiguration)
     solution: '**/*.sqlproj'
 
 - task: SqlAzureDacpacDeployment@1
   inputs:
+    azureSubscription: $(azure_subscription)
     authenticationType: aadAuthenticationPassword
     serverName: $(db_source)
     databaseName: $(db_catalog)_Test
