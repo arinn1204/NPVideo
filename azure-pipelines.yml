@@ -39,3 +39,5 @@ steps:
     command: restore
     restoreSolution: 'src\database\VideoDB.UnitTests\VideoDB.UnitTests.csproj'
     feedsToUse: Select
+    includeNuGetOrg: true
+    restoreDirectory: 'src\database\VideoDB.UnitTests\packages'
