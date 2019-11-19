@@ -14,6 +14,7 @@ variables:
   sqlproj: '**/*.sqlproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  system.debug: true
 
 steps:
 - task: MSBuild@1
