@@ -11,7 +11,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  sqlproj: '**/*.sqlproj'
+  sqlproj: 'src\database\VideoDB\VideoDB.sqlproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   testCatalog: $(db_catalog)_Test
@@ -32,4 +32,10 @@ steps:
     aadSqlPassword: $(db_password)
     deployType: DacpacTask
     deploymentAction: Publish
-    dacpacFile: '**/*.dacpac'
+    dacpacFile: 'src\database\VideoDB\**\*.dacpac'
+
+- task: NuGetCommand@2
+  inputs:
+    command: restore
+    restoreSolution: 'src\database\VideoDB.UnitTests\VideoDB.UnitTests.csproj'
+    feedsToUse: Select
