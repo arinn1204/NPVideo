@@ -11,10 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  testCatalog: $(db_catalog)_Test
-  db_source: $(db_source)
-  db_username: $(db_username)
-  db_password: $(db_password)
+  test_catalog: $(db_catalog)_Test
 
 stages:
 - stage: Build_And_Unit_Test
@@ -42,7 +39,7 @@ stages:
         azureSubscription: $(azure_subscription)
         authenticationType: aadAuthenticationPassword
         serverName: $(db_source)
-        databaseName: $(testCatalog)
+        databaseName: $(test_catalog)
         aadSqlUsername: $(db_username)
         aadSqlPassword: $(db_password)
         deployType: DacpacTask

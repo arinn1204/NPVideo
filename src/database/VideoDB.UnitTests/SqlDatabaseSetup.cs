@@ -19,7 +19,7 @@ namespace EvoDB.UnitTests
         [AssemblyInitialize()]
         public static void InitializeAssembly(TestContext ctx)
         {
-            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("db_source")))
+            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("DB_SOURCE")))
             {
                 ChangeConfigFile("app.config");
                 ChangeConfigFile($"{typeof(SqlDatabaseSetup).Assembly.GetName().Name}.dll.config");
@@ -34,10 +34,10 @@ namespace EvoDB.UnitTests
         {
             var connectionStringBuilder = new SqlConnectionStringBuilder
             {
-                ["Data Source"] = Environment.GetEnvironmentVariable("db_source"),
-                ["Initial Catalog"] = Environment.GetEnvironmentVariable("testCatalog"),
-                ["User ID"] = Environment.GetEnvironmentVariable("db_username"),
-                ["Password"] = Environment.GetEnvironmentVariable("db_password"),
+                ["Data Source"] = Environment.GetEnvironmentVariable("DB_SOURCE"),
+                ["Initial Catalog"] = Environment.GetEnvironmentVariable("TEST_CATALOG"),
+                ["User ID"] = Environment.GetEnvironmentVariable("DB_USERNAME"),
+                ["Password"] = Environment.GetEnvironmentVariable("DB_PASSWORD"),
                 ["Authentication"] = "Active Directory Password",
                 ["Persist Security Info"] = false,
                 ["MultipleActiveResultSets"] = false,
