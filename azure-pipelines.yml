@@ -17,7 +17,7 @@ variables:
 stages:
 - stage: Build_And_Unit_Test
   variables:
-    dacpacLocation: 'src\database\VideoDB\bin\Release\VideoDB.dacpac'
+    dacpacLocation: 'src\database\VideoDB\bin\$(buildConfiguration)\VideoDB.dacpac'
   jobs:
   - job: Database
     variables:
@@ -25,7 +25,7 @@ stages:
       dbLocation: src\database
       unitTestName: VideoDB.UnitTests
       unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
-      assemblyLocation: $(dbLocation)\$(unitTestName)\bin\Release
+      assemblyLocation: $(dbLocation)\$(unitTestName)\bin\$(testConfiguration)
     steps:
     - task: MSBuild@1
       inputs:
