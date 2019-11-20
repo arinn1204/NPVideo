@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Data.Tools.Schema.Sql.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EvoDB.UnitTests
+namespace VideoDB.UnitTests
 {
     [TestClass()]
     public class SqlDatabaseSetup
@@ -47,8 +41,6 @@ namespace EvoDB.UnitTests
                 ["Connection Timeout"] = 30
             };
 
-            Console.WriteLine($"Editing file: {filename}");
-            Console.WriteLine($"File Exists: {File.Exists(filename)}");
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root
                 .Elements()

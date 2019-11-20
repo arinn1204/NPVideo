@@ -7,7 +7,7 @@ using Microsoft.Data.Tools.Schema.Sql.UnitTesting;
 using Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EvoDB.UnitTests
+namespace VideoDB.UnitTests
 {
     [TestClass()]
     public class AddVideoTests : SqlDatabaseTestClass

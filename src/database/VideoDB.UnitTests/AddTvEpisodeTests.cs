@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml.Linq;
 using System.Linq;
 
-namespace EvoDB.UnitTests
+namespace VideoDB.UnitTests
 {
     [TestClass()]
     public class AddTvEpisodeTests : SqlDatabaseTestClass
