@@ -38,6 +38,7 @@ stages:
       inputs:
         azureSubscription: $(azure_subscription)
         scriptType: inline
+        azurePowerShellVersion: latest
         inline: 'Get-ChildItem -Recursive src\database\VideoDB'
     - task: SqlAzureDacpacDeployment@1
       inputs:
