@@ -59,9 +59,9 @@ stages:
     - task: VSTest@2
       inputs:
         testSelector: testAssemblies
-        testAssemblyVer2: $(assemblyLocation)\$(unitTestName).dll
+        testAssemblyVer2: $(assemblyLocation)\*.dll
         searchFolder: $(assemblyLocation)
     - task: PublishBuildArtifacts@1
       inputs:
-        pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*
+        pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
         artifactName: VideoDbDacpac        
