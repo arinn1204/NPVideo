@@ -16,7 +16,7 @@ variables:
 stages:
 - stage: Build_And_Unit_Test
   variables:
-    dacpacLocation: 'src\database\VideoDB\bin\Release\VideoDB.dacpac'
+    dacpacLocation: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\VideoDB.dacpac
   jobs:
   - job: BuildSqlDB
     variables:
