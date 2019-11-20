@@ -32,18 +32,19 @@ stages:
       dbLocation: src\database
       unitTestProjName: VideoDB.UnitTests
       unitTestProj: '$(dbLocation)\$(unitTestProjName)\$(unitTestProjName).csproj'
+      assemblyLocation: $(dbLocation)\$(unitTestProjName)\bin\Release
     steps:
     - task: SqlAzureDacpacDeployment@1
-        inputs:
-          azureSubscription: $(azure_subscription)
-          authenticationType: aadAuthenticationPassword
-          serverName: $(db_source)
-          databaseName: $(testCatalog)
-          aadSqlUsername: $(db_username)
-          aadSqlPassword: $(db_password)
-          deployType: DacpacTask
-          deploymentAction: Publish
-          dacpacFile: $(dacpacLocation) 
+      inputs:
+        azureSubscription: $(azure_subscription)
+        authenticationType: aadAuthenticationPassword
+        serverName: $(db_source)
+        databaseName: $(testCatalog)
+        aadSqlUsername: $(db_username)
+        aadSqlPassword: $(db_password)
+        deployType: DacpacTask
+        deploymentAction: Publish
+        dacpacFile: $(dacpacLocation) 
     - task: NuGetCommand@2
       inputs:
         command: restore
@@ -56,8 +57,6 @@ stages:
         configuration: $(buildConfiguration)
         solution: $(unitTestProj)
     - task: VSTest@2
-      variables:
-        assemblyLocation: $(dbLocation)\$(unitTestProjName)\bin\Release
       inputs:
         testSelector: testAssemblies
         testAssemblyVer2: $(assemblyLocation)\$(unitTestProjName).dll
