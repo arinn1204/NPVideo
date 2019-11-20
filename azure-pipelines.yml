@@ -16,7 +16,7 @@ variables:
 stages:
 - stage: Build_And_Unit_Test
   variables:
-    dacpacLocation: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\VideoDB.dacpac
+    dacpacLocation: 'src\database\VideoDB\bin\Release\VideoDB.dacpac'
   jobs:
   - job: BuildSqlDB
     variables:
@@ -34,6 +34,11 @@ stages:
       unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
       assemblyLocation: $(dbLocation)\$(unitTestName)\bin\Release
     steps:
+    - task: AzurePowerShell@4
+      inputs:
+        azureSubscription: $(azure_subscription)
+        scriptType: inline
+        inline: 'Get-ChildItem -Recursive src\database\VideoDB'
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
