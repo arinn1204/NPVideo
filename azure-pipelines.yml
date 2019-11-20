@@ -59,7 +59,7 @@ stages:
     - task: VSTest@2
       inputs:
         testSelector: testAssemblies
-        testAssemblyVer2: '*.dll'
+        testAssemblyVer2: '$(unitTestName).dll'
         searchFolder: $(assemblyLocation)
     - task: PublishBuildArtifacts@1
       inputs:

@@ -46,6 +46,11 @@ namespace EvoDB.UnitTests
                 ["Connection Timeout"] = 30
             };
 
+            Console.WriteLine($@"Changing variables::
+DB Source = ***{string.Join(".", Environment.GetEnvironmentVariable("DB_SOURCE").Split('.').Skip(1))}
+User ID = {Environment.GetEnvironmentVariable("DB_USERNAME")}
+Catalog = {Environment.GetEnvironmentVariable("TEST_CATALOG")}");
+
 
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root
