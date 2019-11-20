@@ -14,7 +14,7 @@ variables:
   testCatalog: $(db_catalog)_Test
 
 stages:
-- stage: Build And Unit Test
+- stage: Build_And_Unit_Test
   variables:
     dacpacLocation: 'src\database\VideoDB\bin\Release\VideoDB.dacpac'
   jobs:
@@ -30,9 +30,9 @@ stages:
     dependsOn: BuildSqlDB
     variables:
       dbLocation: src\database
-      unitTestProjName: VideoDB.UnitTests
-      unitTestProj: '$(dbLocation)\$(unitTestProjName)\$(unitTestProjName).csproj'
-      assemblyLocation: $(dbLocation)\$(unitTestProjName)\bin\Release
+      unitTestName: VideoDB.UnitTests
+      unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
+      assemblyLocation: $(dbLocation)\$(unitTestName)\bin\Release
     steps:
     - task: SqlAzureDacpacDeployment@1
       inputs:
@@ -51,7 +51,7 @@ stages:
         restoreSolution: $(unitTestProj)
         feedsToUse: Select
         includeNuGetOrg: true
-        restoreDirectory: '$(dbLocation)\$(unitTestProjName)\packages'
+        restoreDirectory: '$(dbLocation)\$(unitTestName)\packages'
     - task: MSBuild@1
       inputs:
         configuration: $(buildConfiguration)
@@ -59,7 +59,7 @@ stages:
     - task: VSTest@2
       inputs:
         testSelector: testAssemblies
-        testAssemblyVer2: $(assemblyLocation)\$(unitTestProjName).dll
+        testAssemblyVer2: $(assemblyLocation)\$(unitTestName).dll
         searchFolder: $(assemblyLocation)
   - job: CopySqlArtifact
     dependsOn: BuildSqlDB
