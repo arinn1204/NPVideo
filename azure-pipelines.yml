@@ -68,3 +68,40 @@ stages:
       inputs:
         pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
         artifactName: VideoDbDacpac        
+  - job: WebApi
+    variables:
+      apiProjName: 'VideoDB.WebApi'
+      unitTestProj: VideoDB.WebApi.Tests
+      apiProjDirectory: 'src\main\$(apiProjName)'
+      unitTestDirectory: 'src\test\$(unitTestProj)'
+      solution: 'src\VideoDB.sln'
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: restore
+        projects: $(solution)
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: build
+        projects: $(unitTestDirectory)\$(unitTestProj).csproj
+        arguments: '-c $(testConfiguration)'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: test
+        projects: $(unitTestDirectory)\$(unitTestProj).csproj
+        arguments: '-c $(testConfiguration)'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: build
+        projects: $(apiProjDirectory)\$(apiProjName).csproj
+        arguments: '-c $(buildConfiguration)'    
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: publish
+        projects: $(apiProjDirectory)\$(apiProjName).csproj
+        arguments: '-c $(buildConfiguration)'    
+    - task: CopyFiles@2
+      inputs:
+        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\publish'
+        targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
+    
