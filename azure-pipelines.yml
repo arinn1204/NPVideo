@@ -18,23 +18,22 @@ stages:
   variables:
     dacpacLocation: 'src\database\VideoDB\bin\Release\VideoDB.dacpac'
   jobs:
-  - job: BuildSqlDB
+  - job: Database
     variables:
       sqlproj: 'src\database\VideoDB\VideoDB.sqlproj'
-    steps:
-    - task: MSBuild@1
-      inputs:
-        configuration: $(buildConfiguration)
-        solution: $(sqlproj)
-  - job: TestSqlDB
-    dependsOn: BuildSqlDB
-    variables:
       dbLocation: src\database
       unitTestName: VideoDB.UnitTests
       unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
       assemblyLocation: $(dbLocation)\$(unitTestName)\bin\Release
     steps:
-    - powershell: Get-ChildItem -Recurse src\database\VideoDB
+    - task: MSBuild@1
+      inputs:
+        configuration: $(buildConfiguration)
+        solution: $(sqlproj)
+    - task: CopyFiles@2
+      inputs:
+        contents: $(dacpacLocation)
+        targetFolder: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
@@ -62,19 +61,7 @@ stages:
         testSelector: testAssemblies
         testAssemblyVer2: $(assemblyLocation)\$(unitTestName).dll
         searchFolder: $(assemblyLocation)
-  - job: CopySqlArtifact
-    dependsOn: BuildSqlDB
-    steps:
-    - task: CopyFiles@2
-      inputs:
-        contents: $(dacpacLocation)
-        targetFolder: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
-  - job: PublishSqlArtifact
-    dependsOn:
-    - CopySqlArtifact
-    - TestSqlDB
-    steps:
     - task: PublishBuildArtifacts@1
       inputs:
         pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*
-        artifactName: VideoDbDacpac
+        artifactName: VideoDbDacpac        
