@@ -11,6 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  testConfiguration: 'Debug'
   test_catalog: $(db_catalog)_Test
 
 stages:
@@ -54,14 +55,14 @@ stages:
         restoreDirectory: '$(dbLocation)\$(unitTestName)\packages'
     - task: MSBuild@1
       inputs:
-        configuration: $(buildConfiguration)
+        configuration: $(testConfiguration)
         solution: $(unitTestProj)
     - task: VSTest@2
       inputs:
         testSelector: testAssemblies
         testAssemblyVer2: '$(unitTestName).dll'
         searchFolder: $(assemblyLocation)
-        configuration: $(buildConfiguration)
+        configuration: $(testConfiguration)
         overrideTestrunParameters: '-override_connection_string true'
     - task: PublishBuildArtifacts@1
       inputs:
