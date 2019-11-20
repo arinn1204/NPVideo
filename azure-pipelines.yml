@@ -34,12 +34,7 @@ stages:
       unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
       assemblyLocation: $(dbLocation)\$(unitTestName)\bin\Release
     steps:
-    - task: AzurePowerShell@4
-      inputs:
-        azureSubscription: $(azure_subscription)
-        scriptType: inline
-        azurePowerShellVersion: latestVersion
-        inline: 'Get-ChildItem -Recursive src\database\VideoDB'
+    - powershell: Get-ChildItem -Recursive src\database\VideoDB
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
