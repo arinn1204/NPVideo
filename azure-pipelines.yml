@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Debug'
-  test_catalog: $(db_catalog)_Test
+  test_catalog: $(db_catalog)_dev
 
 stages:
 - stage: Build_And_Unit_Test
