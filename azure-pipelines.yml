@@ -63,11 +63,11 @@ stages:
         searchFolder: $(assemblyLocation)
         configuration: $(buildConfiguration)
         overrideTestrunParameters:
-          db_source: $(db_source)
-          db_username: $(db_username)
-          db_password: $(db_password)
-          test_catalog: $(test_catalog)
-          override_connection_string: true
+        - db_source: $(db_source)
+        - db_username: $(db_username)
+        - db_password: $(db_password)
+        - test_catalog: $(test_catalog)
+        - override_connection_string: true
     - task: PublishBuildArtifacts@1
       inputs:
         pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
