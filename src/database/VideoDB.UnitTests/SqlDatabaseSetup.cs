@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
@@ -46,12 +47,8 @@ namespace EvoDB.UnitTests
                 ["Connection Timeout"] = 30
             };
 
-            Console.WriteLine($@"Changing variables::
-DB Source = ***{string.Join(".", Environment.GetEnvironmentVariable("DB_SOURCE").Split('.').Skip(1))}
-User ID = {Environment.GetEnvironmentVariable("DB_USERNAME")}
-Catalog = {Environment.GetEnvironmentVariable("TEST_CATALOG")}");
-
-
+            Console.WriteLine($"Editing file: {filename}");
+            Console.WriteLine($"File Exists: {File.Exists(filename)}");
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root
                 .Elements()
