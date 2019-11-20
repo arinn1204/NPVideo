@@ -12,6 +12,9 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testCatalog: $(db_catalog)_Test
+  db_source: $(db_source)
+  db_username: $(db_username)
+  db_password: $(db_password)
 
 stages:
 - stage: Build_And_Unit_Test
