@@ -10,34 +10,71 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
-  sqlproj: 'src\database\VideoDB\VideoDB.sqlproj'
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   testCatalog: $(db_catalog)_Test
 
-steps:
-- task: MSBuild@1
-  inputs:
-    configuration: $(buildConfiguration)
-    solution: $(sqlproj)
-
-- task: SqlAzureDacpacDeployment@1
-  inputs:
-    azureSubscription: $(azure_subscription)
-    authenticationType: aadAuthenticationPassword
-    serverName: $(db_source)
-    databaseName: $(testCatalog)
-    aadSqlUsername: $(db_username)
-    aadSqlPassword: $(db_password)
-    deployType: DacpacTask
-    deploymentAction: Publish
-    dacpacFile: 'src\database\VideoDB\**\*.dacpac'
-
-- task: NuGetCommand@2
-  inputs:
-    command: restore
-    restoreSolution: 'src\database\VideoDB.UnitTests\VideoDB.UnitTests.csproj'
-    feedsToUse: Select
-    includeNuGetOrg: true
-    restoreDirectory: 'src\database\VideoDB.UnitTests\packages'
+stages:
+- stage: Build And Unit Test
+  variables:
+    dacpacLocation: 'src\database\VideoDB\bin\Release\VideoDB.dacpac'
+  jobs:
+  - job: BuildSqlDB
+    variables:
+      sqlproj: 'src\database\VideoDB\VideoDB.sqlproj'
+    steps:
+    - task: MSBuild@1
+      inputs:
+        configuration: $(buildConfiguration)
+        solution: $(sqlproj)
+  - job: TestSqlDB
+    dependsOn: BuildSqlDB
+    variables:
+      dbLocation: src\database
+      unitTestProjName: VideoDB.UnitTests
+      unitTestProj: '$(dbLocation)\$(unitTestProjName)\$(unitTestProjName).csproj'
+    steps:
+    - task: SqlAzureDacpacDeployment@1
+        inputs:
+          azureSubscription: $(azure_subscription)
+          authenticationType: aadAuthenticationPassword
+          serverName: $(db_source)
+          databaseName: $(testCatalog)
+          aadSqlUsername: $(db_username)
+          aadSqlPassword: $(db_password)
+          deployType: DacpacTask
+          deploymentAction: Publish
+          dacpacFile: $(dacpacLocation) 
+    - task: NuGetCommand@2
+      inputs:
+        command: restore
+        restoreSolution: $(unitTestProj)
+        feedsToUse: Select
+        includeNuGetOrg: true
+        restoreDirectory: '$(dbLocation)\$(unitTestProjName)\packages'
+    - task: MSBuild@1
+      inputs:
+        configuration: $(buildConfiguration)
+        solution: $(unitTestProj)
+    - task: VSTest@2
+      variables:
+        assemblyLocation: $(dbLocation)\$(unitTestProjName)\bin\Release
+      inputs:
+        testSelector: testAssemblies
+        testAssemblyVer2: $(assemblyLocation)\$(unitTestProjName).dll
+        searchFolder: $(assemblyLocation)
+  - job: CopySqlArtifact
+    dependsOn: BuildSqlDB
+    steps:
+    - task: CopyFiles@2
+      inputs:
+        contents: $(dacpacLocation)
+        targetFolder: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
+  - job: PublishSqlArtifact
+    dependsOn:
+    - CopySqlArtifact
+    - TestSqlDB
+    steps:
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*
+        artifactName: VideoDbDacpac
