@@ -19,7 +19,7 @@ namespace EvoDB.UnitTests
         [AssemblyInitialize()]
         public static void InitializeAssembly(TestContext ctx)
         {
-            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("DB_SOURCE")))
+            if (ctx.Properties.Contains("override_connection_string"))
             {
                 ChangeConfigFile("app.config");
                 ChangeConfigFile($"{typeof(SqlDatabaseSetup).Assembly.GetName().Name}.dll.config");
@@ -71,10 +71,7 @@ Catalog = {Environment.GetEnvironmentVariable("TEST_CATALOG")}");
                 .First(f => f.Name == "ConnectionString")
                 .Value = connectionStringBuilder.ConnectionString;
 
-            using (var writer = XmlWriter.Create(filename))
-            {
-                appConfig.WriteTo(writer);
-            }
+            appConfig.Save(filename);
         }
 
     }
