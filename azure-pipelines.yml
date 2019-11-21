@@ -52,7 +52,6 @@ stages:
         restoreSolution: $(unitTestProj)
         feedsToUse: Select
         includeNuGetOrg: true
-        restoreDirectory: 'src\packages'
     - task: MSBuild@1
       inputs:
         configuration: $(testConfiguration)
@@ -105,7 +104,7 @@ stages:
         arguments: '-c $(buildConfiguration)'    
     - task: CopyFiles@2
       inputs:
-        contents: 'src\main\VideoDB.WebApi\bin\$(buildConfiguration)\netcoreapp3.0\publish'
+        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish\*'
         targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
     - task: PublishBuildArtifacts@1
       inputs:
