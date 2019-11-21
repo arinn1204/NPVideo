@@ -104,7 +104,7 @@ stages:
         arguments: '-c $(buildConfiguration)'    
     - task: CopyFiles@2
       inputs:
-        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish\*'
+        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
         targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
     - task: PublishBuildArtifacts@1
       inputs:
