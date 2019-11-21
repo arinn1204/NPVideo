@@ -139,14 +139,12 @@ stages:
   jobs:
   - job: DeployWebApi
     steps:
-    - task: AzureRmWebAppDeployment@4
-      displayName: 'Deploy Azure App Service'
+    - task: AzureWebApp@1
       inputs:
-        azureSubscription: '$(Parameters.ConnectedServiceName)'
-        appType: '$(Parameters.WebAppKind)'
-        WebAppName: '$(Parameters.WebAppName)'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/publish.zip'
-        StartupCommand: '$(Parameters.StartupCommand)'
+        azureSubscription: '$(azure_subscription)'
+        appType: webAppLinux
+        package: '$(System.DefaultWorkingDirectory)/**/publish.zip'
+        appName: 'VideoDB WebApi'
   - job: DeployDatabase
     steps:
     - task: SqlAzureDacpacDeployment@1
