@@ -76,7 +76,7 @@ stages:
       unitTestDirectory: 'src\test\$(unitTestProjName)'
       solution: 'src\VideoDB.sln'
       apiProject: $(apiProjDirectory)\$(apiProjName).csproj
-      unitTestProject: $(unitTestDirectory)\$(unitTestProj).csproj
+      unitTestProject: $(unitTestDirectory)\$(unitTestProjName).csproj
     steps:
     - task: DotNetCoreCLI@2
       inputs:
@@ -106,6 +106,10 @@ stages:
       inputs:
         contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish'
         targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: $(Build.ArtifactStagingDirectory)\WebApi
+        artifactName: WebApi   
 - stage: Integration_Test
   dependsOn: Build_And_Unit_Test
   variables:
