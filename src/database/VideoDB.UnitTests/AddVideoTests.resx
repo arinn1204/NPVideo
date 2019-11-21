@@ -333,12 +333,12 @@ DELETE FROM video.ratings;
 DELETE FROM video.tv_episodes;
 DELETE FROM video.videos;
 
-DBCC CHECKIDENT ('noblepanther_dev.video.videos', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.genres', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.ratings', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.persons', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.roles', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.tv_episodes', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.videos', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.genres', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.ratings', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.persons', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.roles', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.tv_episodes', RESEED, 0);
 </value>
   </data>
   <data name="AddGenreWhenNotExist_TestAction.SqlScript" xml:space="preserve">
@@ -2101,12 +2101,12 @@ DELETE FROM video.ratings;
 DELETE FROM video.tv_episodes;
 DELETE FROM video.videos;
 
-DBCC CHECKIDENT ('noblepanther_dev.video.videos', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.tv_episodes', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.genres', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.ratings', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.persons', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_dev.video.roles', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.videos', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.tv_episodes', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.genres', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.ratings', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.persons', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.roles', RESEED, 0);
 </value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
