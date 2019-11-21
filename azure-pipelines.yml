@@ -102,6 +102,12 @@ stages:
         arguments: '-c $(buildConfiguration)'    
     - task: CopyFiles@2
       inputs:
-        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\publish'
+        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish'
         targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
-    
+- stage: Integration_Test
+  variables:
+      apiProjName: 'VideoDB.WebApi'
+      unitTestProj: VideoDB.WebApi.Tests
+      apiProjDirectory: 'src\main\$(apiProjName)'
+      unitTestDirectory: 'src\test\$(unitTestProj)'
+      solution: 'src\VideoDB.sln'
