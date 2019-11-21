@@ -53,6 +53,10 @@ stages:
         feedsToUse: Select
         includeNuGetOrg: true
         restoreDirectory: '$(dbLocation)\$(unitTestName)'
+    - task: MSBuild@1
+      inputs:
+        configuration: $(testConfiguration)
+        solution: $(unitTestProj)
     - task: VSTest@2
       inputs:
         testSelector: testAssemblies
@@ -129,4 +133,30 @@ stages:
       inputs:
         command: test
         projects: $(intTestProj)
-        arguments: '-c $(testConfiguration)'
+        arguments: '-c $(testConfiguration)'   
+- stage: Deployment
+  dependsOn: Integration_Test
+  jobs:
+  - job: DeployWebApi
+    steps:
+    - task: AzureRmWebAppDeployment@4
+      displayName: 'Deploy Azure App Service'
+      inputs:
+        azureSubscription: '$(Parameters.ConnectedServiceName)'
+        appType: '$(Parameters.WebAppKind)'
+        WebAppName: '$(Parameters.WebAppName)'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/publish.zip'
+        StartupCommand: '$(Parameters.StartupCommand)'
+  - job: DeployDatabase
+    steps:
+    - task: SqlAzureDacpacDeployment@1
+      inputs:
+        azureSubscription: $(azure_subscription)
+        authenticationType: aadAuthenticationPassword
+        serverName: $(db_source)
+        databaseName: $(db_catalog)
+        aadSqlUsername: $(db_username)
+        aadSqlPassword: $(db_password)
+        deployType: DacpacTask
+        deploymentAction: Publish
+        dacpacFile: '$(System.DefaultWorkingDirectory)/**/*.dacpac'
