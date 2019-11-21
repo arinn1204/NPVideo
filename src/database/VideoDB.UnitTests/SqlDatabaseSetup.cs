@@ -42,14 +42,6 @@ namespace VideoDB.UnitTests
                 ["Connection Timeout"] = 30
             };
 
-            var envVars = Environment.GetEnvironmentVariables();
-            envVars.Remove("DB_PASSWORD");
-            envVars.Remove("db_password");
-
-            Console.WriteLine($"The secretest secret value is: {Environment.GetEnvironmentVariable("SAMPLE_SECRET_VARIABLE")}");
-            Console.WriteLine(JsonConvert.SerializeObject(envVars));
-            Console.WriteLine(Environment.GetEnvironmentVariable("SAMPLE_SECRET_VARIABLE") == "hunter2");
-
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root
                 .Elements()
