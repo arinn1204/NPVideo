@@ -52,7 +52,7 @@ stages:
         restoreSolution: $(unitTestProj)
         feedsToUse: Select
         includeNuGetOrg: true
-        restoreDirectory: 'packages'
+        restoreDirectory: '$(Build.SourcesDirectory)\src\packages'
     - task: MSBuild@1
       inputs:
         configuration: $(testConfiguration)
