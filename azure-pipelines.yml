@@ -53,10 +53,6 @@ stages:
         feedsToUse: Select
         includeNuGetOrg: true
         restoreDirectory: '$(dbLocation)\$(unitTestName)'
-    - task: MSBuild@1
-      inputs:
-        configuration: $(testConfiguration)
-        solution: $(unitTestProj)
     - task: VSTest@2
       inputs:
         testSelector: testAssemblies
