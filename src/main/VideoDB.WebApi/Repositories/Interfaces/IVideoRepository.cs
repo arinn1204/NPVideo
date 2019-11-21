@@ -9,6 +9,6 @@ namespace Evo.WebApi.Repositories.Interfaces
     public interface IVideoRepository
     {
         Task<IEnumerable<VideoDataModel>> UpsertVideo(VideoRequest video);
-        Task<IEnumerable<VideoDataModel>> UpsertTvEpisode(VideoRequest video);
+        Task<IEnumerable<TvEpisodeDataModel>> UpsertTvEpisode(TvEpisodeRequest video);
     }
 }

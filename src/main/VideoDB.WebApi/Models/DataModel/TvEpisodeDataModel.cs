@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Evo.WebApi.Models.DataModel
 {
-    public class TvEpisodeDataModel
+    public class VideoDataModel
     {
     }
 }

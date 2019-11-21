@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
-  test_catalog: $(db_catalog)_dev
+  test_catalog: $(db_catalog)_test
 
 stages:
 - stage: Build_And_Unit_Test
@@ -64,10 +64,8 @@ stages:
         searchFolder: $(assemblyLocation)
         configuration: $(testConfiguration)
         overrideTestrunParameters: '-override_connection_string true -db_password $(db_password)'
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathtoPublish: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
-        artifactName: VideoDbDacpac        
+    - publish:  $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*
+      artifact: VideoDbDacpac     
   - job: WebApi
     variables:
       apiProjName: 'VideoDB.WebApi'
@@ -106,10 +104,8 @@ stages:
       inputs:
         contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
         targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathtoPublish: $(Build.ArtifactStagingDirectory)\WebApi
-        artifactName: WebApi   
+    - publish: $(Build.ArtifactStagingDirectory)\WebApi\*
+      artifact: WebApi
 - stage: Integration_Test
   dependsOn: Build_And_Unit_Test
   variables:
@@ -133,19 +129,37 @@ stages:
         command: test
         projects: $(intTestProj)
         arguments: '-c $(testConfiguration)'   
+  - job: DeployDevDatabase
+    steps:
+    - download: current
+      artifact: VideoDbDacpac
+    - task: SqlAzureDacpacDeployment@1
+      inputs:
+        azureSubscription: $(azure_subscription)
+        authenticationType: aadAuthenticationPassword
+        serverName: $(db_source)
+        databaseName: $(db_catalog)_dev
+        aadSqlUsername: $(db_username)
+        aadSqlPassword: $(db_password)
+        deployType: DacpacTask
+        deploymentAction: Publish
+        dacpacFile: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*.dacpac
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
   - job: DeployWebApi
     steps:
+    - download: current
+      artifact: WebApi
     - task: AzureWebApp@1
       inputs:
         azureSubscription: '$(azure_subscription)'
-        appType: webAppLinux
-        package: '$(System.DefaultWorkingDirectory)/**/publish.zip'
+        package: '$(Pipeline.Workspace)\WebApi'
         appName: 'VideoDB WebApi'
   - job: DeployDatabase
     steps:
+    - download: current
+      artifact: VideoDbDacpac
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
@@ -156,4 +170,4 @@ stages:
         aadSqlPassword: $(db_password)
         deployType: DacpacTask
         deploymentAction: Publish
-        dacpacFile: '$(System.DefaultWorkingDirectory)/**/*.dacpac'
+        dacpacFile: '$(Pipeline.Workspace)\VideoDbDacpac'
