@@ -11,7 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  testConfiguration: 'Debug'
+  testConfiguration: 'Release'
   test_catalog: $(db_catalog)_dev
 
 stages:
@@ -71,10 +71,12 @@ stages:
   - job: WebApi
     variables:
       apiProjName: 'VideoDB.WebApi'
-      unitTestProj: VideoDB.WebApi.Tests
+      unitTestProjName: VideoDB.WebApi.Tests
       apiProjDirectory: 'src\main\$(apiProjName)'
-      unitTestDirectory: 'src\test\$(unitTestProj)'
+      unitTestDirectory: 'src\test\$(unitTestProjName)'
       solution: 'src\VideoDB.sln'
+      apiProject: $(apiProjDirectory)\$(apiProjName).csproj
+      unitTestProject: $(unitTestDirectory)\$(unitTestProj).csproj
     steps:
     - task: DotNetCoreCLI@2
       inputs:
@@ -83,31 +85,47 @@ stages:
     - task: DotNetCoreCLI@2
       inputs:
         command: build
-        projects: $(unitTestDirectory)\$(unitTestProj).csproj
+        projects: $(unitTestProject)
         arguments: '-c $(testConfiguration)'
     - task: DotNetCoreCLI@2
       inputs:
         command: test
-        projects: $(unitTestDirectory)\$(unitTestProj).csproj
+        projects: $(unitTestProject)
         arguments: '-c $(testConfiguration)'
     - task: DotNetCoreCLI@2
       inputs:
         command: build
-        projects: $(apiProjDirectory)\$(apiProjName).csproj
+        projects: $(apiProject)
         arguments: '-c $(buildConfiguration)'    
     - task: DotNetCoreCLI@2
       inputs:
         command: publish
-        projects: $(apiProjDirectory)\$(apiProjName).csproj
+        projects: $(apiProject)
         arguments: '-c $(buildConfiguration)'    
     - task: CopyFiles@2
       inputs:
         contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish'
         targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
 - stage: Integration_Test
+  dependsOn: Build_And_Unit_Test
   variables:
-      apiProjName: 'VideoDB.WebApi'
-      unitTestProj: VideoDB.WebApi.Tests
-      apiProjDirectory: 'src\main\$(apiProjName)'
-      unitTestDirectory: 'src\test\$(unitTestProj)'
-      solution: 'src\VideoDB.sln'
+      intTestProjName: VideoDB.WebApi.Tests.Integration
+      intTestDirectory: 'src\test\$(intTestProjName)'
+      intTestProj: $(intTestDirectory)\$(intTestProjName).csproj
+  jobs:
+  - job: WebApiIntegrationTest
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: restore
+        projects: $(intTestProj)
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: build
+        projects: $(intTestProj)
+        arguments: '-c $(testConfiguration)'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: test
+        projects: $(intTestProj)
+        arguments: '-c $(testConfiguration)'

@@ -41,6 +41,8 @@ namespace VideoDB.UnitTests
                 ["Connection Timeout"] = 30
             };
 
+            Console.WriteLine($"The secretest secret value is: {Environment.GetEnvironmentVariable("SAMPLE_SECRET_VARIABLE")}");
+
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root
                 .Elements()
