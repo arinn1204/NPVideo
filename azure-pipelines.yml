@@ -77,7 +77,6 @@ stages:
       solution: 'src\VideoDB.sln'
       apiProject: $(apiProjDirectory)\$(apiProjName).csproj
       unitTestProject: $(unitTestDirectory)\$(unitTestProjName).csproj
-      System.Debug: true
     steps:
     - task: DotNetCoreCLI@2
       inputs:
