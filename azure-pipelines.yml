@@ -65,7 +65,7 @@ stages:
         testAssemblyVer2: '$(unitTestName).dll'
         searchFolder: $(assemblyLocation)
         configuration: $(testConfiguration)
-        overrideTestrunParameters: '-override_connection_string true -db_password $(db_password)'
+        overrideTestrunParameters: '-override_connection_string true'
     - publish:  $(dacpacLocation)
       artifact: VideoDbDacpac     
   - job: WebApi
