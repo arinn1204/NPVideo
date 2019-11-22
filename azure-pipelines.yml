@@ -12,7 +12,12 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
+  db_catalog: $(production_catalog)
+  db_source: $(production_source)
+  db_username: $(service_login)
+  db_password: $(service_password)
   test_catalog: $(db_catalog)_test
+  test_secret: $(SAMPLE_SECRET)
 
 stages:
 - stage: Build_And_Unit_Test
@@ -143,7 +148,7 @@ stages:
         aadSqlPassword: $(db_password)
         deployType: DacpacTask
         deploymentAction: Publish
-        dacpacFile: $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*.dacpac
+        dacpacFile: $(Pipeline.Workspace)\VideoDbDacPac
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
