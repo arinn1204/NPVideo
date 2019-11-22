@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoDB.WebApi", "main\VideoDB.WebApi\VideoDB.WebApi.csproj", "{6FC478BF-FCC0-4C83-B0D7-3D778BC96838}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoDB.WebApi.Tests", "test\VideoDB.WebApi.Tests\VideoDB.WebApi.Tests.csproj", "{197E6C41-098C-4BED-BCBC-B130D683B75D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoDB.WebApi.Tests", "test\unit\VideoDB.WebApi.Tests\VideoDB.WebApi.Tests.csproj", "{197E6C41-098C-4BED-BCBC-B130D683B75D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoDB.WebApi.Tests.Integration", "test\VideoDB.WebApi.Tests.Integration\VideoDB.WebApi.Tests.Integration.csproj", "{CF4493FC-BEC0-49C6-B045-EC437987F50A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoDB.WebApi.Tests.Integration", "test\integration\VideoDB.WebApi.Tests.Integration\VideoDB.WebApi.Tests.Integration.csproj", "{CF4493FC-BEC0-49C6-B045-EC437987F50A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3F25AF7D-A414-4607-B45B-4DD6802EBA4D}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9BD389FC-2163-441A-BAAC-017ED0F28201}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoDB.UnitTests", "database\VideoDB.UnitTests\VideoDB.UnitTests.csproj", "{79F7D389-A906-4C79-B792-0EEA94E3D62B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoDB.WebApi.Tests.Repositories", "test\integration\VideoDB.WebApi.Tests.Repositories\VideoDB.WebApi.Tests.Repositories.csproj", "{F37635B0-0C84-4C6C-AB10-988038ECF224}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{79F7D389-A906-4C79-B792-0EEA94E3D62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F7D389-A906-4C79-B792-0EEA94E3D62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F7D389-A906-4C79-B792-0EEA94E3D62B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37635B0-0C84-4C6C-AB10-988038ECF224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37635B0-0C84-4C6C-AB10-988038ECF224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37635B0-0C84-4C6C-AB10-988038ECF224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37635B0-0C84-4C6C-AB10-988038ECF224}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{CF4493FC-BEC0-49C6-B045-EC437987F50A} = {3F25AF7D-A414-4607-B45B-4DD6802EBA4D}
 		{00C63D7A-1FFC-4384-9AC9-F3A3DB70AEB1} = {9BD389FC-2163-441A-BAAC-017ED0F28201}
 		{79F7D389-A906-4C79-B792-0EEA94E3D62B} = {9BD389FC-2163-441A-BAAC-017ED0F28201}
+		{F37635B0-0C84-4C6C-AB10-988038ECF224} = {3F25AF7D-A414-4607-B45B-4DD6802EBA4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9A18394-C6B6-40AF-954B-78935353FF63}

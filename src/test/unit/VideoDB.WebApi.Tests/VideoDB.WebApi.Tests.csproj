@@ -9,7 +9,6 @@
       <PackageReference Include="AutoFixture" Version="4.11.0" />
       <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
       <PackageReference Include="FluentAssertions" Version="5.9.0" />
-      <PackageReference Include="Microsoft.Data.Sqlite" Version="3.0.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
       <PackageReference Include="Moq" Version="4.13.1" />
       <PackageReference Include="NUnit" Version="3.12.0" />
@@ -17,11 +16,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\main\VideoDB.WebApi\VideoDB.WebApi.csproj" />
+      <ProjectReference Include="..\..\..\main\VideoDB.WebApi\VideoDB.WebApi.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\main\VideoDB.WebApi\appsettings.json">
+      <Content Include="..\..\..\main\VideoDB.WebApi\appsettings.json">
         <Link>appsettings.json</Link>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>

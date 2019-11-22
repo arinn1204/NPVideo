@@ -7,15 +7,15 @@ namespace Evo.WebApi.Models.Requests
 {
     public class VideoRequest
     {
-        [Required] public string VideoId { get; set; }
+        public string VideoId { get; set; }
 
-        [Required] public string Title { get; set; }
+        public string Title { get; set; }
 
-        [Required] public string Plot { get; set; }
+        public string Plot { get; set; }
 
-        [Required] public virtual VideoType Type { get; set; }
+        public virtual VideoType Type { get; set; }
 
-        [Required] public DateTime ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
         public decimal Runtime { get; set; }
         public string MpaaRating { get; set; }
