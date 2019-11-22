@@ -13,7 +13,9 @@ variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
   test_catalog: $(db_catalog)_test
-  test_secret: $(SAMPLE_SECRET)
+  var1: $(secret password)
+  var2: ${{variables.secret password}}
+  var3: $[variables.secret password]
 
 stages:
 - stage: Build_And_Unit_Test
