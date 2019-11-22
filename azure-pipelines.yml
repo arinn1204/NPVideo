@@ -70,13 +70,7 @@ stages:
       artifact: VideoDbDacpac     
   - job: WebApi
     variables:
-      apiProjName: 'VideoDB.WebApi'
-      unitTestProjName: VideoDB.WebApi.Tests
-      apiProjDirectory: 'src\main\$(apiProjName)'
-      unitTestDirectory: 'src\test\$(unitTestProjName)'
       solution: 'src\VideoDB.sln'
-      apiProject: $(apiProjDirectory)\$(apiProjName).csproj
-      unitTestProject: $(unitTestDirectory)\$(unitTestProjName).csproj
     steps:
     - task: DotNetCoreCLI@2
       inputs:
@@ -85,47 +79,43 @@ stages:
     - task: DotNetCoreCLI@2
       inputs:
         command: build
-        projects: $(unitTestProject)
+        projects: 'src\test\unit\**\*.csproj'
         arguments: '-c $(testConfiguration)'
     - task: DotNetCoreCLI@2
       inputs:
         command: test
-        projects: $(unitTestProject)
+        projects: 'src\test\unit\**\*.csproj'
         arguments: '-c $(testConfiguration)'
     - task: DotNetCoreCLI@2
       inputs:
         command: build
-        projects: $(apiProject)
+        projects: 'src\main\VideoDB.WebApi\VideoDB.WebApi.csproj'
         arguments: '-c $(buildConfiguration)'    
     - task: DotNetCoreCLI@2
       inputs:
         command: publish
-        projects: $(apiProject)
+        projects: 'src\main\VideoDB.WebApi\VideoDB.WebApi.csproj'
         arguments: '-c $(buildConfiguration)'    
-    - publish: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
+    - publish: 'src\main\VideoDB.WebApi\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
       artifact: WebApi
 - stage: Integration_Test
   dependsOn: Build_And_Unit_Test
-  variables:
-      intTestProjName: VideoDB.WebApi.Tests.Integration
-      intTestDirectory: 'src\test\$(intTestProjName)'
-      intTestProj: $(intTestDirectory)\$(intTestProjName).csproj
   jobs:
   - job: WebApiIntegrationTest
     steps:
     - task: DotNetCoreCLI@2
       inputs:
         command: restore
-        projects: $(intTestProj)
+        projects: 'src\test\integration\**\*.csproj'
     - task: DotNetCoreCLI@2
       inputs:
         command: build
-        projects: $(intTestProj)
+        projects: 'src\test\integration\**\*.csproj'
         arguments: '-c $(testConfiguration)'
     - task: DotNetCoreCLI@2
       inputs:
         command: test
-        projects: $(intTestProj)
+        projects: 'src\test\integration\**\*.csproj'
         arguments: '-c $(testConfiguration)'   
   - job: DeployDevDatabase
     steps:
