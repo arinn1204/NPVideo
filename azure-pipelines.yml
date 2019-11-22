@@ -12,8 +12,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
-  db_catalog: $(production_catalog)
-  db_source: $(production_source)
   db_username: $(service_login)
   db_password: $(service_password)
   test_catalog: $(db_catalog)_test
@@ -31,7 +29,6 @@ stages:
       unitTestName: VideoDB.UnitTests
       unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
       assemblyLocation: $(dbLocation)\$(unitTestName)\bin\$(testConfiguration)
-      System.Debug: true
     steps:
     - task: MSBuild@1
       inputs:
