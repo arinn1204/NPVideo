@@ -12,8 +12,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
-  db_username: $(service_login)
-  db_password: $(service_password)
   test_catalog: $(db_catalog)_test
   test_secret: $(SAMPLE_SECRET)
 

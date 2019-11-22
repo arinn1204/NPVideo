@@ -42,10 +42,6 @@ namespace VideoDB.UnitTests
                 ["Connection Timeout"] = 30
             };
 
-            Console.WriteLine(Environment.GetEnvironmentVariable("test_secret"));
-            Console.WriteLine(Environment.GetEnvironmentVariable("SAMPLE_SECRET"));
-            Console.WriteLine(Environment.GetEnvironmentVariable("test_secret") == "hunter2");
-
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root
                 .Elements()
