@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoDB.WebApi.Tests.RepositoryTests
+namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
 {
     [TestFixture]
     class VideoRepositoryTests

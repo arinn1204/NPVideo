@@ -12,6 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
+  azure_subscription: $(subscription)
   db_catalog: $(production_catalog)
   db_source: $(production_source)
   db_username: $(service_login)
