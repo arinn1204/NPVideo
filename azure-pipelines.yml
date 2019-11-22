@@ -37,10 +37,6 @@ stages:
       inputs:
         configuration: $(buildConfiguration)
         solution: $(sqlproj)
-    - task: CopyFiles@2
-      inputs:
-        contents: $(dacpacLocation)
-        targetFolder: $(Build.ArtifactStagingDirectory)\VideoDbDacPac
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
@@ -70,7 +66,7 @@ stages:
         searchFolder: $(assemblyLocation)
         configuration: $(testConfiguration)
         overrideTestrunParameters: '-override_connection_string true -db_password $(db_password)'
-    - publish:  $(Build.ArtifactStagingDirectory)\VideoDbDacPac\*
+    - publish:  $(dacpacLocation)
       artifact: VideoDbDacpac     
   - job: WebApi
     variables:
