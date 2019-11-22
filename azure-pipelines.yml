@@ -106,11 +106,7 @@ stages:
         command: publish
         projects: $(apiProject)
         arguments: '-c $(buildConfiguration)'    
-    - task: CopyFiles@2
-      inputs:
-        contents: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
-        targetFolder: $(Build.ArtifactStagingDirectory)\WebApi
-    - publish: $(Build.ArtifactStagingDirectory)\WebApi\*
+    - publish: '$(apiProjDirectory)\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
       artifact: WebApi
 - stage: Integration_Test
   dependsOn: Build_And_Unit_Test
