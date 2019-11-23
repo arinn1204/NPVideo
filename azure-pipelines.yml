@@ -13,9 +13,6 @@ variables:
   buildConfiguration: 'Release'
   testConfiguration: 'Release'
   test_catalog: $(db_catalog)_test
-  var1: $(secret_password)
-  var2: ${{variables.secret_password}}
-  var3: $[variables.secret_password]
 
 stages:
 - stage: Build_And_Unit_Test
@@ -63,6 +60,11 @@ stages:
         searchFolder: $(assemblyLocation)
         configuration: $(testConfiguration)
         overrideTestrunParameters: '-override_connection_string true'
+      env:
+        db_source: $(db_source)
+        db_catalog: $(db_catalog)
+        db_username: $(db_username)
+        db_password: $(db_password)
     - publish:  $(dacpacLocation)
       artifact: VideoDbDacpac     
   - job: WebApi
@@ -114,6 +116,11 @@ stages:
         command: test
         projects: 'src\test\integration\**\*.csproj'
         arguments: '-c $(testConfiguration)'   
+      env:
+        db_source: $(db_source)
+        db_catalog: $(db_catalog)
+        db_username: $(db_username)
+        db_password: $(db_password)
   - job: DeployDevDatabase
     steps:
     - download: current

@@ -30,10 +30,10 @@ namespace VideoDB.UnitTests
         {
             var connectionStringBuilder = new SqlConnectionStringBuilder
             {
-                ["Data Source"] = Environment.GetEnvironmentVariable("DB_SOURCE"),
-                ["Initial Catalog"] = Environment.GetEnvironmentVariable("TEST_CATALOG"),
-                ["User ID"] = Environment.GetEnvironmentVariable("DB_USERNAME"),
-                ["Password"] = Environment.GetEnvironmentVariable("DB_PASSWORD"),
+                ["Data Source"] = Environment.GetEnvironmentVariable("db_source"),
+                ["Initial Catalog"] = Environment.GetEnvironmentVariable("db_catalog"),
+                ["User ID"] = Environment.GetEnvironmentVariable("db_username"),
+                ["Password"] = Environment.GetEnvironmentVariable("db_password"),
                 ["Authentication"] = "Active Directory Password",
                 ["Persist Security Info"] = false,
                 ["MultipleActiveResultSets"] = false,
@@ -41,10 +41,6 @@ namespace VideoDB.UnitTests
                 ["TrustServerCertificate"] = false,
                 ["Connection Timeout"] = 30
             };
-
-            Console.WriteLine($"{Environment.GetEnvironmentVariable("VAR1")}, {Environment.GetEnvironmentVariable("var1")}, {Environment.GetEnvironmentVariable("VAR1") == "hunter2"}, {Environment.GetEnvironmentVariable("var1") == "hunter2"}");
-            Console.WriteLine($"{Environment.GetEnvironmentVariable("VAR2")}, {Environment.GetEnvironmentVariable("var2")}, {Environment.GetEnvironmentVariable("VAR2") == "hunter2"}, {Environment.GetEnvironmentVariable("var2") == "hunter2"}");
-            Console.WriteLine($"{Environment.GetEnvironmentVariable("VAR3")}, {Environment.GetEnvironmentVariable("var3")}, {Environment.GetEnvironmentVariable("VAR3") == "hunter2"}, {Environment.GetEnvironmentVariable("var3") == "hunter2"}");
 
             var appConfig = XDocument.Load(filename);
             var unitTestSection = appConfig.Root

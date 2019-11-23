@@ -23,18 +23,51 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
     {
         private SqlConnection _sqlConnection;
         private Fixture _fixture;
+        private string _database = "noblepanther";
 
         [OneTimeSetUp]
         public void DbSetup()
         {
-            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            _sqlConnection = new SqlConnection(config.GetConnectionString("npdb"));
+            var overrideConnectionString = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("db_catalog"));
+            
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string connectionString;
+            
+            if (overrideConnectionString)
+            {
+                _database = Environment.GetEnvironmentVariable("db_catalog");
+                var connectionStringBuilder = new SqlConnectionStringBuilder()
+                {
+                    ["Data Source"] = Environment.GetEnvironmentVariable("db_source"),
+                    ["Initial Catalog"] = Environment.GetEnvironmentVariable("db_catalog"),
+                    ["User ID"] = Environment.GetEnvironmentVariable("db_username"),
+                    ["Password"] = Environment.GetEnvironmentVariable("db_password"),
+                    ["Authentication"] = "Active Directory Password",
+                    ["Persist Security Info"] = false,
+                    ["MultipleActiveResultSets"] = false,
+                    ["Encrypt"] = true,
+                    ["TrustServerCertificate"] = false,
+                    ["Connection Timeout"] = 30
+                };
+
+                connectionString = connectionStringBuilder.ConnectionString;
+            }
+            else
+            {
+                connectionString = config.GetConnectionString("npdb");
+            }
+
+
+            _sqlConnection = new SqlConnection(connectionString);
         }
 
         [SetUp]
         public void DeleteFromTables()
         {
-            var command = new SqlCommand(@"
+            var command = new SqlCommand($@"
             DELETE FROM video.genre_videos;
             DELETE FROM video.person_videos;
             DELETE FROM video.person_roles;
@@ -48,12 +81,12 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
             DELETE FROM video.tv_episodes;
             DELETE FROM video.videos;
 
-            DBCC CHECKIDENT('noblepanther_dev.video.videos', RESEED, 0);
-            DBCC CHECKIDENT('noblepanther_dev.video.tv_episodes', RESEED, 0);
-            DBCC CHECKIDENT('noblepanther_dev.video.genres', RESEED, 0);
-            DBCC CHECKIDENT('noblepanther_dev.video.ratings', RESEED, 0);
-            DBCC CHECKIDENT('noblepanther_dev.video.persons', RESEED, 0);
-            DBCC CHECKIDENT('noblepanther_dev.video.roles', RESEED, 0);
+            DBCC CHECKIDENT('{_database}.video.videos', RESEED, 0);
+            DBCC CHECKIDENT('{_database}.video.tv_episodes', RESEED, 0);
+            DBCC CHECKIDENT('{_database}.video.genres', RESEED, 0);
+            DBCC CHECKIDENT('{_database}.video.ratings', RESEED, 0);
+            DBCC CHECKIDENT('{_database}.video.persons', RESEED, 0);
+            DBCC CHECKIDENT('{_database}.video.roles', RESEED, 0);
             ", _sqlConnection);
 
             command.Connection.Open();
