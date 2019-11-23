@@ -17,8 +17,8 @@ namespace VideoDB.UnitTests
         {
             if (ctx.Properties.Contains("override_connection_string"))
             {
-                ChangeConfigFile("app.config");
-                ChangeConfigFile($"{typeof(SqlDatabaseSetup).Assembly.GetName().Name}.dll.config");
+                ChangeConfigFile("app.config", ctx);
+                ChangeConfigFile($"{typeof(SqlDatabaseSetup).Assembly.GetName().Name}.dll.config", ctx);
             }
             // Setup the test database based on setting in the
             // configuration file
@@ -26,14 +26,14 @@ namespace VideoDB.UnitTests
             SqlDatabaseTestClass.TestService.GenerateData();
         }
 
-        private static void ChangeConfigFile(string filename)
+        private static void ChangeConfigFile(string filename, TestContext context)
         {
             var connectionStringBuilder = new SqlConnectionStringBuilder
             {
-                ["Data Source"] = Environment.GetEnvironmentVariable("db_source"),
-                ["Initial Catalog"] = Environment.GetEnvironmentVariable("db_catalog"),
-                ["User ID"] = Environment.GetEnvironmentVariable("db_username"),
-                ["Password"] = Environment.GetEnvironmentVariable("db_password"),
+                ["Data Source"] = context.Properties["db_source"] as string,
+                ["Initial Catalog"] = context.Properties["db_catalog"] as string,
+                ["User ID"] = context.Properties["db_username"] as string,
+                ["Password"] = context.Properties["db_password"] as string,
                 ["Authentication"] = "Active Directory Password",
                 ["Persist Security Info"] = false,
                 ["MultipleActiveResultSets"] = false,

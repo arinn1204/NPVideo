@@ -59,12 +59,7 @@ stages:
         testAssemblyVer2: '$(unitTestName).dll'
         searchFolder: $(assemblyLocation)
         configuration: $(testConfiguration)
-        overrideTestrunParameters: '-override_connection_string true'
-      env:
-        db_source: $(db_source)
-        db_catalog: $(db_catalog)
-        db_username: $(db_username)
-        db_password: $(db_password)
+        overrideTestrunParameters: '-override_connection_string true -db_source $(db_source) -db_catalog $(db_catalog) -db_username $(db_username) -db_password $(db_password)'
     - publish:  $(dacpacLocation)
       artifact: VideoDbDacpac     
   - job: WebApi
@@ -102,25 +97,13 @@ stages:
   jobs:
   - job: WebApiIntegrationTest
     steps:
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: restore
-        projects: 'src\test\integration\**\*.csproj'
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: build
-        projects: 'src\test\integration\**\*.csproj'
-        arguments: '-c $(testConfiguration)'
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: test
-        projects: 'src\test\integration\**\*.csproj'
-        arguments: '-c $(testConfiguration)'   
+    - powershell: '& $(Build.SourcesDirectory)\bin\IntegrationTests.ps1'
       env:
-        db_source: $(db_source)
-        db_catalog: $(db_catalog)
-        db_username: $(db_username)
         db_password: $(db_password)
+        db_username: $(db_username)
+        db_catalog: $(db_catalog)
+        db_source: $(db_source)
+        secret_var: $(secret_password)
   - job: DeployDevDatabase
     steps:
     - download: current
