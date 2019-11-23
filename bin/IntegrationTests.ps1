@@ -8,8 +8,8 @@
     [String]$DebugPreference="SilentlyContinue"
 );
 
-Write-Host "Secret Variable: $secret_var"
-Write-Host "Secret Variable is hunter2: "($secret_var -eq "hunter2")
+Write-Host "Secret Variable: $secret_var / $Env:SECRET_VAR"
+Write-Host "Secret Variable is hunter2: "($secret_var -eq "hunter2") "Or " ($Env:SECRET_VAR -eq "hunter2")
 
 Push-Location src\test\integration
 
