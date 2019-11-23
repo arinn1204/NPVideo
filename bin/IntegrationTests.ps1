@@ -1,9 +1,9 @@
 ﻿param(
-    [String]$username = "",
-    [String]$password = "",
-    [String]$catalog = "",
-    [String]$source = "",
-    [String]$secret_var = "",
+    [String]$username = "$Env:DB_USERNAME",
+    [String]$password = "$Env:DB_PASSWORD",
+    [String]$catalog = "$Env:DB_CATALOG",
+    [String]$source = "$Env:DB_SOURCE",
+    [String]$secret_var = "$Env:SECRET_VAR",
     [String]$Configuration="Debug",
     [String]$DebugPreference="SilentlyContinue"
 );

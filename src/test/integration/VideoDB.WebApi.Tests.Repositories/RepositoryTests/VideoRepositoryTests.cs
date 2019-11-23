@@ -108,6 +108,15 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
 
             videoEntered.Count().Should().Be(15);
             videoEntered.All(a => a.imdb_id == "tt134132").Should().BeTrue();
+
+            var command = @"SELECT video_id
+FROM video.videos
+WHERE imdb_id = 'tt134132'";
+
+            using var sqlCommand = new SqlCommand(command, _sqlConnection);
+            sqlCommand.Connection.Open();
+            var reader = sqlCommand.ExecuteReader();
+            reader.Read().Should().BeTrue();
         }
 
         private VideoRequest GetVideoRequest()
