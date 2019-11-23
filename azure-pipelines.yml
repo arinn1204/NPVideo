@@ -113,7 +113,7 @@ stages:
     steps:
     - download: current
       artifact: VideoDbDacpac
-    - powershell: 'GCI -r $(P'
+    - powershell: 'GCI -r $(Pipeline.Workspace)'
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
