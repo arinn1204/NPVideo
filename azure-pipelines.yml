@@ -103,12 +103,13 @@ stages:
         azureSubscription: $(azure_subscription)
         scriptType: filePath
         scriptPath: '$(Build.SourcesDirectory)\bin\IntegrationTests.ps1'
-      env:
-        DB_USERNAME: $(db_username)
-        DB_CATALOG: $(db_catalog)_test
-        DB_PASSWORD: $(db_password)
-        DB_SOURCE: $(db_source)
-        SECRET_VAR: $(secret_password)
+        scriptArguments:
+          -username "$(db_username)" `
+          -password "$(db_password)" `
+          -catalog "$(db_catalog)_test" `
+          -source "$(db_source)" `
+          -Configuration "$(testConfiguration)" `
+          -secret_var "$(secret_password)"
   - job: DeployDevDatabase
     steps:
     - download: current

@@ -4,14 +4,22 @@
     [String]$catalog = "$Env:DB_CATALOG",
     [String]$source = "$Env:DB_SOURCE",
     [String]$secret_var = "$Env:SECRET_VAR",
+    [String]$workingDirectory = "",
     [String]$Configuration="Debug",
     [String]$DebugPreference="SilentlyContinue"
 );
 
-Write-Host "Secret Variable: $secret_var / $Env:SECRET_VAR"
-Write-Host "Secret Variable is hunter2: "($secret_var -eq "hunter2") "Or " ($Env:SECRET_VAR -eq "hunter2")
+$varEqual = $secret_var -eq "hunter2"
+$envEqual = $Env:SECRET_VAR -eq "hunter2"
 
-Push-Location src\test\integration
+Write-Host "Secret Variable: '$secret_var' / '$Env:SECRET_VAR'"
+Write-Host "Secret Variable is hunter2: '$varEqual' / '$envEqual'";
+
+if ([String]::IsNullOrWhiteSpace($workingDirectory)) {
+    Push-Location src\test\integration
+} else {
+    Puish-Location $workingDirectory\src\test\integration
+}
 
 $Env:db_username = $username;
 $Env:db_password = $password;
