@@ -99,6 +99,7 @@ stages:
     steps:
     - task: AzurePowerShell@4
       inputs:
+        azurePowerShellVersion: latestVersion
         azureSubscription: $(azure_subscription)
         scriptType: filePath
         scriptPath: '$(Build.SourcesDirectory)\bin\IntegrationTests.ps1'
