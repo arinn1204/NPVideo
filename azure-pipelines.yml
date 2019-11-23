@@ -103,17 +103,17 @@ stages:
         scriptType: filePath
         scriptPath: '$(Build.SourcesDirectory)\bin\IntegrationTests.ps1'
         scriptArguments:
-          -username: $(db_username) `
-          -password: $(db_password) `
-          -catalog: $(db_catalog)_test `
-          -source: $(db_source) `
-          -Configuration: $(testConfiguration) `
-          -secret_var: $(secret_password)
+          -username $(db_username) `
+          -password $(db_password) `
+          -catalog $(db_catalog)_test `
+          -source $(db_source) `
+          -Configuration $(testConfiguration) `
+          -secret_var $(secret_password)
   - job: DeployDevDatabase
     steps:
     - download: current
       artifact: VideoDbDacpac
-    - powershell: 'GCI -r $(Pipeline.Workspace)'
+    - powershell: 'GCI -r $(P'
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
