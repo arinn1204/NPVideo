@@ -97,17 +97,23 @@ stages:
   jobs:
   - job: WebApiIntegrationTest
     steps:
-    - powershell: '& $(Build.SourcesDirectory)\bin\IntegrationTests.ps1'
-      env:
-        db_password: $(db_password)
-        db_username: $(db_username)
-        db_catalog: $(db_catalog)
-        db_source: $(db_source)
-        secret_var: $(secret_password)
+    - task: AzurePowerShell@4
+      inputs:
+        azureSubscription: $(azure_subscription)
+        scriptType: filePath
+        scriptPath: '$(Build.SourcesDirectory)\bin\IntegrationTests.ps1'
+        scriptArguments:
+          -username: $(db_username) `
+          -password: $(db_password) `
+          -catalog: $(db_catalog)_test `
+          -source: $(db_source) `
+          -Configuration: $(testConfiguration) `
+          -secret_var: $(secret_password)
   - job: DeployDevDatabase
     steps:
     - download: current
       artifact: VideoDbDacpac
+    - powershell: 'GCI -r $(Pipeline.Workspace)'
     - task: SqlAzureDacpacDeployment@1
       inputs:
         azureSubscription: $(azure_subscription)
@@ -118,7 +124,7 @@ stages:
         aadSqlPassword: $(db_password)
         deployType: DacpacTask
         deploymentAction: Publish
-        dacpacFile: $(Pipeline.Workspace)\VideoDbDacPac
+        dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
