@@ -47,6 +47,8 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition2;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldReturnExpectedSchema_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition expectedSchemaCondition1;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition14;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition15;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithDifferentResolution_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition3;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition1;
@@ -92,10 +94,8 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldLinkPersonsWithIndividualEpisodes_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction testCleanupAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition12;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition13;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition14;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition15;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition12;
             this.ShouldCreateSeriesInVideoData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldCreateEntryInTvEpisodeWhenNotExistData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldReturnExpectedSchemaData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -115,6 +115,8 @@ namespace VideoDB.UnitTests
             rowCountCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             ShouldReturnExpectedSchema_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             expectedSchemaCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition();
+            rowCountCondition14 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            rowCountCondition15 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             ShouldInsertNewEpisodeWithDifferentResolution_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             rowCountCondition3 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             scalarValueCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
@@ -160,10 +162,8 @@ namespace VideoDB.UnitTests
             ShouldLinkPersonsWithIndividualEpisodes_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             testCleanupAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition12 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             rowCountCondition13 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            rowCountCondition14 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            rowCountCondition15 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            rowCountCondition12 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             // 
             // testInitializeAction
             // 
@@ -206,6 +206,20 @@ namespace VideoDB.UnitTests
             expectedSchemaCondition1.Name = "expectedSchemaCondition1";
             resources.ApplyResources(expectedSchemaCondition1, "expectedSchemaCondition1");
             expectedSchemaCondition1.Verbose = false;
+            // 
+            // rowCountCondition14
+            // 
+            rowCountCondition14.Enabled = true;
+            rowCountCondition14.Name = "rowCountCondition14";
+            rowCountCondition14.ResultSet = 1;
+            rowCountCondition14.RowCount = 1;
+            // 
+            // rowCountCondition15
+            // 
+            rowCountCondition15.Enabled = true;
+            rowCountCondition15.Name = "rowCountCondition15";
+            rowCountCondition15.ResultSet = 2;
+            rowCountCondition15.RowCount = 1;
             // 
             // ShouldInsertNewEpisodeWithDifferentResolution_TestAction
             // 
@@ -544,6 +558,26 @@ namespace VideoDB.UnitTests
             // 
             resources.ApplyResources(testCleanupAction, "testCleanupAction");
             // 
+            // SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction
+            // 
+            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction.Conditions.Add(rowCountCondition13);
+            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction.Conditions.Add(rowCountCondition12);
+            resources.ApplyResources(SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction, "SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction");
+            // 
+            // rowCountCondition13
+            // 
+            rowCountCondition13.Enabled = true;
+            rowCountCondition13.Name = "rowCountCondition13";
+            rowCountCondition13.ResultSet = 1;
+            rowCountCondition13.RowCount = 36;
+            // 
+            // rowCountCondition12
+            // 
+            rowCountCondition12.Enabled = true;
+            rowCountCondition12.Name = "rowCountCondition12";
+            rowCountCondition12.ResultSet = 2;
+            rowCountCondition12.RowCount = 36;
+            // 
             // ShouldCreateSeriesInVideoData
             // 
             this.ShouldCreateSeriesInVideoData.PosttestAction = null;
@@ -615,40 +649,6 @@ namespace VideoDB.UnitTests
             this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData.PosttestAction = null;
             this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData.PretestAction = null;
             this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData.TestAction = SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction;
-            // 
-            // SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction
-            // 
-            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction.Conditions.Add(rowCountCondition13);
-            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction.Conditions.Add(rowCountCondition12);
-            resources.ApplyResources(SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction, "SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction");
-            // 
-            // rowCountCondition12
-            // 
-            rowCountCondition12.Enabled = true;
-            rowCountCondition12.Name = "rowCountCondition12";
-            rowCountCondition12.ResultSet = 2;
-            rowCountCondition12.RowCount = 36;
-            // 
-            // rowCountCondition13
-            // 
-            rowCountCondition13.Enabled = true;
-            rowCountCondition13.Name = "rowCountCondition13";
-            rowCountCondition13.ResultSet = 1;
-            rowCountCondition13.RowCount = 36;
-            // 
-            // rowCountCondition14
-            // 
-            rowCountCondition14.Enabled = true;
-            rowCountCondition14.Name = "rowCountCondition14";
-            rowCountCondition14.ResultSet = 1;
-            rowCountCondition14.RowCount = 1;
-            // 
-            // rowCountCondition15
-            // 
-            rowCountCondition15.Enabled = true;
-            rowCountCondition15.Name = "rowCountCondition15";
-            rowCountCondition15.ResultSet = 2;
-            rowCountCondition15.RowCount = 1;
             // 
             // AddTvEpisodeTests
             // 

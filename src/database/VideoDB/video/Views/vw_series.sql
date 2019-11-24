@@ -1,6 +1,6 @@
 ﻿CREATE VIEW [video].[vw_series]
 	AS 
-	SELECT v.video_id, v.imdb_id, v.title AS 'movie_title', v.mpaa_rating AS 'movie_rating', v.plot, v.release_date
+	SELECT v.video_id, v.imdb_id, v.title AS 'title', v.mpaa_rating AS 'rating', v.plot, v.release_date
 			,g.name AS 'genre_name'
 			,p.first_name, p.middle_name, p.last_name, p.suffix
 			,roles.role_name AS 'person_role'
