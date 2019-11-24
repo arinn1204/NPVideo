@@ -91,6 +91,11 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition17;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldLinkPersonsWithIndividualEpisodes_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction testCleanupAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition12;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition13;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition14;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition15;
             this.ShouldCreateSeriesInVideoData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldCreateEntryInTvEpisodeWhenNotExistData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldReturnExpectedSchemaData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -102,6 +107,7 @@ namespace VideoDB.UnitTests
             this.ShouldInsertRatingsOfTvEpisodeData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldLinkEpisodesWithGenresData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldLinkPersonsWithIndividualEpisodesData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             testInitializeAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ShouldCreateSeriesInVideo_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             rowCountCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
@@ -153,6 +159,11 @@ namespace VideoDB.UnitTests
             scalarValueCondition17 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             ShouldLinkPersonsWithIndividualEpisodes_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             testCleanupAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            rowCountCondition12 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            rowCountCondition13 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            rowCountCondition14 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
+            rowCountCondition15 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             // 
             // testInitializeAction
             // 
@@ -185,6 +196,8 @@ namespace VideoDB.UnitTests
             // ShouldReturnExpectedSchema_TestAction
             // 
             ShouldReturnExpectedSchema_TestAction.Conditions.Add(expectedSchemaCondition1);
+            ShouldReturnExpectedSchema_TestAction.Conditions.Add(rowCountCondition14);
+            ShouldReturnExpectedSchema_TestAction.Conditions.Add(rowCountCondition15);
             resources.ApplyResources(ShouldReturnExpectedSchema_TestAction, "ShouldReturnExpectedSchema_TestAction");
             // 
             // expectedSchemaCondition1
@@ -597,6 +610,46 @@ namespace VideoDB.UnitTests
             this.ShouldLinkPersonsWithIndividualEpisodesData.PretestAction = ShouldLinkPersonsWithIndividualEpisodes_PretestAction;
             this.ShouldLinkPersonsWithIndividualEpisodesData.TestAction = ShouldLinkPersonsWithIndividualEpisodes_TestAction;
             // 
+            // SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData
+            // 
+            this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData.PosttestAction = null;
+            this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData.PretestAction = null;
+            this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData.TestAction = SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction;
+            // 
+            // SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction
+            // 
+            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction.Conditions.Add(rowCountCondition13);
+            SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction.Conditions.Add(rowCountCondition12);
+            resources.ApplyResources(SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction, "SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation_TestAction");
+            // 
+            // rowCountCondition12
+            // 
+            rowCountCondition12.Enabled = true;
+            rowCountCondition12.Name = "rowCountCondition12";
+            rowCountCondition12.ResultSet = 2;
+            rowCountCondition12.RowCount = 36;
+            // 
+            // rowCountCondition13
+            // 
+            rowCountCondition13.Enabled = true;
+            rowCountCondition13.Name = "rowCountCondition13";
+            rowCountCondition13.ResultSet = 1;
+            rowCountCondition13.RowCount = 36;
+            // 
+            // rowCountCondition14
+            // 
+            rowCountCondition14.Enabled = true;
+            rowCountCondition14.Name = "rowCountCondition14";
+            rowCountCondition14.ResultSet = 1;
+            rowCountCondition14.RowCount = 1;
+            // 
+            // rowCountCondition15
+            // 
+            rowCountCondition15.Enabled = true;
+            rowCountCondition15.Name = "rowCountCondition15";
+            rowCountCondition15.ResultSet = 2;
+            rowCountCondition15.RowCount = 1;
+            // 
             // AddTvEpisodeTests
             // 
             this.TestCleanupAction = testCleanupAction;
@@ -877,6 +930,30 @@ namespace VideoDB.UnitTests
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
+        [TestMethod()]
+        public void SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformation()
+        {
+            SqlDatabaseTestActions testActions = this.SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+
 
 
 
@@ -898,5 +975,6 @@ namespace VideoDB.UnitTests
         private SqlDatabaseTestActions ShouldInsertRatingsOfTvEpisodeData;
         private SqlDatabaseTestActions ShouldLinkEpisodesWithGenresData;
         private SqlDatabaseTestActions ShouldLinkPersonsWithIndividualEpisodesData;
+        private SqlDatabaseTestActions SuccessfullyReturnsSeriesInformationAsWellAsEpisodeInformationData;
     }
 }

@@ -175,5 +175,6 @@
     <Build Include="video\Tables\genre_tv_episodes.sql" />
     <Build Include="video\Views\vw_movies.sql" />
     <Build Include="video\Views\vw_tv_episodes.sql" />
+    <Build Include="video\Views\vw_series.sql" />
   </ItemGroup>
 </Project>

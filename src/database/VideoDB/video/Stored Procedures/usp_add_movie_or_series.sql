@@ -198,10 +198,23 @@ BEGIN
 			
 		COMMIT TRANSACTION;
 
-		SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
-			genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
-		FROM video.vw_movies
-		WHERE video_id = @video_id;
+		if (@video_type = 'movie')
+		BEGIN
+			SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
+				genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
+			FROM video.vw_movies
+			WHERE video_id = @video_id;
+		END
+		ELSE 
+		BEGIN
+			IF (@video_type = 'series')
+			BEGIN
+				SELECT imdb_id, movie_title, movie_rating, plot, release_date,
+					genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
+				FROM video.vw_series
+				WHERE video_id = @video_id;
+			END
+		END
 
 		RETURN @video_id;
 
