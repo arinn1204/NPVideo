@@ -49,7 +49,7 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.SeasonNumber, r => r.Random.Number());
         }
 
-        private static IEnumerable<StarRequest> GetStars(int number, PersonType role)
+        public static IEnumerable<StarRequest> GetStars(int number, PersonType role)
         {
             return new AutoFaker<StarRequest>()
                     .RuleFor(r => r.Role, r => role)
@@ -60,14 +60,14 @@ namespace VideoDB.WebApi.Tests.Helpers
                     .Generate(number);
         }
 
-        private static IEnumerable<GenreRequest> GetGenres(int number = 1)
+        public static IEnumerable<GenreRequest> GetGenres(int number = 1)
         {
             return new AutoFaker<GenreRequest>()
                     .RuleFor(r => r.Name, r => GenerateString(r, 16))
                     .Generate(number);
         }
 
-        private static IEnumerable<RatingRequest> GetRatings(int number = 1)
+        public static IEnumerable<RatingRequest> GetRatings(int number = 1)
         {
             return new AutoFaker<RatingRequest>()
                     .RuleFor(r => r.Source, r => GenerateString(r, 28))

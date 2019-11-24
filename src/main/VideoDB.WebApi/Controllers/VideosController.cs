@@ -34,7 +34,7 @@ namespace Evo.WebApi.Controllers
 
             try
             {
-                result = await _videoService.UpsertVideo(request);
+                result = _videoService.UpsertVideo(request);
             }
             catch (EvoBadRequestException e)
             {

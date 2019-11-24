@@ -1,3 +1,5 @@
+using Evo.WebApi.Models.Enums;
+
 namespace Evo.WebApi.Models.ViewModels
 {
     public class StarViewModel
@@ -6,6 +8,6 @@ namespace Evo.WebApi.Models.ViewModels
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public string Suffix { get; set; }
-        public string Role { get; set; }
+        public PersonType Role { get; set; }
     }
 }

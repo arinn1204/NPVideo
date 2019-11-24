@@ -35,7 +35,7 @@ namespace Evo.WebApi.Tests.Controllers
             };
 
             _service.Setup(s => s.UpsertVideo(request))
-                .ReturnsAsync(new VideoViewModel
+                .Returns(new VideoViewModel
                 {
                     VideoId = "tt1234"
                 });

@@ -10,7 +10,7 @@ namespace Evo.WebApi.Services.Interfaces
 {
     public interface IVideoService
     {
-        Task<VideoViewModel> UpsertVideo(VideoRequest video);
-        Task<VideoViewModel> UpsertTvEpisode(VideoRequest video);
+        VideoViewModel UpsertVideo(VideoRequest video);
+        VideoViewModel UpsertTvEpisode(VideoRequest video);
     }
 }
