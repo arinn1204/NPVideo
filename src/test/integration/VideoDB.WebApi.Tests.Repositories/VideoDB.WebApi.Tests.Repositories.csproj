@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\main\VideoDB.WebApi\VideoDB.WebApi.csproj" />
+    <ProjectReference Include="..\..\unit\VideoDB.WebApi.Tests\VideoDB.WebApi.Tests.csproj" />
   </ItemGroup>
 
 </Project>

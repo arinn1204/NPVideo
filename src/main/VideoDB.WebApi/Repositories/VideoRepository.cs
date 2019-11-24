@@ -1,4 +1,5 @@
-﻿using Evo.WebApi.Models.DataModel;
+﻿using Evo.WebApi.Exceptions;
+using Evo.WebApi.Models.DataModel;
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
@@ -42,17 +43,27 @@ namespace VideoDB.WebApi.Repositories
             };
             AddParametersToProcedure(video, genres, stars, ratings, command);
 
-            command.Connection.Open();
-            var reader = command.ExecuteReader();
 
             var dataModels = Enumerable.Empty<VideoDataModel>();
-
-            while (reader.Read())
+            try
             {
-                dataModels = dataModels.Append(reader.CreateObject<VideoDataModel>());
-            }
+                command.Connection.Open();
+                var reader = command.ExecuteReader();
 
-            command.Connection.Close();
+                while (reader.Read())
+                {
+                    dataModels = dataModels.Append(reader.CreateObject<VideoDataModel>());
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new EvoException(e.Message);
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+            
 
             return dataModels;
         }

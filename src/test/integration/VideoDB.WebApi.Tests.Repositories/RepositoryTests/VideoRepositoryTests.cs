@@ -2,16 +2,19 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
 using Bogus;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.Enums;
 using Evo.WebApi.Models.Requests;
 using FluentAssertions;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Linq;
 using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Repositories;
+using VideoDB.WebApi.Tests.Extensions;
 
 namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
 {
@@ -93,6 +96,25 @@ WHERE imdb_id = 'tt134132'";
             reader.HasRows.Should().BeTrue();
             
             sqlCommand.Connection.Close();
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWhenRequestIsInvalid()
+        {
+            var repository = _fixture.Create<VideoRepository>();
+            var request = GetVideoRequest();
+
+            request.Actors
+                .First()
+                .Modify(gr => gr.FirstName, null);
+
+            Action exception = () => repository.UpsertVideo(request);
+
+            exception.Should()
+                .Throw<EvoException>()
+                .WithMessage(@"Cannot insert the value NULL into column 'first_name', table '@persons'; column does not allow nulls. INSERT fails.
+The data for table-valued parameter ""@persons"" doesn't conform to the table type of the parameter. SQL Server error is: 515, state: 2
+The statement has been terminated.");
         }
 
         private VideoRequest GetVideoRequest()
