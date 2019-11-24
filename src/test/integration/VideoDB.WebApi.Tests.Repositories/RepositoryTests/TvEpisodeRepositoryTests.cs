@@ -30,8 +30,12 @@ namespace VideoDB.WebApi.Tests.Repositories.RepositoryTests
             videoEntered.videoDataModels.Count().Should().Be(60);
             videoEntered.videoDataModels.All(a => a.imdb_id == "tt134132").Should().BeTrue();
 
+            videoEntered.tvDataModels.Count().Should().Be(60);
+            videoEntered.tvDataModels.All(a => a.episode_imdb_id == "tt134133").Should().BeTrue();
+
+
             var command = @"SELECT COUNT(*)
-FROM video.vw_movies
+FROM video.vw_series
 WHERE imdb_id = 'tt134132'";
 
             using var sqlConnection = new SqlConnection(_config.CreateConnectionString());
@@ -46,13 +50,9 @@ WHERE imdb_id = 'tt134132'";
 
             rowCount.Should().Be(60);
 
-
-            videoEntered.tvDataModels.Count().Should().Be(60);
-            videoEntered.tvDataModels.All(a => a.episode_imdb_id == "tt134133").Should().BeTrue();
-
             command = @"SELECT COUNT(*)
 FROM video.vw_tv_episodes
-WHERE imdb_id = 'tt134133'";
+WHERE episode_imdb_id = 'tt134133'";
 
             sqlCommand.CommandText = command;
             sqlCommand.Connection.Open();

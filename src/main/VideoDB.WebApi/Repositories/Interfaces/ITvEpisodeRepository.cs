@@ -7,7 +7,7 @@ namespace VideoDB.WebApi.Repositories.Interfaces
     public interface ITvEpisodeRepository
     {
 
-        (IEnumerable<VideoDataModel> videoDataModels, IEnumerable<TvEpisodeDataModel> tvDataModels)
+        (IEnumerable<SeriesDataModel> videoDataModels, IEnumerable<TvEpisodeDataModel> tvDataModels)
             UpsertTvEpisode(TvEpisodeRequest tvEpisode);
     }
 }

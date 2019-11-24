@@ -23,7 +23,7 @@ namespace VideoDB.WebApi.Repositories
             _configuration = configuration;
         }
 
-        public (IEnumerable<VideoDataModel> videoDataModels,
+        public (IEnumerable<SeriesDataModel> videoDataModels,
                IEnumerable<TvEpisodeDataModel> tvDataModels)
            UpsertTvEpisode(TvEpisodeRequest tvEpisode)
         {
@@ -47,10 +47,10 @@ namespace VideoDB.WebApi.Repositories
 
         }
 
-        private (IEnumerable<VideoDataModel> videoDataModels,
+        private (IEnumerable<SeriesDataModel> videoDataModels,
                IEnumerable<TvEpisodeDataModel> tvDataModels) ReadFromDatabase(SqlCommand command)
         {
-            var videoModels = Enumerable.Empty<VideoDataModel>();
+            var videoModels = Enumerable.Empty<SeriesDataModel>();
             var episodeModels = Enumerable.Empty<TvEpisodeDataModel>();
             try
             {
@@ -59,7 +59,7 @@ namespace VideoDB.WebApi.Repositories
 
                 while (reader.Read())
                 {
-                    videoModels = videoModels.Append(reader.CreateObject<VideoDataModel>());
+                    videoModels = videoModels.Append(reader.CreateObject<SeriesDataModel>());
                 }
 
                 reader.NextResult();
