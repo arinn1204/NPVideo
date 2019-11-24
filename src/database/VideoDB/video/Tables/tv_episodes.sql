@@ -4,7 +4,7 @@
     [tv_episode_imdb_id] VARCHAR (32)   NOT NULL,
     [season_number]      INT            NOT NULL,
     [episode_number]     INT            NOT NULL,
-    [episode_name]       VARCHAR (64)   NOT NULL,
+    [episode_name]       VARCHAR (MAX)   NOT NULL,
     [release_date]       DATETIME       NOT NULL,
     [plot]               VARCHAR (MAX) NOT NULL,
     [resolution]         VARCHAR (16)   NULL,

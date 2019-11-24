@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [video].[usp_add_movie_or_series] (
 	@imdb_id VARCHAR(32),
-    @title VARCHAR(64),
+    @title VARCHAR(MAX),
     @mpaa_rating VARCHAR(8),
     @runtime DECIMAL(5, 2) = NULL,
     @plot VARCHAR(MAX),

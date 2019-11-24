@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [video].[usp_add_tv_episode] (
 	@series_imdb_id VARCHAR(32),
-    @series_title VARCHAR(64),
+    @series_title VARCHAR(MAX),
     @mpaa_rating VARCHAR(8),
 	@series_plot VARCHAR(MAX),
 	@series_release_date DATETIME,
@@ -9,7 +9,7 @@
     @episode_release_date DATETIME,
 	@season_number INT,
 	@episode_number INT,
-	@episode_name VARCHAR(64),
+	@episode_name VARCHAR(MAX),
     @plot VARCHAR(MAX),
     @resolution VARCHAR(16) = NULL,
     @codec VARCHAR(8) = NULL,
