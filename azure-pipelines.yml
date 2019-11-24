@@ -109,6 +109,7 @@ stages:
           -catalog '$(db_catalog)_test' `
           -source '$(db_source)' `
           -Configuration '$(testConfiguration)' `
+          -workingDirectory '$(Build.SourcesDirectory)' `
           -secret_var '$(secret_password)'
   - job: DeployDevDatabase
     steps:
