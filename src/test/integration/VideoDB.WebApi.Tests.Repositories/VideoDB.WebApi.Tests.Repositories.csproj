@@ -6,7 +6,6 @@
 
   <ItemGroup>
 
-    <PackageReference Include="AutoBogus" Version="2.7.3" />
     <PackageReference Include="AutoFixture" Version="4.11.0" />
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.11.0" />
     <PackageReference Include="FluentAssertions" Version="5.9.0" />

@@ -9,6 +9,5 @@ namespace Evo.WebApi.Repositories.Interfaces
     public interface IVideoRepository
     {
         IEnumerable<VideoDataModel> UpsertVideo(VideoRequest video);
-        IEnumerable<TvEpisodeDataModel> UpsertTvEpisode(TvEpisodeRequest tvEpisode);
     }
 }

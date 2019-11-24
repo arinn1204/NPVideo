@@ -37,6 +37,9 @@ namespace VideoDB.WebApi.Extensions
                 case "Decimal":
                     value = reader.GetDecimal(index);
                     break;
+                case "Int32":
+                    value = reader.GetInt32(index);
+                    break;
                 default:
                     throw new EvoException("Unsupoorted type attempting to be converted");
             }

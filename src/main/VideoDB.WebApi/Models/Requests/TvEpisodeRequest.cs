@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using Evo.WebApi.Models.Enums;
 
@@ -5,14 +6,16 @@ namespace Evo.WebApi.Models.Requests
 {
     public class TvEpisodeRequest : VideoRequest
     {
-        public override VideoType Type => VideoType.Series;
+        public override VideoType Type => VideoType.Episode;
 
-        [Required] public string TvEpisodeId { get; set; }
+        public string TvEpisodeId { get; set; }
 
-        [Required] public int SeasonNumber { get; set; }
+        public int SeasonNumber { get; set; }
 
-        [Required] public int EpisodeNumber { get; set; }
+        public int EpisodeNumber { get; set; }
 
         public string EpisodeName { get; set; }
+        public DateTime EpisodeReleaseDate { get; set; }
+        public string EpisodePlot { get; set; }
     }
 }
