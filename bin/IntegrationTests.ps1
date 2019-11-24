@@ -18,7 +18,7 @@ Write-Host "Secret Variable is equal: '$varEqual' / '$envEqual'";
 if ([String]::IsNullOrWhiteSpace($workingDirectory)) {
     Push-Location src\test\integration
 } else {
-    Puish-Location $workingDirectory\src\test\integration
+    Push-Location $workingDirectory\src\test\integration
 }
 
 $Env:db_username = $username;
