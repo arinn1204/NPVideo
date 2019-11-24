@@ -139,6 +139,7 @@ stages:
         azureSubscription: '$(azure_subscription)'
         package: '$(Pipeline.Workspace)\WebApi'
         appName: 'VideoDB WebApi'
+      enabled: false
   - job: DeployDatabase
     steps:
     - download: current
@@ -154,3 +155,4 @@ stages:
         deployType: DacpacTask
         deploymentAction: Publish
         dacpacFile: '$(Pipeline.Workspace)\VideoDbDacpac'
+      enabled: false
