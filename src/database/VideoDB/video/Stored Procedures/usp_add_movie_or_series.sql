@@ -209,7 +209,7 @@ BEGIN
 		BEGIN
 			IF (@video_type = 'series')
 			BEGIN
-				SELECT imdb_id, title, rating, plot, release_date,
+				SELECT imdb_id, title, plot, release_date,
 					genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
 				FROM video.vw_series
 				WHERE video_id = @video_id;

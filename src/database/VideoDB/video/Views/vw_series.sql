@@ -1,10 +1,14 @@
 ﻿CREATE VIEW [video].[vw_series]
 	AS 
-	SELECT v.video_id, v.imdb_id, v.title AS 'title', v.mpaa_rating AS 'rating', v.plot, v.release_date
+	SELECT v.video_id, v.imdb_id, v.title AS 'title', v.plot, v.release_date
 			,g.name AS 'genre_name'
 			,p.first_name, p.middle_name, p.last_name, p.suffix
 			,roles.role_name AS 'person_role'
-			,r.source AS 'rating_source', r.value AS 'rating_value'
+			,r.source AS 'rating_source', 
+			(SELECT AVG(r1.value) 
+				FROM video.ratings r1 
+				WHERE r1.source = r.source
+				GROUP BY r1.source) AS 'rating_value'
 		FROM video.videos v
 			WITH (NOLOCK)
 		JOIN video.ratings r
