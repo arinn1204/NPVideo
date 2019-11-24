@@ -1,6 +1,7 @@
 ﻿using AutoBogus;
 using AutoFixture;
 using AutoFixture.AutoMoq;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.Requests;
 using FluentAssertions;
 using Microsoft.Data.SqlClient;
@@ -64,6 +65,19 @@ WHERE episode_imdb_id = 'tt134133'";
 
             rowCount.Should().Be(60);
 
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWhenRequestIsNotFormattedCorrectly()
+        {
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var request = RequestGenerator.GetTvEpisodeRequest();
+            request.TvEpisodeId = null;
+            Action exception = () => repository.UpsertTvEpisode(request);
+
+            exception.Should()
+                .Throw<EvoException>()
+                .WithMessage("Procedure or function 'usp_add_tv_episode' expects parameter '@episode_imdb_id', which was not supplied.");
         }
 
     }
