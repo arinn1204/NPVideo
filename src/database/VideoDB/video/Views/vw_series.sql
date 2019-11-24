@@ -9,6 +9,7 @@
 			WITH (NOLOCK)
 		JOIN video.ratings r
 			ON r.video_id = v.video_id
+				AND r.tv_episode_id IS NULL
 		JOIN video.genre_videos gv
 			ON gv.video_id = v.video_id
 		JOIN video.person_videos pv
