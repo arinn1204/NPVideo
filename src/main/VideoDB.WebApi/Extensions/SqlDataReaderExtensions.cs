@@ -10,36 +10,38 @@ namespace VideoDB.WebApi.Extensions
             where T : class, new()
         {
             var returnObject = new T();
-            int index = 0;
-            foreach (var property in returnObject.GetType().GetProperties())
+
+            for (var i = 0; i < reader.FieldCount; i++)
             {
-                (object value, int returnedIndex) = GetProperValue(reader, property.PropertyType, index);
-                index = returnedIndex;
-                property.SetValue(returnObject, value);
+                var schema = reader.GetColumnSchema();
+                var columnName = schema[i].ColumnName;
+                returnObject.GetType()
+                    .GetProperty(columnName)
+                    .SetValue(returnObject, GetProperValue(reader, schema[i].DataType, i));
             }
 
             return returnObject;
         }
 
-        private static (object value, int index) GetProperValue(SqlDataReader reader, Type propertyType, int index)
+        private static object GetProperValue(SqlDataReader reader, Type propertyType, int index)
         {
             object value;
             switch(propertyType.Name)
             {
                 case "String":
-                    value = reader.GetString(index++);
+                    value = reader.GetString(index);
                     break;
                 case "DateTime":
-                    value = reader.GetDateTime(index++);
+                    value = reader.GetDateTime(index);
                     break;
                 case "Decimal":
-                    value = reader.GetDecimal(index++);
+                    value = reader.GetDecimal(index);
                     break;
                 default:
                     throw new EvoException("Unsupoorted type attempting to be converted");
             }
 
-            return (value, index);
+            return value;
         }
     }
 }
