@@ -1,19 +1,16 @@
 ﻿using AutoBogus;
 using AutoFixture;
 using AutoFixture.AutoMoq;
-using Evo.WebApi.Models.DataModel;
+using Bogus;
 using Evo.WebApi.Models.Enums;
 using Evo.WebApi.Models.Requests;
-using Evo.WebApi.Repositories.Interfaces;
 using FluentAssertions;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Repositories;
 
 namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
@@ -21,52 +18,26 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
     [TestFixture]
     public class VideoRepositoryTests
     {
-        private SqlConnection _sqlConnection;
+        private IConfigurationRoot _config;
         private Fixture _fixture;
-        private string _database = "noblepanther";
+        private string _database = "noblepanther_test";
 
         [OneTimeSetUp]
         public void DbSetup()
         {
-            var overrideConnectionString = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("db_catalog"));
-            
-            var config = new ConfigurationBuilder()
+            _config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            string connectionString;
-            
-            if (overrideConnectionString)
-            {
-                _database = Environment.GetEnvironmentVariable("db_catalog");
-                var connectionStringBuilder = new SqlConnectionStringBuilder()
-                {
-                    ["Data Source"] = Environment.GetEnvironmentVariable("db_source"),
-                    ["Initial Catalog"] = Environment.GetEnvironmentVariable("db_catalog"),
-                    ["User ID"] = Environment.GetEnvironmentVariable("db_username"),
-                    ["Password"] = Environment.GetEnvironmentVariable("db_password"),
-                    ["Authentication"] = "Active Directory Password",
-                    ["Persist Security Info"] = false,
-                    ["MultipleActiveResultSets"] = false,
-                    ["Encrypt"] = true,
-                    ["TrustServerCertificate"] = false,
-                    ["Connection Timeout"] = 30
-                };
-
-                connectionString = connectionStringBuilder.ConnectionString;
-            }
-            else
-            {
-                connectionString = config.GetConnectionString("npdb");
-            }
-
-
-            _sqlConnection = new SqlConnection(connectionString);
+            _database = string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("db_catalog"))
+                ? _database
+                : Environment.GetEnvironmentVariable("db_catalog");
         }
 
         [SetUp]
         public void DeleteFromTables()
         {
+            using var sqlConnection = new SqlConnection(_config.CreateConnectionString());
             var command = new SqlCommand($@"
             DELETE FROM video.genre_videos;
             DELETE FROM video.person_videos;
@@ -87,7 +58,7 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
             DBCC CHECKIDENT('{_database}.video.ratings', RESEED, 0);
             DBCC CHECKIDENT('{_database}.video.persons', RESEED, 0);
             DBCC CHECKIDENT('{_database}.video.roles', RESEED, 0);
-            ", _sqlConnection);
+            ", sqlConnection);
 
             command.Connection.Open();
             command.ExecuteNonQuery();
@@ -96,7 +67,7 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
 
             _fixture = new Fixture();
             _fixture.Customize(new AutoMoqCustomization());
-            _fixture.Inject(_sqlConnection);
+            _fixture.Inject<IConfiguration>(_config);
         }
 
         [Test]
@@ -106,37 +77,78 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
             var request = GetVideoRequest();
             var videoEntered = repository.UpsertVideo(request);
 
-            videoEntered.Count().Should().Be(15);
+            videoEntered.Count().Should().Be(60);
             videoEntered.All(a => a.imdb_id == "tt134132").Should().BeTrue();
 
             var command = @"SELECT video_id
 FROM video.videos
 WHERE imdb_id = 'tt134132'";
 
-            using var sqlCommand = new SqlCommand(command, _sqlConnection);
+            using var sqlConnection = new SqlConnection(_config.CreateConnectionString());
+            using var sqlCommand = new SqlCommand(command, sqlConnection);
+            
             sqlCommand.Connection.Open();
+
             var reader = sqlCommand.ExecuteReader();
-            reader.Read().Should().BeTrue();
+            reader.HasRows.Should().BeTrue();
+            
+            sqlCommand.Connection.Close();
         }
 
         private VideoRequest GetVideoRequest()
         {
-            return new VideoRequest()
-            {
-                Actors = new AutoFaker<StarRequest>().RuleFor(r => r.Role, r => PersonType.Actor).Generate(3),
-                Directors = new AutoFaker<StarRequest>().RuleFor(r => r.Role, r => PersonType.Director).Generate(1),
-                Writers = new AutoFaker<StarRequest>().RuleFor(r => r.Role, r => PersonType.Writer).Generate(3),
-                Producers = new AutoFaker<StarRequest>().RuleFor(r => r.Role, r => PersonType.Producer).Generate(3),
-                Genres = new AutoFaker<GenreRequest>().Generate(3),
-                Ratings = new AutoFaker<RatingRequest>().Generate(2),
-                MpaaRating = "R",
-                Plot = "Some plot",
-                ReleaseDate = DateTime.Today,
-                Runtime = 120.5m,
-                Title = "The one movie that had a thing",
-                Type = VideoType.Video,
-                VideoId = "tt134132"
-            };
+            return new AutoFaker<VideoRequest>()
+                .RuleFor(r => r.Actors, r1 => new AutoFaker<StarRequest>()
+                    .RuleFor(r => r.Role, r => PersonType.Actor)
+                    .RuleFor(r => r.FirstName, r => r.Person.FirstName)
+                    .RuleFor(r => r.MiddleName, r => r.Person.FirstName)
+                    .RuleFor(r => r.LastName, r => r.Person.LastName)
+                    .RuleFor(r => r.Suffix, r => r.Name.Suffix())
+                    .Generate(3))
+                .RuleFor(r => r.Directors, r1 => new AutoFaker<StarRequest>()
+                    .RuleFor(r => r.Role, r => PersonType.Director)
+                    .RuleFor(r => r.FirstName, r => r.Person.FirstName)
+                    .RuleFor(r => r.MiddleName, r => r.Person.FirstName)
+                    .RuleFor(r => r.LastName, r => r.Person.LastName)
+                    .RuleFor(r => r.Suffix, r => r.Name.Suffix())
+                    .Generate(1))
+                .RuleFor(r => r.Writers, r1 => new AutoFaker<StarRequest>()
+                    .RuleFor(r => r.Role, r => PersonType.Writer)
+                    .RuleFor(r => r.FirstName, r => r.Person.FirstName)
+                    .RuleFor(r => r.MiddleName, r => r.Person.FirstName)
+                    .RuleFor(r => r.LastName, r => r.Person.LastName)
+                    .RuleFor(r => r.Suffix, r => r.Name.Suffix())
+                    .Generate(3))
+                .RuleFor(r => r.Producers, r1 => new AutoFaker<StarRequest>()
+                    .RuleFor(r => r.Role, r => PersonType.Producer)
+                    .RuleFor(r => r.FirstName, r => r.Person.FirstName)
+                    .RuleFor(r => r.MiddleName, r => r.Person.FirstName)
+                    .RuleFor(r => r.LastName, r => r.Person.LastName)
+                    .RuleFor(r => r.Suffix, r => r.Name.Suffix())
+                    .Generate(3))
+                .RuleFor(r => r.Genres, r1 => new AutoFaker<GenreRequest>()
+                    .RuleFor(r => r.Name, r => GenerateString(r, 16))
+                    .Generate(3))
+                .RuleFor(r => r.Ratings, r1 => new AutoFaker<RatingRequest>()
+                    .RuleFor(r => r.Source, r => GenerateString(r, 28))
+                    .RuleFor(r => r.RatingValue, r => r.Finance.Amount(0, 100, 2))
+                    .Generate(2))
+                .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 10000))))
+                .RuleFor(r => r.MpaaRating, r => GenerateString(r, 7))
+                .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 100))))
+                .RuleFor(r => r.Runtime, r => r.Finance.Amount(0, 999, 2))
+                .RuleFor(r => r.Type, r => VideoType.Movie)
+                .RuleFor(r => r.VideoId, r => "tt134132")
+                .Generate();
+        }
+
+        private string GenerateString(Faker faker, int max = 32)
+        {
+            var fakeString = faker.Random.Words();
+
+            return fakeString.Length <= max
+                ? fakeString
+                : fakeString.Substring(0, max);
         }
     }
 }

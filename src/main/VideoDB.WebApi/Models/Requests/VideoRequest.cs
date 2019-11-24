@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Evo.WebApi.Models.Enums;
+using Microsoft.Data.SqlClient;
 
 namespace Evo.WebApi.Models.Requests
 {
@@ -21,12 +22,13 @@ namespace Evo.WebApi.Models.Requests
         public string MpaaRating { get; set; }
         public string Resolution { get; set; }
         public string Codec { get; set; }
-
+        public string Extended { get; set; }
         public IEnumerable<GenreRequest> Genres { get; set; }
         public IEnumerable<StarRequest> Writers { get; set; }
         public IEnumerable<StarRequest> Directors { get; set; }
         public IEnumerable<StarRequest> Actors { get; set; }
         public IEnumerable<StarRequest> Producers { get; set; }
         public IEnumerable<RatingRequest> Ratings { get; set; }
+
     }
 }

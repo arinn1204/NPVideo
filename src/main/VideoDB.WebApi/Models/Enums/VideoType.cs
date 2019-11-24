@@ -3,7 +3,8 @@ namespace Evo.WebApi.Models.Enums
     public enum VideoType
     {
         None,
-        Video,
-        Series
+        Movie,
+        Series,
+        Episode
     }
 }
