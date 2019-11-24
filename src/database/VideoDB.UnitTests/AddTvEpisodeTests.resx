@@ -179,9 +179,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -260,9 +260,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -344,9 +344,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -504,9 +504,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -584,9 +584,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -642,9 +642,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -722,9 +722,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -781,9 +781,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -861,9 +861,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -920,9 +920,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -1002,9 +1002,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -1061,9 +1061,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -1142,9 +1142,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -1198,9 +1198,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -1278,9 +1278,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',
@@ -1380,9 +1380,9 @@ DECLARE @RC AS INT,
 	@season_number INT,
 	@episode_number INT,
 	@episode_name VARCHAR(64),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @episode_imdb_id = 'tt1234',
 	   @series_imdb_id = 'tt12222',

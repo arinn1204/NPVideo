@@ -14,9 +14,9 @@
     @resolution VARCHAR(16) = NULL,
     @codec VARCHAR(8) = NULL,
 	@extended VARCHAR(16) = NULL,
-    @GENRES GenreTableType READONLY,
-    @PERSONS PersonTableType READONLY,
-    @RATINGS RatingTableType READONLY)
+    @GENRES genre_table_type READONLY,
+    @PERSONS person_table_type READONLY,
+    @RATINGS rating_table_type READONLY)
 AS
 BEGIN
 	BEGIN TRY

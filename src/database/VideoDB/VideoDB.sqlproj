@@ -161,9 +161,9 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="video\User Defined Types\PersonTableType.sql" />
-    <Build Include="video\User Defined Types\RatingTableType.sql" />
-    <Build Include="video\User Defined Types\GenreTableType.sql" />
+    <Build Include="video\User Defined Types\person_table_type.sql" />
+    <Build Include="video\User Defined Types\rating_table_type.sql" />
+    <Build Include="video\User Defined Types\genre_table_type.sql" />
     <Build Include="Security\video.sql" />
     <Build Include="Security\Permissions.sql" />
     <Build Include="video\Stored Procedures\usp_add_movie_or_series.sql" />

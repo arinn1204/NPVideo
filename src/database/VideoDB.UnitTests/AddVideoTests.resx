@@ -145,9 +145,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -259,9 +259,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -366,9 +366,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -421,9 +421,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -489,9 +489,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -544,9 +544,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -601,9 +601,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -659,9 +659,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -717,9 +717,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -775,9 +775,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -833,9 +833,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -893,9 +893,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -979,9 +979,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1037,9 +1037,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1121,9 +1121,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1196,9 +1196,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1251,9 +1251,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt12345',
@@ -1298,9 +1298,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1447,9 +1447,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1556,9 +1556,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1661,9 +1661,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (32), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1767,9 +1767,9 @@ DECLARE @RC AS INT,
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (32), 
 	@extended AS VARCHAR(16),
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1873,9 +1873,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -1980,9 +1980,9 @@ DECLARE @RC AS INT,
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
 	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
@@ -2035,9 +2035,9 @@ DECLARE @RC AS INT,
 	@release_date AS DATETIME, 
 	@resolution AS VARCHAR (16), 
 	@codec AS VARCHAR (8), 
-	@GENRES AS [video].[GenreTableType], 
-	@PERSONS AS [video].[PersonTableType], 
-	@RATINGS AS [video].[RatingTableType];
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
 
 SELECT @RC = 0,
        @imdb_id = 'tt1234',
