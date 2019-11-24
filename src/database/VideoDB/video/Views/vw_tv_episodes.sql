@@ -3,6 +3,7 @@
 		SELECT tv.tv_episode_id, tv.tv_episode_imdb_id AS 'episode_imdb_id', tv.season_number, tv.episode_number, tv.episode_name, tv.release_date, tv.plot, tv.resolution, tv.codec,
 			p.first_name, p.middle_name, p.last_name, p.suffix, role.role_name AS 'person_role', g.name AS 'genre_name', r.source AS 'rating_source', r.value AS 'rating_value'
 		FROM video.tv_episodes tv
+			WITH (NOLOCK)
 		JOIN video.ratings r
 			ON tv.tv_episode_id = r.tv_episode_id
 		JOIN video.genre_tv_episodes gte

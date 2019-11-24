@@ -6,6 +6,7 @@
 			,roles.role_name AS 'person_role'
 			,r.source AS 'rating_source', r.value AS 'rating_value'
 		FROM video.videos v
+			WITH (NOLOCK)
 		JOIN video.ratings r
 			ON r.video_id = v.video_id
 		JOIN video.genre_videos gv
