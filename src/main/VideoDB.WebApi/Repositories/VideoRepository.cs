@@ -37,7 +37,7 @@ namespace VideoDB.WebApi.Repositories
                     .Concat(video.Writers));
             using var ratings = CreateDataTable(video.Ratings);
 
-            var command = new SqlCommand("video.usp_add_movie_or_series", sqlConnection)
+            var command = new SqlCommand("[video].[usp_add_movie_or_series]", sqlConnection)
             {
                 CommandType = CommandType.StoredProcedure
             };
