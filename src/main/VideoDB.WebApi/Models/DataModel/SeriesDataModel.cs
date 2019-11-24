@@ -11,7 +11,6 @@ namespace Evo.WebApi.Models.DataModel
     {
         public string imdb_id { get; set; }
         public string title { get; set; }
-        public string rating { get; set; }
         public string plot { get; set; }
         public DateTime release_date { get; set; }
         public string genre_name { get; set; }

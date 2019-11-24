@@ -12,8 +12,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using VideoDB.WebApi.Models.ViewModels;
 using VideoDB.WebApi.Repositories.Interfaces;
 using VideoDB.WebApi.Services;
 using VideoDB.WebApi.Tests.Helpers;
@@ -45,7 +44,7 @@ namespace VideoDB.WebApi.Tests.Services
         }
 
         [Test]
-        public void ShouldMapDatamodelToViewModel()
+        public void ShouldMapVideoDatamodelToViewModel()
         {
             _videoRepo.Setup(s => s.UpsertVideo(It.IsAny<VideoRequest>()))
                 .Returns(CreateVideoDataModel("tt1234"));
@@ -110,52 +109,198 @@ namespace VideoDB.WebApi.Tests.Services
                     }
                 });
         }
-        
+
+        [Test]
+        public void ShouldMapTvEpisodeDataModelToViewModel()
+        {
+            _tvRepo.Setup(s => s.UpsertTvEpisode(It.IsAny<TvEpisodeRequest>()))
+                .Returns((CreateSeriesDataModel("tt2222"), CreateEpisodeModel("tt1234")));
+
+            var service = _fixture.Create<VideoService>();
+
+
+            var result = service.UpsertTvEpisode(RequestGenerator.GetTvEpisodeRequest());
+
+            result.Episode.Should().BeEquivalentTo(new TvEpisode
+            {
+                VideoId = "tt1234",
+                Codec = "codec",
+                EpisodeName = "title",
+                MpaaRating = "R",
+                Plot = "plot",
+                ReleaseDate = DateTime.MaxValue,
+                Resolution = "resolution",
+                Runtime = 120.33M,
+                EpisodeNumber = 1,
+                SeasonNumber = 1,
+                Stars = new[]
+                    {
+                        new StarViewModel
+                        {
+                            FirstName = "Jake",
+                            LastName = "Johnson",
+                            Role = PersonType.Actor
+                        },
+                        new StarViewModel
+                        {
+                            FirstName = "John",
+                            LastName = "Johnson",
+                            Role = PersonType.Director
+                        },
+                        new StarViewModel
+                        {
+                            FirstName = "Jacob",
+                            LastName = "Johnson",
+                            Role = PersonType.Producer
+                        }
+                    },
+                Genres = new[]
+                    {
+                        new GenreViewModel { Name = "Horror" },
+                        new GenreViewModel { Name = "Action" },
+                        new GenreViewModel { Name = "Adventure" },
+                    },
+                Ratings = new[]
+                    {
+                        new RatingViewModel
+                        {
+                            Source = "Metacritic",
+                            RatingValue = 11.32M
+                        },
+                        new RatingViewModel
+                        {
+                            Source = "Rotten Tomato",
+                            RatingValue = 113.32M
+                        },
+                    }
+            });
+
+            result.Series.Should().BeEquivalentTo(new SeriesViewModel
+            {
+                VideoId = "tt2222",
+                Title = "title",
+                Plot = "plot",
+                ReleaseDate = DateTime.MaxValue,
+                Stars = new[]
+                   {
+                        new StarViewModel
+                        {
+                            FirstName = "Jake",
+                            LastName = "Johnson",
+                            Role = PersonType.Actor
+                        },
+                        new StarViewModel
+                        {
+                            FirstName = "John",
+                            LastName = "Johnson",
+                            Role = PersonType.Director
+                        },
+                        new StarViewModel
+                        {
+                            FirstName = "Jacob",
+                            LastName = "Johnson",
+                            Role = PersonType.Producer
+                        }
+                    },
+                Genres = new[]
+                   {
+                        new GenreViewModel { Name = "Horror" },
+                        new GenreViewModel { Name = "Action" },
+                        new GenreViewModel { Name = "Adventure" },
+                    },
+                Ratings = new[]
+                   {
+                        new RatingViewModel
+                        {
+                            Source = "Metacritic",
+                            RatingValue = 11.32M
+                        },
+                        new RatingViewModel
+                        {
+                            Source = "Rotten Tomato",
+                            RatingValue = 113.32M
+                        },
+                    }
+            });
+        }
+
+        private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId)
+        {
+            var people = CreatePeople();
+            var genres = CreateGenres();
+            var ratings = CreateRatings();
+
+            foreach (var person in people)
+            {
+                foreach (var genre in genres)
+                {
+                    foreach (var rating in ratings)
+                    {
+                        yield return new TvEpisodeDataModel
+                        {
+                            episode_imdb_id = imdbId,
+                            codec = "codec",
+                            first_name = person.FirstName,
+                            genre_name = genre.Name,
+                            last_name = person.LastName,
+                            middle_name = person.MiddleName,
+                            rating = "R",
+                            episode_name = "title",
+                            person_role = person.Role.ToString(),
+                            plot = "plot",
+                            rating_source = rating.Source,
+                            rating_value = rating.RatingValue,
+                            release_date = DateTime.MaxValue,
+                            resolution = "resolution",
+                            runtime = 120.33M,
+                            suffix = person.Suffix,
+                            episode_number = 1,
+                            season_number = 1
+                        };
+                    }
+                }
+            }
+        }
+
+        private IEnumerable<SeriesDataModel> CreateSeriesDataModel(string imdbId)
+        {
+            var people = CreatePeople();
+            var genres = CreateGenres();
+            var ratings = CreateRatings();
+
+            foreach (var person in people)
+            {
+                foreach (var genre in genres)
+                {
+                    foreach (var rating in ratings)
+                    {
+                        yield return new SeriesDataModel
+                        {
+                            imdb_id = imdbId,
+                            first_name = person.FirstName,
+                            genre_name = genre.Name,
+                            last_name = person.LastName,
+                            middle_name = person.MiddleName,
+                            person_role = person.Role.ToString(),
+                            plot = "plot",
+                            rating_source = rating.Source,
+                            rating_value = rating.RatingValue,
+                            release_date = DateTime.MaxValue,
+                            suffix = person.Suffix,
+                            title = "title"
+                        };
+                    }
+                }
+            }
+        }
+
+
 
         private IEnumerable<VideoDataModel> CreateVideoDataModel(string imdbId)
         {
-            var people = new[]
-            {
-                new StarRequest
-                {
-                    FirstName = "Jake",
-                    LastName = "Johnson",
-                    Role = PersonType.Actor
-                },
-                new StarRequest
-                {
-                    FirstName = "John",
-                    LastName = "Johnson",
-                    Role = PersonType.Director
-                },
-                new StarRequest
-                {
-                    FirstName = "Jacob",
-                    LastName = "Johnson",
-                    Role = PersonType.Producer
-                }
-            };
-
-            var genres = new[]
-            {
-                new GenreRequest { Name = "Horror" },
-                new GenreRequest { Name = "Action" },
-                new GenreRequest { Name = "Adventure" },
-            };
-
-            var ratings = new[]
-            {
-                new RatingRequest
-                {
-                    RatingValue = 11.32M,
-                    Source = "Metacritic"
-                },
-                new RatingRequest
-                {
-                    RatingValue = 113.32M,
-                    Source = "Rotten Tomato"
-                }
-            };
+            var people = CreatePeople();
+            var genres = CreateGenres();
+            var ratings = CreateRatings();
 
             foreach (var person in people)
             {
@@ -187,5 +332,56 @@ namespace VideoDB.WebApi.Tests.Services
             }
         }
 
+        private IEnumerable<RatingRequest> CreateRatings()
+        {
+            return new[]
+            {
+                new RatingRequest
+                {
+                    RatingValue = 11.32M,
+                    Source = "Metacritic"
+                },
+                new RatingRequest
+                {
+                    RatingValue = 113.32M,
+                    Source = "Rotten Tomato"
+                }
+            };
+        }
+
+        private IEnumerable<GenreRequest> CreateGenres()
+        {
+            return new[]
+            {
+                new GenreRequest { Name = "Horror" },
+                new GenreRequest { Name = "Action" },
+                new GenreRequest { Name = "Adventure" },
+            };
+        }
+
+        private IEnumerable<StarRequest> CreatePeople()
+        {
+            return new[]
+            {
+                new StarRequest
+                {
+                    FirstName = "Jake",
+                    LastName = "Johnson",
+                    Role = PersonType.Actor
+                },
+                new StarRequest
+                {
+                    FirstName = "John",
+                    LastName = "Johnson",
+                    Role = PersonType.Director
+                },
+                new StarRequest
+                {
+                    FirstName = "Jacob",
+                    LastName = "Johnson",
+                    Role = PersonType.Producer
+                }
+            };
+        }
     }
 }

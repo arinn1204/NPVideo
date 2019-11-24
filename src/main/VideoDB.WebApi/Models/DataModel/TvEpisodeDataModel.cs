@@ -16,6 +16,8 @@ namespace Evo.WebApi.Models.DataModel
         public int season_number { get; set; }
         public int episode_number { get; set; }
         public string episode_name { get; set; }
+        public decimal runtime { get; set; }
+        public string rating { get; set; }
         public DateTime release_date { get; set; }
         public string plot { get; set; }
         public string resolution { get; set; }

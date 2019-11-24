@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VideoDB.WebApi.Models.ViewModels;
 using VideoDB.WebApi.Repositories.Interfaces;
 
 namespace VideoDB.WebApi.Services
@@ -28,9 +29,15 @@ namespace VideoDB.WebApi.Services
             _mapper = mapper;
         }
 
-        public VideoViewModel UpsertTvEpisode(VideoRequest video)
+        public TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode)
         {
-            throw new NotImplementedException();
+            var (videoDataModels, tvDataModels) = _tvEpisodeRepository.UpsertTvEpisode(tvEpisode);
+
+            return new TvEpisodeViewModel
+            {
+                Episode = _mapper.Map<TvEpisode>(tvDataModels),
+                Series = _mapper.Map<SeriesViewModel>(videoDataModels)
+            };
         }
 
         public VideoViewModel UpsertVideo(VideoRequest video)

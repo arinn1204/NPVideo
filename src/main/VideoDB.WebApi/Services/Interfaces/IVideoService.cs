@@ -11,6 +11,6 @@ namespace Evo.WebApi.Services.Interfaces
     public interface IVideoService
     {
         VideoViewModel UpsertVideo(VideoRequest video);
-        VideoViewModel UpsertTvEpisode(VideoRequest video);
+        TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode);
     }
 }
