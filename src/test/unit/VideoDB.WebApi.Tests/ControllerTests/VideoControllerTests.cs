@@ -60,5 +60,25 @@ namespace Evo.WebApi.Tests.Controllers
             Assert.That(videoResult.Error, Is.Not.Null);
         }
 
+        [Test]
+        public void ShouldReturnNoContentWhenSuccessfulUpdate()
+        {
+            var request = new VideoRequest()
+            {
+                VideoId = "tt1234"
+            };
+
+            _service.Setup(s => s.UpsertVideo(request))
+                .Returns(new VideoViewModel
+                {
+                    VideoId = "tt1234",
+                    IsUpdated = true
+                });
+
+            var result = _controller.AddVideo(request) as NoContentResult;
+            result.Should().NotBeNull();
+
+        }
+
     }
 }
