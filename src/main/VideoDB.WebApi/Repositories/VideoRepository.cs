@@ -84,7 +84,10 @@ namespace VideoDB.WebApi.Repositories
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@imdb_id", video.VideoId));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@title", video.Title));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@mpaa_rating", video.MpaaRating));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@runtime", video.Runtime));
+            command.Parameters.Add(CreateSqlParameter.CreateParameter("@runtime",
+                video.Runtime.HasValue
+                ? video.Runtime.Value.ToString()
+                : "null"));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@plot", video.Plot));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@video_type", video.Type.ToString()));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@release_date", video.ReleaseDate));

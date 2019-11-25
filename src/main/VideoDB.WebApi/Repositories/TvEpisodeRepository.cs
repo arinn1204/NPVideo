@@ -95,7 +95,10 @@ namespace VideoDB.WebApi.Repositories
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@series_plot", tvEpisode.Plot));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@series_release_date", tvEpisode.ReleaseDate));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@episode_imdb_id", tvEpisode.TvEpisodeId));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@runtime", tvEpisode.Runtime));
+            command.Parameters.Add(CreateSqlParameter.CreateParameter("@runtime", 
+                tvEpisode.Runtime.HasValue 
+                ? tvEpisode.Runtime.Value.ToString() 
+                : "null"));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@episode_release_date", tvEpisode.EpisodeReleaseDate));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@season_number", tvEpisode.SeasonNumber));
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@episode_number", tvEpisode.EpisodeNumber));
