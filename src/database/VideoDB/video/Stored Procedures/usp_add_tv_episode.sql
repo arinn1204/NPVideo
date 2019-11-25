@@ -24,7 +24,8 @@ BEGIN
 			DECLARE @series_video_id INT,
 				@tv_episode_id INT,
 				@created_time DATETIME = GETDATE(),
-				@created_user VARCHAR = (SELECT SYSTEM_USER);
+				@created_user VARCHAR = (SELECT SYSTEM_USER),
+				@is_updated BIT = 0;
 
 			CREATE TABLE #Episode(
 				id INT,
@@ -112,7 +113,8 @@ BEGIN
 								codec = source.codec,
 								extended_edition = source.codec,
 								modified = source.ctime,
-								modified_by = source.cuser
+								modified_by = source.cuser,
+								@is_updated = 1
 					OUTPUT INSERTED.tv_episode_id, 'TV_EPISODE_ID'
 						INTO #Episode(id, category);
 
@@ -162,7 +164,7 @@ BEGIN
 		COMMIT TRANSACTION;
 
 		SELECT episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec,
-			first_name, middle_name, last_name, suffix, person_role, genre_name, rating_source, rating_value
+			first_name, middle_name, last_name, suffix, person_role, genre_name, rating_source, rating_value, @is_updated AS 'updated'
 		FROM video.vw_tv_episodes
 		WHERE tv_episode_id = @tv_episode_id;
 

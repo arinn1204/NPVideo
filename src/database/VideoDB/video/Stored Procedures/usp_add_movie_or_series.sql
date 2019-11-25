@@ -17,7 +17,8 @@ BEGIN
 
 	DECLARE @video_id INT,
 		@created_time DATETIME = GETDATE(),
-		@created_user VARCHAR = (SELECT SYSTEM_USER);
+		@created_user VARCHAR = (SELECT SYSTEM_USER),
+		@is_updated BIT = 0;
 		
 
 	BEGIN TRY
@@ -100,7 +101,8 @@ BEGIN
 								codec = source.codec,
 								extended_edition = source.extended,
 								modified = source.ctime,
-								modified_by = source.cuser
+								modified_by = source.cuser,
+								@is_updated = 1
 					OUTPUT INSERTED.video_id, 'VIDEO_ID'
 						INTO #Video(id, category);
 				END
@@ -201,7 +203,7 @@ BEGIN
 		if (@video_type = 'movie')
 		BEGIN
 			SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
-				genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
+				genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
 			FROM video.vw_movies
 			WHERE video_id = @video_id;
 		END
@@ -210,7 +212,7 @@ BEGIN
 			IF (@video_type = 'series')
 			BEGIN
 				SELECT imdb_id, title, plot, release_date,
-					genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value
+					genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
 				FROM video.vw_series
 				WHERE video_id = @video_id;
 			END
