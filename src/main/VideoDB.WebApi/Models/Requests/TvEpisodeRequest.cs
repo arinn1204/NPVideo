@@ -6,7 +6,7 @@ namespace Evo.WebApi.Models.Requests
 {
     public class TvEpisodeRequest : VideoRequest
     {
-        public override VideoType Type => VideoType.Episode;
+        public new VideoType Type => VideoType.Episode;
 
         public string TvEpisodeId { get; set; }
 
