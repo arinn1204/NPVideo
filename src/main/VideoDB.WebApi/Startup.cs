@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
@@ -21,7 +22,7 @@ namespace Evo.WebApi
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(options =>
                 {
@@ -42,21 +43,17 @@ namespace Evo.WebApi
                     });
                 })
                 .AddControllers();
+        }
 
-            var containerBuilder = new ContainerBuilder();
-
-            containerBuilder.RegisterAssemblyTypes(GetType().Assembly)
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(GetType().Assembly)
                 .Where(w => w.IsPublic && !w.IsInterface)
                 .AsImplementedInterfaces();
 
-            var connection = Configuration.GetConnectionString("Evo");
-            var sqlConnection = new SqlConnection(connection);
-            containerBuilder.RegisterInstance(sqlConnection);
-
-            containerBuilder.Populate(services);
-            var container = containerBuilder.Build();
-
-            return new AutofacServiceProvider(container);
+            var mappingConfig = new MapperConfiguration(cfg => cfg.AddMaps(GetType().Assembly));
+            var mapper = new Mapper(mappingConfig);
+            builder.RegisterInstance<IMapper>(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
