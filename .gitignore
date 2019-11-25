@@ -17,3 +17,5 @@ Reports/**
 *.refactorlog
 *.publish.xml
 src/packages
+**\*.user
+**/*.user
