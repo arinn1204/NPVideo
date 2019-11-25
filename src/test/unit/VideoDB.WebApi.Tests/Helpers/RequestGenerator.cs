@@ -19,12 +19,15 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.Producers, r => GetStars(3, PersonType.Producer))
                 .RuleFor(r => r.Genres, r => GetGenres(3))
                 .RuleFor(r => r.Ratings, r => GetRatings(2))
-                .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 10000))))
+                .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10000))))
                 .RuleFor(r => r.MpaaRating, r => GenerateString(r, 7))
-                .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 100))))
-                .RuleFor(r => r.Runtime, r => r.Finance.Amount(0, 999, 2))
+                .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 100))))
+                .RuleFor(r => r.Runtime, r => r.Finance.Amount(.01m, 999, 2))
                 .RuleFor(r => r.Type, r => VideoType.Movie)
                 .RuleFor(r => r.VideoId, r => id)
+                .RuleFor(r => r.Codec, r => GenerateString(r, 8))
+                .RuleFor(r => r.Resolution, r => GenerateString(r, 16))
+                .RuleFor(r => r.Extended, r => GenerateString(r, 16))
                 .Generate();
         }
 
@@ -39,14 +42,17 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.Ratings, r => GetRatings(2))
                 .RuleFor(r => r.VideoId, r => videoId)
                 .RuleFor(r => r.TvEpisodeId, r => tvepisodeId)
-                .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 10))))
-                .RuleFor(r => r.EpisodeName, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 10))))
-                .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 10))))
-                .RuleFor(r => r.EpisodePlot, r => string.Join(" ", r.Lorem.Words(new Random().Next(0, 10))))
+                .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
+                .RuleFor(r => r.EpisodeName, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
+                .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
+                .RuleFor(r => r.EpisodePlot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
                 .RuleFor(r => r.MpaaRating, r => GenerateString(r, 7))
                 .RuleFor(r => r.Runtime, r => r.Finance.Amount(0, 999, 2))
                 .RuleFor(r => r.EpisodeNumber, r => r.Random.Number())
-                .RuleFor(r => r.SeasonNumber, r => r.Random.Number());
+                .RuleFor(r => r.SeasonNumber, r => r.Random.Number())
+                .RuleFor(r => r.Codec, r => GenerateString(r, 8))
+                .RuleFor(r => r.Resolution, r => GenerateString(r, 16))
+                .RuleFor(r => r.Extended, r => GenerateString(r, 16));
         }
 
         public static IEnumerable<StarRequest> GetStars(int number, PersonType role)
@@ -54,7 +60,7 @@ namespace VideoDB.WebApi.Tests.Helpers
             return new AutoFaker<StarRequest>()
                     .RuleFor(r => r.Role, r => role)
                     .RuleFor(r => r.FirstName, r => r.Person.FirstName)
-                    .RuleFor(r => r.MiddleName, r => r.Person.FirstName)
+                    .RuleFor(r => r.MiddleName, r => GenerateString(r, 64))
                     .RuleFor(r => r.LastName, r => r.Person.LastName)
                     .RuleFor(r => r.Suffix, r => r.Name.Suffix())
                     .Generate(number);
@@ -71,7 +77,7 @@ namespace VideoDB.WebApi.Tests.Helpers
         {
             return new AutoFaker<RatingRequest>()
                     .RuleFor(r => r.Source, r => GenerateString(r, 28))
-                    .RuleFor(r => r.RatingValue, r => r.Finance.Amount(0, 100, 2))
+                    .RuleFor(r => r.RatingValue, r => r.Finance.Amount(0.01m, 100, 2))
                     .Generate(number);
         }
 

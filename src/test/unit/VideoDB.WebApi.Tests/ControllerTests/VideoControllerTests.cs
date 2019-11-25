@@ -27,7 +27,7 @@ namespace Evo.WebApi.Tests.Controllers
         private VideosController _controller;
 
         [Test]
-        public async Task ShouldReturnCreatedWhenSuccessfulCreation()
+        public void ShouldReturnCreatedWhenSuccessfulCreation()
         {
             var request = new VideoRequest()
             {
@@ -40,7 +40,7 @@ namespace Evo.WebApi.Tests.Controllers
                     VideoId = "tt1234"
                 });
 
-            var result = await _controller.AddVideo(request) as CreatedResult;
+            var result = _controller.AddVideo(request) as CreatedResult;
 
             result.Should().NotBe(null);
             result.Location.Should().Be("/videos/tt1234");
@@ -48,12 +48,12 @@ namespace Evo.WebApi.Tests.Controllers
         }
 
         [Test]
-        public async Task ShouldReturnInternalServerErrorWhenAnyExceptionThrown()
+        public void ShouldReturnInternalServerErrorWhenAnyExceptionThrown()
         {
             _service.Setup(s => s.UpsertVideo(It.IsAny<VideoRequest>()))
                 .Throws(new Exception());
 
-            var objectResult = await _controller.AddVideo(new VideoRequest()) as ObjectResult;
+            var objectResult = _controller.AddVideo(new VideoRequest()) as ObjectResult;
             var videoResult = objectResult.Value as ErrorResponse;
             Assert.That(videoResult, Is.Not.Null);
             Assert.That(objectResult.StatusCode, Is.EqualTo(StatusCodes.Status500InternalServerError));

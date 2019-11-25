@@ -26,25 +26,13 @@ namespace Evo.WebApi.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(BadRequest), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddVideo([FromBody] VideoRequest request)
+        public IActionResult AddVideo([FromBody] VideoRequest request)
         {
-            var result = default(VideoViewModel);
-
+            VideoViewModel result;
             try
             {
                 result = _videoService.UpsertVideo(request);
-            }
-            catch (EvoBadRequestException e)
-            {
-                var badRequest = new BadRequest
-                {
-                    Id = request.VideoId,
-                    Message = e.Message
-                };
-
-                return new BadRequestObjectResult(badRequest);
             }
             catch(Exception e)
             {
