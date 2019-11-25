@@ -18,7 +18,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _client = container.Resolve<HttpClient>();
         }
 
-        [When(@"the user (.*) a (?:new)\s?video")]
+        [When(@"the user (.*) an? (?:new|existing)\s?video")]
         public async Task WhenTheUserCreatesANewVideo(string operation)
         {
             var message = _container.Resolve<HttpRequestMessage>();

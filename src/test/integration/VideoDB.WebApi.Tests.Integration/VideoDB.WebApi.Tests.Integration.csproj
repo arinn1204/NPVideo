@@ -27,10 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\..\..\main\VideoDB.WebApi\appsettings.Development.json" Link="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\main\VideoDB.WebApi\appsettings.json" Link="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Features\UserWantsAccessToVideos.feature" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Steps\RequestBuilder\" />
   </ItemGroup>
 </Project>

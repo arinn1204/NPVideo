@@ -31,10 +31,10 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
         }
         
         [Then(@"the user receives nothing")]
-        public void ThenTheUserReceivesNothing()
+        public async Task ThenTheUserReceivesNothing()
         {
             _response.StatusCode.Should().Be(HttpStatusCode.NoContent);
-            _response.Content.Should().BeNull();
+            (await _response.Content.ReadAsStringAsync()).Should().BeEmpty();
         }
     }
 }

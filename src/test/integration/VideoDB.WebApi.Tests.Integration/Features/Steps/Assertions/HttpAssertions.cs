@@ -22,23 +22,18 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
         {
             var statusCode = GetCode(option.ToUpperInvariant());
 
-            if (option == "successful")
-            {
-                _response.IsSuccessStatusCode.Should().BeTrue();
-            }
-            else
-            {
-                _response.StatusCode.Should().Be(statusCode);
-            }
+            _response.StatusCode.Should().Be(statusCode);
         }
         
         private HttpStatusCode GetCode(string option)
         {
-            switch (option)
+            return option switch
             {
-                case "CREATED": return HttpStatusCode.Created;
-                default: return HttpStatusCode.Forbidden;
-            }
+                "CREATED" => HttpStatusCode.Created,
+                "SUCCESSFUL" => HttpStatusCode.OK,
+                "NO CONTENT" => HttpStatusCode.NoContent,
+                _ => HttpStatusCode.Forbidden,
+            };
         }
     }
 }

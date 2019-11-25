@@ -25,25 +25,15 @@ namespace VideoDB.WebApi.Extensions
 
         private static object GetProperValue(SqlDataReader reader, Type propertyType, int index)
         {
-            object value;
-            switch(propertyType.Name)
+            object value = propertyType.Name switch
             {
-                case "String":
-                    value = reader.GetString(index);
-                    break;
-                case "DateTime":
-                    value = reader.GetDateTime(index);
-                    break;
-                case "Decimal":
-                    value = reader.GetDecimal(index);
-                    break;
-                case "Int32":
-                    value = reader.GetInt32(index);
-                    break;
-                default:
-                    throw new EvoException("Unsupoorted type attempting to be converted");
-            }
-
+                "String" => reader.GetString(index),
+                "DateTime" => reader.GetDateTime(index),
+                "Decimal" => reader.GetDecimal(index),
+                "Int32" => reader.GetInt32(index),
+                "Boolean" => reader.GetBoolean(index),
+                _ => throw new EvoException("Unsupoorted type attempting to be converted"),
+            };
             return value;
         }
     }

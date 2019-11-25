@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Evo.WebApi.Models.Enums;
 
 namespace Evo.WebApi.Models.ViewModels
@@ -19,5 +20,8 @@ namespace Evo.WebApi.Models.ViewModels
         public IEnumerable<GenreViewModel> Genres { get; set; }
         public IEnumerable<RatingViewModel> Ratings { get; set; }
         public IEnumerable<StarViewModel> Stars { get; set; }
+
+        [JsonIgnore]
+        public bool IsUpdated { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace VideoDB.WebApi.Models.ViewModels
@@ -22,5 +23,9 @@ namespace VideoDB.WebApi.Models.ViewModels
         public IEnumerable<GenreViewModel> Genres { get; set; }
         public IEnumerable<RatingViewModel> Ratings { get; set; }
         public IEnumerable<StarViewModel> Stars { get; set; }
+
+
+        [JsonIgnore]
+        public bool IsUpdated { get; set; }
     }
 }

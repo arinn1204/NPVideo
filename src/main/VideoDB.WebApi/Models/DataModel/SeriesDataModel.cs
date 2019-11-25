@@ -21,5 +21,6 @@ namespace Evo.WebApi.Models.DataModel
         public string person_role { get; set; }
         public string rating_source { get; set; }
         public decimal rating_value { get; set; }
+        public bool updated { get; set; }
     }
 }

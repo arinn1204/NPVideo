@@ -23,6 +23,12 @@ namespace VideoDB.WebApi.Models.Profiles
                               .Distinct()
                               .Single()))
                 .ForMember(
+                    dest => dest.IsUpdated,
+                    src => src.MapFrom(
+                        m => m.Select(s => s.updated)
+                            .Distinct()
+                            .Single()))
+                .ForMember(
                     dest => dest.Title,
                     src => src.MapFrom(
                         m => m.Select(s => s.title)

@@ -44,7 +44,9 @@ namespace Evo.WebApi.Controllers
                 return StatusCode(500, response);
             }
 
-            return Created($"/videos/{request.VideoId}", result);
+            return result.IsUpdated
+                ? NoContent() as IActionResult
+                : Created($"/videos/{request.VideoId}", result) as IActionResult;
         }
     }
 }
