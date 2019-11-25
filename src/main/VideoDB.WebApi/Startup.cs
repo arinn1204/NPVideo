@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using VideoDB.WebApi.Validators;
 
 namespace Evo.WebApi
 {
@@ -42,7 +44,8 @@ namespace Evo.WebApi
                         }
                     });
                 })
-                .AddControllers();
+                .AddControllers()
+                .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<VideoValidator>());
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

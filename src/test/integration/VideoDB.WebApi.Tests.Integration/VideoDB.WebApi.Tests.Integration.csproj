@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\main\VideoDB.WebApi\VideoDB.WebApi.csproj" />
+    <ProjectReference Include="..\..\unit\VideoDB.WebApi.Tests\VideoDB.WebApi.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Steps\Assertions\" />
     <Folder Include="Features\Steps\RequestBuilder\" />
   </ItemGroup>
 </Project>
