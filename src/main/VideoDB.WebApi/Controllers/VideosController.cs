@@ -24,7 +24,7 @@ namespace Evo.WebApi.Controllers
             _videoService = videoService;
         }
 
-        [HttpPost]
+        [HttpPut]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult AddVideo([FromBody] VideoRequest request)

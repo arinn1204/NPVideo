@@ -18,7 +18,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _client = container.Resolve<HttpClient>();
         }
 
-        [When(@"the user (.*) a new video")]
+        [When(@"the user (.*) a (?:new)\s?video")]
         public async Task WhenTheUserCreatesANewVideo(string operation)
         {
             var message = _container.Resolve<HttpRequestMessage>();
@@ -39,7 +39,8 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
         {
             return operation switch
             {
-                "create" => HttpMethod.Post,
+                "create" => HttpMethod.Put,
+                "update" => HttpMethod.Put,
                 _ => HttpMethod.Get,
             };
         }
