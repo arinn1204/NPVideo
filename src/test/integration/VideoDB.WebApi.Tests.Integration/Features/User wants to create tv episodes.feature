@@ -7,7 +7,6 @@
 		Then the user is told that it is created
 		And the user receives a copy of the new tv episode
 		
-	@clean
 	Scenario: A user wants to update an existing tv episode
 		Given a tv episode already exists in the record
 		When the user updates an existing tv episode
