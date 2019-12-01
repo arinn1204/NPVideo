@@ -129,7 +129,7 @@ BEGIN
 			INSERT INTO #Video(id, name, category)
 				SELECT g.genre_id, g.name, 'GENRE_ID'
 				FROM @GENRES genre
-				JOIN video.genres g
+				INNER JOIN video.genres g
 					ON genre.name = g.name;
 
 			MERGE INTO video.genre_videos AS target
@@ -149,7 +149,7 @@ BEGIN
 			INSERT INTO #Video(id, name, category)
 				SELECT r.role_id, p.role_name, 'ROLE_ID'
 				FROM video.roles r
-				JOIN (SELECT DISTINCT role_name FROM @PERSONS) p
+				INNER JOIN (SELECT DISTINCT role_name FROM @PERSONS) p
 					ON r.role_name = p.role_name;
 
             MERGE INTO video.persons AS target
@@ -166,7 +166,7 @@ BEGIN
 			INSERT INTO #Video(id, name, category)
 				SELECT p.person_id, persons_tt.role_name, 'PERSON_ID'
 				FROM @PERSONS persons_tt
-				JOIN video.persons p
+				INNER JOIN video.persons p
 					ON (p.first_name = persons_tt.first_name
 					AND (p.middle_name = persons_tt.middle_name OR (p.middle_name IS NULL AND persons_tt.middle_name IS NULL))
 					AND (p.last_name = persons_tt.last_name OR (p.last_name IS NULL AND persons_tt.last_name IS NULL))
@@ -176,10 +176,10 @@ BEGIN
 			MERGE INTO video.person_roles AS target
 			USING (SELECT DISTINCT person.id AS 'person_id', role.id AS 'role_id'
 				FROM @PERSONS p
-				JOIN #Video person
+				INNER JOIN #Video person
 					ON person.name = p.role_name
 					AND person.category = 'PERSON_ID'
-				JOIN #Video role
+				INNER JOIN #Video role
 					ON role.name = p.role_name
 					AND role.category = 'ROLE_ID') AS source
 			ON target.person_id = source.person_id

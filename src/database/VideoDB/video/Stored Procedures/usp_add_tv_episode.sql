@@ -138,7 +138,7 @@ BEGIN
 			MERGE INTO video.genre_tv_episodes AS target
 			USING (SELECT genre_id
 					FROM video.genres g
-					JOIN @GENRES gtt
+					INNER JOIN @GENRES gtt
 						ON gtt.name = g.name) AS source
 			ON target.genre_id = source.genre_id AND target.tv_episode_id = @tv_episode_id
 			WHEN NOT MATCHED THEN
@@ -149,7 +149,7 @@ BEGIN
 			MERGE INTO video.person_tv_episodes AS target
 			USING (SELECT p.person_id
 					FROM @PERSONS ptt
-					JOIN video.persons p
+					INNER JOIN video.persons p
 					ON (p.first_name = ptt.first_name
 						AND (p.middle_name = ptt.middle_name OR (p.middle_name IS NULL AND ptt.middle_name IS NULL))
 						AND (p.last_name = ptt.last_name OR (p.last_name IS NULL AND ptt.last_name IS NULL))
