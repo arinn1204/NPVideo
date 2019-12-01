@@ -48,8 +48,8 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.EpisodePlot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
                 .RuleFor(r => r.MpaaRating, r => GenerateString(r, 7))
                 .RuleFor(r => r.Runtime, r => r.Finance.Amount(0, 999, 2))
-                .RuleFor(r => r.EpisodeNumber, r => r.Random.Number())
-                .RuleFor(r => r.SeasonNumber, r => r.Random.Number())
+                .RuleFor(r => r.EpisodeNumber, r => r.Random.Number(min: 1))
+                .RuleFor(r => r.SeasonNumber, r => r.Random.Number(min: 1))
                 .RuleFor(r => r.Codec, r => GenerateString(r, 8))
                 .RuleFor(r => r.Resolution, r => GenerateString(r, 16))
                 .RuleFor(r => r.Extended, r => GenerateString(r, 16));

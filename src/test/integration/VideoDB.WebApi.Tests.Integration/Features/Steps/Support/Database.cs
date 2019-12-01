@@ -24,15 +24,16 @@ VALUES ('{request.VideoId}', '{request.Title}', '{request.MpaaRating}', '{reques
 
         public static void AddRequestItem(TvEpisodeRequest request, IConfiguration configuration)
         {
+            AddRequestItem(request as VideoRequest, configuration);
+
             var videoSqlCommand = $@"SELECT video_id
 FROM [video].[videos]
 WHERE imdb_id = '{request.VideoId}'";
-            var tvSqlCommand = $@"";
+            
 
             var connection = configuration.CreateConnectionString();
             using var sqlConnection = new SqlConnection(connection);
             using var videoCommand = new SqlCommand(videoSqlCommand, sqlConnection);
-            using var tvCommand = new SqlCommand(tvSqlCommand, sqlConnection);
 
             videoCommand.Connection.Open();
             var reader = videoCommand.ExecuteReader();
@@ -41,6 +42,10 @@ WHERE imdb_id = '{request.VideoId}'";
             var video_id = reader.GetInt32(0);
             videoCommand.Connection.Close();
 
+
+            var tvSqlCommand = $@"INSERT INTO [video].[tv_episodes] (video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec, extended_edition)
+VALUES ('{video_id}', '{request.TvEpisodeId}', {request.SeasonNumber}, {request.EpisodeNumber}, '{request.EpisodeName}', '{request.EpisodeReleaseDate}', '{request.EpisodePlot}', '{request.Resolution}', '{request.Codec}', '{request.Extended}');";
+            using var tvCommand = new SqlCommand(tvSqlCommand, sqlConnection);
             tvCommand.Connection.Open();
             tvCommand.ExecuteNonQuery();
             tvCommand.Connection.Close();

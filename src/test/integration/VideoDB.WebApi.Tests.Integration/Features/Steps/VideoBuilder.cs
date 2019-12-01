@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using Evo.WebApi.Models.Requests;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -37,14 +38,21 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
         [Given(@"a (.*) already exists in the record")]
         public void GivenAVideoAlreadyExistsInTheRecord(string typeOfContent)
         {
-            var request = typeOfContent.ToUpperInvariant() switch
+            object request;
+            switch (typeOfContent.ToUpperInvariant())
             {
-                "VIDEO" => RequestGenerator.GetVideoRequest(),
-                "TV EPISODE" => RequestGenerator.GetTvEpisodeRequest(),
-                _ => throw new Exception($"{typeOfContent} is not currently supported.")
+                case "VIDEO":
+                    request = RequestGenerator.GetVideoRequest();
+                    Database.AddRequestItem(request as VideoRequest, _container.Resolve<IConfiguration>());
+                    break;
+                case "TV EPISODE":
+                    request = RequestGenerator.GetTvEpisodeRequest();
+                    Database.AddRequestItem(request as TvEpisodeRequest, _container.Resolve<IConfiguration>());
+                    break;
+                default:
+                    throw new Exception($"{typeOfContent} is not currently supported.");
             };
 
-            Database.AddRequestItem(request, _container.Resolve<IConfiguration>());
 
             _container.RegisterInstanceAs<object>(request, name: "RequestBody");
         }
