@@ -33,7 +33,7 @@ BEGIN
 				category VARCHAR(MAX)
 			);
 
-			EXECUTE @series_video_id = video.usp_add_movie_or_series
+			EXECUTE video.usp_add_movie_or_series
 				@series_imdb_id,
 				@series_title,
 				@mpaa_rating,
@@ -47,6 +47,16 @@ BEGIN
 				@GENRES,
 				@PERSONS,
 				@RATINGS;
+
+				
+			SELECT @series_video_id = video_id
+				FROM video.videos
+				WHERE imdb_id = @series_imdb_id
+					AND video_type = 'series'
+					AND title = @series_title
+					AND mpaa_rating = @mpaa_rating
+					AND plot = @series_plot
+					AND release_date = @series_release_date;
 
 			IF EXISTS (SELECT 1
 				FROM video.tv_episodes

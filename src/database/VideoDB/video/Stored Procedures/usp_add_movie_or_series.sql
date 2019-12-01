@@ -15,8 +15,7 @@
 AS
 BEGIN
 
-	DECLARE @video_id INT,
-		@created_time DATETIME = GETDATE(),
+	DECLARE @created_time DATETIME = GETDATE(),
 		@created_user VARCHAR(32) = (SELECT SYSTEM_USER),
 		@is_updated BIT = 0;
 		
@@ -29,9 +28,14 @@ BEGIN
 			category VARCHAR(32)
 		);
 
+		CREATE TABLE #roles(
+			role_name VARCHAR(16)
+		);
+
+
 		BEGIN TRANSACTION
 
-			IF EXISTS (SELECT video_id
+			IF NOT EXISTS (SELECT video_id
 					FROM video.videos
 					WHERE imdb_id = @imdb_id
 						AND title = @title
@@ -39,26 +43,10 @@ BEGIN
 						AND plot = @plot
 						AND video_type = @video_type
 						AND release_date = @release_date
-						AND (runtime = @runtime OR runtime IS NULL AND @runtime IS NULL)
-						AND (resolution = @resolution OR resolution IS NULL AND @resolution IS NULL)
-						AND (codec = @codec OR codec IS NULL AND @codec IS NULL)
-						AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL))
-				BEGIN
-					INSERT INTO #Video(id, category)
-						SELECT video_id, 'VIDEO_ID'
-						FROM video.videos
-						WHERE imdb_id = @imdb_id
-							AND title = @title
-							AND mpaa_rating = @mpaa_rating
-							AND plot = @plot
-							AND video_type = @video_type
-							AND release_date = @release_date
-							AND (runtime = @runtime OR runtime IS NULL AND @runtime IS NULL)
-							AND (resolution = @resolution OR resolution IS NULL AND @resolution IS NULL)
-							AND (codec = @codec OR codec IS NULL AND @codec IS NULL)
-							AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL);
-				END
-			ELSE
+						AND ((runtime = @runtime) OR (runtime IS NULL AND @runtime IS NULL))
+						AND ((resolution = @resolution) OR (resolution IS NULL AND @resolution IS NULL))
+						AND ((codec = @codec) OR (codec IS NULL AND @codec IS NULL))
+						AND ((extended_edition = @extended) OR (extended_edition IS NULL AND @extended IS NULL)))
 				BEGIN
 					MERGE video.videos AS target
 					USING (SELECT @imdb_id AS 'imdb_id',
@@ -103,24 +91,33 @@ BEGIN
 								modified = source.ctime,
 								modified_by = source.cuser,
 								@is_updated = 1
-					OUTPUT INSERTED.video_id, 'VIDEO_ID'
+					OUTPUT INSERTED.video_id, 'INSERTED_ID'
 						INTO #Video(id, category);
+						
 				END
 
-			SET @video_id = (
-				SELECT id 
-				FROM #Video
-				WHERE category = 'VIDEO_ID');
+			INSERT INTO #Video(id, category)
+			SELECT video_id, 'VIDEO_ID'
+			FROM video.videos
+			WHERE imdb_id = @imdb_id;
 
             MERGE INTO video.ratings AS target
-			USING (SELECT DISTINCT r.source AS 'ratings_source', r.value AS 'ratings_value' FROM @RATINGS r) AS source
-			ON target.video_id = @video_id
+			USING (
+				SELECT r.source AS 'ratings_source', r.value AS 'ratings_value', v.id 
+				FROM @RATINGS r
+				INNER JOIN #Video v
+					ON v.category = 'VIDEO_ID'
+				) AS source
+			ON target.video_id = source.id
 			WHEN NOT MATCHED THEN
 				INSERT (video_id, source, value, added, created_by)
-					VALUES(@video_id, source.ratings_source, source.ratings_value, @created_time, @created_user);
+					VALUES(source.id, source.ratings_source, source.ratings_value, @created_time, @created_user);
 
             MERGE INTO video.genres AS target
-            USING (SELECT DISTINCT name FROM @GENRES) AS source
+            USING (
+				SELECT name
+				FROM @GENRES
+				) AS source
 			ON target.name = source.name
             WHEN NOT MATCHED THEN
                 INSERT (name, added, created_by)
@@ -133,14 +130,30 @@ BEGIN
 					ON genre.name = g.name;
 
 			MERGE INTO video.genre_videos AS target
-			USING (SELECT id AS genre_id FROM #Video WHERE category = 'GENRE_ID') AS source
-			ON target.genre_id = source.genre_id AND target.video_id = @video_id
+			USING (
+				SELECT v.id AS 'genre_id', ilv.id AS 'video_id'
+				FROM #Video v
+				INNER JOIN (
+						SELECT id AS 'id' 
+						FROM #Video 
+						WHERE category = 'VIDEO_ID') ilv
+					ON ilv.id IS NOT NULL
+				WHERE category = 'GENRE_ID'
+				) AS source
+			ON 
+				target.genre_id = source.genre_id 
+				AND target.video_id = source.video_id
 			WHEN NOT MATCHED THEN
 				INSERT (video_id, genre_id)
-				VALUES (@video_id, source.genre_id);
+				VALUES (source.video_id, source.genre_id);
+
+			INSERT INTO #roles(role_name)
+			SELECT DISTINCT role_name 
+			FROM @PERSONS;
+
 
 			MERGE INTO video.roles AS target
-			USING (SELECT DISTINCT role_name FROM @PERSONS) AS source
+			USING (SELECT role_name FROM #roles) AS source
 			ON source.role_name = target.role_name
 			WHEN NOT MATCHED THEN
 				INSERT (role_name, added, created_by)
@@ -149,7 +162,7 @@ BEGIN
 			INSERT INTO #Video(id, name, category)
 				SELECT r.role_id, p.role_name, 'ROLE_ID'
 				FROM video.roles r
-				INNER JOIN (SELECT DISTINCT role_name FROM @PERSONS) p
+				INNER JOIN (SELECT role_name FROM #roles) p
 					ON r.role_name = p.role_name;
 
             MERGE INTO video.persons AS target
@@ -187,15 +200,23 @@ BEGIN
 			WHEN NOT MATCHED THEN
 				INSERT (person_id, role_id)
 					VALUES(source.person_id, source.role_id);
-
 					
 			MERGE INTO video.person_videos AS target
-			USING (SELECT DISTINCT id FROM #Video WHERE category = 'PERSON_ID') AS source
-			ON target.person_id = source.id
-				AND target.video_id = @video_id
+			USING (
+				SELECT DISTINCT v.id AS 'person_id', ilv.id AS 'video_id'
+				FROM #Video v
+				INNER JOIN (
+						SELECT id AS 'id' 
+						FROM #Video 
+						WHERE category = 'VIDEO_ID') ilv
+					ON ilv.id IS NOT NULL
+				WHERE category = 'PERSON_ID'
+			) AS source
+			ON target.person_id = source.person_id
+				AND target.video_id = source.video_id
 			WHEN NOT MATCHED THEN
 			INSERT (video_id, person_id)
-				VALUES(@video_id, source.id);
+				VALUES(source.video_id, source.person_id);
 
 			
 		COMMIT TRANSACTION;
@@ -205,7 +226,7 @@ BEGIN
 			SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
 				genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
 			FROM video.vw_movies
-			WHERE video_id = @video_id;
+			WHERE video_id IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
 		END
 		ELSE 
 		BEGIN
@@ -214,11 +235,9 @@ BEGIN
 				SELECT imdb_id, title, plot, release_date,
 					genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
 				FROM video.vw_series
-				WHERE video_id = @video_id;
+				WHERE video_id  IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
 			END
 		END
-
-		RETURN @video_id;
 
 	END TRY
 	BEGIN CATCH
