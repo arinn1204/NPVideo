@@ -48,7 +48,7 @@ BEGIN
 				@PERSONS,
 				@RATINGS;
 
-			IF ((SELECT 1
+			IF EXISTS (SELECT 1
 				FROM video.tv_episodes
 				WHERE video_id = @series_video_id
 					AND tv_episode_imdb_id = @episode_imdb_id
@@ -59,7 +59,7 @@ BEGIN
 					AND plot = @plot
 					AND (resolution = @resolution OR resolution IS NULL AND @resolution IS NULL)
 					AND (codec = @codec OR codec IS NULL AND @codec IS NULL)
-					AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL)) IS NOT NULL)
+					AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL))
 				BEGIN
 					INSERT INTO #Episode(id, category)
 						SELECT tv_episode_id, 'TV_EPISODE_ID'

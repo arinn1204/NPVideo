@@ -31,7 +31,7 @@ BEGIN
 
 		BEGIN TRANSACTION
 
-			IF ((SELECT video_id
+			IF EXISTS (SELECT video_id
 					FROM video.videos
 					WHERE imdb_id = @imdb_id
 						AND title = @title
@@ -42,7 +42,7 @@ BEGIN
 						AND (runtime = @runtime OR runtime IS NULL AND @runtime IS NULL)
 						AND (resolution = @resolution OR resolution IS NULL AND @resolution IS NULL)
 						AND (codec = @codec OR codec IS NULL AND @codec IS NULL)
-						AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL)) IS NOT NULL)
+						AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL))
 				BEGIN
 					INSERT INTO #Video(id, category)
 						SELECT video_id, 'VIDEO_ID'
