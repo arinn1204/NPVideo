@@ -25,6 +25,9 @@ namespace Evo.WebApi.Tests.Integration.Features.Steps.Support
 
             container.RegisterInstanceAs(factory);
             container.RegisterInstanceAs<IConfiguration>(configuration);
+            var hooks = new Hooks();
+
+            hooks.CleanDatabase(configuration);
         }
 
         [BeforeTestRun]

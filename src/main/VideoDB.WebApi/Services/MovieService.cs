@@ -40,14 +40,22 @@ namespace VideoDB.WebApi.Services
             };
         }
 
-        public MovieViewModel UpsertMovie(MovieRequest video)
+        public IEnumerable<MovieViewModel> UpsertMovie(MovieRequest video)
         {
-            var dataModel = _videoRepository.UpsertMovie(video);
-            
-            var videoViewModel = _mapper.Map<MovieViewModel>(dataModel);
-            videoViewModel.VideoType = VideoType.Movie;
+            var videoViewModels = _videoRepository.UpsertMovie(video)
+                .GroupBy(
+                    key => key.video_id,
+                    (key, dataModels) 
+                        =>
+                    {
+                        var viewModel = _mapper.Map<MovieViewModel>(
+                            dataModels.Where(w => w.video_id == key));
+                        viewModel.VideoType = VideoType.Movie;
 
-            return videoViewModel;
+                        return viewModel;
+                    });
+
+            return videoViewModels;
         }
     }
 }

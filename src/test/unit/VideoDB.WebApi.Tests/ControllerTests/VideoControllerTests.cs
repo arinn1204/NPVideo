@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Evo.WebApi.Controllers;
 using Evo.WebApi.Models.Requests;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
+using VideoDB.WebApi.Tests.Extensions;
 
 namespace Evo.WebApi.Tests.Controllers
 {
@@ -38,13 +41,13 @@ namespace Evo.WebApi.Tests.Controllers
                 .Returns(new MovieViewModel
                 {
                     VideoId = "tt1234"
-                });
+                }.Yield());
 
             var result = _controller.UpsertVideo(request) as CreatedResult;
 
             result.Should().NotBe(null);
             result.Location.Should().Be("/videos/movies/tt1234");
-            (result.Value as MovieViewModel).VideoId.Should().Be("tt1234");
+            (result.Value as IEnumerable<MovieViewModel>).First().VideoId.Should().Be("tt1234");
         }
 
         [Test]
@@ -73,7 +76,7 @@ namespace Evo.WebApi.Tests.Controllers
                 {
                     VideoId = "tt1234",
                     IsUpdated = true
-                });
+                }.Yield());
 
             var result = _controller.UpsertVideo(request) as NoContentResult;
             result.Should().NotBeNull();

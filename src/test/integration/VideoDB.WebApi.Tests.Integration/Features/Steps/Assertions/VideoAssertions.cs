@@ -4,6 +4,8 @@ using Evo.WebApi.Models.ViewModels;
 using FluentAssertions;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -32,11 +34,12 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
             {
                 case "MOVIE":
                     var videoContent =
-                        JsonConvert.DeserializeObject<MovieViewModel>(
+                        JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(
                             contentString);
 
-                    videoContent.VideoId.Should().NotBeNullOrEmpty();
-                    videoContent.VideoId
+                    videoContent
+                        .Single()
+                        .VideoId
                         .Should()
                         .BeEquivalentTo((_request as MovieRequest).VideoId);
                     break;

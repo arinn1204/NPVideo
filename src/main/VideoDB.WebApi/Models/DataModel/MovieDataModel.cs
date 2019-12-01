@@ -9,6 +9,7 @@ namespace Evo.WebApi.Models.DataModel
         Justification = "Used for database model mapping")]
     public class MovieDataModel
     {
+        public int video_id { get; set; }
         public string imdb_id { get; set; }
         public string movie_title { get; set; }
         public string movie_rating { get; set; }

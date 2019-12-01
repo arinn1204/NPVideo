@@ -44,11 +44,15 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             {
                 case "MOVIE":
                     request = RequestGenerator.GetMovieRequest();
+                    (request as MovieRequest).Plot = "Original Plot";
                     Database.AddRequestItem(request as MovieRequest, _container.Resolve<IConfiguration>());
+                    (request as MovieRequest).Plot = "New Plot";
                     break;
                 case "TV EPISODE":
                     request = RequestGenerator.GetTvEpisodeRequest();
+                    (request as TvEpisodeRequest).Codec = "x264";
                     Database.AddRequestItem(request as TvEpisodeRequest, _container.Resolve<IConfiguration>());
+                    (request as TvEpisodeRequest).Codec = "x265";
                     break;
                 default:
                     throw new Exception($"{typeOfContent} is not currently supported.");

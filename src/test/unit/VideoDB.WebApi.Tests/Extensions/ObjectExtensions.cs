@@ -22,5 +22,10 @@ namespace VideoDB.WebApi.Tests.Extensions
 
             return objectToModify;
         }
+
+        public static IEnumerable<T> Yield<T>(this T objectToYield)
+        {
+            yield return objectToYield;
+        }
     }
 }

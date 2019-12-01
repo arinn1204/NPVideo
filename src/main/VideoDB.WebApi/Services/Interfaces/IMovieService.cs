@@ -10,7 +10,7 @@ namespace Evo.WebApi.Services.Interfaces
 {
     public interface IMovieService
     {
-        MovieViewModel UpsertMovie(MovieRequest video);
+        IEnumerable<MovieViewModel> UpsertMovie(MovieRequest video);
         TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode);
     }
 }

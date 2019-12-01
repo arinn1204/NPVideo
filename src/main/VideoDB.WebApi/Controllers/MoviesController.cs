@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Evo.WebApi.Exceptions;
@@ -29,7 +31,8 @@ namespace Evo.WebApi.Controllers
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult UpsertVideo([FromBody] MovieRequest request)
         {
-            MovieViewModel result;
+            IEnumerable<MovieViewModel> result;
+            
             try
             {
                 result = _videoService.UpsertMovie(request);
@@ -38,13 +41,14 @@ namespace Evo.WebApi.Controllers
             {
                 var response = new ErrorResponse
                 {
-                    Error = JsonConvert.SerializeObject(e)
+                    Error = e.Message,
+                    StackTrace = e.StackTrace
                 };
 
                 return StatusCode(500, response);
             }
 
-            return result.IsUpdated
+            return result.All(a => a.IsUpdated)
                 ? NoContent() as IActionResult
                 : Created($"/videos/movies/{request.VideoId}", result) as IActionResult;
         }
