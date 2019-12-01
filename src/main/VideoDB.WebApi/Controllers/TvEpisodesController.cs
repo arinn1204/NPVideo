@@ -37,7 +37,8 @@ namespace Evo.WebApi.Controllers
             {
                 var response = new ErrorResponse
                 {
-                    Error = JsonConvert.SerializeObject(e)
+                    Error = e.Message,
+                    StackTrace = e.StackTrace
                 };
 
                 return StatusCode(500, response);
