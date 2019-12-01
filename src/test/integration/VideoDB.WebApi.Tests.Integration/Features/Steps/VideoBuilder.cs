@@ -31,15 +31,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
                 _ => throw new Exception($"{typeOfContent} is not currently supported.")
             };
                 
-            var httpRequest = new HttpRequestMessage()
-            {
-                Content = new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8,
-                    "application/json")
-            };
-
-            _container.RegisterInstanceAs(httpRequest);
+            _container.RegisterInstanceAs<object>(request, name: "RequestBody");
         }
 
         [Given(@"a (.*) already exists in the record")]
@@ -54,15 +46,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
 
             Database.AddRequestItem(request, _container.Resolve<IConfiguration>());
 
-            var httpRequest = new HttpRequestMessage()
-            {
-                Content = new StringContent(
-                    JsonConvert.SerializeObject(request),
-                    Encoding.UTF8,
-                    "application/json")
-            };
-
-            _container.RegisterInstanceAs(httpRequest);
+            _container.RegisterInstanceAs<object>(request, name: "RequestBody");
         }
 
     }

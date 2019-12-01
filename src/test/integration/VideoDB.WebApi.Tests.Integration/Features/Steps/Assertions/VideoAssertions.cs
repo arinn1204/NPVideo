@@ -1,4 +1,6 @@
-﻿using Evo.WebApi.Models.ViewModels;
+﻿using BoDi;
+using Evo.WebApi.Models.Requests;
+using Evo.WebApi.Models.ViewModels;
 using FluentAssertions;
 using Newtonsoft.Json;
 using System;
@@ -13,21 +15,46 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
     public class VideoAssertions
     {
         private readonly HttpResponseMessage _response;
+        private readonly object _request;
 
-        public VideoAssertions(HttpResponseMessage response)
+        public VideoAssertions(HttpResponseMessage response, IObjectContainer container)
         {
             _response = response;
+            _request = container.Resolve<object>(name: "RequestBody");
         }
 
-        [Then(@"the user receives a copy of the new video")]
-        public async Task ThenTheUserReceivesACopyOfTheNewVideo()
+        [Then(@"the user receives a copy of the new (.*)")]
+        public async Task ThenTheUserReceivesACopyOfTheNewVideo(string typeOfMedia)
         {
             var contentString = await _response.Content.ReadAsStringAsync();
-            var content = 
-                JsonConvert.DeserializeObject<VideoViewModel>(
-                    contentString);
 
-            content.VideoId.Should().NotBeNullOrEmpty();
+            switch (typeOfMedia.ToUpperInvariant())
+            {
+                case "VIDEO":
+                    var videoContent =
+                        JsonConvert.DeserializeObject<VideoViewModel>(
+                            contentString);
+
+                    videoContent.VideoId.Should().NotBeNullOrEmpty();
+                    videoContent.VideoId
+                        .Should()
+                        .BeEquivalentTo((_request as VideoRequest).VideoId);
+                    break;
+                case "TV EPISODE":
+                    var tvEpisodeContent = JsonConvert.DeserializeObject<TvEpisodeViewModel>(contentString);
+                    tvEpisodeContent
+                        .Series
+                        .VideoId
+                        .Should()
+                        .BeEquivalentTo((_request as TvEpisodeRequest).VideoId);
+
+                    tvEpisodeContent
+                        .Episode
+                        .VideoId
+                        .Should()
+                        .BeEquivalentTo((_request as TvEpisodeRequest).TvEpisodeId);
+                    break;
+            }
         }
         
         [Then(@"the user receives nothing")]
