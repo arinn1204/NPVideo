@@ -40,7 +40,7 @@ namespace Evo.WebApi.Tests.Controllers
                     VideoId = "tt1234"
                 });
 
-            var result = _controller.AddVideo(request) as CreatedResult;
+            var result = _controller.UpsertVideo(request) as CreatedResult;
 
             result.Should().NotBe(null);
             result.Location.Should().Be("/videos/tt1234");
@@ -53,7 +53,7 @@ namespace Evo.WebApi.Tests.Controllers
             _service.Setup(s => s.UpsertVideo(It.IsAny<VideoRequest>()))
                 .Throws(new Exception());
 
-            var objectResult = _controller.AddVideo(new VideoRequest()) as ObjectResult;
+            var objectResult = _controller.UpsertVideo(new VideoRequest()) as ObjectResult;
             var videoResult = objectResult.Value as ErrorResponse;
             Assert.That(videoResult, Is.Not.Null);
             Assert.That(objectResult.StatusCode, Is.EqualTo(StatusCodes.Status500InternalServerError));
@@ -75,7 +75,7 @@ namespace Evo.WebApi.Tests.Controllers
                     IsUpdated = true
                 });
 
-            var result = _controller.AddVideo(request) as NoContentResult;
+            var result = _controller.UpsertVideo(request) as NoContentResult;
             result.Should().NotBeNull();
 
         }

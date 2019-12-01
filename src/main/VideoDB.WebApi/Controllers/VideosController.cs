@@ -27,7 +27,7 @@ namespace Evo.WebApi.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        public IActionResult AddVideo([FromBody] VideoRequest request)
+        public IActionResult UpsertVideo([FromBody] VideoRequest request)
         {
             VideoViewModel result;
             try
