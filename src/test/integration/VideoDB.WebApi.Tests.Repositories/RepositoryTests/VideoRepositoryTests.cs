@@ -1,17 +1,10 @@
-﻿using AutoBogus;
-using AutoFixture;
-using AutoFixture.AutoMoq;
+﻿using AutoFixture;
 using Bogus;
 using Evo.WebApi.Exceptions;
-using Evo.WebApi.Models.Enums;
-using Evo.WebApi.Models.Requests;
 using FluentAssertions;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Repositories;
@@ -68,6 +61,44 @@ WHERE imdb_id = 'tt134132'";
                 .WithMessage(@"Cannot insert the value NULL into column 'first_name', table '@persons'; column does not allow nulls. INSERT fails.
 The data for table-valued parameter ""@persons"" doesn't conform to the table type of the parameter. SQL Server error is: 515, state: 2
 The statement has been terminated.");
+        }
+
+        [Test]
+        public void ShouldRetrieveAllVideosInDatastore()
+        {
+            foreach (var id in Enumerable.Range(1, 10))
+            {
+                var request = RequestGenerator.GetMovieRequest(id);
+                Features.Steps.Support.Database.AddRequestItem(request, _config);
+            }
+
+
+            var repository = _fixture.Create<MovieRepository>();
+            var videos = repository.GetMovies();
+
+            videos
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Should()
+                .HaveCount(10)
+                .And
+                .BeEquivalentTo(new[] 
+                {
+                    "tt1","tt2","tt3","tt4","tt5","tt6","tt7","tt8","tt9","tt10"
+                });
+        }
+
+        [Test]
+        public void ShouldReturnEmptyEnumerableIfNoVideosInDataStore()
+        {
+            var repository = _fixture.Create<MovieRepository>();
+            var videos = repository.GetMovies();
+
+            videos
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Should()
+                .BeEmpty();
         }
     }
 }

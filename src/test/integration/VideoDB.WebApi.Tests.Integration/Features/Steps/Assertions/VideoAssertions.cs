@@ -60,12 +60,32 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                     break;
             }
         }
-        
-        [Then(@"the user receives nothing")]
-        public async Task ThenTheUserReceivesNothing()
+
+        [Then(@"the user is shown all the existing (movie|tv episode|series)(?:(?<!s)s)")]
+        public async Task ThenTheUserIsShownAllTheExistingMovie(string typeOfMedia)
         {
-            _response.StatusCode.Should().Be(HttpStatusCode.NoContent);
-            (await _response.Content.ReadAsStringAsync()).Should().BeEmpty();
+            var contentString = await _response.Content.ReadAsStringAsync();
+
+            switch (typeOfMedia.ToUpperInvariant())
+            {
+                case "MOVIE":
+                    var videoContent =
+                        JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(
+                            contentString);
+
+                    videoContent.Should().HaveCount(10);
+                    videoContent.Select(s => s.VideoId)
+                        .Union(Enumerable.Range(1, 10).Select(s => s.ToString()));
+
+                    break;
+                case "TV EPISODE":
+                    var tvEpisodeContent = 
+                        JsonConvert.DeserializeObject<TvEpisodeViewModel>(
+                            contentString);
+                    break;
+                case "SERIES":
+                    break;
+            }
         }
     }
 }

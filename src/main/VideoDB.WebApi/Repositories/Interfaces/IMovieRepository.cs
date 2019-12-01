@@ -9,5 +9,6 @@ namespace Evo.WebApi.Repositories.Interfaces
     public interface IMovieRepository
     {
         IEnumerable<MovieDataModel> UpsertMovie(MovieRequest video);
+        IEnumerable<MovieDataModel> GetMovies();
     }
 }

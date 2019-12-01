@@ -31,7 +31,21 @@ namespace VideoDB.WebApi.Repositories
             return ReadFromDatabase<MovieDataModel>(command);
         }
 
-        private IEnumerable<TDataModel> ReadFromDatabase<TDataModel>(SqlCommand command, int resultSet = 1)
+        public IEnumerable<MovieDataModel> GetMovies()
+        {
+            var movieCommand = @"SELECT video_id, imdb_id, movie_title, movie_rating, 
+runtime, plot, release_date, resolution, codec,
+genre_name, first_name, middle_name, last_name, 
+suffix, person_role, rating_source, rating_value
+FROM video.vw_movies";
+
+            using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
+            var command = new SqlCommand(movieCommand, sqlConnection);
+
+            return ReadFromDatabase<MovieDataModel>(command);
+        }
+
+        private IEnumerable<TDataModel> ReadFromDatabase<TDataModel>(SqlCommand command)
             where TDataModel : class, new()
         {
             var dataModels = Enumerable.Empty<TDataModel>();
@@ -39,11 +53,6 @@ namespace VideoDB.WebApi.Repositories
             {
                 command.Connection.Open();
                 var reader = command.ExecuteReader();
-
-                for (int i = 1; i < resultSet; i++)
-                {
-                    reader.NextResult();
-                }
 
                 while (reader.Read())
                 {

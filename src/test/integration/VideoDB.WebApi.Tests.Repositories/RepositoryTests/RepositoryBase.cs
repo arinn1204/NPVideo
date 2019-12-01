@@ -11,7 +11,7 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
     [TestFixture]
     public class RepositoryBase
     {
-        protected IConfigurationRoot _config;
+        protected IConfiguration _config;
         protected Fixture _fixture;
         protected string _database = "noblepanther_test";
 

@@ -21,18 +21,32 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _client = container.Resolve<HttpClient>();
         }
 
-        [When(@"the user (.*) an? (?:new|existing) (movie|tv episode)")]
+        [When(@"the user (create|update)s an? (?:new|existing) (movie|tv episode)")]
         public async Task WhenTheUserCreatesANewVideo(string operation, string mediaType)
         {
-            var path = mediaType.ToUpperInvariant() switch
-            {
-                "MOVIE" => "videos/movies",
-                "TV EPISODE" => "videos/tvEpisodes",
-                _ => throw new EvoException($"'{mediaType}' is not supported.")
-            };
+            string path = BuildPath(mediaType);
 
             await CallService(operation, path);
         }
+
+        [When(@"the user views all existing (movie|tv episode|series)(?:(?<!s)s)")]
+        public async Task WhenTheUserChecksExistingMovie(string mediaType)
+        {
+            var path = BuildPath(mediaType);
+            await CallService("views", path);
+        }
+
+        private string BuildPath(string mediaType)
+        {
+            return mediaType.ToUpperInvariant() switch
+            {
+                "MOVIE" => "videos/movies",
+                "TV EPISODE" => "videos/tvEpisodes",
+                "SERIES" => "videos/tvEpisodes/series",
+                _ => throw new EvoException($"'{mediaType}' is not supported.")
+            };
+        }
+
 
         private async Task CallService(string operation, string endpoint)
         {

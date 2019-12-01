@@ -79,7 +79,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
                 case "TV EPISODE":
                     foreach (var tvId in Enumerable.Range(1, 10))
                     {
-                        request = RequestGenerator.GetTvEpisodeRequest(tvId - 10, tvId);
+                        request = RequestGenerator.GetTvEpisodeRequest(100, tvId);
                         Database.AddRequestItem(request as TvEpisodeRequest, config);
                     }
                     

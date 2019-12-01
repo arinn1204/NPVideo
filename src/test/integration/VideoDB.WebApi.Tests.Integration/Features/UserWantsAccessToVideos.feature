@@ -25,8 +25,8 @@
 
 	Scenario Outline: A user wants to see all exiting videos
 		Given a user that wants to see what <mediaType>s already exist
-		When the user checks existing <mediaType>
-		Then the user is shown all the existing <mediaType>
+		When the user views all existing <mediaType>s
+		Then the user is shown all the existing <mediaType>s
 
 	Examples: 
 	| mediaType  |

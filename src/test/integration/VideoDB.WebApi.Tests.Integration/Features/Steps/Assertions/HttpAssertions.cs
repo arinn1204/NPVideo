@@ -3,6 +3,7 @@ using FluentAssertions;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
@@ -24,7 +25,15 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
 
             _response.StatusCode.Should().Be(statusCode);
         }
-        
+
+
+        [Then(@"the user receives nothing")]
+        public async Task ThenTheUserReceivesNothing()
+        {
+            _response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            (await _response.Content.ReadAsStringAsync()).Should().BeEmpty();
+        }
+
         private HttpStatusCode GetCode(string option)
         {
             return option switch
