@@ -17,7 +17,8 @@ BEGIN
 
 	DECLARE @created_time DATETIME = GETDATE(),
 		@created_user VARCHAR(32) = (SELECT SYSTEM_USER),
-		@is_updated BIT = 0;
+		@is_updated BIT = 0,
+		@inserted_id INT;
 		
 
 	BEGIN TRY
@@ -217,28 +218,53 @@ BEGIN
 			WHEN NOT MATCHED THEN
 			INSERT (video_id, person_id)
 				VALUES(source.video_id, source.person_id);
+				
+			SELECT @inserted_id = id
+			FROM #Video
+			WHERE category = 'INSERTED_ID'
+
+			IF (@video_type = 'movie')
+			BEGIN
+				IF (@inserted_id IS NULL)
+					BEGIN
+						SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
+							genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
+						FROM video.vw_movies
+						WHERE video_id IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
+					END
+				ELSE
+					BEGIN
+						SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
+							genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
+						FROM video.vw_movies
+						WHERE video_id = @inserted_id;
+					END
+			END
+			ELSE 
+			BEGIN
+				IF (@video_type = 'series')
+				BEGIN
+					IF (@inserted_id IS NULL)
+						BEGIN
+							SELECT imdb_id, title, plot, release_date,
+								genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
+							FROM video.vw_series
+							WHERE video_id  IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
+						END
+					ELSE
+						BEGIN
+							SELECT imdb_id, title, plot, release_date,
+								genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
+							FROM video.vw_series
+							WHERE video_id = @inserted_id;
+						END
+					END
+			END
 
 			
 		COMMIT TRANSACTION;
 
-		if (@video_type = 'movie')
-		BEGIN
-			SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
-				genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
-			FROM video.vw_movies
-			WHERE video_id IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
-		END
-		ELSE 
-		BEGIN
-			IF (@video_type = 'series')
-			BEGIN
-				SELECT imdb_id, title, plot, release_date,
-					genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
-				FROM video.vw_series
-				WHERE video_id  IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
-			END
-		END
-
+		
 	END TRY
 	BEGIN CATCH
         DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),

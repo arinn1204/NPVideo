@@ -1255,7 +1255,7 @@ namespace VideoDB.UnitTests
             rowCountCondition27.Enabled = true;
             rowCountCondition27.Name = "rowCountCondition27";
             rowCountCondition27.ResultSet = 1;
-            rowCountCondition27.RowCount = 2;
+            rowCountCondition27.RowCount = 1;
             // 
             // rowCountCondition28
             // 
