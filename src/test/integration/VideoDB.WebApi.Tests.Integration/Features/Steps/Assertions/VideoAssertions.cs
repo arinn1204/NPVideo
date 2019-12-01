@@ -53,6 +53,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
 
                     tvEpisodeContent
                         .Episode
+                        .Single()
                         .VideoId
                         .Should()
                         .BeEquivalentTo((_request as TvEpisodeRequest).TvEpisodeId);

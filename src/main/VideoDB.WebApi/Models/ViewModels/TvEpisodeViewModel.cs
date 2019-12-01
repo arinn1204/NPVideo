@@ -8,7 +8,7 @@ namespace Evo.WebApi.Models.ViewModels
     public class TvEpisodeViewModel
     {
         public SeriesViewModel Series { get; set; }
-        public TvEpisode Episode { get; set; }
+        public IEnumerable<TvEpisode> Episode { get; set; }
     }
 
 }

@@ -12,6 +12,7 @@ namespace Evo.WebApi.Models.DataModel
         Justification = "Used for database model mapping")]
     public class TvEpisodeDataModel
     {
+        public int tv_episode_id { get; set; }
         public string episode_imdb_id { get; set; }
         public int season_number { get; set; }
         public int episode_number { get; set; }

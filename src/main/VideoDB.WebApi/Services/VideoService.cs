@@ -35,7 +35,9 @@ namespace VideoDB.WebApi.Services
 
             return new TvEpisodeViewModel
             {
-                Episode = _mapper.Map<TvEpisode>(tvDataModels),
+                Episode = tvDataModels.GroupBy(
+                    key => key.tv_episode_id,
+                    (key, dataModels) => _mapper.Map<TvEpisode>(dataModels)),
                 Series = _mapper.Map<SeriesViewModel>(videoDataModels)
             };
         }

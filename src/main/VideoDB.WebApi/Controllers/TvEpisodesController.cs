@@ -44,7 +44,7 @@ namespace Evo.WebApi.Controllers
                 return StatusCode(500, response);
             }
 
-            return result.Episode.IsUpdated
+            return result.Episode.All(a => a.IsUpdated)
                 ? NoContent() as IActionResult
                 : Created($"/videos/tvEpisodes/{request.TvEpisodeId}", result) as IActionResult;
         }

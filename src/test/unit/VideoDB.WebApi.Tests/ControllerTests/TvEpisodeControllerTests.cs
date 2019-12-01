@@ -9,8 +9,10 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using VideoDB.WebApi.Models.ViewModels;
+using VideoDB.WebApi.Tests.Extensions;
 
 namespace VideoDB.WebApi.Tests.ControllerTests
 {
@@ -48,7 +50,7 @@ namespace VideoDB.WebApi.Tests.ControllerTests
                     Episode = new TvEpisode
                     {
                         VideoId = "tt1233"
-                    }
+                    }.Yield()
                 });
 
             var result = _controller.UpsertTvEpisode(request) as CreatedResult;
@@ -56,7 +58,7 @@ namespace VideoDB.WebApi.Tests.ControllerTests
             result.Should().NotBe(null);
             result.Location.Should().Be("/videos/tvEpisodes/tt1233");
             (result.Value as TvEpisodeViewModel).Series.VideoId.Should().Be("tt1234");
-            (result.Value as TvEpisodeViewModel).Episode.VideoId.Should().Be("tt1233");
+            (result.Value as TvEpisodeViewModel).Episode.Single().VideoId.Should().Be("tt1233");
         }
 
         [Test]
@@ -93,7 +95,7 @@ namespace VideoDB.WebApi.Tests.ControllerTests
                     {
                         VideoId = "tt1234",
                         IsUpdated = true
-                    }
+                    }.Yield()
                 });
 
             var result = _controller.UpsertTvEpisode(request) as NoContentResult;
