@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Evo.WebApi.Models.DataModel;
 using Evo.WebApi.Models.Enums;
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
@@ -37,27 +38,57 @@ namespace VideoDB.WebApi.Services
             {
                 Episode = tvDataModels.GroupBy(
                     key => key.tv_episode_id,
-                    (key, dataModels) => _mapper.Map<TvEpisode>(dataModels)),
+                    (key, dataModels) => _mapper.Map<TvEpisode>(
+                        dataModels.Where(w => w.tv_episode_id == key))),
                 Series = _mapper.Map<SeriesViewModel>(videoDataModels)
             };
         }
 
+        public IEnumerable<TvEpisodeViewModel> GetTvEpisodes()
+        {
+            var (videoDataModels, tvDataModels) = _tvEpisodeRepository.GetTvEpisodes();
+            var series = videoDataModels.GroupBy(
+                key => key.video_id,
+                (key, dataModels) => _mapper.Map<SeriesViewModel>(
+                    dataModels.Where(w => w.video_id == key)));
+
+            return series.GroupJoin(
+                tvDataModels,
+                outerKey => outerKey.SeriesId,
+                innerKey => innerKey.series_id,
+                (series, episodes) =>
+                new TvEpisodeViewModel
+                {
+                    Series = _mapper.Map<SeriesViewModel>(series),
+                    Episode = episodes.GroupBy(
+                        key => key.tv_episode_id,
+                        (key, dataModels) => _mapper.Map<TvEpisode>(
+                            dataModels.Where(w => w.tv_episode_id == key)))
+                });
+        }
+
         public IEnumerable<MovieViewModel> UpsertMovie(MovieRequest video)
         {
-            var videoViewModels = _videoRepository.UpsertMovie(video)
-                .GroupBy(
-                    key => key.video_id,
-                    (key, dataModels) 
-                        =>
-                    {
-                        var viewModel = _mapper.Map<MovieViewModel>(
+            return MapToViewModel(_videoRepository.UpsertMovie(video));
+        }
+
+        public IEnumerable<MovieViewModel> GetMovies()
+        {
+            return MapToViewModel(_videoRepository.GetMovies());
+        }
+
+        private IEnumerable<MovieViewModel> MapToViewModel(IEnumerable<MovieDataModel> dataModels)
+        {
+            return dataModels.GroupBy(
+                key => key.video_id,
+                (key, dataModels) =>
+                {
+                    var viewModel = _mapper.Map<MovieViewModel>(
                             dataModels.Where(w => w.video_id == key));
-                        viewModel.VideoType = VideoType.Movie;
+                    viewModel.VideoType = VideoType.Movie;
 
-                        return viewModel;
-                    });
-
-            return videoViewModels;
+                    return viewModel;
+                });
         }
     }
 }

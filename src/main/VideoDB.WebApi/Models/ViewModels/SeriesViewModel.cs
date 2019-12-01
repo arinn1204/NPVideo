@@ -9,6 +9,8 @@ namespace VideoDB.WebApi.Models.ViewModels
 {
     public class SeriesViewModel
     {
+        [JsonIgnore]
+        public int SeriesId { get; set; }
         public string VideoId { get; set; }
         public string Title { get; set; }
         public string Plot { get; set; }

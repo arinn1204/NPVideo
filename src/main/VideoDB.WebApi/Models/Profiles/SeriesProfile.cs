@@ -17,6 +17,12 @@ namespace VideoDB.WebApi.Models.Profiles
         {
             CreateMap<IEnumerable<SeriesDataModel>, SeriesViewModel>()
                 .ForMember(
+                    dest => dest.SeriesId,
+                    src => src.MapFrom(
+                        m => m.Select(s => s.video_id)
+                              .Distinct()
+                              .Single()))
+                .ForMember(
                     dest => dest.VideoId,
                     src => src.MapFrom(
                         m => m.Select(s => s.imdb_id)

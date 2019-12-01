@@ -12,6 +12,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using VideoDB.WebApi.Models.ViewModels;
 using VideoDB.WebApi.Repositories.Interfaces;
 using VideoDB.WebApi.Services;
@@ -177,6 +178,7 @@ namespace VideoDB.WebApi.Tests.Services
 
             result.Series.Should().BeEquivalentTo(new SeriesViewModel
             {
+                SeriesId = 1,
                 VideoId = "tt2222",
                 Title = "title",
                 Plot = "plot",
@@ -224,7 +226,50 @@ namespace VideoDB.WebApi.Tests.Services
             });
         }
 
-        private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId)
+        [Test]
+        public void ShouldRetrieveAllMoviesFromDatabase()
+        {
+            _videoRepo.Setup(s => s.GetMovies())
+                .Returns(CreateVideoDataModel("tt1234").Concat(CreateVideoDataModel("tt12345", 2)));
+
+            var service = _fixture.Create<VideoService>();
+
+            var movies = service.GetMovies();
+
+            movies.Select(s => s.VideoId)
+                .Should()
+                .HaveCount(2)
+                .And
+                .BeEquivalentTo(new[] { "tt1234", "tt12345" });
+        }
+        
+        [Test]
+        public void ShouldRetrieveAllTvEpisodesFromDatabase()
+        {
+            _tvRepo.Setup(s => s.GetTvEpisodes())
+                .Returns(
+                (CreateSeriesDataModel("tt2222").Concat(CreateSeriesDataModel("tt2223", 2)),
+                CreateEpisodeModel("tt1234").Concat(CreateEpisodeModel("tt12345", 2, 2))));
+
+            var service = _fixture.Create<VideoService>();
+            var tvEpisodes = service.GetTvEpisodes();
+
+            tvEpisodes.Select(s => s.Series.VideoId)
+                .Should()
+                .HaveCount(2)
+                .And
+                .BeEquivalentTo(new[] { "tt2222", "tt2223" });
+
+            tvEpisodes.SelectMany(s => s.Episode)
+                .Select(s => s.VideoId)
+                .Should()
+                .HaveCount(2)
+                .And
+                .BeEquivalentTo(new[] { "tt1234", "tt12345" });
+
+        }
+
+        private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId, int seriesId = 1, int episodeId = 1)
         {
             var people = CreatePeople();
             var genres = CreateGenres();
@@ -238,6 +283,8 @@ namespace VideoDB.WebApi.Tests.Services
                     {
                         yield return new TvEpisodeDataModel
                         {
+                            series_id = seriesId,
+                            tv_episode_id = episodeId,
                             episode_imdb_id = imdbId,
                             codec = "codec",
                             first_name = person.FirstName,
@@ -262,7 +309,7 @@ namespace VideoDB.WebApi.Tests.Services
             }
         }
 
-        private IEnumerable<SeriesDataModel> CreateSeriesDataModel(string imdbId)
+        private IEnumerable<SeriesDataModel> CreateSeriesDataModel(string imdbId, int seriesId = 1)
         {
             var people = CreatePeople();
             var genres = CreateGenres();
@@ -276,6 +323,7 @@ namespace VideoDB.WebApi.Tests.Services
                     {
                         yield return new SeriesDataModel
                         {
+                            video_id = seriesId,
                             imdb_id = imdbId,
                             first_name = person.FirstName,
                             genre_name = genre.Name,
@@ -296,7 +344,7 @@ namespace VideoDB.WebApi.Tests.Services
 
 
 
-        private IEnumerable<MovieDataModel> CreateVideoDataModel(string imdbId)
+        private IEnumerable<MovieDataModel> CreateVideoDataModel(string imdbId, int videoId = 1)
         {
             var people = CreatePeople();
             var genres = CreateGenres();
@@ -310,6 +358,7 @@ namespace VideoDB.WebApi.Tests.Services
                     {
                         yield return new MovieDataModel
                         {
+                            video_id = videoId,
                             imdb_id = imdbId,
                             codec = "codec",
                             first_name = person.FirstName,

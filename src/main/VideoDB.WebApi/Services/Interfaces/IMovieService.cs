@@ -12,5 +12,7 @@ namespace Evo.WebApi.Services.Interfaces
     {
         IEnumerable<MovieViewModel> UpsertMovie(MovieRequest video);
         TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode);
+        IEnumerable<MovieViewModel> GetMovies();
+        IEnumerable<TvEpisodeViewModel> GetTvEpisodes();
     }
 }
