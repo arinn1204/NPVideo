@@ -170,7 +170,7 @@ BEGIN
 			
 		COMMIT TRANSACTION;
 
-		SELECT tv_episode_id, episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec,
+		SELECT tv_episode_id, series_id, episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec,
 			first_name, middle_name, last_name, suffix, person_role, genre_name, rating_source, rating_value, @is_updated AS 'updated'
 		FROM video.vw_tv_episodes
 		WHERE tv_episode_id IN (SELECT id FROM #Episode WHERE category = 'TV_EPISODE_ID');

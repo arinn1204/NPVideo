@@ -1,6 +1,6 @@
 ﻿CREATE VIEW [video].[vw_tv_episodes]
 	AS 
-		SELECT tv.tv_episode_id, tv.tv_episode_imdb_id AS 'episode_imdb_id', tv.season_number, tv.episode_number, tv.episode_name, tv.release_date, tv.plot, tv.resolution, tv.codec,
+		SELECT tv.tv_episode_id, tv.video_id AS 'series_id', tv.tv_episode_imdb_id AS 'episode_imdb_id', tv.season_number, tv.episode_number, tv.episode_name, tv.release_date, tv.plot, tv.resolution, tv.codec,
 			p.first_name, p.middle_name, p.last_name, p.suffix, role.role_name AS 'person_role', g.name AS 'genre_name', r.source AS 'rating_source', r.value AS 'rating_value'
 		FROM video.tv_episodes tv WITH (NOLOCK)
 		INNER JOIN video.ratings r WITH (NOLOCK)

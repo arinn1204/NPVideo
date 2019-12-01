@@ -97,7 +97,6 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition13;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition12;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeOfExistingSeries_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeOfExistingSeries_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition16;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition17;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition18;
@@ -105,6 +104,7 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition19;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition20;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition21;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeOfExistingSeries_PretestAction;
             this.ShouldCreateSeriesInVideoData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldCreateEntryInTvEpisodeWhenNotExistData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldReturnExpectedSchemaData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -175,7 +175,6 @@ namespace VideoDB.UnitTests
             rowCountCondition13 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             rowCountCondition12 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             ShouldInsertNewEpisodeOfExistingSeries_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            ShouldInsertNewEpisodeOfExistingSeries_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             rowCountCondition16 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             rowCountCondition17 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             rowCountCondition18 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
@@ -183,6 +182,7 @@ namespace VideoDB.UnitTests
             scalarValueCondition19 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             scalarValueCondition20 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             scalarValueCondition21 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldInsertNewEpisodeOfExistingSeries_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             // 
             // testInitializeAction
             // 
@@ -597,6 +597,82 @@ namespace VideoDB.UnitTests
             rowCountCondition12.ResultSet = 2;
             rowCountCondition12.RowCount = 36;
             // 
+            // ShouldInsertNewEpisodeOfExistingSeries_TestAction
+            // 
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(rowCountCondition16);
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(rowCountCondition17);
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(rowCountCondition18);
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition18);
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition19);
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition20);
+            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition21);
+            resources.ApplyResources(ShouldInsertNewEpisodeOfExistingSeries_TestAction, "ShouldInsertNewEpisodeOfExistingSeries_TestAction");
+            // 
+            // rowCountCondition16
+            // 
+            rowCountCondition16.Enabled = true;
+            rowCountCondition16.Name = "rowCountCondition16";
+            rowCountCondition16.ResultSet = 1;
+            rowCountCondition16.RowCount = 1;
+            // 
+            // rowCountCondition17
+            // 
+            rowCountCondition17.Enabled = true;
+            rowCountCondition17.Name = "rowCountCondition17";
+            rowCountCondition17.ResultSet = 2;
+            rowCountCondition17.RowCount = 1;
+            // 
+            // rowCountCondition18
+            // 
+            rowCountCondition18.Enabled = true;
+            rowCountCondition18.Name = "rowCountCondition18";
+            rowCountCondition18.ResultSet = 3;
+            rowCountCondition18.RowCount = 2;
+            // 
+            // scalarValueCondition18
+            // 
+            scalarValueCondition18.ColumnNumber = 1;
+            scalarValueCondition18.Enabled = true;
+            scalarValueCondition18.ExpectedValue = null;
+            scalarValueCondition18.Name = "scalarValueCondition18";
+            scalarValueCondition18.NullExpected = true;
+            scalarValueCondition18.ResultSet = 3;
+            scalarValueCondition18.RowNumber = 1;
+            // 
+            // scalarValueCondition19
+            // 
+            scalarValueCondition19.ColumnNumber = 2;
+            scalarValueCondition19.Enabled = true;
+            scalarValueCondition19.ExpectedValue = null;
+            scalarValueCondition19.Name = "scalarValueCondition19";
+            scalarValueCondition19.NullExpected = true;
+            scalarValueCondition19.ResultSet = 3;
+            scalarValueCondition19.RowNumber = 1;
+            // 
+            // scalarValueCondition20
+            // 
+            scalarValueCondition20.ColumnNumber = 1;
+            scalarValueCondition20.Enabled = true;
+            scalarValueCondition20.ExpectedValue = null;
+            scalarValueCondition20.Name = "scalarValueCondition20";
+            scalarValueCondition20.NullExpected = true;
+            scalarValueCondition20.ResultSet = 3;
+            scalarValueCondition20.RowNumber = 2;
+            // 
+            // scalarValueCondition21
+            // 
+            scalarValueCondition21.ColumnNumber = 2;
+            scalarValueCondition21.Enabled = true;
+            scalarValueCondition21.ExpectedValue = null;
+            scalarValueCondition21.Name = "scalarValueCondition21";
+            scalarValueCondition21.NullExpected = true;
+            scalarValueCondition21.ResultSet = 3;
+            scalarValueCondition21.RowNumber = 2;
+            // 
+            // ShouldInsertNewEpisodeOfExistingSeries_PretestAction
+            // 
+            resources.ApplyResources(ShouldInsertNewEpisodeOfExistingSeries_PretestAction, "ShouldInsertNewEpisodeOfExistingSeries_PretestAction");
+            // 
             // ShouldCreateSeriesInVideoData
             // 
             this.ShouldCreateSeriesInVideoData.PosttestAction = null;
@@ -674,82 +750,6 @@ namespace VideoDB.UnitTests
             this.ShouldInsertNewEpisodeOfExistingSeriesData.PosttestAction = null;
             this.ShouldInsertNewEpisodeOfExistingSeriesData.PretestAction = ShouldInsertNewEpisodeOfExistingSeries_PretestAction;
             this.ShouldInsertNewEpisodeOfExistingSeriesData.TestAction = ShouldInsertNewEpisodeOfExistingSeries_TestAction;
-            // 
-            // ShouldInsertNewEpisodeOfExistingSeries_TestAction
-            // 
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(rowCountCondition16);
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(rowCountCondition17);
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(rowCountCondition18);
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition18);
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition19);
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition20);
-            ShouldInsertNewEpisodeOfExistingSeries_TestAction.Conditions.Add(scalarValueCondition21);
-            resources.ApplyResources(ShouldInsertNewEpisodeOfExistingSeries_TestAction, "ShouldInsertNewEpisodeOfExistingSeries_TestAction");
-            // 
-            // ShouldInsertNewEpisodeOfExistingSeries_PretestAction
-            // 
-            resources.ApplyResources(ShouldInsertNewEpisodeOfExistingSeries_PretestAction, "ShouldInsertNewEpisodeOfExistingSeries_PretestAction");
-            // 
-            // rowCountCondition16
-            // 
-            rowCountCondition16.Enabled = true;
-            rowCountCondition16.Name = "rowCountCondition16";
-            rowCountCondition16.ResultSet = 1;
-            rowCountCondition16.RowCount = 1;
-            // 
-            // rowCountCondition17
-            // 
-            rowCountCondition17.Enabled = true;
-            rowCountCondition17.Name = "rowCountCondition17";
-            rowCountCondition17.ResultSet = 2;
-            rowCountCondition17.RowCount = 1;
-            // 
-            // rowCountCondition18
-            // 
-            rowCountCondition18.Enabled = true;
-            rowCountCondition18.Name = "rowCountCondition18";
-            rowCountCondition18.ResultSet = 3;
-            rowCountCondition18.RowCount = 2;
-            // 
-            // scalarValueCondition18
-            // 
-            scalarValueCondition18.ColumnNumber = 1;
-            scalarValueCondition18.Enabled = true;
-            scalarValueCondition18.ExpectedValue = null;
-            scalarValueCondition18.Name = "scalarValueCondition18";
-            scalarValueCondition18.NullExpected = true;
-            scalarValueCondition18.ResultSet = 3;
-            scalarValueCondition18.RowNumber = 1;
-            // 
-            // scalarValueCondition19
-            // 
-            scalarValueCondition19.ColumnNumber = 2;
-            scalarValueCondition19.Enabled = true;
-            scalarValueCondition19.ExpectedValue = null;
-            scalarValueCondition19.Name = "scalarValueCondition19";
-            scalarValueCondition19.NullExpected = true;
-            scalarValueCondition19.ResultSet = 3;
-            scalarValueCondition19.RowNumber = 1;
-            // 
-            // scalarValueCondition20
-            // 
-            scalarValueCondition20.ColumnNumber = 1;
-            scalarValueCondition20.Enabled = true;
-            scalarValueCondition20.ExpectedValue = null;
-            scalarValueCondition20.Name = "scalarValueCondition20";
-            scalarValueCondition20.NullExpected = true;
-            scalarValueCondition20.ResultSet = 3;
-            scalarValueCondition20.RowNumber = 2;
-            // 
-            // scalarValueCondition21
-            // 
-            scalarValueCondition21.ColumnNumber = 2;
-            scalarValueCondition21.Enabled = true;
-            scalarValueCondition21.ExpectedValue = null;
-            scalarValueCondition21.Name = "scalarValueCondition21";
-            scalarValueCondition21.NullExpected = true;
-            scalarValueCondition21.ResultSet = 3;
-            scalarValueCondition21.RowNumber = 2;
             // 
             // AddTvEpisodeTests
             // 
