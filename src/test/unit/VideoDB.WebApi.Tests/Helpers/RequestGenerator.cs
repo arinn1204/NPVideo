@@ -31,7 +31,7 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .Generate();
         }
 
-        public static TvEpisodeRequest GetTvEpisodeRequest(int videoId = 0, int tvEpisodeId = 0)
+        public static TvEpisodeRequest GetTvEpisodeRequest(int seriesId = 0, int tvEpisodeId = 0)
         {
             return new AutoFaker<TvEpisodeRequest>()
                 .RuleFor(r => r.Actors, r => GetStars(3, PersonType.Actor))
@@ -40,19 +40,21 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.Producers, r => GetStars(3, PersonType.Producer))
                 .RuleFor(r => r.Genres, r => GetGenres(3))
                 .RuleFor(r => r.Ratings, r => GetRatings(2))
-                .RuleFor(r => r.VideoId, r => $"tt{(videoId == 0 ? r.Random.Number(999999999) : videoId)}")
+                .RuleFor(r => r.VideoId, r => $"tt{(seriesId == 0 ? r.Random.Number(999999999) : seriesId)}")
                 .RuleFor(r => r.TvEpisodeId, r => $"tt{(tvEpisodeId == 0 ? r.Random.Number(999999999) : tvEpisodeId)}")
-                .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
+                .RuleFor(r => r.Title, r => "Series Title")
                 .RuleFor(r => r.EpisodeName, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
-                .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
+                .RuleFor(r => r.Plot, r => "Series Plot")
                 .RuleFor(r => r.EpisodePlot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
-                .RuleFor(r => r.MpaaRating, r => GenerateString(r, 7))
+                .RuleFor(r => r.MpaaRating, r => "TV/14")
                 .RuleFor(r => r.Runtime, r => r.Finance.Amount(0, 999, 2))
-                .RuleFor(r => r.EpisodeNumber, r => r.Random.Number(min: 1))
-                .RuleFor(r => r.SeasonNumber, r => r.Random.Number(min: 1))
+                .RuleFor(r => r.EpisodeNumber, r => r.Random.Number(min: 1, max: 100))
+                .RuleFor(r => r.SeasonNumber, r => r.Random.Number(min: 1, max: 100))
                 .RuleFor(r => r.Codec, r => GenerateString(r, 8))
                 .RuleFor(r => r.Resolution, r => GenerateString(r, 16))
-                .RuleFor(r => r.Extended, r => GenerateString(r, 16));
+                .RuleFor(r => r.Extended, r => GenerateString(r, 16))
+                .RuleFor(r => r.ReleaseDate, r => new DateTime(1753, 8, 7))
+                .Generate();
         }
 
         public static IEnumerable<StarRequest> GetStars(int number, PersonType role)

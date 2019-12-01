@@ -35,6 +35,27 @@ namespace VideoDB.WebApi.Repositories
 
         }
 
+        public (IEnumerable<SeriesDataModel> videoDataModels, 
+            IEnumerable<TvEpisodeDataModel> tvDataModels)
+            GetTvEpisodes()
+        {
+            var tvEpisodeCommand =
+    @"SELECT video_id, imdb_id, title, plot, release_date,
+    genre_name, first_name, middle_name, last_name, 
+    suffix, person_role, rating_source, rating_value
+FROM video.vw_series
+
+SELECT tv_episode_id, episode_imdb_id, season_number, episode_number,
+    episode_name, release_date, plot, resolution, codec,
+    first_name, middle_name, last_name, suffix,
+    person_role, genre_name, rating_source, rating_value
+FROM video.vw_tv_episodes";
+            using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
+            var command = new SqlCommand(tvEpisodeCommand, sqlConnection);
+
+            return ReadFromDatabase(command);
+        }
+
         private (IEnumerable<SeriesDataModel> videoDataModels,
                IEnumerable<TvEpisodeDataModel> tvDataModels) ReadFromDatabase(SqlCommand command)
         {

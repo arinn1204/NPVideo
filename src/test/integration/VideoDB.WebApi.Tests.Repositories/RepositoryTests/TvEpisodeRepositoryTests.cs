@@ -14,6 +14,7 @@ using System.Text;
 using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Repositories;
 using VideoDB.WebApi.Tests.Helpers;
+using VideoDB.WebApi.Tests.Integration.Features.Steps.Support;
 using VideoDB.WebApi.Tests.Integration.RepositoryTests;
 
 namespace VideoDB.WebApi.Tests.Repositories.RepositoryTests
@@ -78,6 +79,65 @@ WHERE episode_imdb_id = 'tt134133'";
             exception.Should()
                 .Throw<EvoException>()
                 .WithMessage("Procedure or function 'usp_add_tv_episode' expects parameter '@episode_imdb_id', which was not supplied.");
+        }
+
+        [Test]
+        public void ShouldRetrieveAllEpisodesInDatastore()
+        {
+            foreach (var id in Enumerable.Range(1, 10))
+            {
+                var request = RequestGenerator.GetTvEpisodeRequest(100, id);
+                Database.AddRequestItem(request, _config);
+            }
+
+
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var episodes = repository.GetTvEpisodes();
+
+            episodes
+                .tvDataModels
+                .Select(s => s.episode_imdb_id)
+                .Distinct()
+                .Should()
+                .HaveCount(10)
+                .And
+                .BeEquivalentTo(new[]
+                {
+                    "tt1","tt2","tt3","tt4","tt5","tt6","tt7","tt8","tt9","tt10"
+                });
+
+            episodes
+                .videoDataModels
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Should()
+                .HaveCount(1)
+                .And
+                .BeEquivalentTo(new[]
+                {
+                    "tt100"
+                });
+        }
+
+        [Test]
+        public void ShouldReturnEmptyEnumerableIfNoEpisodesInDataStore()
+        {
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var episodes = repository.GetTvEpisodes();
+
+            episodes
+                .tvDataModels
+                .Select(s => s.episode_imdb_id)
+                .Distinct()
+                .Should()
+                .BeEmpty();
+
+            episodes
+                .videoDataModels
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Should()
+                .BeEmpty();
         }
 
     }

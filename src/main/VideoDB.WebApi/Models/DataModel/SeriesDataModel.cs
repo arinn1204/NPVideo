@@ -9,6 +9,7 @@ namespace Evo.WebApi.Models.DataModel
         Justification = "Used for database model mapping")]
     public class SeriesDataModel
     {
+        public int video_id { get; set; }
         public string imdb_id { get; set; }
         public string title { get; set; }
         public string plot { get; set; }

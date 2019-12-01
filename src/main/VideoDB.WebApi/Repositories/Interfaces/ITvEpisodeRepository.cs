@@ -9,5 +9,8 @@ namespace VideoDB.WebApi.Repositories.Interfaces
 
         (IEnumerable<SeriesDataModel> videoDataModels, IEnumerable<TvEpisodeDataModel> tvDataModels)
             UpsertTvEpisode(TvEpisodeRequest tvEpisode);
+
+        (IEnumerable<SeriesDataModel> videoDataModels, IEnumerable<TvEpisodeDataModel> tvDataModels)
+            GetTvEpisodes();
     }
 }
