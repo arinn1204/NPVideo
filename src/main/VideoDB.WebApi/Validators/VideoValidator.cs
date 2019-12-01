@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VideoDB.WebApi.Validators
 {
-    public class VideoValidator : AbstractValidator<VideoRequest>
+    public class VideoValidator : AbstractValidator<MovieRequest>
     {
         public VideoValidator()
         {

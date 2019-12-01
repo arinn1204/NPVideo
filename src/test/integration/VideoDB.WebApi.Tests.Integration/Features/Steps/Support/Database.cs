@@ -10,7 +10,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Support
 {
     public static class Database
     {
-        public static void AddRequestItem(VideoRequest request, IConfiguration configuration)
+        public static void AddRequestItem(MovieRequest request, IConfiguration configuration)
         {
             var connection = configuration.CreateConnectionString();
             using var sqlConnection = new SqlConnection(connection);
@@ -24,7 +24,7 @@ VALUES ('{request.VideoId}', '{request.Title}', '{request.MpaaRating}', '{reques
 
         public static void AddRequestItem(TvEpisodeRequest request, IConfiguration configuration)
         {
-            AddRequestItem(request as VideoRequest, configuration);
+            AddRequestItem(request as MovieRequest, configuration);
 
             var videoSqlCommand = $@"SELECT video_id
 FROM [video].[videos]

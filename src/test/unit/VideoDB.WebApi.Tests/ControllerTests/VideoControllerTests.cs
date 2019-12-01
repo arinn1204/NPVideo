@@ -18,24 +18,24 @@ namespace Evo.WebApi.Tests.Controllers
         [SetUp]
         public void Setup()
         {
-            _service = new Mock<IVideoService>();
+            _service = new Mock<IMovieService>();
 
-            _controller = new VideosController(_service.Object);
+            _controller = new MoviesController(_service.Object);
         }
 
-        private Mock<IVideoService> _service;
-        private VideosController _controller;
+        private Mock<IMovieService> _service;
+        private MoviesController _controller;
 
         [Test]
         public void ShouldReturnCreatedWhenSuccessfulCreation()
         {
-            var request = new VideoRequest()
+            var request = new MovieRequest()
             {
                 VideoId = "tt1234"
             };
 
-            _service.Setup(s => s.UpsertVideo(request))
-                .Returns(new VideoViewModel
+            _service.Setup(s => s.UpsertMovie(request))
+                .Returns(new MovieViewModel
                 {
                     VideoId = "tt1234"
                 });
@@ -43,17 +43,17 @@ namespace Evo.WebApi.Tests.Controllers
             var result = _controller.UpsertVideo(request) as CreatedResult;
 
             result.Should().NotBe(null);
-            result.Location.Should().Be("/videos/tt1234");
-            (result.Value as VideoViewModel).VideoId.Should().Be("tt1234");
+            result.Location.Should().Be("/videos/movies/tt1234");
+            (result.Value as MovieViewModel).VideoId.Should().Be("tt1234");
         }
 
         [Test]
         public void ShouldReturnInternalServerErrorWhenAnyExceptionThrown()
         {
-            _service.Setup(s => s.UpsertVideo(It.IsAny<VideoRequest>()))
+            _service.Setup(s => s.UpsertMovie(It.IsAny<MovieRequest>()))
                 .Throws(new Exception());
 
-            var objectResult = _controller.UpsertVideo(new VideoRequest()) as ObjectResult;
+            var objectResult = _controller.UpsertVideo(new MovieRequest()) as ObjectResult;
             var videoResult = objectResult.Value as ErrorResponse;
             Assert.That(videoResult, Is.Not.Null);
             Assert.That(objectResult.StatusCode, Is.EqualTo(StatusCodes.Status500InternalServerError));
@@ -63,13 +63,13 @@ namespace Evo.WebApi.Tests.Controllers
         [Test]
         public void ShouldReturnNoContentWhenSuccessfulUpdate()
         {
-            var request = new VideoRequest()
+            var request = new MovieRequest()
             {
                 VideoId = "tt1234"
             };
 
-            _service.Setup(s => s.UpsertVideo(request))
-                .Returns(new VideoViewModel
+            _service.Setup(s => s.UpsertMovie(request))
+                .Returns(new MovieViewModel
                 {
                     VideoId = "tt1234",
                     IsUpdated = true

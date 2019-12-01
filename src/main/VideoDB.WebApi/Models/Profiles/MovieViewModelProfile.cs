@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace VideoDB.WebApi.Models.Profiles
 {
-    public class VideoViewModelProfile : Profile
+    public class MovieViewModelProfile : Profile
     {
-        public VideoViewModelProfile()
+        public MovieViewModelProfile()
         {
-            CreateMap<IEnumerable<VideoDataModel>, VideoViewModel>()
+            CreateMap<IEnumerable<MovieDataModel>, MovieViewModel>()
                 .ForMember(dest => dest.VideoId, src => src.MapFrom(
                     m => m.Select(s => s.imdb_id)
                           .Distinct()
@@ -77,7 +77,7 @@ namespace VideoDB.WebApi.Models.Profiles
                           .Select(s => CreateStarModel(s))));
         }
 
-        private StarViewModel CreateStarModel(VideoDataModel source)
+        private StarViewModel CreateStarModel(MovieDataModel source)
         {
             Enum.TryParse<PersonType>(source.person_role, out var role);
             return new StarViewModel

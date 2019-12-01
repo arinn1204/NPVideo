@@ -13,14 +13,14 @@ using VideoDB.WebApi.Repositories.Interfaces;
 
 namespace VideoDB.WebApi.Services
 {
-    public class VideoService : IVideoService
+    public class MovieService : IMovieService
     {
-        private readonly IVideoRepository _videoRepository;
+        private readonly IMovieRepository _videoRepository;
         private readonly ITvEpisodeRepository _tvEpisodeRepository;
         private readonly IMapper _mapper;
 
-        public VideoService(
-            IVideoRepository videoRepository,
+        public MovieService(
+            IMovieRepository videoRepository,
             ITvEpisodeRepository tvEpisodeRepository,
             IMapper mapper)
         {
@@ -40,11 +40,11 @@ namespace VideoDB.WebApi.Services
             };
         }
 
-        public VideoViewModel UpsertVideo(VideoRequest video)
+        public MovieViewModel UpsertMovie(MovieRequest video)
         {
-            var dataModel = _videoRepository.UpsertVideo(video);
+            var dataModel = _videoRepository.UpsertMovie(video);
             
-            var videoViewModel = _mapper.Map<VideoViewModel>(dataModel);
+            var videoViewModel = _mapper.Map<MovieViewModel>(dataModel);
             videoViewModel.VideoType = VideoType.Movie;
 
             return videoViewModel;

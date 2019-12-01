@@ -5,7 +5,7 @@ using Evo.WebApi.Models.Enums;
 
 namespace Evo.WebApi.Models.ViewModels
 {
-    public class VideoViewModel
+    public class MovieViewModel
     {
         public string VideoId { get; set; }
         public string Title { get; set; }

@@ -17,13 +17,13 @@ namespace VideoDB.WebApi.Tests.ControllerTests
     [TestFixture]
     class TvEpisodeControllerTests
     {
-        private Mock<IVideoService> _service;
+        private Mock<IMovieService> _service;
         private TvEpisodesController _controller;
 
         [SetUp]
         public void Setup()
         {
-            _service = new Mock<IVideoService>();
+            _service = new Mock<IMovieService>();
 
             _controller = new TvEpisodesController(_service.Object);
         }

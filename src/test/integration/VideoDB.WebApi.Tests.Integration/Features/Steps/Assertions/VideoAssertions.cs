@@ -23,22 +23,22 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
             _request = container.Resolve<object>(name: "RequestBody");
         }
 
-        [Then(@"the user receives a copy of the new (.*)")]
+        [Then(@"the user receives a copy of the new (movie|tv episode)")]
         public async Task ThenTheUserReceivesACopyOfTheNewVideo(string typeOfMedia)
         {
             var contentString = await _response.Content.ReadAsStringAsync();
 
             switch (typeOfMedia.ToUpperInvariant())
             {
-                case "VIDEO":
+                case "MOVIE":
                     var videoContent =
-                        JsonConvert.DeserializeObject<VideoViewModel>(
+                        JsonConvert.DeserializeObject<MovieViewModel>(
                             contentString);
 
                     videoContent.VideoId.Should().NotBeNullOrEmpty();
                     videoContent.VideoId
                         .Should()
-                        .BeEquivalentTo((_request as VideoRequest).VideoId);
+                        .BeEquivalentTo((_request as MovieRequest).VideoId);
                     break;
                 case "TV EPISODE":
                     var tvEpisodeContent = JsonConvert.DeserializeObject<TvEpisodeViewModel>(contentString);

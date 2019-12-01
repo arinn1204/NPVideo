@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using Evo.WebApi.Exceptions;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -20,16 +21,17 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _client = container.Resolve<HttpClient>();
         }
 
-        [When(@"the user (.*) an? (?:new|existing)\s?video")]
-        public async Task WhenTheUserCreatesANewVideo(string operation)
+        [When(@"the user (.*) an? (?:new|existing) (movie|tv episode)")]
+        public async Task WhenTheUserCreatesANewVideo(string operation, string mediaType)
         {
-            await CallService(operation, "videos");
-        }
+            var path = mediaType.ToUpperInvariant() switch
+            {
+                "MOVIE" => "videos/movies",
+                "TV EPISODE" => "videos/tvEpisodes",
+                _ => throw new EvoException($"'{mediaType}' is not supported.")
+            };
 
-        [When(@"the user (.*) an? (?:new|existing) tv episode")]
-        public async Task WhenTheUserCreatesANewTvEpisode(string operation)
-        {
-            await CallService(operation, "videos/tvEpisodes");
+            await CallService(operation, path);
         }
 
         private async Task CallService(string operation, string endpoint)

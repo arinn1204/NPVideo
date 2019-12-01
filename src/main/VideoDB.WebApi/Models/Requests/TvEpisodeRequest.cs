@@ -4,7 +4,7 @@ using Evo.WebApi.Models.Enums;
 
 namespace Evo.WebApi.Models.Requests
 {
-    public class TvEpisodeRequest : VideoRequest
+    public class TvEpisodeRequest : MovieRequest
     {
         public new VideoType Type => VideoType.Episode;
 

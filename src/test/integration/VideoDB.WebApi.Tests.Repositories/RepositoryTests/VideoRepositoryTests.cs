@@ -27,9 +27,9 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
         [Test]
         public void ShouldInsertVideo()
         {
-            var repository = _fixture.Create<VideoRepository>();
-            var request = RequestGenerator.GetVideoRequest("134132");
-            var videoEntered = repository.UpsertVideo(request);
+            var repository = _fixture.Create<MovieRepository>();
+            var request = RequestGenerator.GetMovieRequest("134132");
+            var videoEntered = repository.UpsertMovie(request);
 
             videoEntered.Count().Should().Be(60);
             videoEntered.All(a => a.imdb_id == "tt134132").Should().BeTrue();
@@ -54,14 +54,14 @@ WHERE imdb_id = 'tt134132'";
         [Test]
         public void ShouldThrowExceptionWhenRequestIsInvalid()
         {
-            var repository = _fixture.Create<VideoRepository>();
-            var request = RequestGenerator.GetVideoRequest();
+            var repository = _fixture.Create<MovieRepository>();
+            var request = RequestGenerator.GetMovieRequest();
 
             request.Actors
                 .First()
                 .Modify(gr => gr.FirstName, null);
 
-            Action exception = () => repository.UpsertVideo(request);
+            Action exception = () => repository.UpsertMovie(request);
 
             exception.Should()
                 .Throw<EvoException>()

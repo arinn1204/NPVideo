@@ -12,14 +12,14 @@ using Newtonsoft.Json;
 
 namespace Evo.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/videos/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class VideosController : Controller
+    public class MoviesController : Controller
     {
-        private readonly IVideoService _videoService;
+        private readonly IMovieService _videoService;
 
-        public VideosController(IVideoService videoService)
+        public MoviesController(IMovieService videoService)
         {
             _videoService = videoService;
         }
@@ -27,12 +27,12 @@ namespace Evo.WebApi.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        public IActionResult UpsertVideo([FromBody] VideoRequest request)
+        public IActionResult UpsertVideo([FromBody] MovieRequest request)
         {
-            VideoViewModel result;
+            MovieViewModel result;
             try
             {
-                result = _videoService.UpsertVideo(request);
+                result = _videoService.UpsertMovie(request);
             }
             catch(Exception e)
             {
@@ -46,7 +46,7 @@ namespace Evo.WebApi.Controllers
 
             return result.IsUpdated
                 ? NoContent() as IActionResult
-                : Created($"/videos/{request.VideoId}", result) as IActionResult;
+                : Created($"/videos/movies/{request.VideoId}", result) as IActionResult;
         }
     }
 }

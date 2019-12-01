@@ -6,7 +6,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Evo.WebApi.Models.Requests
 {
-    public class VideoRequest
+    public class MovieRequest
     {
         public string VideoId { get; set; }
         public string Title { get; set; }

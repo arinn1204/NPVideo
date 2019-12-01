@@ -23,7 +23,7 @@ namespace VideoDB.WebApi.Tests.Services
     public class VideoServiceTests
     {
         private Fixture _fixture;
-        private Mock<IVideoRepository> _videoRepo;
+        private Mock<IMovieRepository> _videoRepo;
         private Mock<ITvEpisodeRepository> _tvRepo;
 
         [SetUp]
@@ -39,24 +39,24 @@ namespace VideoDB.WebApi.Tests.Services
             var mapper = new Mapper(mapperConfig);
             _fixture.Inject<IMapper>(mapper);
 
-            _videoRepo = _fixture.Freeze<Mock<IVideoRepository>>();
+            _videoRepo = _fixture.Freeze<Mock<IMovieRepository>>();
             _tvRepo = _fixture.Freeze<Mock<ITvEpisodeRepository>>();
         }
 
         [Test]
         public void ShouldMapVideoDatamodelToViewModel()
         {
-            _videoRepo.Setup(s => s.UpsertVideo(It.IsAny<VideoRequest>()))
+            _videoRepo.Setup(s => s.UpsertMovie(It.IsAny<MovieRequest>()))
                 .Returns(CreateVideoDataModel("tt1234"));
 
-            var service = _fixture.Create<VideoService>();
+            var service = _fixture.Create<MovieService>();
 
 
-            var result = service.UpsertVideo(RequestGenerator.GetVideoRequest());
+            var result = service.UpsertMovie(RequestGenerator.GetMovieRequest());
 
             result.Should()
                 .BeEquivalentTo(
-                new VideoViewModel
+                new MovieViewModel
                 {
                     VideoId = "tt1234",
                     Codec = "codec",
@@ -116,7 +116,7 @@ namespace VideoDB.WebApi.Tests.Services
             _tvRepo.Setup(s => s.UpsertTvEpisode(It.IsAny<TvEpisodeRequest>()))
                 .Returns((CreateSeriesDataModel("tt2222"), CreateEpisodeModel("tt1234")));
 
-            var service = _fixture.Create<VideoService>();
+            var service = _fixture.Create<MovieService>();
 
 
             var result = service.UpsertTvEpisode(RequestGenerator.GetTvEpisodeRequest());
@@ -296,7 +296,7 @@ namespace VideoDB.WebApi.Tests.Services
 
 
 
-        private IEnumerable<VideoDataModel> CreateVideoDataModel(string imdbId)
+        private IEnumerable<MovieDataModel> CreateVideoDataModel(string imdbId)
         {
             var people = CreatePeople();
             var genres = CreateGenres();
@@ -308,7 +308,7 @@ namespace VideoDB.WebApi.Tests.Services
                 {
                     foreach (var rating in ratings)
                     {
-                        yield return new VideoDataModel
+                        yield return new MovieDataModel
                         {
                             imdb_id = imdbId,
                             codec = "codec",

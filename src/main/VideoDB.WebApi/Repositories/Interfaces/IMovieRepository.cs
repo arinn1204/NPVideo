@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Evo.WebApi.Repositories.Interfaces
 {
-    public interface IVideoRepository
+    public interface IMovieRepository
     {
-        IEnumerable<VideoDataModel> UpsertVideo(VideoRequest video);
+        IEnumerable<MovieDataModel> UpsertMovie(MovieRequest video);
     }
 }

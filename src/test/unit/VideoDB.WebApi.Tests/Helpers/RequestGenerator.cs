@@ -10,9 +10,9 @@ namespace VideoDB.WebApi.Tests.Helpers
 {
     public class RequestGenerator
     {
-        public static VideoRequest GetVideoRequest(string id = null)
+        public static MovieRequest GetMovieRequest(string id = null)
         {
-            return new AutoFaker<VideoRequest>()
+            return new AutoFaker<MovieRequest>()
                 .RuleFor(r => r.Actors, r => GetStars(3, PersonType.Actor))
                 .RuleFor(r => r.Directors, r => GetStars(1, PersonType.Director))
                 .RuleFor(r => r.Writers, r => GetStars(3, PersonType.Writer))

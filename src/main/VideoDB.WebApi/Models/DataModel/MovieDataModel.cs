@@ -7,7 +7,7 @@ namespace Evo.WebApi.Models.DataModel
         "Style",
         "IDE1006:Naming Styles",
         Justification = "Used for database model mapping")]
-    public class VideoDataModel
+    public class MovieDataModel
     {
         public string imdb_id { get; set; }
         public string movie_title { get; set; }

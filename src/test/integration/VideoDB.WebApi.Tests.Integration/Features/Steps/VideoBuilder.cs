@@ -22,12 +22,12 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _container = container;
         }
 
-        [Given(@"a new (.*)")]
+        [Given(@"a new (movie|tv episode)")]
         public void GivenANewVideo(string typeOfContent)
         {
             var request = typeOfContent.ToUpperInvariant() switch
             {
-                "VIDEO" => RequestGenerator.GetVideoRequest(),
+                "MOVIE" => RequestGenerator.GetMovieRequest(),
                 "TV EPISODE" => RequestGenerator.GetTvEpisodeRequest(),
                 _ => throw new Exception($"{typeOfContent} is not currently supported.")
             };
@@ -35,15 +35,15 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _container.RegisterInstanceAs<object>(request, name: "RequestBody");
         }
 
-        [Given(@"a (.*) already exists in the record")]
+        [Given(@"a (movie|tv episode) already exists in the record")]
         public void GivenAVideoAlreadyExistsInTheRecord(string typeOfContent)
         {
             object request;
             switch (typeOfContent.ToUpperInvariant())
             {
-                case "VIDEO":
-                    request = RequestGenerator.GetVideoRequest();
-                    Database.AddRequestItem(request as VideoRequest, _container.Resolve<IConfiguration>());
+                case "MOVIE":
+                    request = RequestGenerator.GetMovieRequest();
+                    Database.AddRequestItem(request as MovieRequest, _container.Resolve<IConfiguration>());
                     break;
                 case "TV EPISODE":
                     request = RequestGenerator.GetTvEpisodeRequest();
@@ -54,7 +54,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             };
 
 
-            _container.RegisterInstanceAs<object>(request, name: "RequestBody");
+            _container.RegisterInstanceAs(request, name: "RequestBody");
         }
 
     }

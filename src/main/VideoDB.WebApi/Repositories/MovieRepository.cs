@@ -13,16 +13,16 @@ using VideoDB.WebApi.Repositories.Helpers;
 
 namespace VideoDB.WebApi.Repositories
 {
-    public class VideoRepository : IVideoRepository
+    public class MovieRepository : IMovieRepository
     {
         private readonly IConfiguration _configuration;
 
-        public VideoRepository(IConfiguration configuration)
+        public MovieRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public IEnumerable<VideoDataModel> UpsertVideo(VideoRequest video)
+        public IEnumerable<MovieDataModel> UpsertMovie(MovieRequest video)
         {
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
             using var genres = CreateSqlParameter.CreateDataTable(video.Genres);
@@ -39,7 +39,7 @@ namespace VideoDB.WebApi.Repositories
             };
             AddParametersToProcedure(video, genres, stars, ratings, command);
 
-            return ReadFromDatabase<VideoDataModel>(command);
+            return ReadFromDatabase<MovieDataModel>(command);
         }
 
         private IEnumerable<TDataModel> ReadFromDatabase<TDataModel>(SqlCommand command, int resultSet = 1)
@@ -75,7 +75,7 @@ namespace VideoDB.WebApi.Repositories
         }
 
         private void AddParametersToProcedure(
-            VideoRequest video,
+            MovieRequest video,
             DataTable genres,
             DataTable stars,
             DataTable ratings,
