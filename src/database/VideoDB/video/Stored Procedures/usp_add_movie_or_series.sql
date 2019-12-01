@@ -17,7 +17,7 @@ BEGIN
 
 	DECLARE @video_id INT,
 		@created_time DATETIME = GETDATE(),
-		@created_user VARCHAR = (SELECT SYSTEM_USER),
+		@created_user VARCHAR(32) = (SELECT SYSTEM_USER),
 		@is_updated BIT = 0;
 		
 

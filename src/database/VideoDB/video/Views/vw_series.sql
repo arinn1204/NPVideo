@@ -4,26 +4,23 @@
 			,g.name AS 'genre_name'
 			,p.first_name, p.middle_name, p.last_name, p.suffix
 			,roles.role_name AS 'person_role'
-			,r.source AS 'rating_source', 
-			(SELECT AVG(r1.value) 
-				FROM video.ratings r1 
-				WHERE r1.source = r.source
-				GROUP BY r1.source) AS 'rating_value'
-		FROM video.videos v
-			WITH (NOLOCK)
-		JOIN video.ratings r
-			ON r.video_id = v.video_id
-				AND r.tv_episode_id IS NULL
-		JOIN video.genre_videos gv
+			,ilv.value AS 'rating_value', ilv.source AS 'rating_source'
+		FROM video.videos v WITH (NOLOCK)
+		JOIN video.genre_videos gv WITH (NOLOCK)
 			ON gv.video_id = v.video_id
-		JOIN video.person_videos pv
+		JOIN video.person_videos pv WITH (NOLOCK)
 			ON pv.video_id = v.video_id
-		JOIN video.genres g
+		JOIN video.genres g WITH (NOLOCK)
 			ON g.genre_id = gv.genre_id
-		JOIN video.persons p
+		JOIN video.persons p WITH (NOLOCK)
 			ON p.person_id = pv.person_id
-		JOIN video.person_roles pr
+		JOIN video.person_roles pr WITH (NOLOCK)
 			ON pr.person_id = p.person_id
-		JOIN video.roles roles
+		JOIN video.roles roles WITH (NOLOCK)
 			ON roles.role_id = pr.role_id
+		JOIN (SELECT video_id, source, AVG(value) AS 'value'
+				FROM video.ratings WITH (NOLOCK)
+				WHERE tv_episode_id IS NULL
+				GROUP BY video_id, source, value) ilv 
+			ON ilv.video_id = v.video_id
 	WHERE v.video_type = 'series';

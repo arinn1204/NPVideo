@@ -24,7 +24,7 @@ BEGIN
 			DECLARE @series_video_id INT,
 				@tv_episode_id INT,
 				@created_time DATETIME = GETDATE(),
-				@created_user VARCHAR = (SELECT SYSTEM_USER),
+				@created_user VARCHAR(32) = (SELECT SYSTEM_USER),
 				@is_updated BIT = 0;
 
 			CREATE TABLE #Episode(
