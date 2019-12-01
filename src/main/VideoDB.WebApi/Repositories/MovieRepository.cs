@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using VideoDB.WebApi.Extensions;
+using VideoDB.WebApi.Models.Extensions;
 using VideoDB.WebApi.Repositories.Helpers;
 
 namespace VideoDB.WebApi.Repositories
@@ -25,19 +26,7 @@ namespace VideoDB.WebApi.Repositories
         public IEnumerable<MovieDataModel> UpsertMovie(MovieRequest video)
         {
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
-            using var genres = CreateSqlParameter.CreateDataTable(video.Genres);
-            using var stars = CreateSqlParameter.CreateDataTable(
-                video.Actors
-                    .Concat(video.Producers)
-                    .Concat(video.Directors)
-                    .Concat(video.Writers));
-            using var ratings = CreateSqlParameter.CreateDataTable(video.Ratings);
-
-            var command = new SqlCommand("[video].[usp_add_movie_or_series]", sqlConnection)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            AddParametersToProcedure(video, genres, stars, ratings, command);
+            var command = video.CreateMovieCommand(sqlConnection);
 
             return ReadFromDatabase<MovieDataModel>(command);
         }
@@ -72,31 +61,6 @@ namespace VideoDB.WebApi.Repositories
 
 
             return dataModels;
-        }
-
-        private void AddParametersToProcedure(
-            MovieRequest video,
-            DataTable genres,
-            DataTable stars,
-            DataTable ratings,
-            SqlCommand command)
-        {
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@imdb_id", video.VideoId));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@title", video.Title));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@mpaa_rating", video.MpaaRating));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@runtime",
-                video.Runtime.HasValue
-                ? video.Runtime.Value.ToString()
-                : "null"));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@plot", video.Plot));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@video_type", video.Type.ToString()));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@release_date", video.ReleaseDate));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@resolution", video.Resolution));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@codec", video.Codec));
-            command.Parameters.Add(CreateSqlParameter.CreateParameter("@extended", video.Extended));
-            CreateSqlParameter.AddTableParameter("@genres", genres, command);
-            CreateSqlParameter.AddTableParameter("@persons", stars, command);
-            CreateSqlParameter.AddTableParameter("@ratings", ratings, command);
         }
     }
 }

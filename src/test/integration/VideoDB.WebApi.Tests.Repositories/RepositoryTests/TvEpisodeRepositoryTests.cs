@@ -25,7 +25,7 @@ namespace VideoDB.WebApi.Tests.Repositories.RepositoryTests
         public void ShouldInsertTvEpisodeAndSeries()
         {
             var repository = _fixture.Create<TvEpisodeRepository>();
-            var request = RequestGenerator.GetTvEpisodeRequest("134132", "134133");
+            var request = RequestGenerator.GetTvEpisodeRequest(134132, 134133);
             var videoEntered = repository.UpsertTvEpisode(request);
 
             videoEntered.videoDataModels.Count().Should().Be(60);

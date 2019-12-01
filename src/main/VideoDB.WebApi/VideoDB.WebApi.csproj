@@ -5,7 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Models\Extensions" />
         <Folder Include="Models\Interfaces" />
     </ItemGroup>
 
