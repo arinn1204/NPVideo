@@ -10,7 +10,7 @@ namespace VideoDB.WebApi.Tests.Helpers
 {
     public class RequestGenerator
     {
-        public static VideoRequest GetVideoRequest(string id = "tt134132")
+        public static VideoRequest GetVideoRequest(string id = null)
         {
             return new AutoFaker<VideoRequest>()
                 .RuleFor(r => r.Actors, r => GetStars(3, PersonType.Actor))
@@ -24,14 +24,14 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 100))))
                 .RuleFor(r => r.Runtime, r => r.Finance.Amount(.01m, 999, 2))
                 .RuleFor(r => r.Type, r => VideoType.Movie)
-                .RuleFor(r => r.VideoId, r => id)
+                .RuleFor(r => r.VideoId, r => $"tt{(id == null ? r.Random.Number(999999999) : int.Parse(id))}")
                 .RuleFor(r => r.Codec, r => GenerateString(r, 8))
                 .RuleFor(r => r.Resolution, r => GenerateString(r, 16))
                 .RuleFor(r => r.Extended, r => GenerateString(r, 16))
                 .Generate();
         }
 
-        public static TvEpisodeRequest GetTvEpisodeRequest(string videoId = "tt134132", string tvepisodeId = "tt134133")
+        public static TvEpisodeRequest GetTvEpisodeRequest(string videoId = null, string tvEpisodeId = null)
         {
             return new AutoFaker<TvEpisodeRequest>()
                 .RuleFor(r => r.Actors, r => GetStars(3, PersonType.Actor))
@@ -40,8 +40,8 @@ namespace VideoDB.WebApi.Tests.Helpers
                 .RuleFor(r => r.Producers, r => GetStars(3, PersonType.Producer))
                 .RuleFor(r => r.Genres, r => GetGenres(3))
                 .RuleFor(r => r.Ratings, r => GetRatings(2))
-                .RuleFor(r => r.VideoId, r => videoId)
-                .RuleFor(r => r.TvEpisodeId, r => tvepisodeId)
+                .RuleFor(r => r.VideoId, r => $"tt{(videoId == null ? r.Random.Number(999999999) : int.Parse(videoId))}")
+                .RuleFor(r => r.TvEpisodeId, r => $"tt{(tvEpisodeId == null ? r.Random.Number(999999999) : int.Parse(tvEpisodeId))}")
                 .RuleFor(r => r.Title, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
                 .RuleFor(r => r.EpisodeName, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))
                 .RuleFor(r => r.Plot, r => string.Join(" ", r.Lorem.Words(new Random().Next(1, 10))))

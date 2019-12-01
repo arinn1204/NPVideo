@@ -28,7 +28,7 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
         public void ShouldInsertVideo()
         {
             var repository = _fixture.Create<VideoRepository>();
-            var request = RequestGenerator.GetVideoRequest();
+            var request = RequestGenerator.GetVideoRequest("134132");
             var videoEntered = repository.UpsertVideo(request);
 
             videoEntered.Count().Should().Be(60);

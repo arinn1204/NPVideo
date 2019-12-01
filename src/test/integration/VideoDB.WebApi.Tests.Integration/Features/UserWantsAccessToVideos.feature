@@ -1,4 +1,4 @@
-﻿Feature: UserWantsAccessToVideos
+﻿Feature: User wants to create videos
 
 	Scenario: A user wants to create a new video
 		Given a new video

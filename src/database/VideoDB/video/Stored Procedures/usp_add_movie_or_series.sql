@@ -39,7 +39,7 @@ BEGIN
 						AND plot = @plot
 						AND video_type = @video_type
 						AND release_date = @release_date
-						AND runtime = @runtime
+						AND (runtime = @runtime OR runtime IS NULL AND @runtime IS NULL)
 						AND (resolution = @resolution OR resolution IS NULL AND @resolution IS NULL)
 						AND (codec = @codec OR codec IS NULL AND @codec IS NULL)
 						AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL)) IS NOT NULL)
@@ -53,7 +53,7 @@ BEGIN
 							AND plot = @plot
 							AND video_type = @video_type
 							AND release_date = @release_date
-							AND runtime = @runtime
+							AND (runtime = @runtime OR runtime IS NULL AND @runtime IS NULL)
 							AND (resolution = @resolution OR resolution IS NULL AND @resolution IS NULL)
 							AND (codec = @codec OR codec IS NULL AND @codec IS NULL)
 							AND (extended_edition = @extended OR extended_edition IS NULL AND @extended IS NULL);
