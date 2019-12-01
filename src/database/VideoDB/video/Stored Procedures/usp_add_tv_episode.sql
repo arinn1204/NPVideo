@@ -83,15 +83,18 @@ BEGIN
 								@extended AS 'extended',
 								@created_time AS 'ctime',
 								@created_user AS 'cuser') AS source
-					ON ((SELECT 1
-							FROM video.tv_episodes
-							WHERE video_id = @series_video_id
-								AND tv_episode_imdb_id = @episode_imdb_id
-								AND season_number = @season_number
-								AND episode_number = @episode_number
-								AND episode_name = @episode_name
-								AND release_date = @episode_release_date
-								AND plot = @plot) IS NULL)
+					ON ((SELECT 1 
+							FROM video.tv_episodes 
+							WHERE tv_episode_imdb_id = @episode_imdb_id) IS NOT NULL
+						AND (SELECT 1
+								FROM video.tv_episodes
+								WHERE video_id = @series_video_id
+									AND tv_episode_imdb_id = @episode_imdb_id
+									AND season_number = @season_number
+									AND episode_number = @episode_number
+									AND episode_name = @episode_name
+									AND release_date = @episode_release_date
+									AND plot = @plot) IS NULL)
 					WHEN NOT MATCHED THEN
 						INSERT (video_id, tv_episode_imdb_id, season_number, episode_number, episode_name, release_date, plot, resolution, codec, extended_edition, added, created_by)
 							VALUES(source.video_id, source.imdb_id, source.season_number, source.episode_number, source.name, source.release_date, source.plot, source.resolution, source.codec, source.extended, source.ctime, source.cuser)
@@ -104,7 +107,7 @@ BEGIN
 								plot = source.plot,
 								resolution = source.resolution,
 								codec = source.codec,
-								extended_edition = source.codec,
+								extended_edition = source.extended,
 								modified = source.ctime,
 								modified_by = source.cuser,
 								@is_updated = 1
@@ -117,7 +120,6 @@ BEGIN
 				FROM video.tv_episodes
 				WHERE tv_episode_imdb_id = @episode_imdb_id;
 
-			
             MERGE INTO video.ratings AS target
 			USING (
 				SELECT r.source AS 'ratings_source', r.value AS 'ratings_value', v.id 
