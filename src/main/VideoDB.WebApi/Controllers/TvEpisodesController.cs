@@ -16,9 +16,9 @@ namespace Evo.WebApi.Controllers
     [Produces("application/json")]
     public class TvEpisodesController : Controller
     {
-        private readonly IMovieService _service;
+        private readonly IVideoService _service;
 
-        public TvEpisodesController(IMovieService service)
+        public TvEpisodesController(IVideoService service)
         {
             _service = service;
         }

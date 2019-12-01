@@ -49,7 +49,7 @@ namespace VideoDB.WebApi.Tests.Services
             _videoRepo.Setup(s => s.UpsertMovie(It.IsAny<MovieRequest>()))
                 .Returns(CreateVideoDataModel("tt1234"));
 
-            var service = _fixture.Create<MovieService>();
+            var service = _fixture.Create<VideoService>();
 
 
             var result = service.UpsertMovie(RequestGenerator.GetMovieRequest());
@@ -116,7 +116,7 @@ namespace VideoDB.WebApi.Tests.Services
             _tvRepo.Setup(s => s.UpsertTvEpisode(It.IsAny<TvEpisodeRequest>()))
                 .Returns((CreateSeriesDataModel("tt2222"), CreateEpisodeModel("tt1234")));
 
-            var service = _fixture.Create<MovieService>();
+            var service = _fixture.Create<VideoService>();
 
 
             var result = service.UpsertTvEpisode(RequestGenerator.GetTvEpisodeRequest());

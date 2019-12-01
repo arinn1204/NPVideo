@@ -19,9 +19,9 @@ namespace Evo.WebApi.Controllers
     [Produces("application/json")]
     public class MoviesController : Controller
     {
-        private readonly IMovieService _videoService;
+        private readonly IVideoService _videoService;
 
-        public MoviesController(IMovieService videoService)
+        public MoviesController(IVideoService videoService)
         {
             _videoService = videoService;
         }

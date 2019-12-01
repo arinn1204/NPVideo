@@ -21,12 +21,12 @@ namespace Evo.WebApi.Tests.Controllers
         [SetUp]
         public void Setup()
         {
-            _service = new Mock<IMovieService>();
+            _service = new Mock<IVideoService>();
 
             _controller = new MoviesController(_service.Object);
         }
 
-        private Mock<IMovieService> _service;
+        private Mock<IVideoService> _service;
         private MoviesController _controller;
 
         [Test]

@@ -13,13 +13,13 @@ using VideoDB.WebApi.Repositories.Interfaces;
 
 namespace VideoDB.WebApi.Services
 {
-    public class MovieService : IMovieService
+    public class VideoService : IVideoService
     {
         private readonly IMovieRepository _videoRepository;
         private readonly ITvEpisodeRepository _tvEpisodeRepository;
         private readonly IMapper _mapper;
 
-        public MovieService(
+        public VideoService(
             IMovieRepository videoRepository,
             ITvEpisodeRepository tvEpisodeRepository,
             IMapper mapper)

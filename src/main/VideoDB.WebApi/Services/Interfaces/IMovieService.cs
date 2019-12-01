@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Evo.WebApi.Services.Interfaces
 {
-    public interface IMovieService
+    public interface IVideoService
     {
         IEnumerable<MovieViewModel> UpsertMovie(MovieRequest video);
         TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode);
