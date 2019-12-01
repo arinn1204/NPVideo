@@ -227,14 +227,14 @@ BEGIN
 			BEGIN
 				IF (@inserted_id IS NULL)
 					BEGIN
-						SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
+						SELECT video_id, imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
 							genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
 						FROM video.vw_movies
 						WHERE video_id IN (SELECT id FROM #Video WHERE category = 'VIDEO_ID');
 					END
 				ELSE
 					BEGIN
-						SELECT imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
+						SELECT video_id, imdb_id, movie_title, movie_rating, runtime, plot, release_date, resolution, codec,
 							genre_name, first_name, middle_name, last_name, suffix, person_role, rating_source, rating_value, @is_updated AS 'updated'
 						FROM video.vw_movies
 						WHERE video_id = @inserted_id;
