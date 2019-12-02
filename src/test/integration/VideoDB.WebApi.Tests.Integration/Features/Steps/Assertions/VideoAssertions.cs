@@ -62,6 +62,53 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
             }
         }
 
+        [Then(@"the user is shown the specific (movie|tv episode|show)")]
+        public async Task ThenTheUserIsShownTheSpecificMovie(string typeOfMedia)
+        {
+            var contentString = await _response.Content.ReadAsStringAsync();
+
+            switch (typeOfMedia.ToUpperInvariant())
+            {
+                case "MOVIE":
+                    var videoContent =
+                        JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(
+                            contentString);
+
+                    videoContent.Select(s => s.VideoId)
+                        .Single()
+                        .Should()
+                        .Be("tt1005");
+
+                    break;
+                case "TV EPISODE":
+                    var tvEpisodeContent =
+                        JsonConvert.DeserializeObject<TvEpisodeViewModel>(
+                            contentString);
+
+                    tvEpisodeContent.Series.VideoId.Should().Be("tt10000");
+                    tvEpisodeContent
+                        .Episode
+                        .Single()
+                        .Should()
+                        .BeEquivalentTo(
+                            new TvEpisode { VideoId = "tt1005" },
+                            opt => opt.ExcludingMissingMembers());
+
+                    break;
+                case "SHOW":
+                    var tvShowsContent =
+                        JsonConvert.DeserializeObject<SeriesViewModel>(
+                            contentString);
+
+                    tvShowsContent
+                        .VideoId
+                        .Should()
+                        .Be("tt10000");
+                    break;
+            }
+        }
+
+
         [Then(@"the user is shown all the existing (movie|tv episode|show)s")]
         public async Task ThenTheUserIsShownAllTheExistingMovie(string typeOfMedia)
         {

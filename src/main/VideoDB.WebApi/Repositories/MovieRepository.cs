@@ -31,16 +31,18 @@ namespace VideoDB.WebApi.Repositories
             return ReadFromDatabase<MovieDataModel>(command);
         }
 
-        public IEnumerable<MovieDataModel> GetMovies()
+        public IEnumerable<MovieDataModel> GetMovies(string imdbId = null)
         {
             var movieCommand = @"SELECT video_id, imdb_id, movie_title, movie_rating, 
 runtime, plot, release_date, resolution, codec,
 genre_name, first_name, middle_name, last_name, 
 suffix, person_role, rating_source, rating_value
-FROM video.vw_movies";
+FROM video.vw_movies
+WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
 
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
             var command = new SqlCommand(movieCommand, sqlConnection);
+            command.Parameters.Add(CreateSqlParameter.CreateParameter("@imdb_id", imdbId));
 
             return ReadFromDatabase<MovieDataModel>(command);
         }

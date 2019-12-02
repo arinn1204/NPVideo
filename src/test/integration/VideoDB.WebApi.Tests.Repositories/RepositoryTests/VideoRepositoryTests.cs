@@ -16,7 +16,6 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
     [TestFixture]
     public class VideoRepositoryTests : RepositoryBase
     {
-
         [Test]
         public void ShouldInsertVideo()
         {
@@ -82,9 +81,34 @@ The statement has been terminated.");
                 .Should()
                 .HaveCount(10)
                 .And
-                .BeEquivalentTo(new[] 
+                .BeEquivalentTo(new[]
                 {
                     "tt1","tt2","tt3","tt4","tt5","tt6","tt7","tt8","tt9","tt10"
+                });
+        }
+
+
+        [Test]
+        public void ShouldRetrieveSpecificVideosInDatastore()
+        {
+            foreach (var id in Enumerable.Range(1, 10))
+            {
+                var request = RequestGenerator.GetMovieRequest(id);
+                Features.Steps.Support.Database.AddRequestItem(request, _config);
+            }
+
+            var repository = _fixture.Create<MovieRepository>();
+            var videos = repository.GetMovies("tt1");
+
+            videos
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Should()
+                .HaveCount(1)
+                .And
+                .BeEquivalentTo(new[]
+                {
+                    "tt1"
                 });
         }
 

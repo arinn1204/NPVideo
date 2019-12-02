@@ -18,7 +18,11 @@ namespace VideoDB.WebApi.Repositories.Helpers
 
         public static SqlParameter CreateParameter(string name, string value)
         {
-            var param = new SqlParameter(name, value)
+            var param = new SqlParameter(
+                name, 
+                string.IsNullOrWhiteSpace(value) 
+                    ? DBNull.Value 
+                    : (object)value)
             {
                 SqlDbType = SqlDbType.VarChar
             };

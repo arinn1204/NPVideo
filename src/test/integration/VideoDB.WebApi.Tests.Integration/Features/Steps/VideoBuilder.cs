@@ -90,6 +90,42 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             };
         }
 
+        [Given(@"a user that wants to see a (movie|tv episode|show) that already exists")]
+        public void GivenAUserThatWantsToSeeAMovieThatAlreadyExists(string typeOfContent)
+        {
+            var config = _container.Resolve<IConfiguration>();
+            switch (typeOfContent.ToUpperInvariant())
+            {
+                case "MOVIE":
+                    foreach (var videoId in Enumerable.Range(1000, 10))
+                    {
+                        var movieRequest = RequestGenerator.GetMovieRequest(videoId);
+                        Database.AddRequestItem(movieRequest as MovieRequest, config);
+                    }
+                    _container.RegisterInstanceAs<object>("tt1005", name: "RequestID");
+                    break;
+                case "SHOW":
+                    foreach (var tvId in Enumerable.Range(1000, 10))
+                    {
+                        var tvRequest = RequestGenerator.GetTvEpisodeRequest(10000, tvId);
+                        Database.AddRequestItem(tvRequest as TvEpisodeRequest, config);
+                    }
+                    _container.RegisterInstanceAs<object>("tt10000", name: "RequestID");
+                    break;
+                case "TV EPISODE":
+                    foreach (var tvId in Enumerable.Range(1000, 10))
+                    {
+                        var tvRequest = RequestGenerator.GetTvEpisodeRequest(10000, tvId);
+                        Database.AddRequestItem(tvRequest as TvEpisodeRequest, config);
+                    }
+                    _container.RegisterInstanceAs<object>("tt1005", name: "RequestID");
+
+                    break;
+                default:
+                    throw new Exception($"{typeOfContent} is not currently supported.");
+            };
+
+        }
 
     }
 }

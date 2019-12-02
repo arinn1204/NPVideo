@@ -36,6 +36,14 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             await CallService("views", path);
         }
 
+        [When(@"the user views the existing (movie|tv episode|show)")]
+        public async Task WhenTheUserViewsTheExistingMovie(string mediaType)
+        {
+            var path = BuildPath(mediaType);
+            await CallService("views", path);
+        }
+
+
         private string BuildPath(string mediaType)
         {
             return mediaType.ToUpperInvariant() switch
@@ -65,6 +73,12 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
         private HttpRequestMessage BuildRequest(string operation, string endpoint)
         {
             var contentBody = _container.Resolve<object>(name: "RequestBody");
+
+            if (_container.IsRegistered<string>("RequestID"))
+            {
+                endpoint = $"endpoint/{_container.Resolve<object>("RequestID") as string}";
+            }
+
             var contentString = JsonConvert.SerializeObject(contentBody);
             var message = new HttpRequestMessage()
             {

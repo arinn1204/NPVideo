@@ -229,7 +229,7 @@ namespace VideoDB.WebApi.Tests.Services
         [Test]
         public void ShouldRetrieveAllMoviesFromDatabase()
         {
-            _videoRepo.Setup(s => s.GetMovies())
+            _videoRepo.Setup(s => s.GetMovies(It.IsAny<string>()))
                 .Returns(CreateVideoDataModel("tt1234").Concat(CreateVideoDataModel("tt12345", 2)));
 
             var service = _fixture.Create<VideoService>();
@@ -246,7 +246,7 @@ namespace VideoDB.WebApi.Tests.Services
         [Test]
         public void ShouldRetrieveAllTvEpisodesFromDatabase()
         {
-            _tvRepo.Setup(s => s.GetTvEpisodes())
+            _tvRepo.Setup(s => s.GetTvEpisodes(It.IsAny<string>()))
                 .Returns(
                 (CreateSeriesDataModel("tt2222").Concat(CreateSeriesDataModel("tt2223", 2)),
                 CreateEpisodeModel("tt1234").Concat(CreateEpisodeModel("tt12345", 2, 2))));
@@ -273,7 +273,7 @@ namespace VideoDB.WebApi.Tests.Services
         [Test]
         public void ShouldRetrieveAllTvSeriesFromDatabase()
         {
-            _tvRepo.Setup(s => s.GetTvShows())
+            _tvRepo.Setup(s => s.GetTvShows(It.IsAny<string>()))
                 .Returns(
                 CreateSeriesDataModel("tt2222").Concat(CreateSeriesDataModel("tt2223", 2)));
 

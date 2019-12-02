@@ -78,7 +78,7 @@ WHERE episode_imdb_id = 'tt134133'";
 
             exception.Should()
                 .Throw<EvoException>()
-                .WithMessage("Procedure or function 'usp_add_tv_episode' expects parameter '@episode_imdb_id', which was not supplied.");
+                .WithMessage("Cannot insert the value NULL into column 'tv_episode_imdb_id', table 'noblepanther_test.video.tv_episodes'; column does not allow nulls. UPDATE fails.:73");
         }
 
         [Test]
@@ -119,6 +119,46 @@ WHERE episode_imdb_id = 'tt134133'";
                 });
         }
 
+
+        [Test]
+        public void ShouldRetrieveOneEpisodeInDatastore()
+        {
+            foreach (var id in Enumerable.Range(1, 10))
+            {
+                var request = RequestGenerator.GetTvEpisodeRequest(100, id);
+                Database.AddRequestItem(request, _config);
+            }
+
+
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var episodes = repository.GetTvEpisodes("tt1");
+
+            episodes
+                .tvDataModels
+                .Select(s => s.episode_imdb_id)
+                .Distinct()
+                .Should()
+                .HaveCount(1)
+                .And
+                .BeEquivalentTo(new[]
+                {
+                    "tt1"
+                });
+
+            episodes
+                .videoDataModels
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Should()
+                .HaveCount(1)
+                .And
+                .BeEquivalentTo(new[]
+                {
+                    "tt100"
+                });
+        }
+
+
         [Test]
         public void ShouldReturnEmptyEnumerableIfNoEpisodesInDataStore()
         {
@@ -156,7 +196,7 @@ WHERE episode_imdb_id = 'tt134133'";
         {
             foreach (var id in Enumerable.Range(1, 10))
             {
-                var request = RequestGenerator.GetTvEpisodeRequest(100, id);
+                var request = RequestGenerator.GetTvEpisodeRequest(100 + id, id);
                 Database.AddRequestItem(request, _config);
             }
 
@@ -166,9 +206,29 @@ WHERE episode_imdb_id = 'tt134133'";
             tvSeries
                 .Select(s => s.imdb_id)
                 .Distinct()
+                .Should()
+                .BeEquivalentTo(new[] { "tt101", "tt102", "tt103", "tt104", "tt105", "tt106", "tt107", "tt108", "tt109", "tt110" });
+        }
+
+
+        [Test]
+        public void ShouldReturnSpecificTvSeriesInDatastore()
+        {
+            foreach (var id in Enumerable.Range(1, 10))
+            {
+                var request = RequestGenerator.GetTvEpisodeRequest(100 + id, id);
+                Database.AddRequestItem(request, _config);
+            }
+
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var tvSeries = repository.GetTvShows("tt101");
+
+            tvSeries
+                .Select(s => s.imdb_id)
+                .Distinct()
                 .Single()
                 .Should()
-                .Be("tt100");
+                .Be("tt101");
         }
 
     }

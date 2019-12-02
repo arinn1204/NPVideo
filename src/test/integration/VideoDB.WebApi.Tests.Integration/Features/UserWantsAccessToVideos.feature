@@ -33,3 +33,14 @@
 	| movie      |
 	| tv episode |
 	| show       |
+
+	Scenario Outline: A user wants to see a specific video
+		Given a user that wants to see a <mediaType> that already exists
+		When the user views the existing <mediaType>
+		Then the user is shown the specific <mediaType>
+
+	Examples: 
+	| mediaType  |
+	| movie      |
+	| tv episode |
+	| show       |
