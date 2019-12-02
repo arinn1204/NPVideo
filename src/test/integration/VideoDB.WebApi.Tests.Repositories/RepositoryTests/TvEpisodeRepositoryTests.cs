@@ -144,7 +144,7 @@ WHERE episode_imdb_id = 'tt134133'";
         public void ShouldReturnEmptyEnumerableIfNoSeriesInDataStore()
         {
             var repository = _fixture.Create<TvEpisodeRepository>();
-            var tvSeries = repository.GetTvSeries();
+            var tvSeries = repository.GetTvShows();
 
             tvSeries
                 .Should()
@@ -161,7 +161,7 @@ WHERE episode_imdb_id = 'tt134133'";
             }
 
             var repository = _fixture.Create<TvEpisodeRepository>();
-            var tvSeries = repository.GetTvSeries();
+            var tvSeries = repository.GetTvShows();
 
             tvSeries
                 .Select(s => s.imdb_id)

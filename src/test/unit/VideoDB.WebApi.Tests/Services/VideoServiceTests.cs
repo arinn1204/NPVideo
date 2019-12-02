@@ -269,6 +269,24 @@ namespace VideoDB.WebApi.Tests.Services
 
         }
 
+
+        [Test]
+        public void ShouldRetrieveAllTvSeriesFromDatabase()
+        {
+            _tvRepo.Setup(s => s.GetTvShows())
+                .Returns(
+                CreateSeriesDataModel("tt2222").Concat(CreateSeriesDataModel("tt2223", 2)));
+
+            var service = _fixture.Create<VideoService>();
+            var tvEpisodes = service.GetTvShows();
+
+            tvEpisodes.Select(s => s.VideoId)
+                .Should()
+                .HaveCount(2)
+                .And
+                .BeEquivalentTo(new[] { "tt2222", "tt2223" });
+        }
+
         private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId, int seriesId = 1, int episodeId = 1)
         {
             var people = CreatePeople();

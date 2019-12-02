@@ -34,7 +34,7 @@ namespace VideoDB.WebApi.Repositories
             return ReadFromDatabase(command);
         }
 
-        public IEnumerable<SeriesDataModel> GetTvSeries()
+        public IEnumerable<SeriesDataModel> GetTvShows()
         {
             var seriesCommand =
     @"SELECT video_id, imdb_id, title, plot, release_date,

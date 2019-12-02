@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VideoDB.WebApi.Models.ViewModels;
 
 namespace Evo.WebApi.Services.Interfaces
 {
@@ -14,5 +15,6 @@ namespace Evo.WebApi.Services.Interfaces
         TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode);
         IEnumerable<MovieViewModel> GetMovies();
         IEnumerable<TvEpisodeViewModel> GetTvEpisodes();
+        IEnumerable<SeriesViewModel> GetTvShows();
     }
 }

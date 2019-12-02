@@ -8,6 +8,7 @@ using Evo.WebApi.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using VideoDB.WebApi.Models.ViewModels;
 
 namespace Evo.WebApi.Controllers
 {
@@ -47,6 +48,19 @@ namespace Evo.WebApi.Controllers
             var result = CallService(
                 null,
                 _ => _service.GetTvEpisodes(),
+                out var error);
+
+            return error ?? Ok(result);
+        }
+
+        [HttpGet("shows")]
+        [ProducesResponseType(typeof(IEnumerable<SeriesViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetTvShows()
+        {
+            var result = CallService(
+                null,
+                _ => _service.GetTvShows(),
                 out var error);
 
             return error ?? Ok(result);

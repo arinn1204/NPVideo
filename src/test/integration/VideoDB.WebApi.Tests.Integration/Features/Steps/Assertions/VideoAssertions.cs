@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
+using VideoDB.WebApi.Models.ViewModels;
 
 namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
 {
@@ -61,7 +62,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
             }
         }
 
-        [Then(@"the user is shown all the existing (movie|tv episode|series)(?:(?<!s)s)")]
+        [Then(@"the user is shown all the existing (movie|tv episode|show)s")]
         public async Task ThenTheUserIsShownAllTheExistingMovie(string typeOfMedia)
         {
             var contentString = await _response.Content.ReadAsStringAsync();
@@ -100,7 +101,14 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                         .HaveCount(10);
 
                     break;
-                case "SERIES":
+                case "SHOW":
+                    var tvShowsContent =
+                        JsonConvert.DeserializeObject<IEnumerable<SeriesViewModel>>(
+                            contentString);
+
+                    tvShowsContent
+                        .Should()
+                        .HaveCount(1);
                     break;
             }
         }

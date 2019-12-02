@@ -125,7 +125,24 @@ namespace VideoDB.WebApi.Tests.ControllerTests
                 .VideoId
                 .Should()
                 .Be("tt1233");
+        }
 
+        [Test]
+        public void ShouldReturnAllTvShows()
+        {
+            _service.Setup(s => s.GetTvShows())
+                .Returns(new[]
+                {
+                    new SeriesViewModel
+                    {
+                        VideoId = "tt1234"
+                    }
+                });
+
+            var result = _controller.GetTvShows() as OkObjectResult;
+
+            result.Should().NotBe(null);
+            (result.Value as IEnumerable<SeriesViewModel>).Single().VideoId.Should().Be("tt1234");
         }
 
     }

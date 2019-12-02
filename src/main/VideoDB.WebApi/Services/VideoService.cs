@@ -44,6 +44,16 @@ namespace VideoDB.WebApi.Services
             };
         }
 
+        public IEnumerable<SeriesViewModel> GetTvShows()
+        {
+            var seriesDataModel = _tvEpisodeRepository.GetTvShows();
+
+            return seriesDataModel.GroupBy(
+                key => key.video_id,
+                (key, dataModels) =>
+                    _mapper.Map<SeriesViewModel>(dataModels));
+        }
+
         public IEnumerable<TvEpisodeViewModel> GetTvEpisodes()
         {
             var (videoDataModels, tvDataModels) = _tvEpisodeRepository.GetTvEpisodes();

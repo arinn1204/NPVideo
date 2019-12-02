@@ -13,6 +13,6 @@ namespace VideoDB.WebApi.Repositories.Interfaces
         (IEnumerable<SeriesDataModel> videoDataModels, IEnumerable<TvEpisodeDataModel> tvDataModels)
             GetTvEpisodes();
 
-        IEnumerable<SeriesDataModel> GetTvSeries();
+        IEnumerable<SeriesDataModel> GetTvShows();
     }
 }

@@ -62,7 +62,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             _container.RegisterInstanceAs(request, name: "RequestBody");
         }
 
-        [Given(@"a user that wants to see what (movie|tv episode)s already exist")]
+        [Given(@"a user that wants to see what (movie|tv episode|show)s already exist")]
         public void GivenAUserThatWantsToSeeWhatMoviesAlreadyExist(string typeOfContent)
         {
             object request;
@@ -76,7 +76,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
                         Database.AddRequestItem(request as MovieRequest, config);
                     }
                     break;
-                case "SERIES":
+                case "SHOW":
                 case "TV EPISODE":
                     foreach (var tvId in Enumerable.Range(1, 10))
                     {

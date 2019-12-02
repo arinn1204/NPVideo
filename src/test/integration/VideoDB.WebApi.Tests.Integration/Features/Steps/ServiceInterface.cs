@@ -29,7 +29,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             await CallService(operation, path);
         }
 
-        [When(@"the user views all existing (movie|tv episode|series)(?:(?<!s)s)")]
+        [When(@"the user views all existing (movie|tv episode|show)s")]
         public async Task WhenTheUserChecksExistingMovie(string mediaType)
         {
             var path = BuildPath(mediaType);
@@ -42,7 +42,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             {
                 "MOVIE" => "videos/movies",
                 "TV EPISODE" => "videos/tvEpisodes",
-                "SERIES" => "videos/tvEpisodes/series",
+                "SHOW" => "videos/tvEpisodes/shows",
                 _ => throw new EvoException($"'{mediaType}' is not supported.")
             };
         }
