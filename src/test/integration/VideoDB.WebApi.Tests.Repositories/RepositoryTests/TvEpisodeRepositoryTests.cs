@@ -140,5 +140,36 @@ WHERE episode_imdb_id = 'tt134133'";
                 .BeEmpty();
         }
 
+        [Test]
+        public void ShouldReturnEmptyEnumerableIfNoSeriesInDataStore()
+        {
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var tvSeries = repository.GetTvSeries();
+
+            tvSeries
+                .Should()
+                .BeEmpty();
+        }
+
+        [Test]
+        public void ShouldReturnAllTvSeriesInDatastore()
+        {
+            foreach (var id in Enumerable.Range(1, 10))
+            {
+                var request = RequestGenerator.GetTvEpisodeRequest(100, id);
+                Database.AddRequestItem(request, _config);
+            }
+
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var tvSeries = repository.GetTvSeries();
+
+            tvSeries
+                .Select(s => s.imdb_id)
+                .Distinct()
+                .Single()
+                .Should()
+                .Be("tt100");
+        }
+
     }
 }

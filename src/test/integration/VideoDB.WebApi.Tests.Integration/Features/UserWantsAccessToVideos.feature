@@ -32,3 +32,4 @@
 	| mediaType  |
 	| movie      |
 	| tv episode |
+	| series     |

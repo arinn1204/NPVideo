@@ -32,8 +32,21 @@ namespace VideoDB.WebApi.Repositories
             var command = tvEpisode.CreateTvEpisodeCommand(sqlConnection);
 
             return ReadFromDatabase(command);
-
         }
+
+        public IEnumerable<SeriesDataModel> GetTvSeries()
+        {
+            var seriesCommand =
+    @"SELECT video_id, imdb_id, title, plot, release_date,
+    genre_name, first_name, middle_name, last_name, 
+    suffix, person_role, rating_source, rating_value
+FROM video.vw_series";
+            using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
+            var command = new SqlCommand(seriesCommand, sqlConnection);
+
+            return ReadFromDatabase<SeriesDataModel>(command);
+        }
+
 
         public (IEnumerable<SeriesDataModel> videoDataModels, 
             IEnumerable<TvEpisodeDataModel> tvDataModels)
@@ -54,6 +67,32 @@ FROM video.vw_tv_episodes";
             var command = new SqlCommand(tvEpisodeCommand, sqlConnection);
 
             return ReadFromDatabase(command);
+        }
+
+        private IEnumerable<T> ReadFromDatabase<T>(SqlCommand command)
+            where T : class, new()
+        {
+            var dataModels = Enumerable.Empty<T>();
+            try
+            {
+                command.Connection.Open();
+                var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dataModels = dataModels.Append(reader.CreateObject<T>());
+                }
+            }
+            catch (SqlException e)
+            {
+                throw new EvoException(e.Message);
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+
+            return dataModels;
         }
 
         private (IEnumerable<SeriesDataModel> videoDataModels,

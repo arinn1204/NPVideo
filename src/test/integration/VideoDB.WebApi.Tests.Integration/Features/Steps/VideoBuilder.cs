@@ -76,6 +76,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
                         Database.AddRequestItem(request as MovieRequest, config);
                     }
                     break;
+                case "SERIES":
                 case "TV EPISODE":
                     foreach (var tvId in Enumerable.Range(1, 10))
                     {
