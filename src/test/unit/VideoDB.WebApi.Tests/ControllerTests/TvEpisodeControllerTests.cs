@@ -1,4 +1,5 @@
 ﻿using Evo.WebApi.Controllers;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
 using Evo.WebApi.Services.Interfaces;
@@ -104,9 +105,31 @@ namespace VideoDB.WebApi.Tests.ControllerTests
         }
 
         [Test]
+        public void ShouldReturnNotFoundWhenSpecificEpisodeNotFound()
+        {
+            _service.Setup(s => s.GetTvEpisodes(It.IsAny<string>()))
+                .Throws(new EvoNotFoundException("'id' does not exist."));
+
+            var objectResult = _controller.GetSpecificTvEpisode("id") as NotFoundObjectResult;
+            objectResult.Should()
+                .NotBeNull();
+        }
+
+        [Test]
+        public void ShouldReturnNotFoundWhenSpecificShowNotFound()
+        {
+            _service.Setup(s => s.GetTvShows(It.IsAny<string>()))
+                .Throws(new EvoNotFoundException("'id' does not exist."));
+
+            var objectResult = _controller.GetSpecificTvShow("id") as NotFoundObjectResult;
+            objectResult.Should()
+                .NotBeNull();
+        }
+
+        [Test]
         public void ShouldReturnAllTvEpisodes()
         {
-            _service.Setup(s => s.GetTvEpisodes())
+            _service.Setup(s => s.GetTvEpisodes(It.IsAny<string>()))
                 .Returns(new[] 
                 {
                     new TvEpisodeViewModel
@@ -116,7 +139,7 @@ namespace VideoDB.WebApi.Tests.ControllerTests
                     }
                 });
             
-            var result = _controller.GetTvEpisodes() as OkObjectResult;
+            var result = _controller.GetAllTvEpisodes() as OkObjectResult;
 
             result.Should().NotBe(null);
             (result.Value as IEnumerable<TvEpisodeViewModel>).Single().Series.VideoId.Should().Be("tt1234");
@@ -130,7 +153,7 @@ namespace VideoDB.WebApi.Tests.ControllerTests
         [Test]
         public void ShouldReturnAllTvShows()
         {
-            _service.Setup(s => s.GetTvShows())
+            _service.Setup(s => s.GetTvShows(It.IsAny<string>()))
                 .Returns(new[]
                 {
                     new SeriesViewModel
@@ -139,7 +162,7 @@ namespace VideoDB.WebApi.Tests.ControllerTests
                     }
                 });
 
-            var result = _controller.GetTvShows() as OkObjectResult;
+            var result = _controller.GetAllTvShows() as OkObjectResult;
 
             result.Should().NotBe(null);
             (result.Value as IEnumerable<SeriesViewModel>).Single().VideoId.Should().Be("tt1234");

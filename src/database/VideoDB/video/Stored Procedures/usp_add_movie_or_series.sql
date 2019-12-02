@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [video].[usp_add_movie_or_series] (
 	@imdb_id VARCHAR(32),
-    @title VARCHAR(MAX),
+    @title VARCHAR(512),
     @mpaa_rating VARCHAR(8),
     @runtime DECIMAL(5, 2) = NULL,
     @plot VARCHAR(MAX),
@@ -20,6 +20,12 @@ BEGIN
 		@is_updated BIT = 0,
 		@inserted_id INT;
 		
+		
+	IF ((SELECT 1
+		WHERE @imdb_id IS NULL) IS NOT NULL)
+		BEGIN
+			RAISERROR('@imdb_id is a required parameter.', 16, 1);
+		END
 
 	BEGIN TRY
 
@@ -267,7 +273,9 @@ BEGIN
 		
 	END TRY
 	BEGIN CATCH
-        DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),
+		DECLARE @TempState XML = (SELECT * FROM #Video FOR XML AUTO);
+
+        DECLARE @ErrorMessage NVARCHAR(MAX) = CONVERT(VARCHAR,@TempState) + ' -- ' + ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),
             @ErrorSeverity INT = ERROR_SEVERITY(),
             @ErrorState INT = ERROR_STATE();
 		

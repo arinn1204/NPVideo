@@ -82,25 +82,26 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                     break;
                 case "TV EPISODE":
                     var tvEpisodeContent =
-                        JsonConvert.DeserializeObject<TvEpisodeViewModel>(
+                        JsonConvert.DeserializeObject<IEnumerable<TvEpisodeViewModel>>(
                             contentString);
 
-                    tvEpisodeContent.Series.VideoId.Should().Be("tt10000");
+                    tvEpisodeContent.Single().Series.VideoId.Should().Be("tt10000");
                     tvEpisodeContent
+                        .Single()
                         .Episode
                         .Single()
+                        .VideoId
                         .Should()
-                        .BeEquivalentTo(
-                            new TvEpisode { VideoId = "tt1005" },
-                            opt => opt.ExcludingMissingMembers());
+                        .Be("tt1005");
 
                     break;
                 case "SHOW":
                     var tvShowsContent =
-                        JsonConvert.DeserializeObject<SeriesViewModel>(
+                        JsonConvert.DeserializeObject<IEnumerable<SeriesViewModel>>(
                             contentString);
 
                     tvShowsContent
+                        .Single()
                         .VideoId
                         .Should()
                         .Be("tt10000");

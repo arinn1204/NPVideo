@@ -78,7 +78,8 @@ WHERE episode_imdb_id = 'tt134133'";
 
             exception.Should()
                 .Throw<EvoException>()
-                .WithMessage("Cannot insert the value NULL into column 'tv_episode_imdb_id', table 'noblepanther_test.video.tv_episodes'; column does not allow nulls. UPDATE fails.:73");
+                .WithMessage(@"@episode_imdb_id is a required parameter.
+ ");
         }
 
         [Test]

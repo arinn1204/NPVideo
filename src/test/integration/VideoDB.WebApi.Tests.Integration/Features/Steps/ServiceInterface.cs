@@ -74,9 +74,9 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
         {
             var contentBody = _container.Resolve<object>(name: "RequestBody");
 
-            if (_container.IsRegistered<string>("RequestID"))
+            if (_container.IsRegistered<object>("RequestID"))
             {
-                endpoint = $"endpoint/{_container.Resolve<object>("RequestID") as string}";
+                endpoint = $"{endpoint}/{_container.Resolve<object>("RequestID") as string}";
             }
 
             var contentString = JsonConvert.SerializeObject(contentBody);

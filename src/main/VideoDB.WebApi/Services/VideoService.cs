@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.DataModel;
 using Evo.WebApi.Models.Enums;
 using Evo.WebApi.Models.Requests;
@@ -44,19 +45,27 @@ namespace VideoDB.WebApi.Services
             };
         }
 
-        public IEnumerable<SeriesViewModel> GetTvShows()
+        public IEnumerable<SeriesViewModel> GetTvShows(string imdbId = null)
         {
-            var seriesDataModel = _tvEpisodeRepository.GetTvShows();
+            var seriesDataModel = _tvEpisodeRepository.GetTvShows(imdbId);
 
-            return seriesDataModel.GroupBy(
+            return seriesDataModel.Any()
+                ? seriesDataModel.GroupBy(
                 key => key.video_id,
                 (key, dataModels) =>
-                    _mapper.Map<SeriesViewModel>(dataModels));
+                    _mapper.Map<SeriesViewModel>(dataModels))
+                : throw new EvoNotFoundException($"'{imdbId}' does not exist.");
         }
 
-        public IEnumerable<TvEpisodeViewModel> GetTvEpisodes()
+        public IEnumerable<TvEpisodeViewModel> GetTvEpisodes(string imdbId = null)
         {
-            var (videoDataModels, tvDataModels) = _tvEpisodeRepository.GetTvEpisodes();
+            var (videoDataModels, tvDataModels) = _tvEpisodeRepository.GetTvEpisodes(imdbId);
+
+            if (!videoDataModels.Any() || !tvDataModels.Any())
+            {
+                throw new EvoNotFoundException($"'{imdbId}' does not exist.");
+            }
+
             var series = videoDataModels.GroupBy(
                 key => key.video_id,
                 (key, dataModels) => 
@@ -84,9 +93,13 @@ namespace VideoDB.WebApi.Services
             return MapToViewModel(_videoRepository.UpsertMovie(video));
         }
 
-        public IEnumerable<MovieViewModel> GetMovies()
+        public IEnumerable<MovieViewModel> GetMovies(string imdbId = null)
         {
-            return MapToViewModel(_videoRepository.GetMovies());
+            var movieDataModel = _videoRepository.GetMovies(imdbId);
+
+            return movieDataModel.Any() 
+                ? MapToViewModel(movieDataModel)
+                : throw new EvoNotFoundException($"'{imdbId}' does not exist.");
         }
 
         private IEnumerable<MovieViewModel> MapToViewModel(IEnumerable<MovieDataModel> dataModels)

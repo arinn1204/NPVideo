@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Evo.WebApi.Controllers;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
 using Evo.WebApi.Services.Interfaces;
@@ -64,6 +65,17 @@ namespace Evo.WebApi.Tests.Controllers
         }
 
         [Test]
+        public void ShouldReturnNotFoundWhenSpecificVideoNotFound()
+        {
+            _service.Setup(s => s.GetMovies(It.IsAny<string>()))
+                .Throws(new EvoNotFoundException("'id' does not exist."));
+
+            var objectResult = _controller.GetAllMovies("Does Not Exist") as NotFoundObjectResult;
+            objectResult.Should()
+                .NotBeNull();
+        }
+
+        [Test]
         public void ShouldReturnNoContentWhenSuccessfulUpdate()
         {
             var request = new MovieRequest()
@@ -101,15 +113,16 @@ namespace Evo.WebApi.Tests.Controllers
                 }
             };
 
-            _service.Setup(s => s.GetMovies()).Returns(movies);
+            _service.Setup(s => s.GetMovies(It.IsAny<string>())).Returns(movies);
 
-            var result = _controller.GetMovies() as OkObjectResult;
+            var result = _controller.GetAllMovies() as OkObjectResult;
             var moviesResult = result.Value as IEnumerable<MovieViewModel>;
 
             moviesResult.Select(s => s.VideoId)
                 .Should()
                 .BeEquivalentTo(new[] { "tt1234", "tt1235", "tt1236" });
         }
+
 
     }
 }

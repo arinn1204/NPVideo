@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
 using Evo.WebApi.Services.Interfaces;
@@ -43,25 +44,52 @@ namespace Evo.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<TvEpisodeViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        public IActionResult GetTvEpisodes()
+        public IActionResult GetAllTvEpisodes()
         {
-            var result = CallService(
-                null,
-                _ => _service.GetTvEpisodes(),
-                out var error);
-
-            return error ?? Ok(result);
+            return GetTvEpisodes();
         }
 
         [HttpGet("shows")]
         [ProducesResponseType(typeof(IEnumerable<SeriesViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        public IActionResult GetTvShows()
+        public IActionResult GetAllTvShows()
+        {
+            return GetTvShows();
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(IEnumerable<TvEpisodeViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetSpecificTvEpisode([FromRoute] string id)
+        {
+            return GetTvEpisodes(id);
+        }
+
+        [HttpGet("shows/{id}")]
+        [ProducesResponseType(typeof(IEnumerable<SeriesViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetSpecificTvShow([FromRoute] string id)
+        {
+            return GetTvShows(id);
+        }
+
+
+        private IActionResult GetTvShows(string id = null)
         {
             var result = CallService(
-                null,
-                _ => _service.GetTvShows(),
-                out var error);
+                            null,
+                            _ => _service.GetTvShows(id),
+                            out var error);
+
+            return error ?? Ok(result);
+        }
+
+        private IActionResult GetTvEpisodes(string id = null)
+        {
+            var result = CallService(
+                            null,
+                            _ => _service.GetTvEpisodes(id),
+                            out var error);
 
             return error ?? Ok(result);
         }
@@ -73,6 +101,15 @@ namespace Evo.WebApi.Controllers
             {
                 result = getResults(request);
                 errorResponse = null;
+            }
+            catch (EvoNotFoundException e)
+            {
+                var response = new ErrorResponse
+                {
+                    Error = e.Message
+                };
+
+                errorResponse = new NotFoundObjectResult(response);
             }
             catch (Exception e)
             {

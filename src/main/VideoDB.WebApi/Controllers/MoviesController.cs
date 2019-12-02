@@ -45,12 +45,25 @@ namespace Evo.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<MovieViewModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        public IActionResult GetMovies()
+        public IActionResult GetAllMovies()
+        {
+            return GetMovies();
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(IEnumerable<MovieViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetAllMovies(string id)
+        {
+            return GetMovies(id);
+        }
+
+        private IActionResult GetMovies(string imdbId = null)
         {
             var result = CallService(
-                null,
-                _ => _videoService.GetMovies(),
-                out var error);
+                            null,
+                            _ => _videoService.GetMovies(imdbId),
+                            out var error);
 
             return error ?? Ok(result);
         }
@@ -62,6 +75,15 @@ namespace Evo.WebApi.Controllers
             {
                 result = getResults(request);
                 errorResponse = null;
+            }
+            catch (EvoNotFoundException e)
+            {
+                var response = new ErrorResponse
+                {
+                    Error = e.Message
+                };
+
+                errorResponse = new NotFoundObjectResult(response);
             }
             catch (Exception e)
             {

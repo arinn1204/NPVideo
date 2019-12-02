@@ -2,6 +2,7 @@
 using AutoFixture.AutoMoq;
 using AutoMapper;
 using Evo.WebApi;
+using Evo.WebApi.Exceptions;
 using Evo.WebApi.Models.DataModel;
 using Evo.WebApi.Models.Enums;
 using Evo.WebApi.Models.Requests;
@@ -286,6 +287,89 @@ namespace VideoDB.WebApi.Tests.Services
                 .And
                 .BeEquivalentTo(new[] { "tt2222", "tt2223" });
         }
+
+        [Test]
+        public void ShouldRetrieveSpecificMovieFromDatabase()
+        {
+            var calledId = string.Empty;
+            _videoRepo.Setup(s => s.GetMovies(It.IsAny<string>()))
+                .Callback((string id) => calledId = id)
+                .Returns(CreateVideoDataModel("tt1234").Concat(CreateVideoDataModel("tt12345", 2)));
+
+            var service = _fixture.Create<VideoService>();
+
+            var movies = service.GetMovies("tt1234");
+            calledId.Should()
+                .Be("tt1234");
+        }
+
+        [Test]
+        public void ShouldRetrieveSpecificTvShowFromDatabase()
+        {
+            var calledId = string.Empty;
+            _tvRepo.Setup(s => s.GetTvShows(It.IsAny<string>()))
+                .Callback((string id) => calledId = id)
+                .Returns(
+                CreateSeriesDataModel("tt2222").Concat(CreateSeriesDataModel("tt2223", 2)));
+
+            var service = _fixture.Create<VideoService>();
+            var tvEpisodes = service.GetTvShows("tt2222");
+
+            calledId.Should()
+                .Be("tt2222");
+        } 
+
+        [Test]
+        public void ShouldRetrieveSpecificTvEpisodeFromDatabase()
+        {
+            var calledId = string.Empty;
+            _tvRepo.Setup(s => s.GetTvEpisodes(It.IsAny<string>()))
+                .Callback((string id) => calledId = id)
+                .Returns(
+                (CreateSeriesDataModel("tt2222").Concat(CreateSeriesDataModel("tt2223", 2)),
+                CreateEpisodeModel("tt1234").Concat(CreateEpisodeModel("tt12345", 2, 2))));
+
+            var service = _fixture.Create<VideoService>();
+            var tvEpisodes = service.GetTvEpisodes("tt1234");
+
+            calledId.Should()
+                .Be("tt1234");
+
+        }
+
+        [TestCase("movie", "NotExist")]
+        [TestCase("show", "NotExist")]
+        [TestCase("tv episode", "NotExist")]
+        public void ShouldThrowNotFoundExceptionIfLookingForSpecificVideoFromDatabase(string type, string id)
+        {
+            _tvRepo.Setup(
+                s => s.GetTvEpisodes(It.IsAny<string>()))
+                .Returns(
+                    (Enumerable.Empty<SeriesDataModel>(),
+                    Enumerable.Empty<TvEpisodeDataModel>()));
+
+            _tvRepo.Setup(
+                s => s.GetTvShows(It.IsAny<string>()))
+                .Returns(Enumerable.Empty<SeriesDataModel>());
+
+            _videoRepo.Setup(s => s.GetMovies(It.IsAny<string>()))
+                .Returns(Enumerable.Empty<MovieDataModel>());
+
+            var service = _fixture.Create<VideoService>();
+
+            var exception = default(Action);
+            switch(type)
+            {
+                case "movie": exception = () => service.GetMovies(id); break;
+                case "show": exception = () => service.GetTvShows(id); break;
+                case "tv episode": exception = () => service.GetTvEpisodes(id); break;
+            }
+
+            exception.Should()
+                .Throw<EvoNotFoundException>()
+                .WithMessage($"'{id}' does not exist.");
+        }
+
 
         private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId, int seriesId = 1, int episodeId = 1)
         {
