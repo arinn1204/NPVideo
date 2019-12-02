@@ -85,7 +85,12 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                         JsonConvert.DeserializeObject<IEnumerable<TvEpisodeViewModel>>(
                             contentString);
 
-                    tvEpisodeContent.Single().Series.VideoId.Should().Be("tt10000");
+                    tvEpisodeContent
+                        .Single()
+                        .Series
+                        .VideoId
+                        .Should()
+                        .Be("tt10000");
                     tvEpisodeContent
                         .Single()
                         .Episode

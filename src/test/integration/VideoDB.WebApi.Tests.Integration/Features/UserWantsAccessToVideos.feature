@@ -34,6 +34,7 @@
 	| tv episode |
 	| show       |
 
+	@clean
 	Scenario Outline: A user wants to see a specific video
 		Given a user that wants to see a <mediaType> that already exists
 		When the user views the existing <mediaType>
