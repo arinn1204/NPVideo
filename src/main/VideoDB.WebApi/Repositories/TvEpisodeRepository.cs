@@ -45,7 +45,7 @@ namespace VideoDB.WebApi.Repositories
     suffix, person_role, rating_source, rating_value
 FROM video.vw_series
 
-SELECT tv_episode_id, episode_imdb_id, season_number, episode_number,
+SELECT tv_episode_id, series_id, episode_imdb_id, season_number, episode_number,
     episode_name, release_date, plot, resolution, codec,
     first_name, middle_name, last_name, suffix,
     person_role, genre_name, rating_source, rating_value

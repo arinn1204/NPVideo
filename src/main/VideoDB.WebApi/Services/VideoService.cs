@@ -49,22 +49,24 @@ namespace VideoDB.WebApi.Services
             var (videoDataModels, tvDataModels) = _tvEpisodeRepository.GetTvEpisodes();
             var series = videoDataModels.GroupBy(
                 key => key.video_id,
-                (key, dataModels) => _mapper.Map<SeriesViewModel>(
-                    dataModels.Where(w => w.video_id == key)));
+                (key, dataModels) => 
+                    _mapper.Map<SeriesViewModel>(
+                        dataModels.Where(w => w.video_id == key)));
 
             return series.GroupJoin(
                 tvDataModels,
                 outerKey => outerKey.SeriesId,
                 innerKey => innerKey.series_id,
                 (series, episodes) =>
-                new TvEpisodeViewModel
-                {
-                    Series = _mapper.Map<SeriesViewModel>(series),
-                    Episode = episodes.GroupBy(
-                        key => key.tv_episode_id,
-                        (key, dataModels) => _mapper.Map<TvEpisode>(
-                            dataModels.Where(w => w.tv_episode_id == key)))
-                });
+                    new TvEpisodeViewModel
+                    {
+                        Series = _mapper.Map<SeriesViewModel>(series),
+                        Episode = episodes.GroupBy(
+                            key => key.tv_episode_id,
+                            (key, dataModels) => 
+                                _mapper.Map<TvEpisode>(
+                                    dataModels.Where(w => w.tv_episode_id == key)))
+                    });
         }
 
         public IEnumerable<MovieViewModel> UpsertMovie(MovieRequest video)

@@ -22,7 +22,7 @@
 	| movie      |
 	| tv episode |
 
-
+	@clean
 	Scenario Outline: A user wants to see all exiting videos
 		Given a user that wants to see what <mediaType>s already exist
 		When the user views all existing <mediaType>s

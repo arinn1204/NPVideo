@@ -31,13 +31,39 @@ namespace Evo.WebApi.Controllers
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult UpsertVideo([FromBody] MovieRequest request)
         {
-            IEnumerable<MovieViewModel> result;
-            
+            var result = CallService(
+                request,
+                _videoService.UpsertMovie,
+                out var error);
+
+            return error ?? (result.All(a => a.IsUpdated)
+                ? NoContent() as IActionResult
+                : Created($"/videos/movies/{request.VideoId}", result) as IActionResult);
+        }
+
+
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<MovieViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetMovies()
+        {
+            var result = CallService(
+                null,
+                _ => _videoService.GetMovies(),
+                out var error);
+
+            return error ?? Ok(result);
+        }
+
+        private T CallService<T>(MovieRequest request, Func<MovieRequest, T> getResults, out ObjectResult errorResponse)
+        {
+            var result = default(T);
             try
             {
-                result = _videoService.UpsertMovie(request);
+                result = getResults(request);
+                errorResponse = null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 var response = new ErrorResponse
                 {
@@ -45,12 +71,10 @@ namespace Evo.WebApi.Controllers
                     StackTrace = e.StackTrace
                 };
 
-                return StatusCode(500, response);
+                errorResponse = StatusCode(500, response);
             }
 
-            return result.All(a => a.IsUpdated)
-                ? NoContent() as IActionResult
-                : Created($"/videos/movies/{request.VideoId}", result) as IActionResult;
+            return result;
         }
     }
 }

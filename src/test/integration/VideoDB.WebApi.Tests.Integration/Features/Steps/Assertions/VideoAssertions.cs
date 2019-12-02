@@ -74,14 +74,31 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                             contentString);
 
                     videoContent.Should().HaveCount(10);
+
                     videoContent.Select(s => s.VideoId)
-                        .Union(Enumerable.Range(1, 10).Select(s => s.ToString()));
+                        .Union(Enumerable.Range(1, 10).Select(s => $"tt{s}"))
+                        .Distinct()
+                        .Should()
+                        .HaveCount(10);
 
                     break;
                 case "TV EPISODE":
                     var tvEpisodeContent = 
-                        JsonConvert.DeserializeObject<TvEpisodeViewModel>(
+                        JsonConvert.DeserializeObject< IEnumerable<TvEpisodeViewModel>>(
                             contentString);
+
+                    tvEpisodeContent.Select(s => s.Series).Should().HaveCount(1);
+                    tvEpisodeContent.SelectMany(s => s.Episode)
+                        .Should()
+                        .HaveCount(10);
+
+                    tvEpisodeContent.SelectMany(s => s.Episode)
+                        .Select(s => s.VideoId)
+                        .Union(Enumerable.Range(1, 10).Select(s => $"tt{s}"))
+                        .Distinct()
+                        .Should()
+                        .HaveCount(10);
+
                     break;
                 case "SERIES":
                     break;

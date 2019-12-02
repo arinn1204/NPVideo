@@ -103,5 +103,30 @@ namespace VideoDB.WebApi.Tests.ControllerTests
 
         }
 
+        [Test]
+        public void ShouldReturnAllTvEpisodes()
+        {
+            _service.Setup(s => s.GetTvEpisodes())
+                .Returns(new[] 
+                {
+                    new TvEpisodeViewModel
+                    {
+                        Series = new SeriesViewModel {VideoId = "tt1234"},
+                        Episode = new[] { new TvEpisode { VideoId = "tt1233" } }
+                    }
+                });
+            
+            var result = _controller.GetTvEpisodes() as OkObjectResult;
+
+            result.Should().NotBe(null);
+            (result.Value as IEnumerable<TvEpisodeViewModel>).Single().Series.VideoId.Should().Be("tt1234");
+            (result.Value as IEnumerable<TvEpisodeViewModel>).SelectMany(s => s.Episode)
+                .Single()
+                .VideoId
+                .Should()
+                .Be("tt1233");
+
+        }
+
     }
 }

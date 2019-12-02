@@ -28,10 +28,37 @@ namespace Evo.WebApi.Controllers
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult UpsertTvEpisode([FromBody] TvEpisodeRequest request)
         {
-            TvEpisodeViewModel result;
+            var result = CallService(
+                request,
+                _service.UpsertTvEpisode,
+                out var error);
+
+            return error ?? 
+                (result.Episode.All(a => a.IsUpdated)
+                ? NoContent() as IActionResult
+                : Created($"/videos/tvEpisodes/{request.TvEpisodeId}", result) as IActionResult);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<TvEpisodeViewModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetTvEpisodes()
+        {
+            var result = CallService(
+                null,
+                _ => _service.GetTvEpisodes(),
+                out var error);
+
+            return error ?? Ok(result);
+        }
+
+        private T CallService<T>(TvEpisodeRequest request, Func<TvEpisodeRequest, T> getResults, out ObjectResult errorResponse)
+        {
+            var result = default(T);
             try
             {
-                result = _service.UpsertTvEpisode(request);
+                result = getResults(request);
+                errorResponse = null;
             }
             catch (Exception e)
             {
@@ -41,12 +68,10 @@ namespace Evo.WebApi.Controllers
                     StackTrace = e.StackTrace
                 };
 
-                return StatusCode(500, response);
+                errorResponse = StatusCode(500, response);
             }
 
-            return result.Episode.All(a => a.IsUpdated)
-                ? NoContent() as IActionResult
-                : Created($"/videos/tvEpisodes/{request.TvEpisodeId}", result) as IActionResult;
+            return result;
         }
     }
 }

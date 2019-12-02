@@ -80,7 +80,35 @@ namespace Evo.WebApi.Tests.Controllers
 
             var result = _controller.UpsertVideo(request) as NoContentResult;
             result.Should().NotBeNull();
+        }
 
+        [Test]
+        public void ShouldReturnAllMovies()
+        {
+            var movies = new[]
+            {
+                new MovieViewModel
+                {
+                    VideoId = "tt1234"
+                },
+                new MovieViewModel
+                {
+                    VideoId = "tt1235"
+                },
+                new MovieViewModel
+                {
+                    VideoId = "tt1236"
+                }
+            };
+
+            _service.Setup(s => s.GetMovies()).Returns(movies);
+
+            var result = _controller.GetMovies() as OkObjectResult;
+            var moviesResult = result.Value as IEnumerable<MovieViewModel>;
+
+            moviesResult.Select(s => s.VideoId)
+                .Should()
+                .BeEquivalentTo(new[] { "tt1234", "tt1235", "tt1236" });
         }
 
     }
