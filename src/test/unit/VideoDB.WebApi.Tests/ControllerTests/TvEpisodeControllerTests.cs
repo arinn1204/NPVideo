@@ -62,18 +62,6 @@ namespace VideoDB.WebApi.Tests.ControllerTests
             (result.Value as TvEpisodeViewModel).Episode.Single().VideoId.Should().Be("tt1233");
         }
 
-        [Test]
-        public void ShouldReturnInternalServerErrorWhenAnyExceptionThrown()
-        {
-            _service.Setup(s => s.UpsertTvEpisode(It.IsAny<TvEpisodeRequest>()))
-                .Throws(new Exception());
-
-            var objectResult = _controller.UpsertTvEpisode(new TvEpisodeRequest()) as ObjectResult;
-            var videoResult = objectResult.Value as ErrorResponse;
-            Assert.That(videoResult, Is.Not.Null);
-            Assert.That(objectResult.StatusCode, Is.EqualTo(StatusCodes.Status500InternalServerError));
-            Assert.That(videoResult.Error, Is.Not.Null);
-        }
 
         [Test]
         public void ShouldReturnNoContentWhenSuccessfulUpdate()
@@ -102,28 +90,6 @@ namespace VideoDB.WebApi.Tests.ControllerTests
             var result = _controller.UpsertTvEpisode(request) as NoContentResult;
             result.Should().NotBeNull();
 
-        }
-
-        [Test]
-        public void ShouldReturnNotFoundWhenSpecificEpisodeNotFound()
-        {
-            _service.Setup(s => s.GetTvEpisodes(It.IsAny<string>()))
-                .Throws(new EvoNotFoundException("'id' does not exist."));
-
-            var objectResult = _controller.GetSpecificTvEpisode("id") as NotFoundObjectResult;
-            objectResult.Should()
-                .NotBeNull();
-        }
-
-        [Test]
-        public void ShouldReturnNotFoundWhenSpecificShowNotFound()
-        {
-            _service.Setup(s => s.GetTvShows(It.IsAny<string>()))
-                .Throws(new EvoNotFoundException("'id' does not exist."));
-
-            var objectResult = _controller.GetSpecificTvShow("id") as NotFoundObjectResult;
-            objectResult.Should()
-                .NotBeNull();
         }
 
         [Test]

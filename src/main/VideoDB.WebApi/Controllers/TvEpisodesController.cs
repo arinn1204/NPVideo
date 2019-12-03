@@ -9,14 +9,13 @@ using Evo.WebApi.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using VideoDB.WebApi.Controllers;
 using VideoDB.WebApi.Models.ViewModels;
 
 namespace Evo.WebApi.Controllers
 {
     [Route("api/videos/[controller]")]
-    [ApiController]
-    [Produces("application/json")]
-    public class TvEpisodesController : Controller
+    public class TvEpisodesController : BaseController
     {
         private readonly IVideoService _service;
 
@@ -27,102 +26,42 @@ namespace Evo.WebApi.Controllers
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult UpsertTvEpisode([FromBody] TvEpisodeRequest request)
         {
-            var result = CallService(
-                request,
-                _service.UpsertTvEpisode,
-                out var error);
+            var result = _service.UpsertTvEpisode(request);
 
-            return error ?? 
-                (result.Episode.All(a => a.IsUpdated)
+            return result.Episode.All(a => a.IsUpdated)
                 ? NoContent() as IActionResult
-                : Created($"/videos/tvEpisodes/{request.TvEpisodeId}", result) as IActionResult);
+                : Created($"/videos/tvEpisodes/{request.TvEpisodeId}", result) as IActionResult;
         }
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<TvEpisodeViewModel>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult GetAllTvEpisodes()
         {
-            return GetTvEpisodes();
+            return Ok(_service.GetTvEpisodes());
         }
 
         [HttpGet("shows")]
         [ProducesResponseType(typeof(IEnumerable<SeriesViewModel>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult GetAllTvShows()
         {
-            return GetTvShows();
+            return Ok(_service.GetTvShows());
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(IEnumerable<TvEpisodeViewModel>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult GetSpecificTvEpisode([FromRoute] string id)
         {
-            return GetTvEpisodes(id);
+            return Ok(_service.GetTvEpisodes(id));
         }
 
         [HttpGet("shows/{id}")]
         [ProducesResponseType(typeof(IEnumerable<SeriesViewModel>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public IActionResult GetSpecificTvShow([FromRoute] string id)
         {
-            return GetTvShows(id);
-        }
-
-
-        private IActionResult GetTvShows(string id = null)
-        {
-            var result = CallService(
-                            null,
-                            _ => _service.GetTvShows(id),
-                            out var error);
-
-            return error ?? Ok(result);
-        }
-
-        private IActionResult GetTvEpisodes(string id = null)
-        {
-            var result = CallService(
-                            null,
-                            _ => _service.GetTvEpisodes(id),
-                            out var error);
-
-            return error ?? Ok(result);
-        }
-
-        private T CallService<T>(TvEpisodeRequest request, Func<TvEpisodeRequest, T> getResults, out ObjectResult errorResponse)
-        {
-            var result = default(T);
-            try
-            {
-                result = getResults(request);
-                errorResponse = null;
-            }
-            catch (EvoNotFoundException e)
-            {
-                var response = new ErrorResponse
-                {
-                    Error = e.Message
-                };
-
-                errorResponse = new NotFoundObjectResult(response);
-            }
-            catch (Exception e)
-            {
-                var response = new ErrorResponse
-                {
-                    Error = e.Message,
-                    StackTrace = e.StackTrace
-                };
-
-                errorResponse = StatusCode(500, response);
-            }
-
-            return result;
+            return Ok(_service.GetTvShows(id));
         }
     }
 }

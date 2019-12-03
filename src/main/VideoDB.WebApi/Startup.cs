@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using VideoDB.WebApi.Middleware;
 using VideoDB.WebApi.Validators;
 
 namespace Evo.WebApi
@@ -74,7 +75,8 @@ namespace Evo.WebApi
                 .UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Evo API v1"); })
                 .UseHttpsRedirection()
                 .UseRouting()
-                .UseEndpoints(endpoint => endpoint.MapControllers());
+                .UseEndpoints(endpoint => endpoint.MapControllers())
+                .UseMiddleware(typeof(ErrorHandlingMiddleware));
         }
     }
 }

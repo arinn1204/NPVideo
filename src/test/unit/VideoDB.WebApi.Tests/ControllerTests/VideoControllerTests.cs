@@ -52,30 +52,6 @@ namespace Evo.WebApi.Tests.Controllers
         }
 
         [Test]
-        public void ShouldReturnInternalServerErrorWhenAnyExceptionThrown()
-        {
-            _service.Setup(s => s.UpsertMovie(It.IsAny<MovieRequest>()))
-                .Throws(new Exception());
-
-            var objectResult = _controller.UpsertVideo(new MovieRequest()) as ObjectResult;
-            var videoResult = objectResult.Value as ErrorResponse;
-            Assert.That(videoResult, Is.Not.Null);
-            Assert.That(objectResult.StatusCode, Is.EqualTo(StatusCodes.Status500InternalServerError));
-            Assert.That(videoResult.Error, Is.Not.Null);
-        }
-
-        [Test]
-        public void ShouldReturnNotFoundWhenSpecificVideoNotFound()
-        {
-            _service.Setup(s => s.GetMovies(It.IsAny<string>()))
-                .Throws(new EvoNotFoundException("'id' does not exist."));
-
-            var objectResult = _controller.GetAllMovies("Does Not Exist") as NotFoundObjectResult;
-            objectResult.Should()
-                .NotBeNull();
-        }
-
-        [Test]
         public void ShouldReturnNoContentWhenSuccessfulUpdate()
         {
             var request = new MovieRequest()
