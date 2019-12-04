@@ -19,7 +19,7 @@ namespace VideoDB.WebApi.Models.Profiles
                 .ForMember(
                     dest => dest.VideoId,
                     src => src.MapFrom(
-                        m => m.Select(s => s.episode_imdb_id)
+                        m => m.Select(s => s.imdb_id)
                               .Distinct()
                               .Single()))
                 .ForMember(

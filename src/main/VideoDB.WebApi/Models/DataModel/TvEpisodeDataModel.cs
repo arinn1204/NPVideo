@@ -14,7 +14,7 @@ namespace Evo.WebApi.Models.DataModel
     {
         public int tv_episode_id { get; set; }
         public int series_id { get; set; }
-        public string episode_imdb_id { get; set; }
+        public string imdb_id { get; set; }
         public int season_number { get; set; }
         public int episode_number { get; set; }
         public string episode_name { get; set; }
@@ -22,16 +22,6 @@ namespace Evo.WebApi.Models.DataModel
         public string rating { get; set; }
         public DateTime release_date { get; set; }
         public string plot { get; set; }
-        public string resolution { get; set; }
-        public string codec { get; set; }
-        public string first_name { get; set; }
-        public string middle_name { get; set; }
-        public string last_name { get; set; }
-        public string suffix { get; set; }
-        public string person_role { get; set; }
-        public string genre_name { get; set; }
-        public string rating_source { get; set; }
-        public decimal rating_value { get; set; }
         public bool updated { get; set; }
     }
 }

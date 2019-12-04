@@ -2,6 +2,7 @@
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
 using FluentAssertions;
+using MoreLinq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -131,7 +132,6 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
 
                     videoContent.Select(s => s.VideoId)
                         .Union(Enumerable.Range(1, 10).Select(s => $"tt{s}"))
-                        .Distinct()
                         .Should()
                         .HaveCount(10);
 
@@ -141,15 +141,19 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                         JsonConvert.DeserializeObject< IEnumerable<TvEpisodeViewModel>>(
                             contentString);
 
-                    tvEpisodeContent.Select(s => s.Series).Should().HaveCount(1);
+                    tvEpisodeContent.Select(s => s.Series)
+                        .DistinctBy(d => new { d.VideoId, d.SeriesId, d.Title })
+                        .Should()
+                        .HaveCount(1);
                     tvEpisodeContent.SelectMany(s => s.Episode)
+                        .DistinctBy(d => d.VideoId)
                         .Should()
                         .HaveCount(10);
 
                     tvEpisodeContent.SelectMany(s => s.Episode)
+                        .DistinctBy(d => d.VideoId)
                         .Select(s => s.VideoId)
                         .Union(Enumerable.Range(1, 10).Select(s => $"tt{s}"))
-                        .Distinct()
                         .Should()
                         .HaveCount(10);
 

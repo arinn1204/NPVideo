@@ -52,6 +52,32 @@ namespace VideoDB.WebApi.Models.Profiles
                         m => m.Select(s => s.release_date)
                               .Distinct()
                               .Single()));
+
+        CreateMap<SeriesDataModel, SeriesViewModel>()
+                .ForMember(
+                    dest => dest.SeriesId,
+                    src => src.MapFrom(
+                        m => m.video_id))
+                .ForMember(
+                    dest => dest.VideoId,
+                    src => src.MapFrom(
+                        m => m.imdb_id))
+                .ForMember(
+                    dest => dest.IsUpdated,
+                    src => src.MapFrom(
+                        m => m.updated))
+                .ForMember(
+                    dest => dest.Title,
+                    src => src.MapFrom(
+                        m => m.title))
+                .ForMember(
+                    dest => dest.Plot,
+                    src => src.MapFrom(
+                        m => m.plot))
+                .ForMember(
+                    dest => dest.ReleaseDate,
+                    src => src.MapFrom(
+                        m => m.release_date));
         }
     }
 }

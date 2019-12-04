@@ -249,137 +249,46 @@ namespace VideoDB.WebApi.Tests.Services
 
         private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId, int seriesId = 1, int episodeId = 1)
         {
-            var people = CreatePeople();
-            var genres = CreateGenres();
-            var ratings = CreateRatings();
-
-            foreach (var person in people)
+            yield return new TvEpisodeDataModel
             {
-                foreach (var genre in genres)
-                {
-                    foreach (var rating in ratings)
-                    {
-                        yield return new TvEpisodeDataModel
-                        {
-                            series_id = seriesId,
-                            tv_episode_id = episodeId,
-                            episode_imdb_id = imdbId,
-                            rating = "R",
-                            episode_name = "title",
-                            plot = "plot",
-                            release_date = DateTime.MaxValue,
-                            runtime = 120.33M,
-                            episode_number = 1,
-                            season_number = 1
-                        };
-                    }
-                }
-            }
+                series_id = seriesId,
+                tv_episode_id = episodeId,
+                imdb_id = imdbId,
+                rating = "R",
+                episode_name = "title",
+                plot = "plot",
+                release_date = DateTime.MaxValue,
+                runtime = 120.33m,
+                episode_number = 1,
+                season_number = 1
+            };
         }
 
         private IEnumerable<SeriesDataModel> CreateSeriesDataModel(string imdbId, int seriesId = 1)
         {
-            var people = CreatePeople();
-            var genres = CreateGenres();
-            var ratings = CreateRatings();
-
-            foreach (var person in people)
+            yield return new SeriesDataModel
             {
-                foreach (var genre in genres)
-                {
-                    foreach (var rating in ratings)
-                    {
-                        yield return new SeriesDataModel
-                        {
-                            video_id = seriesId,
-                            imdb_id = imdbId,
-                            plot = "plot",
-                            release_date = DateTime.MaxValue,
-                            title = "title"
-                        };
-                    }
-                }
-            }
+                video_id = seriesId,
+                imdb_id = imdbId,
+                plot = "plot",
+                release_date = DateTime.MaxValue,
+                title = "title"
+            };
         }
 
 
 
         private IEnumerable<MovieDataModel> CreateVideoDataModel(string imdbId, int videoId = 1)
         {
-            var people = CreatePeople();
-            var genres = CreateGenres();
-            var ratings = CreateRatings();
-
-            foreach (var person in people)
+            yield return new MovieDataModel
             {
-                foreach (var genre in genres)
-                {
-                    foreach (var rating in ratings)
-                    {
-                        yield return new MovieDataModel
-                        {
-                            video_id = videoId,
-                            imdb_id = imdbId,
-                            movie_rating = "R",
-                            movie_title = "title",
-                            plot = "plot",
-                            release_date = DateTime.MaxValue,
-                            runtime = 120.33M
-                        };
-                    }
-                }
-            }
-        }
-
-        private IEnumerable<RatingRequest> CreateRatings()
-        {
-            return new[]
-            {
-                new RatingRequest
-                {
-                    RatingValue = 11.32M,
-                    Source = "Metacritic"
-                },
-                new RatingRequest
-                {
-                    RatingValue = 113.32M,
-                    Source = "Rotten Tomato"
-                }
-            };
-        }
-
-        private IEnumerable<GenreRequest> CreateGenres()
-        {
-            return new[]
-            {
-                new GenreRequest { Name = "Horror" },
-                new GenreRequest { Name = "Action" },
-                new GenreRequest { Name = "Adventure" },
-            };
-        }
-
-        private IEnumerable<StarRequest> CreatePeople()
-        {
-            return new[]
-            {
-                new StarRequest
-                {
-                    FirstName = "Jake",
-                    LastName = "Johnson",
-                    Role = PersonType.Actor
-                },
-                new StarRequest
-                {
-                    FirstName = "John",
-                    LastName = "Johnson",
-                    Role = PersonType.Director
-                },
-                new StarRequest
-                {
-                    FirstName = "Jacob",
-                    LastName = "Johnson",
-                    Role = PersonType.Producer
-                }
+                video_id = videoId,
+                imdb_id = imdbId,
+                movie_rating = "R",
+                movie_title = "title",
+                plot = "plot",
+                release_date = DateTime.MaxValue,
+                runtime = 120.33M
             };
         }
     }

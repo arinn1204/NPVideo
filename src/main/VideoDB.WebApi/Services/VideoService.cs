@@ -33,58 +33,52 @@ namespace VideoDB.WebApi.Services
 
         public TvEpisodeViewModel UpsertTvEpisode(TvEpisodeRequest tvEpisode)
         {
-            var (videoDataModels, tvDataModels) = _tvEpisodeRepository.UpsertTvEpisode(tvEpisode);
+            var (tvShow, tvEpisodeResponse) = _tvEpisodeRepository.UpsertTvEpisode(tvEpisode);
 
             return new TvEpisodeViewModel
             {
-                Episode = tvDataModels.GroupBy(
+                Episode = tvEpisodeResponse.GroupBy(
                     key => key.tv_episode_id,
-                    (key, dataModels) => _mapper.Map<TvEpisode>(
-                        dataModels.Where(w => w.tv_episode_id == key))),
-                Series = _mapper.Map<SeriesViewModel>(videoDataModels)
+                    (episodeId, tvEpisodes) => _mapper.Map<TvEpisode>(
+                        tvEpisodes.Where(w => w.tv_episode_id == episodeId))),
+                Series = _mapper.Map<SeriesViewModel>(tvShow)
             };
         }
 
         public IEnumerable<SeriesViewModel> GetTvShows(string imdbId = null)
         {
-            var seriesDataModel = _tvEpisodeRepository.GetTvShows(imdbId);
+            var tvShows = _tvEpisodeRepository.GetTvShows(imdbId);
 
-            return seriesDataModel.Any()
-                ? seriesDataModel.GroupBy(
+            return tvShows.Any()
+                ? tvShows.GroupBy(
                 key => key.video_id,
-                (key, dataModels) =>
+                (_, dataModels) =>
                     _mapper.Map<SeriesViewModel>(dataModels))
                 : throw new EvoNotFoundException($"'{imdbId}' does not exist.");
         }
 
         public IEnumerable<TvEpisodeViewModel> GetTvEpisodes(string imdbId = null)
         {
-            var (videoDataModels, tvDataModels) = _tvEpisodeRepository.GetTvEpisodes(imdbId);
+            var (shows, episodes) = _tvEpisodeRepository.GetTvEpisodes(imdbId);
 
-            if (!videoDataModels.Any() || !tvDataModels.Any())
+            if (!shows.Any() || !episodes.Any())
             {
                 throw new EvoNotFoundException($"'{imdbId}' does not exist.");
             }
 
-            var series = videoDataModels.GroupBy(
-                key => key.video_id,
-                (key, dataModels) => 
-                    _mapper.Map<SeriesViewModel>(
-                        dataModels.Where(w => w.video_id == key)));
-
-            return series.GroupJoin(
-                tvDataModels,
-                outerKey => outerKey.SeriesId,
+            return shows.GroupJoin(
+                episodes,
+                outerKey => outerKey.video_id,
                 innerKey => innerKey.series_id,
-                (series, episodes) =>
+                (series, seriesEpisodes) =>
                     new TvEpisodeViewModel
                     {
                         Series = _mapper.Map<SeriesViewModel>(series),
-                        Episode = episodes.GroupBy(
+                        Episode = seriesEpisodes.GroupBy(
                             key => key.tv_episode_id,
-                            (key, dataModels) => 
+                            (episodeId, episodes) => 
                                 _mapper.Map<TvEpisode>(
-                                    dataModels.Where(w => w.tv_episode_id == key)))
+                                    episodes.Where(w => w.tv_episode_id == episodeId)))
                     });
         }
 

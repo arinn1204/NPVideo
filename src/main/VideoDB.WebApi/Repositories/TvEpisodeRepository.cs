@@ -24,8 +24,8 @@ namespace VideoDB.WebApi.Repositories
             _configuration = configuration;
         }
 
-        public (IEnumerable<SeriesDataModel> videoDataModels,
-               IEnumerable<TvEpisodeDataModel> tvDataModels)
+        public (IEnumerable<SeriesDataModel> tvShow,
+               IEnumerable<TvEpisodeDataModel> tvEpisodes)
            UpsertTvEpisode(TvEpisodeRequest tvEpisode)
         {
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
@@ -37,7 +37,7 @@ namespace VideoDB.WebApi.Repositories
         public IEnumerable<SeriesDataModel> GetTvShows(string imdb_id = null)
         {
             var seriesCommand =
-    @"SELECT video_id, imdb_id, title, plot, release_date, mpaa_rating
+    @"SELECT video_id, imdb_id, title, plot, release_date
 FROM video.vw_tv_series
 WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
@@ -48,19 +48,21 @@ WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
         }
 
 
-        public (IEnumerable<SeriesDataModel> videoDataModels, 
-            IEnumerable<TvEpisodeDataModel> tvDataModels)
+        public (IEnumerable<SeriesDataModel> tvShows, 
+            IEnumerable<TvEpisodeDataModel> tvEpisodes)
             GetTvEpisodes(string imdb_id = null)
         {
             var tvEpisodeCommand =
-    @"SELECT video_id, imdb_id, title, plot, release_date, mpaa_rating
-FROM video.vw_tv_series
-WHERE @imdb_id IS NULL OR imdb_id = @imdb_id
+    @"SELECT ts.video_id, ts.imdb_id, ts.title, ts.plot, ts.release_date
+FROM video.vw_tv_series ts
+JOIN video.vw_tv_episodes te
+    ON ts.video_id = te.series_id
+WHERE @imdb_id IS NULL OR te.imdb_id = @imdb_id
 
 SELECT tv_episode_id, series_id, imdb_id, season_number, episode_number,
-    episode_name, release_date, plot
+    episode_name, release_date, plot, mpaa_rating AS 'rating', runtime
 FROM video.vw_tv_episodes
-WHERE @imdb_id IS NULL OR episode_imdb_id = @imdb_id";
+WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
             var command = new SqlCommand(tvEpisodeCommand, sqlConnection);
             command.Parameters.Add(CreateSqlParameter.CreateParameter("@imdb_id", imdb_id));

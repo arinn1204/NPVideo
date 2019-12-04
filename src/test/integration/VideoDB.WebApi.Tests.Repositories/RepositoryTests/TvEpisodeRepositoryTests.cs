@@ -27,17 +27,17 @@ namespace VideoDB.WebApi.Tests.Repositories.RepositoryTests
         {
             var repository = _fixture.Create<TvEpisodeRepository>();
             var request = RequestGenerator.GetTvEpisodeRequest(134132, 134133);
-            var videoEntered = repository.UpsertTvEpisode(request);
+            var (tvShow, tvEpisodes) = repository.UpsertTvEpisode(request);
 
-            videoEntered.videoDataModels.Count().Should().Be(60);
-            videoEntered.videoDataModels.All(a => a.imdb_id == "tt134132").Should().BeTrue();
+            tvShow.Count().Should().Be(1);
+            tvShow.All(a => a.imdb_id == "tt134132").Should().BeTrue();
 
-            videoEntered.tvDataModels.Count().Should().Be(60);
-            videoEntered.tvDataModels.All(a => a.episode_imdb_id == "tt134133").Should().BeTrue();
+            tvEpisodes.Count().Should().Be(1);
+            tvEpisodes.All(a => a.imdb_id == "tt134133").Should().BeTrue();
 
 
             var command = @"SELECT COUNT(*)
-FROM video.vw_series
+FROM video.vw_tv_series
 WHERE imdb_id = 'tt134132'";
 
             using var sqlConnection = new SqlConnection(_config.CreateConnectionString());
@@ -50,11 +50,11 @@ WHERE imdb_id = 'tt134132'";
             var rowCount = reader.GetInt32(0);
             sqlCommand.Connection.Close();
 
-            rowCount.Should().Be(60);
+            rowCount.Should().Be(1);
 
             command = @"SELECT COUNT(*)
 FROM video.vw_tv_episodes
-WHERE episode_imdb_id = 'tt134133'";
+WHERE imdb_id = 'tt134133'";
 
             sqlCommand.CommandText = command;
             sqlCommand.Connection.Open();
@@ -64,7 +64,7 @@ WHERE episode_imdb_id = 'tt134133'";
             rowCount = reader.GetInt32(0);
             sqlCommand.Connection.Close();
 
-            rowCount.Should().Be(60);
+            rowCount.Should().Be(1);
 
         }
 
@@ -78,8 +78,7 @@ WHERE episode_imdb_id = 'tt134133'";
 
             exception.Should()
                 .Throw<EvoException>()
-                .WithMessage(@"@episode_imdb_id is a required parameter.
- ");
+                .WithMessage("@episode_imdb_id is a required parameter.");
         }
 
         [Test]
@@ -93,11 +92,10 @@ WHERE episode_imdb_id = 'tt134133'";
 
 
             var repository = _fixture.Create<TvEpisodeRepository>();
-            var episodes = repository.GetTvEpisodes();
+            var (tvShows, tvEpisodes) = repository.GetTvEpisodes();
 
-            episodes
-                .tvDataModels
-                .Select(s => s.episode_imdb_id)
+            tvEpisodes
+                .Select(s => s.imdb_id)
                 .Distinct()
                 .Should()
                 .HaveCount(10)
@@ -107,8 +105,7 @@ WHERE episode_imdb_id = 'tt134133'";
                     "tt1","tt2","tt3","tt4","tt5","tt6","tt7","tt8","tt9","tt10"
                 });
 
-            episodes
-                .videoDataModels
+            tvShows
                 .Select(s => s.imdb_id)
                 .Distinct()
                 .Should()
@@ -132,11 +129,10 @@ WHERE episode_imdb_id = 'tt134133'";
 
 
             var repository = _fixture.Create<TvEpisodeRepository>();
-            var episodes = repository.GetTvEpisodes("tt1");
+            var (tvShows, tvEpisodes) = repository.GetTvEpisodes("tt1");
 
-            episodes
-                .tvDataModels
-                .Select(s => s.episode_imdb_id)
+            tvEpisodes
+                .Select(s => s.imdb_id)
                 .Distinct()
                 .Should()
                 .HaveCount(1)
@@ -146,8 +142,7 @@ WHERE episode_imdb_id = 'tt134133'";
                     "tt1"
                 });
 
-            episodes
-                .videoDataModels
+            tvShows
                 .Select(s => s.imdb_id)
                 .Distinct()
                 .Should()
@@ -164,17 +159,15 @@ WHERE episode_imdb_id = 'tt134133'";
         public void ShouldReturnEmptyEnumerableIfNoEpisodesInDataStore()
         {
             var repository = _fixture.Create<TvEpisodeRepository>();
-            var episodes = repository.GetTvEpisodes();
+            var (tvShows, tvEpisodes) = repository.GetTvEpisodes();
 
-            episodes
-                .tvDataModels
-                .Select(s => s.episode_imdb_id)
+            tvEpisodes
+                .Select(s => s.imdb_id)
                 .Distinct()
                 .Should()
                 .BeEmpty();
 
-            episodes
-                .videoDataModels
+            tvShows
                 .Select(s => s.imdb_id)
                 .Distinct()
                 .Should()

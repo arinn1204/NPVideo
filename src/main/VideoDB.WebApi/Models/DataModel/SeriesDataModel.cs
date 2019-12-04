@@ -14,14 +14,7 @@ namespace Evo.WebApi.Models.DataModel
         public string title { get; set; }
         public string plot { get; set; }
         public DateTime release_date { get; set; }
-        public string genre_name { get; set; }
-        public string first_name { get; set; }
-        public string middle_name { get; set; }
-        public string last_name { get; set; }
-        public string suffix { get; set; }
-        public string person_role { get; set; }
-        public string rating_source { get; set; }
-        public decimal rating_value { get; set; }
+        public string mpaa_rating { get; set; }
         public bool updated { get; set; }
     }
 }
