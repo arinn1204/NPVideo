@@ -298,13 +298,14 @@ you expect.
   </data>
   <data name="testInitializeAction.SqlScript" xml:space="preserve">
     <value>/*
-Add SQL statements here that you want to run before
-the test script is run.
+Add SQL statements here that you want to run before 
+each test method (unit test) in this test class is run.
 
 In the lower pane, you can add test conditions that verify 
 whether the results of your SQL statements match what 
 you expect.
 */
+
 
 DELETE FROM video.genre_videos;
 DELETE FROM video.person_videos;
@@ -312,6 +313,8 @@ DELETE FROM video.person_roles;
 DELETE FROM video.genre_tv_episodes;
 DELETE FROM video.person_tv_episodes;
 
+DELETE FROM video.video_metadata;
+DELETE FROM video.episode_metadata;
 DELETE FROM video.persons;
 DELETE FROM video.roles;
 DELETE FROM video.genres;
@@ -320,11 +323,13 @@ DELETE FROM video.tv_episodes;
 DELETE FROM video.videos;
 
 DBCC CHECKIDENT ('noblepanther_test.video.videos', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.video_metadata', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.episode_metadata', RESEED, 0);
+DBCC CHECKIDENT ('noblepanther_test.video.tv_episodes', RESEED, 0);
 DBCC CHECKIDENT ('noblepanther_test.video.genres', RESEED, 0);
 DBCC CHECKIDENT ('noblepanther_test.video.ratings', RESEED, 0);
 DBCC CHECKIDENT ('noblepanther_test.video.persons', RESEED, 0);
 DBCC CHECKIDENT ('noblepanther_test.video.roles', RESEED, 0);
-DBCC CHECKIDENT ('noblepanther_test.video.tv_episodes', RESEED, 0);
 </value>
   </data>
   <data name="AddGenreWhenNotExist_TestAction.SqlScript" xml:space="preserve">
@@ -2020,6 +2025,283 @@ SELECT @RC = 0,
        @release_date = getdate(),
        @resolution = '1080p',
        @codec = 'x265',
+       @modified_by = 'ReturnsInsertedVideo';
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
+END TRY
+BEGIN CATCH
+		SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH
+</value>
+  </data>
+  <data name="ShouldInsertCodecAndResolutionAndExtendedIntoMetadataTable_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@imdb_id AS VARCHAR (32), 
+	@title AS VARCHAR (64), 
+	@mpaa_rating AS VARCHAR (8), 
+	@runtime AS DECIMAL (5, 2), 
+	@plot AS VARCHAR (8000), 
+	@video_type AS VARCHAR (8), 
+	@release_date AS DATETIME, 
+	@resolution AS VARCHAR (16), 
+	@codec AS VARCHAR (8), 
+	@modified_by AS VARCHAR (64), 
+	@extended AS VARCHAR(32),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @RC = 0,
+       @imdb_id = 'tt1234',
+       @title = 'Video Title goes here',
+       @mpaa_rating = 'PG-13',
+       @runtime = 120.95,
+       @plot = 'some plot here',
+       @video_type = 'movie',
+       @release_date = getdate(),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @extended = 'Directors Cut',
+       @modified_by = 'ReturnsInsertedVideo';
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, @extended, @GENRES, @PERSONS, @RATINGS;
+
+select video_id, resolution, codec, extended_format
+from video.video_metadata;</value>
+  </data>
+  <data name="ShouldInsertCodecAndREsolutionAndNullExtendedIntoMetadata_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@imdb_id AS VARCHAR (32), 
+	@title AS VARCHAR (64), 
+	@mpaa_rating AS VARCHAR (8), 
+	@runtime AS DECIMAL (5, 2), 
+	@plot AS VARCHAR (8000), 
+	@video_type AS VARCHAR (8), 
+	@release_date AS DATETIME, 
+	@resolution AS VARCHAR (16), 
+	@codec AS VARCHAR (8), 
+	@modified_by AS VARCHAR (64), 
+	@extended AS VARCHAR(32),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @RC = 0,
+       @imdb_id = 'tt1234',
+       @title = 'Video Title goes here',
+       @mpaa_rating = 'PG-13',
+       @runtime = 120.95,
+       @plot = 'some plot here',
+       @video_type = 'movie',
+       @release_date = getdate(),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   --@extended = 'Directors Cut',
+       @modified_by = 'ReturnsInsertedVideo';
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, @extended, @GENRES, @PERSONS, @RATINGS;
+
+select video_id, resolution, codec, extended_format
+from video.video_metadata;</value>
+  </data>
+  <data name="ShouldNotInsertMetadataIfItIsASeries_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@imdb_id AS VARCHAR (32), 
+	@title AS VARCHAR (64), 
+	@mpaa_rating AS VARCHAR (8), 
+	@runtime AS DECIMAL (5, 2), 
+	@plot AS VARCHAR (8000), 
+	@video_type AS VARCHAR (8), 
+	@release_date AS DATETIME, 
+	@resolution AS VARCHAR (16), 
+	@codec AS VARCHAR (8), 
+	@modified_by AS VARCHAR (64), 
+	@extended AS VARCHAR(32),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @RC = 0,
+       @imdb_id = 'tt1234',
+       @title = 'Video Title goes here',
+       @mpaa_rating = 'PG-13',
+       @runtime = 120.95,
+       @plot = 'some plot here',
+       @video_type = 'series',
+       @release_date = getdate(),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @extended = 'Directors Cut',
+       @modified_by = 'ReturnsInsertedVideo';
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, @extended, @GENRES, @PERSONS, @RATINGS;
+
+select video_id, resolution, codec, extended_format
+from video.video_metadata;</value>
+  </data>
+  <data name="ShouldThrowIfResolutionIsNullAndTypeIsMovie_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@imdb_id AS VARCHAR (32), 
+	@title AS VARCHAR (64), 
+	@mpaa_rating AS VARCHAR (8), 
+	@runtime AS DECIMAL (5, 2), 
+	@plot AS VARCHAR (8000), 
+	@video_type AS VARCHAR (8), 
+	@release_date AS DATETIME, 
+	@resolution AS VARCHAR (16), 
+	@codec AS VARCHAR (8), 
+	@modified_by AS VARCHAR (64), 
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @RC = 0,
+       @imdb_id = 'tt1234',
+       @title = 'Video Title goes here',
+       @mpaa_rating = 'PG-13',
+       @runtime = 120.95,
+       @plot = 'some plot here',
+       @video_type = 'movie',
+       @release_date = getdate(),
+       --@resolution = '1080p',
+       @codec = 'x265',
+       @modified_by = 'ReturnsInsertedVideo';
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
+END TRY
+BEGIN CATCH
+		SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH
+</value>
+  </data>
+  <data name="ShouldThrowIfCodecIsNullAndTypeIsMovie_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@imdb_id AS VARCHAR (32), 
+	@title AS VARCHAR (64), 
+	@mpaa_rating AS VARCHAR (8), 
+	@runtime AS DECIMAL (5, 2), 
+	@plot AS VARCHAR (8000), 
+	@video_type AS VARCHAR (8), 
+	@release_date AS DATETIME, 
+	@resolution AS VARCHAR (16), 
+	@codec AS VARCHAR (8), 
+	@modified_by AS VARCHAR (64), 
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @RC = 0,
+       @imdb_id = 'tt1234',
+       @title = 'Video Title goes here',
+       @mpaa_rating = 'PG-13',
+       @runtime = 120.95,
+       @plot = 'some plot here',
+       @video_type = 'movie',
+       @release_date = getdate(),
+       @resolution = '1080p',
+       --@codec = 'x265',
        @modified_by = 'ReturnsInsertedVideo';
 
 INSERT INTO @GENRES(name) VALUES('Horror');

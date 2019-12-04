@@ -30,6 +30,8 @@ BEGIN
 	BEGIN
 		IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter for video_type = movie.', 16, 1);
 		IF (@runtime IS NULL) RAISERROR('@runtime is a required paramter for video_type = movie.', 16, 1);
+		IF (@codec IS NULL) RAISERROR('@codec is a required parameter for video_type = movie.', 16, 1);
+		IF (@resolution IS NULL) RAISERROR('@resolution is a required parameter for video_type = movie.', 16, 1);
 	END
 
 	BEGIN TRY
@@ -109,6 +111,18 @@ BEGIN
 				FROM video.videos
 				WHERE imdb_id = @imdb_id;
 			END
+
+			MERGE INTO video.video_metadata AS target
+			USING (
+				SELECT @resolution AS 'resolution', @codec AS 'codec', @extended AS 'extended'
+			) AS source
+			ON target.resolution = source.resolution
+				AND target.codec = source.codec
+				AND ((target.extended_format = source.extended) OR (target.extended_format IS NULL AND source.extended IS NULL))
+			WHEN NOT MATCHED AND @video_type = 'movie'
+			THEN
+				INSERT (video_id, resolution, codec, extended_format)
+					VALUES (@video_id, source.resolution, source.codec, source.extended);
 
             MERGE INTO video.ratings AS target
 			USING (
@@ -239,9 +253,8 @@ BEGIN
 		
 	END TRY
 	BEGIN CATCH
-		DECLARE @TempState XML = (SELECT * FROM #Video FOR XML AUTO);
 
-        DECLARE @ErrorMessage NVARCHAR(MAX) = CONVERT(VARCHAR,@TempState) + ' -- ' + ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),
+        DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),
             @ErrorSeverity INT = ERROR_SEVERITY(),
             @ErrorState INT = ERROR_STATE();
 		

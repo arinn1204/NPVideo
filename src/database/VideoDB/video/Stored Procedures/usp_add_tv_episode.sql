@@ -32,6 +32,8 @@ BEGIN
 	IF (@episode_number IS NULL) RAISERROR('@episode_number is a required parameter.', 16, 1);
 	IF (@episode_name IS NULL) RAISERROR('@episode_name is a required parameter.', 16, 1);
 	IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
+	IF (@codec IS NULL) RAISERROR('@codec is a required parameter.', 16, 1);
+	IF (@resolution IS NULL) RAISERROR('@resolution is a required parameter.', 16, 1);
 
 	BEGIN TRY
 		BEGIN TRANSACTION
@@ -135,6 +137,18 @@ BEGIN
 				WHERE imdb_id = @episode_imdb_id;
 			END
 
+			
+			MERGE INTO video.episode_metadata AS target
+			USING (
+				SELECT @resolution AS 'resolution', @codec AS 'codec', @extended AS 'extended'
+			) AS source
+			ON target.resolution = source.resolution
+				AND target.codec = source.codec
+				AND ((target.extended_format = source.extended) OR (target.extended_format IS NULL AND source.extended IS NULL))
+			WHEN NOT MATCHED
+			THEN
+				INSERT (episode_id, resolution, codec, extended_format)
+					VALUES (@episode_id, source.resolution, source.codec, source.extended);
 
 
             MERGE INTO video.ratings AS target
