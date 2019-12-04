@@ -403,7 +403,7 @@ EXECUTE @RC = [video].[usp_add_tv_episode]
         AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
         PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
         YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
-        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAPcRPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
+        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAANoSPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
         dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
         cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
         cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
@@ -438,14 +438,15 @@ EXECUTE @RC = [video].[usp_add_tv_episode]
         ZVRpbWUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
         ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJwbG90IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXRO
         YW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1l
-        PSJ1cGRhdGVkIiB0eXBlPSJ4czpib29sZWFuIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9j
-        Y3Vycz0iMCIgLz4NCiAgICAgICAgICAgIDwveHM6c2VxdWVuY2U+DQogICAgICAgICAgPC94czpjb21w
-        bGV4VHlwZT4NCiAgICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPC94czpjaG9pY2U+DQogICAgPC94
-        czpjb21wbGV4VHlwZT4NCiAgPC94czplbGVtZW50Pg0KPC94czpzY2hlbWE+BgUAAACAATxkaWZmZ3I6
-        ZGlmZmdyYW0geG1sbnM6bXNkYXRhPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1tc2RhdGEi
-        IHhtbG5zOmRpZmZncj0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp4bWwtZGlmZmdyYW0tdjEiIC8+
-        BAMAAAAOU3lzdGVtLlZlcnNpb24EAAAABl9NYWpvcgZfTWlub3IGX0J1aWxkCV9SZXZpc2lvbgAAAAAI
-        CAgIAgAAAAAAAAD//////////ws=
+        PSJydW50aW1lIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJz
+        PSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJ1cGRhdGVkIiB0eXBlPSJ4czpi
+        b29sZWFuIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAg
+        ICAgIDwveHM6c2VxdWVuY2U+DQogICAgICAgICAgPC94czpjb21wbGV4VHlwZT4NCiAgICAgICAgPC94
+        czplbGVtZW50Pg0KICAgICAgPC94czpjaG9pY2U+DQogICAgPC94czpjb21wbGV4VHlwZT4NCiAgPC94
+        czplbGVtZW50Pg0KPC94czpzY2hlbWE+BgUAAACAATxkaWZmZ3I6ZGlmZmdyYW0geG1sbnM6bXNkYXRh
+        PSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1tc2RhdGEiIHhtbG5zOmRpZmZncj0idXJuOnNj
+        aGVtYXMtbWljcm9zb2Z0LWNvbTp4bWwtZGlmZmdyYW0tdjEiIC8+BAMAAAAOU3lzdGVtLlZlcnNpb24E
+        AAAABl9NYWpvcgZfTWlub3IGX0J1aWxkCV9SZXZpc2lvbgAAAAAICAgIAgAAAAAAAAD//////////ws=
 </value>
   </data>
   <data name="ShouldNotDoAnythingWhenInsertingDuplicateEpisode_TestAction.SqlScript" xml:space="preserve">
@@ -586,8 +587,8 @@ INSERT INTO video.videos(imdb_id, title, mpaa_rating, plot, video_type, release_
 	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
 
 
-INSERT INTO video.tv_episodes(series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot)
-	VALUES(1, @episode_imdb_id, @mpaa_rating, @season_number, @episode_number, @episode_name, @episode_release_date, @plot);</value>
+INSERT INTO video.tv_episodes(series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot, runtime)
+	VALUES(1, @episode_imdb_id, @mpaa_rating, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @runtime);</value>
   </data>
   <data name="ShouldUpdateEpisodeIfDataChanges_TestAction.SqlScript" xml:space="preserve">
     <value>
@@ -630,7 +631,7 @@ SELECT @episode_imdb_id = 'tt1234',
        @series_title = 'Series name goes here',
        @mpaa_rating = 'TV/14',
        @runtime = 22.84,
-       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @plot = 'Some updated plot about some friends that come across trouble in this weeks episode that also has a spelling mistake',
 	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
        @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
 	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
@@ -726,8 +727,8 @@ INSERT INTO video.videos(imdb_id, title, mpaa_rating, plot, video_type, release_
 	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
 
 
-INSERT INTO video.tv_episodes(series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot)
-	VALUES(1, @episode_imdb_id, @mpaa_rating, @season_number, @episode_number, @episode_name, @episode_release_date, @plot);
+INSERT INTO video.tv_episodes(series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot, runtime)
+	VALUES(1, @episode_imdb_id, @mpaa_rating, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @runtime);
 
 </value>
   </data>
@@ -1260,8 +1261,8 @@ SELECT @episode_imdb_id = 'tt1234',
 INSERT INTO video.videos(imdb_id, title, mpaa_rating, plot, video_type, release_date)
 	VALUES (@series_imdb_id, @series_title, @mpaa_rating, @series_plot, 'series', @series_release_date);
 
-INSERT INTO video.tv_episodes(series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot)
-	VALUES(1, @episode_imdb_id, @mpaa_rating, @season_number, @episode_number, @episode_name, @episode_release_date, @plot);
+INSERT INTO video.tv_episodes(series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot, runtime)
+	VALUES(1, @episode_imdb_id, @mpaa_rating, @season_number, @episode_number, @episode_name, @episode_release_date, @plot, @runtime);
 
 
 INSERT INTO video.ratings(video_id, source, value) VALUES(1, 'Metacritic', 11.34);

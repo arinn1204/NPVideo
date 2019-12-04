@@ -82,6 +82,7 @@ BEGIN
 					AND episode_name = @episode_name
 					AND release_date = @episode_release_date
 					AND mpaa_rating = @mpaa_rating
+					AND runtime = @runtime
 					AND plot = @plot)
 				BEGIN
 					MERGE video.tv_episodes AS target
@@ -92,25 +93,17 @@ BEGIN
 								@episode_name AS 'name', 
 								@episode_release_date AS 'release_date',
 								@plot AS 'plot',
+								@runtime AS 'runtime',
 								@mpaa_rating AS 'rating',
 								@created_time AS 'ctime',
 								@created_user AS 'cuser') AS source
 					ON ((SELECT 1 
 							FROM video.tv_episodes 
-							WHERE imdb_id = @episode_imdb_id) IS NOT NULL
-						AND (SELECT 1
-								FROM video.tv_episodes
-								WHERE video_id = @series_video_id
-									AND imdb_id = @episode_imdb_id
-									AND season_number = @season_number
-									AND episode_number = @episode_number
-									AND episode_name = @episode_name
-									AND release_date = @episode_release_date
-									AND mpaa_rating = @mpaa_rating
-									AND plot = @plot) IS NULL)
+							WHERE imdb_id = source.imdb_id
+								AND series_id = source.video_id) IS NOT NULL)
 					WHEN NOT MATCHED THEN
-						INSERT (series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot, added, created_by)
-							VALUES(source.video_id, source.imdb_id, source.rating, source.season_number, source.episode_number, source.name, source.release_date, source.plot, source.ctime, source.cuser)
+						INSERT (series_id, imdb_id, mpaa_rating, season_number, episode_number, episode_name, release_date, plot, added, created_by, runtime)
+							VALUES(source.video_id, source.imdb_id, source.rating, source.season_number, source.episode_number, source.name, source.release_date, source.plot, source.ctime, source.cuser, source.runtime)
 					WHEN MATCHED THEN
 						UPDATE 
 							SET season_number = source.season_number,
@@ -121,6 +114,7 @@ BEGIN
 								mpaa_rating = source.rating,
 								modified = source.ctime,
 								modified_by = source.cuser,
+								runtime = source.runtime,
 								@is_updated = 1
 					OUTPUT INSERTED.tv_episode_id, 'TV_EPISODE_ID'
 						INTO #Episode(id, category);
@@ -195,7 +189,7 @@ BEGIN
 			
 		COMMIT TRANSACTION;
 
-		SELECT tv_episode_id, series_id, imdb_id, season_number, episode_number, episode_name, release_date, plot, @is_updated AS 'updated'
+		SELECT tv_episode_id, series_id, imdb_id, season_number, episode_number, episode_name, release_date, plot, runtime, @is_updated AS 'updated'
 		FROM video.tv_episodes
 		WHERE tv_episode_id = @episode_id;
 

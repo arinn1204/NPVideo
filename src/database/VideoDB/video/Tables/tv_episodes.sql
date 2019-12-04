@@ -4,6 +4,7 @@
     [imdb_id] VARCHAR (32)   NOT NULL,
     [season_number]      INT            NOT NULL,
     [episode_number]     INT            NOT NULL,
+    [runtime]     INT            NOT NULL,
     [episode_name]       VARCHAR (512)   NOT NULL,
     [release_date]       DATETIME       NOT NULL,
     [mpaa_rating]  VARCHAR (8)    NOT NULL ,

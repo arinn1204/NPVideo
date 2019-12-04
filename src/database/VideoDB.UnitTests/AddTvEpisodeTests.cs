@@ -1122,6 +1122,192 @@ namespace VideoDB.UnitTests
             scalarValueCondition51.ResultSet = 1;
             scalarValueCondition51.RowNumber = 1;
             // 
+            // ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction
+            // 
+            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(rowCountCondition3);
+            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition52);
+            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition53);
+            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition54);
+            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition55);
+            resources.ApplyResources(ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction, "ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction");
+            // 
+            // rowCountCondition3
+            // 
+            rowCountCondition3.Enabled = true;
+            rowCountCondition3.Name = "rowCountCondition3";
+            rowCountCondition3.ResultSet = 3;
+            rowCountCondition3.RowCount = 1;
+            // 
+            // scalarValueCondition52
+            // 
+            scalarValueCondition52.ColumnNumber = 1;
+            scalarValueCondition52.Enabled = true;
+            scalarValueCondition52.ExpectedValue = "1";
+            scalarValueCondition52.Name = "scalarValueCondition52";
+            scalarValueCondition52.NullExpected = false;
+            scalarValueCondition52.ResultSet = 3;
+            scalarValueCondition52.RowNumber = 1;
+            // 
+            // scalarValueCondition53
+            // 
+            scalarValueCondition53.ColumnNumber = 2;
+            scalarValueCondition53.Enabled = true;
+            scalarValueCondition53.ExpectedValue = "1080p";
+            scalarValueCondition53.Name = "scalarValueCondition53";
+            scalarValueCondition53.NullExpected = false;
+            scalarValueCondition53.ResultSet = 3;
+            scalarValueCondition53.RowNumber = 1;
+            // 
+            // scalarValueCondition54
+            // 
+            scalarValueCondition54.ColumnNumber = 3;
+            scalarValueCondition54.Enabled = true;
+            scalarValueCondition54.ExpectedValue = "x265";
+            scalarValueCondition54.Name = "scalarValueCondition54";
+            scalarValueCondition54.NullExpected = false;
+            scalarValueCondition54.ResultSet = 3;
+            scalarValueCondition54.RowNumber = 1;
+            // 
+            // scalarValueCondition55
+            // 
+            scalarValueCondition55.ColumnNumber = 4;
+            scalarValueCondition55.Enabled = true;
+            scalarValueCondition55.ExpectedValue = "REPACK";
+            scalarValueCondition55.Name = "scalarValueCondition55";
+            scalarValueCondition55.NullExpected = false;
+            scalarValueCondition55.ResultSet = 3;
+            scalarValueCondition55.RowNumber = 1;
+            // 
+            // ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction
+            // 
+            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(rowCountCondition4);
+            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition56);
+            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition57);
+            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition58);
+            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition59);
+            resources.ApplyResources(ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction, "ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction");
+            // 
+            // rowCountCondition4
+            // 
+            rowCountCondition4.Enabled = true;
+            rowCountCondition4.Name = "rowCountCondition4";
+            rowCountCondition4.ResultSet = 3;
+            rowCountCondition4.RowCount = 1;
+            // 
+            // scalarValueCondition56
+            // 
+            scalarValueCondition56.ColumnNumber = 1;
+            scalarValueCondition56.Enabled = true;
+            scalarValueCondition56.ExpectedValue = "1";
+            scalarValueCondition56.Name = "scalarValueCondition56";
+            scalarValueCondition56.NullExpected = false;
+            scalarValueCondition56.ResultSet = 3;
+            scalarValueCondition56.RowNumber = 1;
+            // 
+            // scalarValueCondition57
+            // 
+            scalarValueCondition57.ColumnNumber = 2;
+            scalarValueCondition57.Enabled = true;
+            scalarValueCondition57.ExpectedValue = "1080p";
+            scalarValueCondition57.Name = "scalarValueCondition57";
+            scalarValueCondition57.NullExpected = false;
+            scalarValueCondition57.ResultSet = 3;
+            scalarValueCondition57.RowNumber = 1;
+            // 
+            // scalarValueCondition58
+            // 
+            scalarValueCondition58.ColumnNumber = 3;
+            scalarValueCondition58.Enabled = true;
+            scalarValueCondition58.ExpectedValue = "x265";
+            scalarValueCondition58.Name = "scalarValueCondition58";
+            scalarValueCondition58.NullExpected = false;
+            scalarValueCondition58.ResultSet = 3;
+            scalarValueCondition58.RowNumber = 1;
+            // 
+            // scalarValueCondition59
+            // 
+            scalarValueCondition59.ColumnNumber = 4;
+            scalarValueCondition59.Enabled = true;
+            scalarValueCondition59.ExpectedValue = null;
+            scalarValueCondition59.Name = "scalarValueCondition59";
+            scalarValueCondition59.NullExpected = true;
+            scalarValueCondition59.ResultSet = 3;
+            scalarValueCondition59.RowNumber = 1;
+            // 
+            // ShouldThrowWhenResolutionIsNull_TestAction
+            // 
+            ShouldThrowWhenResolutionIsNull_TestAction.Conditions.Add(scalarValueCondition60);
+            ShouldThrowWhenResolutionIsNull_TestAction.Conditions.Add(scalarValueCondition61);
+            ShouldThrowWhenResolutionIsNull_TestAction.Conditions.Add(scalarValueCondition62);
+            resources.ApplyResources(ShouldThrowWhenResolutionIsNull_TestAction, "ShouldThrowWhenResolutionIsNull_TestAction");
+            // 
+            // scalarValueCondition60
+            // 
+            scalarValueCondition60.ColumnNumber = 1;
+            scalarValueCondition60.Enabled = true;
+            scalarValueCondition60.ExpectedValue = "@resolution is a required parameter.";
+            scalarValueCondition60.Name = "scalarValueCondition60";
+            scalarValueCondition60.NullExpected = false;
+            scalarValueCondition60.ResultSet = 1;
+            scalarValueCondition60.RowNumber = 1;
+            // 
+            // scalarValueCondition61
+            // 
+            scalarValueCondition61.ColumnNumber = 2;
+            scalarValueCondition61.Enabled = true;
+            scalarValueCondition61.ExpectedValue = "16";
+            scalarValueCondition61.Name = "scalarValueCondition61";
+            scalarValueCondition61.NullExpected = false;
+            scalarValueCondition61.ResultSet = 1;
+            scalarValueCondition61.RowNumber = 1;
+            // 
+            // scalarValueCondition62
+            // 
+            scalarValueCondition62.ColumnNumber = 3;
+            scalarValueCondition62.Enabled = true;
+            scalarValueCondition62.ExpectedValue = "1";
+            scalarValueCondition62.Name = "scalarValueCondition62";
+            scalarValueCondition62.NullExpected = false;
+            scalarValueCondition62.ResultSet = 1;
+            scalarValueCondition62.RowNumber = 1;
+            // 
+            // ShouldThrowWhenCodecIsNull_TestAction
+            // 
+            ShouldThrowWhenCodecIsNull_TestAction.Conditions.Add(scalarValueCondition63);
+            ShouldThrowWhenCodecIsNull_TestAction.Conditions.Add(scalarValueCondition64);
+            ShouldThrowWhenCodecIsNull_TestAction.Conditions.Add(scalarValueCondition65);
+            resources.ApplyResources(ShouldThrowWhenCodecIsNull_TestAction, "ShouldThrowWhenCodecIsNull_TestAction");
+            // 
+            // scalarValueCondition63
+            // 
+            scalarValueCondition63.ColumnNumber = 1;
+            scalarValueCondition63.Enabled = true;
+            scalarValueCondition63.ExpectedValue = "@codec is a required parameter.";
+            scalarValueCondition63.Name = "scalarValueCondition63";
+            scalarValueCondition63.NullExpected = false;
+            scalarValueCondition63.ResultSet = 1;
+            scalarValueCondition63.RowNumber = 1;
+            // 
+            // scalarValueCondition64
+            // 
+            scalarValueCondition64.ColumnNumber = 2;
+            scalarValueCondition64.Enabled = true;
+            scalarValueCondition64.ExpectedValue = "16";
+            scalarValueCondition64.Name = "scalarValueCondition64";
+            scalarValueCondition64.NullExpected = false;
+            scalarValueCondition64.ResultSet = 1;
+            scalarValueCondition64.RowNumber = 1;
+            // 
+            // scalarValueCondition65
+            // 
+            scalarValueCondition65.ColumnNumber = 3;
+            scalarValueCondition65.Enabled = true;
+            scalarValueCondition65.ExpectedValue = "1";
+            scalarValueCondition65.Name = "scalarValueCondition65";
+            scalarValueCondition65.NullExpected = false;
+            scalarValueCondition65.ResultSet = 1;
+            scalarValueCondition65.RowNumber = 1;
+            // 
             // ShouldCreateSeriesInVideoData
             // 
             this.ShouldCreateSeriesInVideoData.PosttestAction = null;
@@ -1260,123 +1446,11 @@ namespace VideoDB.UnitTests
             this.ShouldInsertCodecAndResolutionAndExtendedIntoMetadataData.PretestAction = null;
             this.ShouldInsertCodecAndResolutionAndExtendedIntoMetadataData.TestAction = ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction;
             // 
-            // ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction
-            // 
-            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(rowCountCondition3);
-            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition52);
-            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition53);
-            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition54);
-            ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition55);
-            resources.ApplyResources(ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction, "ShouldInsertCodecAndResolutionAndExtendedIntoMetadata_TestAction");
-            // 
-            // rowCountCondition3
-            // 
-            rowCountCondition3.Enabled = true;
-            rowCountCondition3.Name = "rowCountCondition3";
-            rowCountCondition3.ResultSet = 3;
-            rowCountCondition3.RowCount = 1;
-            // 
-            // scalarValueCondition52
-            // 
-            scalarValueCondition52.ColumnNumber = 1;
-            scalarValueCondition52.Enabled = true;
-            scalarValueCondition52.ExpectedValue = "1";
-            scalarValueCondition52.Name = "scalarValueCondition52";
-            scalarValueCondition52.NullExpected = false;
-            scalarValueCondition52.ResultSet = 3;
-            scalarValueCondition52.RowNumber = 1;
-            // 
-            // scalarValueCondition53
-            // 
-            scalarValueCondition53.ColumnNumber = 2;
-            scalarValueCondition53.Enabled = true;
-            scalarValueCondition53.ExpectedValue = "1080p";
-            scalarValueCondition53.Name = "scalarValueCondition53";
-            scalarValueCondition53.NullExpected = false;
-            scalarValueCondition53.ResultSet = 3;
-            scalarValueCondition53.RowNumber = 1;
-            // 
-            // scalarValueCondition54
-            // 
-            scalarValueCondition54.ColumnNumber = 3;
-            scalarValueCondition54.Enabled = true;
-            scalarValueCondition54.ExpectedValue = "x265";
-            scalarValueCondition54.Name = "scalarValueCondition54";
-            scalarValueCondition54.NullExpected = false;
-            scalarValueCondition54.ResultSet = 3;
-            scalarValueCondition54.RowNumber = 1;
-            // 
-            // scalarValueCondition55
-            // 
-            scalarValueCondition55.ColumnNumber = 4;
-            scalarValueCondition55.Enabled = true;
-            scalarValueCondition55.ExpectedValue = "REPACK";
-            scalarValueCondition55.Name = "scalarValueCondition55";
-            scalarValueCondition55.NullExpected = false;
-            scalarValueCondition55.ResultSet = 3;
-            scalarValueCondition55.RowNumber = 1;
-            // 
             // ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadataData
             // 
             this.ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadataData.PosttestAction = null;
             this.ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadataData.PretestAction = null;
             this.ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadataData.TestAction = ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction;
-            // 
-            // ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction
-            // 
-            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(rowCountCondition4);
-            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition56);
-            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition57);
-            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition58);
-            ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction.Conditions.Add(scalarValueCondition59);
-            resources.ApplyResources(ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction, "ShouldInsertCodecAndResolutionAndNullExtendedIntoMetadata_TestAction");
-            // 
-            // rowCountCondition4
-            // 
-            rowCountCondition4.Enabled = true;
-            rowCountCondition4.Name = "rowCountCondition4";
-            rowCountCondition4.ResultSet = 3;
-            rowCountCondition4.RowCount = 1;
-            // 
-            // scalarValueCondition56
-            // 
-            scalarValueCondition56.ColumnNumber = 1;
-            scalarValueCondition56.Enabled = true;
-            scalarValueCondition56.ExpectedValue = "1";
-            scalarValueCondition56.Name = "scalarValueCondition56";
-            scalarValueCondition56.NullExpected = false;
-            scalarValueCondition56.ResultSet = 3;
-            scalarValueCondition56.RowNumber = 1;
-            // 
-            // scalarValueCondition57
-            // 
-            scalarValueCondition57.ColumnNumber = 2;
-            scalarValueCondition57.Enabled = true;
-            scalarValueCondition57.ExpectedValue = "1080p";
-            scalarValueCondition57.Name = "scalarValueCondition57";
-            scalarValueCondition57.NullExpected = false;
-            scalarValueCondition57.ResultSet = 3;
-            scalarValueCondition57.RowNumber = 1;
-            // 
-            // scalarValueCondition58
-            // 
-            scalarValueCondition58.ColumnNumber = 3;
-            scalarValueCondition58.Enabled = true;
-            scalarValueCondition58.ExpectedValue = "x265";
-            scalarValueCondition58.Name = "scalarValueCondition58";
-            scalarValueCondition58.NullExpected = false;
-            scalarValueCondition58.ResultSet = 3;
-            scalarValueCondition58.RowNumber = 1;
-            // 
-            // scalarValueCondition59
-            // 
-            scalarValueCondition59.ColumnNumber = 4;
-            scalarValueCondition59.Enabled = true;
-            scalarValueCondition59.ExpectedValue = null;
-            scalarValueCondition59.Name = "scalarValueCondition59";
-            scalarValueCondition59.NullExpected = true;
-            scalarValueCondition59.ResultSet = 3;
-            scalarValueCondition59.RowNumber = 1;
             // 
             // ShouldThrowWhenResolutionIsNullData
             // 
@@ -1384,85 +1458,11 @@ namespace VideoDB.UnitTests
             this.ShouldThrowWhenResolutionIsNullData.PretestAction = null;
             this.ShouldThrowWhenResolutionIsNullData.TestAction = ShouldThrowWhenResolutionIsNull_TestAction;
             // 
-            // ShouldThrowWhenResolutionIsNull_TestAction
-            // 
-            ShouldThrowWhenResolutionIsNull_TestAction.Conditions.Add(scalarValueCondition60);
-            ShouldThrowWhenResolutionIsNull_TestAction.Conditions.Add(scalarValueCondition61);
-            ShouldThrowWhenResolutionIsNull_TestAction.Conditions.Add(scalarValueCondition62);
-            resources.ApplyResources(ShouldThrowWhenResolutionIsNull_TestAction, "ShouldThrowWhenResolutionIsNull_TestAction");
-            // 
-            // scalarValueCondition60
-            // 
-            scalarValueCondition60.ColumnNumber = 1;
-            scalarValueCondition60.Enabled = true;
-            scalarValueCondition60.ExpectedValue = "@resolution is a required parameter.";
-            scalarValueCondition60.Name = "scalarValueCondition60";
-            scalarValueCondition60.NullExpected = false;
-            scalarValueCondition60.ResultSet = 1;
-            scalarValueCondition60.RowNumber = 1;
-            // 
-            // scalarValueCondition61
-            // 
-            scalarValueCondition61.ColumnNumber = 2;
-            scalarValueCondition61.Enabled = true;
-            scalarValueCondition61.ExpectedValue = "16";
-            scalarValueCondition61.Name = "scalarValueCondition61";
-            scalarValueCondition61.NullExpected = false;
-            scalarValueCondition61.ResultSet = 1;
-            scalarValueCondition61.RowNumber = 1;
-            // 
-            // scalarValueCondition62
-            // 
-            scalarValueCondition62.ColumnNumber = 3;
-            scalarValueCondition62.Enabled = true;
-            scalarValueCondition62.ExpectedValue = "1";
-            scalarValueCondition62.Name = "scalarValueCondition62";
-            scalarValueCondition62.NullExpected = false;
-            scalarValueCondition62.ResultSet = 1;
-            scalarValueCondition62.RowNumber = 1;
-            // 
             // ShouldThrowWhenCodecIsNullData
             // 
             this.ShouldThrowWhenCodecIsNullData.PosttestAction = null;
             this.ShouldThrowWhenCodecIsNullData.PretestAction = null;
             this.ShouldThrowWhenCodecIsNullData.TestAction = ShouldThrowWhenCodecIsNull_TestAction;
-            // 
-            // ShouldThrowWhenCodecIsNull_TestAction
-            // 
-            ShouldThrowWhenCodecIsNull_TestAction.Conditions.Add(scalarValueCondition63);
-            ShouldThrowWhenCodecIsNull_TestAction.Conditions.Add(scalarValueCondition64);
-            ShouldThrowWhenCodecIsNull_TestAction.Conditions.Add(scalarValueCondition65);
-            resources.ApplyResources(ShouldThrowWhenCodecIsNull_TestAction, "ShouldThrowWhenCodecIsNull_TestAction");
-            // 
-            // scalarValueCondition63
-            // 
-            scalarValueCondition63.ColumnNumber = 1;
-            scalarValueCondition63.Enabled = true;
-            scalarValueCondition63.ExpectedValue = "@codec is a required parameter.";
-            scalarValueCondition63.Name = "scalarValueCondition63";
-            scalarValueCondition63.NullExpected = false;
-            scalarValueCondition63.ResultSet = 1;
-            scalarValueCondition63.RowNumber = 1;
-            // 
-            // scalarValueCondition64
-            // 
-            scalarValueCondition64.ColumnNumber = 2;
-            scalarValueCondition64.Enabled = true;
-            scalarValueCondition64.ExpectedValue = "16";
-            scalarValueCondition64.Name = "scalarValueCondition64";
-            scalarValueCondition64.NullExpected = false;
-            scalarValueCondition64.ResultSet = 1;
-            scalarValueCondition64.RowNumber = 1;
-            // 
-            // scalarValueCondition65
-            // 
-            scalarValueCondition65.ColumnNumber = 3;
-            scalarValueCondition65.Enabled = true;
-            scalarValueCondition65.ExpectedValue = "1";
-            scalarValueCondition65.Name = "scalarValueCondition65";
-            scalarValueCondition65.NullExpected = false;
-            scalarValueCondition65.ResultSet = 1;
-            scalarValueCondition65.RowNumber = 1;
             // 
             // AddTvEpisodeTests
             // 
