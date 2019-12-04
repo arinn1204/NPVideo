@@ -314,56 +314,6 @@ WHERE imdb_id = @episode_imdb_id;</value>
   <metadata name="expectedSchemaCondition1.Configuration" xml:space="preserve">
     <value>Press to configure</value>
   </metadata>
-  <data name="expectedSchemaCondition1.Schema" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
-        PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
-        YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
-        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAPcRPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
-        dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
-        cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
-        cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
-        YXRhOklzRGF0YVNldD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0iZW4tVVMiPg0KICAgIDx4czpjb21wbGV4
-        VHlwZT4NCiAgICAgIDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+
-        DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5
-        cGU+DQogICAgICAgICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5h
-        bWU9InZpZGVvX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2Nj
-        dXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJpbWRiX2lkIiB0eXBlPSJ4
-        czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAg
-        ICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJ0aXRsZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFy
-        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
-        bmFtZT0icGxvdCIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9j
-        Y3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icmVsZWFzZV9kYXRlIiB0
-        eXBlPSJ4czpkYXRlVGltZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
-        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InVwZGF0ZWQiIHR5cGU9InhzOmJvb2xlYW4i
-        IG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgPC94
-        czpzZXF1ZW5jZT4NCiAgICAgICAgICA8L3hzOmNvbXBsZXhUeXBlPg0KICAgICAgICA8L3hzOmVsZW1l
-        bnQ+DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlMSI+DQogICAgICAgICAgPHhzOmNvbXBs
-        ZXhUeXBlPg0KICAgICAgICAgICAgPHhzOnNlcXVlbmNlPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVu
-        dCBuYW1lPSJ0dl9lcGlzb2RlX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
-        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJzZXJpZXNf
-        aWQiIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
-        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9ImltZGJfaWQiIHR5cGU9InhzOnN0cmluZyIg
-        bXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4
-        czplbGVtZW50IG5hbWU9InNlYXNvbl9udW1iZXIiIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5h
-        bWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9
-        ImVwaXNvZGVfbnVtYmVyIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWlu
-        T2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJlcGlzb2RlX25hbWUi
-        IHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
-        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InJlbGVhc2VfZGF0ZSIgdHlwZT0ieHM6ZGF0
-        ZVRpbWUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
-        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJwbG90IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXRO
-        YW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1l
-        PSJ1cGRhdGVkIiB0eXBlPSJ4czpib29sZWFuIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9j
-        Y3Vycz0iMCIgLz4NCiAgICAgICAgICAgIDwveHM6c2VxdWVuY2U+DQogICAgICAgICAgPC94czpjb21w
-        bGV4VHlwZT4NCiAgICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPC94czpjaG9pY2U+DQogICAgPC94
-        czpjb21wbGV4VHlwZT4NCiAgPC94czplbGVtZW50Pg0KPC94czpzY2hlbWE+BgUAAACAATxkaWZmZ3I6
-        ZGlmZmdyYW0geG1sbnM6bXNkYXRhPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1tc2RhdGEi
-        IHhtbG5zOmRpZmZncj0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp4bWwtZGlmZmdyYW0tdjEiIC8+
-        BAMAAAAOU3lzdGVtLlZlcnNpb24EAAAABl9NYWpvcgZfTWlub3IGX0J1aWxkCV9SZXZpc2lvbgAAAAAI
-        CAgIAgAAAAAAAAD//////////ws=
-</value>
-  </data>
   <data name="ShouldReturnExpectedSchema_TestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here to exercise the database object 
@@ -440,6 +390,59 @@ EXECUTE @RC = [video].[usp_add_tv_episode]
 	@GENRES,
 	@PERSONS,
 	@RATINGS;</value>
+  </data>
+  <metadata name="expectedSchemaCondition1.Configuration" xml:space="preserve">
+    <value>Press to configure</value>
+  </metadata>
+  <data name="expectedSchemaCondition1.Schema" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
+        PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
+        YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
+        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAPcRPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
+        dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
+        cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
+        cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
+        YXRhOklzRGF0YVNldD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0iZW4tVVMiPg0KICAgIDx4czpjb21wbGV4
+        VHlwZT4NCiAgICAgIDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+
+        DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5
+        cGU+DQogICAgICAgICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5h
+        bWU9InZpZGVvX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2Nj
+        dXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJpbWRiX2lkIiB0eXBlPSJ4
+        czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAg
+        ICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJ0aXRsZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFy
+        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
+        bmFtZT0icGxvdCIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9j
+        Y3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icmVsZWFzZV9kYXRlIiB0
+        eXBlPSJ4czpkYXRlVGltZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
+        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InVwZGF0ZWQiIHR5cGU9InhzOmJvb2xlYW4i
+        IG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgPC94
+        czpzZXF1ZW5jZT4NCiAgICAgICAgICA8L3hzOmNvbXBsZXhUeXBlPg0KICAgICAgICA8L3hzOmVsZW1l
+        bnQ+DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlMSI+DQogICAgICAgICAgPHhzOmNvbXBs
+        ZXhUeXBlPg0KICAgICAgICAgICAgPHhzOnNlcXVlbmNlPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVu
+        dCBuYW1lPSJ0dl9lcGlzb2RlX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
+        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJzZXJpZXNf
+        aWQiIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
+        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9ImltZGJfaWQiIHR5cGU9InhzOnN0cmluZyIg
+        bXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4
+        czplbGVtZW50IG5hbWU9InNlYXNvbl9udW1iZXIiIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5h
+        bWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9
+        ImVwaXNvZGVfbnVtYmVyIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWlu
+        T2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJlcGlzb2RlX25hbWUi
+        IHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
+        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InJlbGVhc2VfZGF0ZSIgdHlwZT0ieHM6ZGF0
+        ZVRpbWUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
+        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJwbG90IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXRO
+        YW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1l
+        PSJ1cGRhdGVkIiB0eXBlPSJ4czpib29sZWFuIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9j
+        Y3Vycz0iMCIgLz4NCiAgICAgICAgICAgIDwveHM6c2VxdWVuY2U+DQogICAgICAgICAgPC94czpjb21w
+        bGV4VHlwZT4NCiAgICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPC94czpjaG9pY2U+DQogICAgPC94
+        czpjb21wbGV4VHlwZT4NCiAgPC94czplbGVtZW50Pg0KPC94czpzY2hlbWE+BgUAAACAATxkaWZmZ3I6
+        ZGlmZmdyYW0geG1sbnM6bXNkYXRhPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1tc2RhdGEi
+        IHhtbG5zOmRpZmZncj0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp4bWwtZGlmZmdyYW0tdjEiIC8+
+        BAMAAAAOU3lzdGVtLlZlcnNpb24EAAAABl9NYWpvcgZfTWlub3IGX0J1aWxkCV9SZXZpc2lvbgAAAAAI
+        CAgIAgAAAAAAAAD//////////ws=
+</value>
   </data>
   <data name="ShouldNotDoAnythingWhenInsertingDuplicateEpisode_TestAction.SqlScript" xml:space="preserve">
     <value>
@@ -1272,6 +1275,990 @@ INSERT INTO video.genre_tv_episodes(genre_id, tv_episode_id) VALUES(1, 1);
 
 
 </value>
+  </data>
+  <data name="ShouldThrowWhenSeriesImdbIdIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   --@series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenSeriesTitleIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       --@series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenMpaaRatingIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       --@mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenSeriesPlotIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   --@series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenSeriesReleaseDateIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   --@series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenEpisodeImdbIdIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT --@episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenRuntimeIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       --@runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenEpisodeReleaseDateIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       --@episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenSeasonNumberIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   --@season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenEpisodeNumberIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   --@episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenTheEpisodeNameIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       @plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   --@episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
+  </data>
+  <data name="ShouldThrowWhenPlotIsNull_TestAction.SqlScript" xml:space="preserve">
+    <value>/*
+Add SQL statements here to exercise the database object 
+that you want to test.
+
+To test a stored procedure, invoke it here by adding 
+an EXEC statement that has appropriate parameters.
+
+In the lower pane, you can add test conditions that verify 
+whether the results of your SQL statements match what 
+you expect.
+*/
+
+-- database unit test for video.add_video
+DECLARE @RC AS INT, 
+	@series_imdb_id VARCHAR(32),
+    @series_title VARCHAR(64),
+    @mpaa_rating VARCHAR(8),
+    @runtime DECIMAL(5, 2),
+    @plot VARCHAR(MAX),
+	@series_plot VARCHAR(MAX),
+    @episode_release_date DATETIME,
+	@series_release_date DATETIME,
+    @resolution VARCHAR(16) = NULL,
+    @codec VARCHAR(8) = NULL,
+	@extended VARCHAR(16) = NULL,
+	@episode_imdb_id VARCHAR(32),
+	@season_number INT,
+	@episode_number INT,
+	@episode_name VARCHAR(64),
+	@GENRES AS [video].[genre_table_type], 
+	@PERSONS AS [video].[person_table_type], 
+	@RATINGS AS [video].[rating_table_type];
+
+SELECT @episode_imdb_id = 'tt1234',
+	   @series_imdb_id = 'tt12222',
+       @series_title = 'Series name goes here',
+       @mpaa_rating = 'TV/14',
+       @runtime = 22.84,
+       --@plot = 'Some plot about some friends that come across trouble in this weeks episode',
+	   @series_plot = 'Some plot about some friends that come across trouble in this weeks episode',
+       @episode_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+	   @series_release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
+       @resolution = '1080p',
+       @codec = 'x265',
+	   @season_number = 1,
+	   @episode_number = 1,
+	   @episode_name = 'Pilot',
+	   @extended = null;
+
+INSERT INTO @GENRES(name) VALUES('Horror');
+INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
+	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
+
+INSERT INTO @RATINGS(source, value)
+	VALUES ('Metacritic', 11.34);
+
+BEGIN TRY
+	EXECUTE @RC = [video].[usp_add_tv_episode] 
+		@series_imdb_id,
+		@series_title,
+		@mpaa_rating,
+		@series_plot,
+		@series_release_date,
+		@episode_imdb_id,
+		@runtime,
+		@episode_release_date,
+		@season_number,
+		@episode_number,
+		@episode_name,
+		@plot,
+		@resolution,
+		@codec,
+		@extended,
+		@GENRES,
+		@PERSONS,
+		@RATINGS;
+END TRY
+BEGIN CATCH
+	SELECT ERROR_MESSAGE(), ERROR_SEVERITY(), ERROR_STATE()
+END CATCH</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

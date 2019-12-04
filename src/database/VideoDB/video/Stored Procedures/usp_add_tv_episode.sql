@@ -20,10 +20,18 @@
 AS
 BEGIN
 
-	IF (@episode_imdb_id IS NULL)
-		BEGIN
-			RAISERROR('@episode_imdb_id is a required parameter.', 16, 1);
-		END
+	IF (@episode_imdb_id IS NULL) RAISERROR('@episode_imdb_id is a required parameter.', 16, 1);
+	IF (@series_imdb_id IS NULL) RAISERROR('@series_imdb_id is a required parameter.', 16, 1);
+	IF (@series_title IS NULL) RAISERROR('@series_title is a required parameter.', 16, 1);
+	IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter.', 16, 1);
+	IF (@series_plot IS NULL) RAISERROR('@series_plot is a required parameter.', 16, 1);
+	IF (@series_release_date IS NULL) RAISERROR('@series_release_date is a required parameter.', 16, 1);
+	IF (@runtime IS NULL) RAISERROR('@runtime is a required parameter.', 16, 1);
+	IF (@episode_release_date IS NULL) RAISERROR('@episode_release_date is a required parameter.', 16, 1);
+	IF (@season_number IS NULL) RAISERROR('@season_number is a required parameter.', 16, 1);
+	IF (@episode_number IS NULL) RAISERROR('@episode_number is a required parameter.', 16, 1);
+	IF (@episode_name IS NULL) RAISERROR('@episode_name is a required parameter.', 16, 1);
+	IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
 
 	BEGIN TRY
 		BEGIN TRANSACTION
