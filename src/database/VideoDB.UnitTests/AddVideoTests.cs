@@ -154,6 +154,34 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.NotEmptyResultSetCondition notEmptyResultSetCondition2;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction InsertingDuplicateVideoDoesNotUpdate_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction testCleanupAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfImdbIsNull_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition9;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition10;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition52;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfVideoTypeIsNull_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition53;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition54;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition55;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfTitleIsNull_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition56;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition57;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition58;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfPlotIsNull_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition61;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition62;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition63;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfReleaseDateIsNull_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition59;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition64;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition65;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition66;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition67;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition68;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition69;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition70;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition71;
             this.ShouldReturnExpectedSchemaData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddVideoInsertsIntoVideoTableData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddGenreWhenNotExistData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -173,6 +201,13 @@ namespace VideoDB.UnitTests
             this.CanInsertVideoUsingExistingStarsData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddExistingVideoAndUpdateData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.InsertingDuplicateVideoDoesNotUpdateData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfImdbIsNullData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfVideoTypeIsNullData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfTitleIsNullData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfPlotIsNullData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfReleaseDateIsNullData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             ShouldReturnExpectedSchema_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             expectedSchemaCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition();
             ShouldReturnExpectedSchema_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
@@ -288,6 +323,34 @@ namespace VideoDB.UnitTests
             notEmptyResultSetCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.NotEmptyResultSetCondition();
             InsertingDuplicateVideoDoesNotUpdate_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             testCleanupAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            ShouldThrowErrorIfImdbIsNull_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition9 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition10 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition52 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldThrowErrorIfVideoTypeIsNull_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition53 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition54 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition55 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldThrowErrorIfTitleIsNull_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition56 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition57 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition58 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldThrowErrorIfPlotIsNull_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition61 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition62 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition63 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldThrowErrorIfReleaseDateIsNull_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition59 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition64 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition65 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition66 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition67 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition68 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            scalarValueCondition69 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition70 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
+            scalarValueCondition71 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             // 
             // ShouldReturnExpectedSchema_TestAction
             // 
@@ -1338,6 +1401,307 @@ namespace VideoDB.UnitTests
             this.InsertingDuplicateVideoDoesNotUpdateData.PretestAction = InsertingDuplicateVideoDoesNotUpdate_PretestAction;
             this.InsertingDuplicateVideoDoesNotUpdateData.TestAction = InsertingDuplicateVideoDoesNotUpdate_TestAction;
             // 
+            // ShouldThrowErrorIfImdbIsNullData
+            // 
+            this.ShouldThrowErrorIfImdbIsNullData.PosttestAction = null;
+            this.ShouldThrowErrorIfImdbIsNullData.PretestAction = null;
+            this.ShouldThrowErrorIfImdbIsNullData.TestAction = ShouldThrowErrorIfImdbIsNull_TestAction;
+            // 
+            // ShouldThrowErrorIfImdbIsNull_TestAction
+            // 
+            ShouldThrowErrorIfImdbIsNull_TestAction.Conditions.Add(scalarValueCondition9);
+            ShouldThrowErrorIfImdbIsNull_TestAction.Conditions.Add(scalarValueCondition10);
+            ShouldThrowErrorIfImdbIsNull_TestAction.Conditions.Add(scalarValueCondition52);
+            resources.ApplyResources(ShouldThrowErrorIfImdbIsNull_TestAction, "ShouldThrowErrorIfImdbIsNull_TestAction");
+            // 
+            // scalarValueCondition9
+            // 
+            scalarValueCondition9.ColumnNumber = 1;
+            scalarValueCondition9.Enabled = true;
+            scalarValueCondition9.ExpectedValue = "@imdb_id is a required parameter.";
+            scalarValueCondition9.Name = "scalarValueCondition9";
+            scalarValueCondition9.NullExpected = false;
+            scalarValueCondition9.ResultSet = 1;
+            scalarValueCondition9.RowNumber = 1;
+            // 
+            // scalarValueCondition10
+            // 
+            scalarValueCondition10.ColumnNumber = 2;
+            scalarValueCondition10.Enabled = true;
+            scalarValueCondition10.ExpectedValue = "16";
+            scalarValueCondition10.Name = "scalarValueCondition10";
+            scalarValueCondition10.NullExpected = false;
+            scalarValueCondition10.ResultSet = 1;
+            scalarValueCondition10.RowNumber = 1;
+            // 
+            // scalarValueCondition52
+            // 
+            scalarValueCondition52.ColumnNumber = 3;
+            scalarValueCondition52.Enabled = true;
+            scalarValueCondition52.ExpectedValue = "1";
+            scalarValueCondition52.Name = "scalarValueCondition52";
+            scalarValueCondition52.NullExpected = false;
+            scalarValueCondition52.ResultSet = 1;
+            scalarValueCondition52.RowNumber = 1;
+            // 
+            // ShouldThrowErrorIfVideoTypeIsNullData
+            // 
+            this.ShouldThrowErrorIfVideoTypeIsNullData.PosttestAction = null;
+            this.ShouldThrowErrorIfVideoTypeIsNullData.PretestAction = null;
+            this.ShouldThrowErrorIfVideoTypeIsNullData.TestAction = ShouldThrowErrorIfVideoTypeIsNull_TestAction;
+            // 
+            // ShouldThrowErrorIfVideoTypeIsNull_TestAction
+            // 
+            ShouldThrowErrorIfVideoTypeIsNull_TestAction.Conditions.Add(scalarValueCondition53);
+            ShouldThrowErrorIfVideoTypeIsNull_TestAction.Conditions.Add(scalarValueCondition54);
+            ShouldThrowErrorIfVideoTypeIsNull_TestAction.Conditions.Add(scalarValueCondition55);
+            resources.ApplyResources(ShouldThrowErrorIfVideoTypeIsNull_TestAction, "ShouldThrowErrorIfVideoTypeIsNull_TestAction");
+            // 
+            // scalarValueCondition53
+            // 
+            scalarValueCondition53.ColumnNumber = 1;
+            scalarValueCondition53.Enabled = true;
+            scalarValueCondition53.ExpectedValue = "@video_type is a required parameter.";
+            scalarValueCondition53.Name = "scalarValueCondition53";
+            scalarValueCondition53.NullExpected = false;
+            scalarValueCondition53.ResultSet = 1;
+            scalarValueCondition53.RowNumber = 1;
+            // 
+            // scalarValueCondition54
+            // 
+            scalarValueCondition54.ColumnNumber = 2;
+            scalarValueCondition54.Enabled = true;
+            scalarValueCondition54.ExpectedValue = "16";
+            scalarValueCondition54.Name = "scalarValueCondition54";
+            scalarValueCondition54.NullExpected = false;
+            scalarValueCondition54.ResultSet = 1;
+            scalarValueCondition54.RowNumber = 1;
+            // 
+            // scalarValueCondition55
+            // 
+            scalarValueCondition55.ColumnNumber = 3;
+            scalarValueCondition55.Enabled = true;
+            scalarValueCondition55.ExpectedValue = "1";
+            scalarValueCondition55.Name = "scalarValueCondition55";
+            scalarValueCondition55.NullExpected = false;
+            scalarValueCondition55.ResultSet = 1;
+            scalarValueCondition55.RowNumber = 1;
+            // 
+            // ShouldThrowErrorIfTitleIsNullData
+            // 
+            this.ShouldThrowErrorIfTitleIsNullData.PosttestAction = null;
+            this.ShouldThrowErrorIfTitleIsNullData.PretestAction = null;
+            this.ShouldThrowErrorIfTitleIsNullData.TestAction = ShouldThrowErrorIfTitleIsNull_TestAction;
+            // 
+            // ShouldThrowErrorIfTitleIsNull_TestAction
+            // 
+            ShouldThrowErrorIfTitleIsNull_TestAction.Conditions.Add(scalarValueCondition56);
+            ShouldThrowErrorIfTitleIsNull_TestAction.Conditions.Add(scalarValueCondition57);
+            ShouldThrowErrorIfTitleIsNull_TestAction.Conditions.Add(scalarValueCondition58);
+            resources.ApplyResources(ShouldThrowErrorIfTitleIsNull_TestAction, "ShouldThrowErrorIfTitleIsNull_TestAction");
+            // 
+            // scalarValueCondition56
+            // 
+            scalarValueCondition56.ColumnNumber = 1;
+            scalarValueCondition56.Enabled = true;
+            scalarValueCondition56.ExpectedValue = "@title is a required parameter.";
+            scalarValueCondition56.Name = "scalarValueCondition56";
+            scalarValueCondition56.NullExpected = false;
+            scalarValueCondition56.ResultSet = 1;
+            scalarValueCondition56.RowNumber = 1;
+            // 
+            // scalarValueCondition57
+            // 
+            scalarValueCondition57.ColumnNumber = 2;
+            scalarValueCondition57.Enabled = true;
+            scalarValueCondition57.ExpectedValue = "16";
+            scalarValueCondition57.Name = "scalarValueCondition57";
+            scalarValueCondition57.NullExpected = false;
+            scalarValueCondition57.ResultSet = 1;
+            scalarValueCondition57.RowNumber = 1;
+            // 
+            // scalarValueCondition58
+            // 
+            scalarValueCondition58.ColumnNumber = 3;
+            scalarValueCondition58.Enabled = true;
+            scalarValueCondition58.ExpectedValue = "1";
+            scalarValueCondition58.Name = "scalarValueCondition58";
+            scalarValueCondition58.NullExpected = false;
+            scalarValueCondition58.ResultSet = 1;
+            scalarValueCondition58.RowNumber = 1;
+            // 
+            // ShouldThrowErrorIfPlotIsNullData
+            // 
+            this.ShouldThrowErrorIfPlotIsNullData.PosttestAction = null;
+            this.ShouldThrowErrorIfPlotIsNullData.PretestAction = null;
+            this.ShouldThrowErrorIfPlotIsNullData.TestAction = ShouldThrowErrorIfPlotIsNull_TestAction;
+            // 
+            // ShouldThrowErrorIfPlotIsNull_TestAction
+            // 
+            ShouldThrowErrorIfPlotIsNull_TestAction.Conditions.Add(scalarValueCondition61);
+            ShouldThrowErrorIfPlotIsNull_TestAction.Conditions.Add(scalarValueCondition62);
+            ShouldThrowErrorIfPlotIsNull_TestAction.Conditions.Add(scalarValueCondition63);
+            resources.ApplyResources(ShouldThrowErrorIfPlotIsNull_TestAction, "ShouldThrowErrorIfPlotIsNull_TestAction");
+            // 
+            // scalarValueCondition61
+            // 
+            scalarValueCondition61.ColumnNumber = 1;
+            scalarValueCondition61.Enabled = true;
+            scalarValueCondition61.ExpectedValue = "@plot is a required parameter.";
+            scalarValueCondition61.Name = "scalarValueCondition61";
+            scalarValueCondition61.NullExpected = false;
+            scalarValueCondition61.ResultSet = 1;
+            scalarValueCondition61.RowNumber = 1;
+            // 
+            // scalarValueCondition62
+            // 
+            scalarValueCondition62.ColumnNumber = 2;
+            scalarValueCondition62.Enabled = true;
+            scalarValueCondition62.ExpectedValue = "16";
+            scalarValueCondition62.Name = "scalarValueCondition62";
+            scalarValueCondition62.NullExpected = false;
+            scalarValueCondition62.ResultSet = 1;
+            scalarValueCondition62.RowNumber = 1;
+            // 
+            // scalarValueCondition63
+            // 
+            scalarValueCondition63.ColumnNumber = 3;
+            scalarValueCondition63.Enabled = true;
+            scalarValueCondition63.ExpectedValue = "1";
+            scalarValueCondition63.Name = "scalarValueCondition63";
+            scalarValueCondition63.NullExpected = false;
+            scalarValueCondition63.ResultSet = 1;
+            scalarValueCondition63.RowNumber = 1;
+            // 
+            // ShouldThrowErrorIfReleaseDateIsNullData
+            // 
+            this.ShouldThrowErrorIfReleaseDateIsNullData.PosttestAction = null;
+            this.ShouldThrowErrorIfReleaseDateIsNullData.PretestAction = null;
+            this.ShouldThrowErrorIfReleaseDateIsNullData.TestAction = ShouldThrowErrorIfReleaseDateIsNull_TestAction;
+            // 
+            // ShouldThrowErrorIfReleaseDateIsNull_TestAction
+            // 
+            ShouldThrowErrorIfReleaseDateIsNull_TestAction.Conditions.Add(scalarValueCondition59);
+            ShouldThrowErrorIfReleaseDateIsNull_TestAction.Conditions.Add(scalarValueCondition64);
+            ShouldThrowErrorIfReleaseDateIsNull_TestAction.Conditions.Add(scalarValueCondition65);
+            resources.ApplyResources(ShouldThrowErrorIfReleaseDateIsNull_TestAction, "ShouldThrowErrorIfReleaseDateIsNull_TestAction");
+            // 
+            // scalarValueCondition59
+            // 
+            scalarValueCondition59.ColumnNumber = 1;
+            scalarValueCondition59.Enabled = true;
+            scalarValueCondition59.ExpectedValue = "@release_date is a required parameter.";
+            scalarValueCondition59.Name = "scalarValueCondition59";
+            scalarValueCondition59.NullExpected = false;
+            scalarValueCondition59.ResultSet = 1;
+            scalarValueCondition59.RowNumber = 1;
+            // 
+            // scalarValueCondition64
+            // 
+            scalarValueCondition64.ColumnNumber = 2;
+            scalarValueCondition64.Enabled = true;
+            scalarValueCondition64.ExpectedValue = "16";
+            scalarValueCondition64.Name = "scalarValueCondition64";
+            scalarValueCondition64.NullExpected = false;
+            scalarValueCondition64.ResultSet = 1;
+            scalarValueCondition64.RowNumber = 1;
+            // 
+            // scalarValueCondition65
+            // 
+            scalarValueCondition65.ColumnNumber = 3;
+            scalarValueCondition65.Enabled = true;
+            scalarValueCondition65.ExpectedValue = "1";
+            scalarValueCondition65.Name = "scalarValueCondition65";
+            scalarValueCondition65.NullExpected = false;
+            scalarValueCondition65.ResultSet = 1;
+            scalarValueCondition65.RowNumber = 1;
+            // 
+            // ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData
+            // 
+            this.ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData.PosttestAction = null;
+            this.ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData.PretestAction = null;
+            this.ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData.TestAction = ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction;
+            // 
+            // ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction
+            // 
+            ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction.Conditions.Add(scalarValueCondition66);
+            ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction.Conditions.Add(scalarValueCondition67);
+            ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction.Conditions.Add(scalarValueCondition68);
+            resources.ApplyResources(ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction, "ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie_TestAction");
+            // 
+            // scalarValueCondition66
+            // 
+            scalarValueCondition66.ColumnNumber = 1;
+            scalarValueCondition66.Enabled = true;
+            scalarValueCondition66.ExpectedValue = "@mpaa_rating is a required parameter for video_type = movie.";
+            scalarValueCondition66.Name = "scalarValueCondition66";
+            scalarValueCondition66.NullExpected = false;
+            scalarValueCondition66.ResultSet = 1;
+            scalarValueCondition66.RowNumber = 1;
+            // 
+            // scalarValueCondition67
+            // 
+            scalarValueCondition67.ColumnNumber = 2;
+            scalarValueCondition67.Enabled = true;
+            scalarValueCondition67.ExpectedValue = "16";
+            scalarValueCondition67.Name = "scalarValueCondition67";
+            scalarValueCondition67.NullExpected = false;
+            scalarValueCondition67.ResultSet = 1;
+            scalarValueCondition67.RowNumber = 1;
+            // 
+            // scalarValueCondition68
+            // 
+            scalarValueCondition68.ColumnNumber = 3;
+            scalarValueCondition68.Enabled = true;
+            scalarValueCondition68.ExpectedValue = "1";
+            scalarValueCondition68.Name = "scalarValueCondition68";
+            scalarValueCondition68.NullExpected = false;
+            scalarValueCondition68.ResultSet = 1;
+            scalarValueCondition68.RowNumber = 1;
+            // 
+            // ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData
+            // 
+            this.ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData.PosttestAction = null;
+            this.ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData.PretestAction = null;
+            this.ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData.TestAction = ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction;
+            // 
+            // ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction
+            // 
+            ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction.Conditions.Add(scalarValueCondition69);
+            ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction.Conditions.Add(scalarValueCondition70);
+            ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction.Conditions.Add(scalarValueCondition71);
+            resources.ApplyResources(ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction, "ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie_TestAction");
+            // 
+            // scalarValueCondition69
+            // 
+            scalarValueCondition69.ColumnNumber = 1;
+            scalarValueCondition69.Enabled = true;
+            scalarValueCondition69.ExpectedValue = "@runtime is a required paramter for video_type = movie.";
+            scalarValueCondition69.Name = "scalarValueCondition69";
+            scalarValueCondition69.NullExpected = false;
+            scalarValueCondition69.ResultSet = 1;
+            scalarValueCondition69.RowNumber = 1;
+            // 
+            // scalarValueCondition70
+            // 
+            scalarValueCondition70.ColumnNumber = 2;
+            scalarValueCondition70.Enabled = true;
+            scalarValueCondition70.ExpectedValue = "16";
+            scalarValueCondition70.Name = "scalarValueCondition70";
+            scalarValueCondition70.NullExpected = false;
+            scalarValueCondition70.ResultSet = 1;
+            scalarValueCondition70.RowNumber = 1;
+            // 
+            // scalarValueCondition71
+            // 
+            scalarValueCondition71.ColumnNumber = 3;
+            scalarValueCondition71.Enabled = true;
+            scalarValueCondition71.ExpectedValue = "1";
+            scalarValueCondition71.Name = "scalarValueCondition71";
+            scalarValueCondition71.NullExpected = false;
+            scalarValueCondition71.ResultSet = 1;
+            scalarValueCondition71.RowNumber = 1;
+            // 
             // AddVideoTests
             // 
             this.TestCleanupAction = testCleanupAction;
@@ -1797,6 +2161,174 @@ namespace VideoDB.UnitTests
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
+        [TestMethod()]
+        public void ShouldThrowErrorIfImdbIsNull()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfImdbIsNullData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void ShouldThrowErrorIfVideoTypeIsNull()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfVideoTypeIsNullData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void ShouldThrowErrorIfTitleIsNull()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfTitleIsNullData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void ShouldThrowErrorIfPlotIsNull()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfPlotIsNullData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void ShouldThrowErrorIfReleaseDateIsNull()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfReleaseDateIsNullData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovie()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+        [TestMethod()]
+        public void ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovie()
+        {
+            SqlDatabaseTestActions testActions = this.ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData;
+            // Execute the pre-test script
+            // 
+            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
+            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
+            try
+            {
+                // Execute the test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
+                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
+            }
+            finally
+            {
+                // Execute the post-test script
+                // 
+                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
+                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
+            }
+        }
+
+
+
+
+
+
+
 
 
 
@@ -1828,5 +2360,12 @@ namespace VideoDB.UnitTests
         private SqlDatabaseTestActions CanInsertVideoUsingExistingStarsData;
         private SqlDatabaseTestActions AddExistingVideoAndUpdateData;
         private SqlDatabaseTestActions InsertingDuplicateVideoDoesNotUpdateData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfImdbIsNullData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfVideoTypeIsNullData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfTitleIsNullData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfPlotIsNullData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfReleaseDateIsNullData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfMpaaRatingIsNullAndTypeIsMovieData;
+        private SqlDatabaseTestActions ShouldThrowErrorIfRuntimeIsNullAndTypeIsMovieData;
     }
 }

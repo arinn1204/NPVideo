@@ -21,11 +21,16 @@ BEGIN
 		@video_id INT;
 		
 		
-	IF ((SELECT 1
-		WHERE @imdb_id IS NULL) IS NOT NULL)
-		BEGIN
-			RAISERROR('@imdb_id is a required parameter.', 16, 1);
-		END
+	IF (@imdb_id IS NULL) RAISERROR('@imdb_id is a required parameter.', 16, 1);
+	IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
+	IF (@release_date IS NULL) RAISERROR ('@release_date is a required parameter.', 16, 1);
+	IF (@title IS NULL) RAISERROR ('@title is a required parameter.', 16, 1);
+	IF (@video_type IS NULL) RAISERROR ('@video_type is a required parameter.', 16, 1);
+	IF (@video_type = 'movie')
+	BEGIN
+		IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter for video_type = movie.', 16, 1);
+		IF (@runtime IS NULL) RAISERROR('@runtime is a required paramter for video_type = movie.', 16, 1);
+	END
 
 	BEGIN TRY
 

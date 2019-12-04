@@ -112,13 +112,13 @@ BEGIN
 								modified = source.ctime,
 								modified_by = source.cuser,
 								@is_updated = 1
-					OUTPUT INSERTED.tv_episode_id, 'INSERTED_TV_EPISODE_ID'
+					OUTPUT INSERTED.tv_episode_id, 'TV_EPISODE_ID'
 						INTO #Episode(id, category);
 				END
 
 			SELECT @episode_id = id
 			FROM #Episode
-			WHERE category = 'INSERTED_TV_EPISODE_ID';
+			WHERE category = 'TV_EPISODE_ID';
 
 			IF (@episode_id IS NULL)
 			BEGIN
@@ -131,7 +131,7 @@ BEGIN
 
             MERGE INTO video.ratings AS target
 			USING (
-				SELECT r.source AS 'ratings_source', r.value AS 'ratings_value', v.id 
+				SELECT r.source AS 'ratings_source', r.value AS 'ratings_value'
 				FROM @RATINGS r
 			) AS source
 			ON target.video_id = @series_video_id
