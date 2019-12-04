@@ -20,23 +20,24 @@
 AS
 BEGIN
 
-	IF (@episode_imdb_id IS NULL) RAISERROR('@episode_imdb_id is a required parameter.', 16, 1);
-	IF (@series_imdb_id IS NULL) RAISERROR('@series_imdb_id is a required parameter.', 16, 1);
-	IF (@series_title IS NULL) RAISERROR('@series_title is a required parameter.', 16, 1);
-	IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter.', 16, 1);
-	IF (@series_plot IS NULL) RAISERROR('@series_plot is a required parameter.', 16, 1);
-	IF (@series_release_date IS NULL) RAISERROR('@series_release_date is a required parameter.', 16, 1);
-	IF (@runtime IS NULL) RAISERROR('@runtime is a required parameter.', 16, 1);
-	IF (@episode_release_date IS NULL) RAISERROR('@episode_release_date is a required parameter.', 16, 1);
-	IF (@season_number IS NULL) RAISERROR('@season_number is a required parameter.', 16, 1);
-	IF (@episode_number IS NULL) RAISERROR('@episode_number is a required parameter.', 16, 1);
-	IF (@episode_name IS NULL) RAISERROR('@episode_name is a required parameter.', 16, 1);
-	IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
-	IF (@codec IS NULL) RAISERROR('@codec is a required parameter.', 16, 1);
-	IF (@resolution IS NULL) RAISERROR('@resolution is a required parameter.', 16, 1);
-
 	BEGIN TRY
 		BEGIN TRANSACTION
+
+			IF (@episode_imdb_id IS NULL) RAISERROR('@episode_imdb_id is a required parameter.', 16, 1);
+			IF (@series_imdb_id IS NULL) RAISERROR('@series_imdb_id is a required parameter.', 16, 1);
+			IF (@series_title IS NULL) RAISERROR('@series_title is a required parameter.', 16, 1);
+			IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter.', 16, 1);
+			IF (@series_plot IS NULL) RAISERROR('@series_plot is a required parameter.', 16, 1);
+			IF (@series_release_date IS NULL) RAISERROR('@series_release_date is a required parameter.', 16, 1);
+			IF (@runtime IS NULL) RAISERROR('@runtime is a required parameter.', 16, 1);
+			IF (@episode_release_date IS NULL) RAISERROR('@episode_release_date is a required parameter.', 16, 1);
+			IF (@season_number IS NULL) RAISERROR('@season_number is a required parameter.', 16, 1);
+			IF (@episode_number IS NULL) RAISERROR('@episode_number is a required parameter.', 16, 1);
+			IF (@episode_name IS NULL) RAISERROR('@episode_name is a required parameter.', 16, 1);
+			IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
+			IF (@codec IS NULL) RAISERROR('@codec is a required parameter.', 16, 1);
+			IF (@resolution IS NULL) RAISERROR('@resolution is a required parameter.', 16, 1);
+
 			DECLARE @series_video_id INT,
 				@episode_id INT,
 				@created_time DATETIME = GETDATE(),
@@ -196,8 +197,11 @@ BEGIN
 		RETURN 0;
 	END TRY
 	BEGIN CATCH
-        DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),
-            @ErrorSeverity INT = ERROR_SEVERITY(),
+		DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE();
+
+		IF (@ErrorMessage NOT LIKE ('% is a required parameter%'))
+			SET @ErrorMessage = @ErrorMessage + ':' + CONVERT(VARCHAR, ERROR_LINE());
+        DECLARE @ErrorSeverity INT = ERROR_SEVERITY(),
             @ErrorState INT = ERROR_STATE();
 		
         ROLLBACK TRANSACTION;

@@ -21,19 +21,6 @@ BEGIN
 		@video_id INT;
 		
 		
-	IF (@imdb_id IS NULL) RAISERROR('@imdb_id is a required parameter.', 16, 1);
-	IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
-	IF (@release_date IS NULL) RAISERROR ('@release_date is a required parameter.', 16, 1);
-	IF (@title IS NULL) RAISERROR ('@title is a required parameter.', 16, 1);
-	IF (@video_type IS NULL) RAISERROR ('@video_type is a required parameter.', 16, 1);
-	IF (@video_type = 'movie')
-	BEGIN
-		IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter for video_type = movie.', 16, 1);
-		IF (@runtime IS NULL) RAISERROR('@runtime is a required paramter for video_type = movie.', 16, 1);
-		IF (@codec IS NULL) RAISERROR('@codec is a required parameter for video_type = movie.', 16, 1);
-		IF (@resolution IS NULL) RAISERROR('@resolution is a required parameter for video_type = movie.', 16, 1);
-	END
-
 	BEGIN TRY
 
 		CREATE TABLE #Video(
@@ -48,6 +35,20 @@ BEGIN
 
 
 		BEGIN TRANSACTION
+			
+			IF (@imdb_id IS NULL) RAISERROR('@imdb_id is a required parameter.', 16, 1);
+			IF (@plot IS NULL) RAISERROR('@plot is a required parameter.', 16, 1);
+			IF (@release_date IS NULL) RAISERROR ('@release_date is a required parameter.', 16, 1);
+			IF (@title IS NULL) RAISERROR ('@title is a required parameter.', 16, 1);
+			IF (@video_type IS NULL) RAISERROR ('@video_type is a required parameter.', 16, 1);
+			IF (@video_type = 'movie')
+			BEGIN
+				IF (@mpaa_rating IS NULL) RAISERROR('@mpaa_rating is a required parameter for video_type = movie.', 16, 1);
+				IF (@runtime IS NULL) RAISERROR('@runtime is a required parameter for video_type = movie.', 16, 1);
+				IF (@codec IS NULL) RAISERROR('@codec is a required parameter for video_type = movie.', 16, 1);
+				IF (@resolution IS NULL) RAISERROR('@resolution is a required parameter for video_type = movie.', 16, 1);
+			END
+
 
 			IF NOT EXISTS (SELECT video_id
 					FROM video.videos
@@ -112,6 +113,11 @@ BEGIN
 				WHERE imdb_id = @imdb_id;
 			END
 
+			INSERT INTO #roles(role_name)
+				SELECT DISTINCT role_name 
+				FROM @PERSONS;
+
+
 			MERGE INTO video.video_metadata AS target
 			USING (
 				SELECT @resolution AS 'resolution', @codec AS 'codec', @extended AS 'extended'
@@ -149,24 +155,6 @@ BEGIN
 				FROM @GENRES genre
 				INNER JOIN video.genres g
 					ON genre.name = g.name;
-
-			MERGE INTO video.genre_videos AS target
-			USING (
-				SELECT v.id AS 'genre_id'
-				FROM #Video v
-				WHERE category = 'GENRE_ID'
-				) AS source
-			ON 
-				target.genre_id = source.genre_id 
-				AND target.video_id = @video_id
-			WHEN NOT MATCHED THEN
-				INSERT (video_id, genre_id)
-				VALUES (@video_id, source.genre_id);
-
-			INSERT INTO #roles(role_name)
-			SELECT DISTINCT role_name 
-			FROM @PERSONS;
-
 
 			MERGE INTO video.roles AS target
 			USING (SELECT role_name FROM #roles) AS source
@@ -230,6 +218,21 @@ BEGIN
 				VALUES(@video_id, source.person_id);
 
 
+			MERGE INTO video.genre_videos AS target
+			USING (
+				SELECT DISTINCT v.id AS 'genre_id'
+				FROM #Video v
+				WHERE category = 'GENRE_ID'
+				) AS source
+			ON 
+				target.genre_id = source.genre_id 
+				AND target.video_id = @video_id
+			WHEN NOT MATCHED THEN
+				INSERT (video_id, genre_id)
+				VALUES (@video_id, source.genre_id);
+
+
+
 			IF (@video_type = 'movie')
 			BEGIN
 				SELECT video_id, imdb_id, title AS 'movie_title', mpaa_rating AS 'movie_rating', runtime, plot, release_date, @is_updated AS 'updated'
@@ -253,9 +256,11 @@ BEGIN
 		
 	END TRY
 	BEGIN CATCH
+		DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE();
 
-        DECLARE @ErrorMessage NVARCHAR(MAX) = ERROR_MESSAGE() + ':' + CONVERT(VARCHAR, ERROR_LINE()),
-            @ErrorSeverity INT = ERROR_SEVERITY(),
+		IF (@ErrorMessage NOT LIKE ('% is a required parameter%'))
+			SET @ErrorMessage = @ErrorMessage + ':' + CONVERT(VARCHAR, ERROR_LINE());
+        DECLARE @ErrorSeverity INT = ERROR_SEVERITY(),
             @ErrorState INT = ERROR_STATE();
 		
         ROLLBACK TRANSACTION;

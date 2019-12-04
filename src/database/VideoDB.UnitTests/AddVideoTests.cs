@@ -1571,7 +1571,7 @@ namespace VideoDB.UnitTests
             // 
             scalarValueCondition69.ColumnNumber = 1;
             scalarValueCondition69.Enabled = true;
-            scalarValueCondition69.ExpectedValue = "@runtime is a required paramter for video_type = movie.";
+            scalarValueCondition69.ExpectedValue = "@runtime is a required parameter for video_type = movie.";
             scalarValueCondition69.Name = "scalarValueCondition69";
             scalarValueCondition69.NullExpected = false;
             scalarValueCondition69.ResultSet = 1;
