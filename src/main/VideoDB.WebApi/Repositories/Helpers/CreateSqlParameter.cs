@@ -1,5 +1,6 @@
 ﻿using Evo.WebApi.Models.Requests;
 using Microsoft.Data.SqlClient;
+using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -55,7 +56,7 @@ namespace VideoDB.WebApi.Repositories.Helpers
             var dataTable = new DataTable();
             dataTable.Columns.Add("name", typeof(string));
 
-            foreach (var request in requests)
+            foreach (var request in requests.DistinctBy(d => d.Name))
             {
                 dataTable.Rows.Add(request.Name);
             }
@@ -72,7 +73,7 @@ namespace VideoDB.WebApi.Repositories.Helpers
             dataTable.Columns.Add("suffix", typeof(string));
             dataTable.Columns.Add("role_name", typeof(string));
 
-            foreach (var request in requests)
+            foreach (var request in requests.DistinctBy(d => new { d.FirstName, d.MiddleName, d.LastName, d.Suffix, d.Role }))
             {
                 dataTable.Rows.Add(
                     request.FirstName,
@@ -91,7 +92,7 @@ namespace VideoDB.WebApi.Repositories.Helpers
             dataTable.Columns.Add("source", typeof(string));
             dataTable.Columns.Add("value", typeof(string));
 
-            foreach (var request in requests)
+            foreach (var request in requests.DistinctBy(d => new { d.Source, d.RatingValue }))
             {
                 dataTable.Rows.Add(request.Source, request.RatingValue);
             }
