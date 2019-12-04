@@ -38,10 +38,10 @@ namespace VideoDB.UnitTests
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoReturnsInsertedVideoAsResultSet_TestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldReturnExpectedSchema_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition expectedSchemaCondition2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVideoTests));
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoReturnsInsertedVideoAsResultSet_PretestAction;
+            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldReturnExpectedSchema_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoInsertsIntoVideoTable_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition2;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition2;
@@ -51,8 +51,6 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition6;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition7;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition8;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition9;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition10;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoInsertsIntoVideoTable_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddVideoInsertsIntoVideoTable_PosttestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction testInitializeAction;
@@ -145,28 +143,6 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition51;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition26;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction CanInsertVideoUsingExistingStars_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithDifferentResolutionAndInsert_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition27;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition28;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition29;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition52;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition53;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithDifferentResolutionAndInsert_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithDifferentCodecAndInsert_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition30;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition54;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition55;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithDifferentCodecAndInsert_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithDifferentRuntimeAndInsert_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition31;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition56;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition57;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithExtendedCutAndInsert_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition32;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition58;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition59;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoWithExtendedCutAndInsert_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction AddExistingVideoAndUpdate_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.NotEmptyResultSetCondition notEmptyResultSetCondition1;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition33;
@@ -178,12 +154,7 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.NotEmptyResultSetCondition notEmptyResultSetCondition2;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction InsertingDuplicateVideoDoesNotUpdate_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction testCleanupAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition35;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition61;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition62;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction;
-            this.AddVideoReturnsInsertedVideoAsResultSetData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
+            this.ShouldReturnExpectedSchemaData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddVideoInsertsIntoVideoTableData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddGenreWhenNotExistData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.DoesNotAddDuplicateGenresData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -200,16 +171,11 @@ namespace VideoDB.UnitTests
             this.LinksPersonsWithRolesData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.LinksPersonsWithVideoData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.CanInsertVideoUsingExistingStarsData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.AddExistingVideoWithDifferentResolutionAndInsertData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.AddExistingVideoWithDifferentCodecAndInsertData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.AddExistingVideoWithDifferentRuntimeAndInsertData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.AddExistingVideoWithExtendedCutAndInsertData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.AddExistingVideoAndUpdateData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.InsertingDuplicateVideoDoesNotUpdateData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            AddVideoReturnsInsertedVideoAsResultSet_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            ShouldReturnExpectedSchema_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             expectedSchemaCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition();
-            AddVideoReturnsInsertedVideoAsResultSet_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
+            ShouldReturnExpectedSchema_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             AddVideoInsertsIntoVideoTable_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             rowCountCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             scalarValueCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
@@ -219,8 +185,6 @@ namespace VideoDB.UnitTests
             scalarValueCondition6 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             scalarValueCondition7 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             scalarValueCondition8 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition9 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition10 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             AddVideoInsertsIntoVideoTable_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             AddVideoInsertsIntoVideoTable_PosttestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             testInitializeAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
@@ -313,28 +277,6 @@ namespace VideoDB.UnitTests
             scalarValueCondition51 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
             rowCountCondition26 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             CanInsertVideoUsingExistingStars_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            AddExistingVideoWithDifferentResolutionAndInsert_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition27 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            rowCountCondition28 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            rowCountCondition29 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition52 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition53 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            AddExistingVideoWithDifferentResolutionAndInsert_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            AddExistingVideoWithDifferentCodecAndInsert_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition30 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition54 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition55 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            AddExistingVideoWithDifferentCodecAndInsert_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            AddExistingVideoWithDifferentRuntimeAndInsert_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition31 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition56 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition57 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            AddExistingVideoWithExtendedCutAndInsert_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition32 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition58 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition59 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            AddExistingVideoWithExtendedCutAndInsert_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             AddExistingVideoAndUpdate_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             notEmptyResultSetCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.NotEmptyResultSetCondition();
             rowCountCondition33 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
@@ -346,16 +288,11 @@ namespace VideoDB.UnitTests
             notEmptyResultSetCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.NotEmptyResultSetCondition();
             InsertingDuplicateVideoDoesNotUpdate_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             testCleanupAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition35 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition61 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition62 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             // 
-            // AddVideoReturnsInsertedVideoAsResultSet_TestAction
+            // ShouldReturnExpectedSchema_TestAction
             // 
-            AddVideoReturnsInsertedVideoAsResultSet_TestAction.Conditions.Add(expectedSchemaCondition2);
-            resources.ApplyResources(AddVideoReturnsInsertedVideoAsResultSet_TestAction, "AddVideoReturnsInsertedVideoAsResultSet_TestAction");
+            ShouldReturnExpectedSchema_TestAction.Conditions.Add(expectedSchemaCondition2);
+            resources.ApplyResources(ShouldReturnExpectedSchema_TestAction, "ShouldReturnExpectedSchema_TestAction");
             // 
             // expectedSchemaCondition2
             // 
@@ -364,9 +301,9 @@ namespace VideoDB.UnitTests
             resources.ApplyResources(expectedSchemaCondition2, "expectedSchemaCondition2");
             expectedSchemaCondition2.Verbose = false;
             // 
-            // AddVideoReturnsInsertedVideoAsResultSet_PretestAction
+            // ShouldReturnExpectedSchema_PretestAction
             // 
-            resources.ApplyResources(AddVideoReturnsInsertedVideoAsResultSet_PretestAction, "AddVideoReturnsInsertedVideoAsResultSet_PretestAction");
+            resources.ApplyResources(ShouldReturnExpectedSchema_PretestAction, "ShouldReturnExpectedSchema_PretestAction");
             // 
             // AddVideoInsertsIntoVideoTable_TestAction
             // 
@@ -378,8 +315,6 @@ namespace VideoDB.UnitTests
             AddVideoInsertsIntoVideoTable_TestAction.Conditions.Add(scalarValueCondition6);
             AddVideoInsertsIntoVideoTable_TestAction.Conditions.Add(scalarValueCondition7);
             AddVideoInsertsIntoVideoTable_TestAction.Conditions.Add(scalarValueCondition8);
-            AddVideoInsertsIntoVideoTable_TestAction.Conditions.Add(scalarValueCondition9);
-            AddVideoInsertsIntoVideoTable_TestAction.Conditions.Add(scalarValueCondition10);
             resources.ApplyResources(AddVideoInsertsIntoVideoTable_TestAction, "AddVideoInsertsIntoVideoTable_TestAction");
             // 
             // rowCountCondition2
@@ -458,26 +393,6 @@ namespace VideoDB.UnitTests
             scalarValueCondition8.NullExpected = false;
             scalarValueCondition8.ResultSet = 2;
             scalarValueCondition8.RowNumber = 1;
-            // 
-            // scalarValueCondition9
-            // 
-            scalarValueCondition9.ColumnNumber = 8;
-            scalarValueCondition9.Enabled = true;
-            scalarValueCondition9.ExpectedValue = "1080p";
-            scalarValueCondition9.Name = "scalarValueCondition9";
-            scalarValueCondition9.NullExpected = false;
-            scalarValueCondition9.ResultSet = 2;
-            scalarValueCondition9.RowNumber = 1;
-            // 
-            // scalarValueCondition10
-            // 
-            scalarValueCondition10.ColumnNumber = 9;
-            scalarValueCondition10.Enabled = true;
-            scalarValueCondition10.ExpectedValue = "x265";
-            scalarValueCondition10.Name = "scalarValueCondition10";
-            scalarValueCondition10.NullExpected = false;
-            scalarValueCondition10.ResultSet = 2;
-            scalarValueCondition10.RowNumber = 1;
             // 
             // AddVideoInsertsIntoVideoTable_PretestAction
             // 
@@ -612,7 +527,7 @@ namespace VideoDB.UnitTests
             rowCountCondition6.Enabled = true;
             rowCountCondition6.Name = "rowCountCondition6";
             rowCountCondition6.ResultSet = 1;
-            rowCountCondition6.RowCount = 2;
+            rowCountCondition6.RowCount = 1;
             // 
             // scalarValueCondition16
             // 
@@ -1129,7 +1044,7 @@ namespace VideoDB.UnitTests
             rowCountCondition18.Enabled = true;
             rowCountCondition18.Name = "rowCountCondition18";
             rowCountCondition18.ResultSet = 1;
-            rowCountCondition18.RowCount = 10;
+            rowCountCondition18.RowCount = 1;
             // 
             // rowCountCondition19
             // 
@@ -1241,174 +1156,6 @@ namespace VideoDB.UnitTests
             // 
             resources.ApplyResources(CanInsertVideoUsingExistingStars_PretestAction, "CanInsertVideoUsingExistingStars_PretestAction");
             // 
-            // AddExistingVideoWithDifferentResolutionAndInsert_TestAction
-            // 
-            AddExistingVideoWithDifferentResolutionAndInsert_TestAction.Conditions.Add(rowCountCondition27);
-            AddExistingVideoWithDifferentResolutionAndInsert_TestAction.Conditions.Add(rowCountCondition28);
-            AddExistingVideoWithDifferentResolutionAndInsert_TestAction.Conditions.Add(rowCountCondition29);
-            AddExistingVideoWithDifferentResolutionAndInsert_TestAction.Conditions.Add(scalarValueCondition52);
-            AddExistingVideoWithDifferentResolutionAndInsert_TestAction.Conditions.Add(scalarValueCondition53);
-            resources.ApplyResources(AddExistingVideoWithDifferentResolutionAndInsert_TestAction, "AddExistingVideoWithDifferentResolutionAndInsert_TestAction");
-            // 
-            // rowCountCondition27
-            // 
-            rowCountCondition27.Enabled = true;
-            rowCountCondition27.Name = "rowCountCondition27";
-            rowCountCondition27.ResultSet = 1;
-            rowCountCondition27.RowCount = 1;
-            // 
-            // rowCountCondition28
-            // 
-            rowCountCondition28.Enabled = true;
-            rowCountCondition28.Name = "rowCountCondition28";
-            rowCountCondition28.ResultSet = 2;
-            rowCountCondition28.RowCount = 2;
-            // 
-            // rowCountCondition29
-            // 
-            rowCountCondition29.Enabled = true;
-            rowCountCondition29.Name = "rowCountCondition29";
-            rowCountCondition29.ResultSet = 3;
-            rowCountCondition29.RowCount = 2;
-            // 
-            // scalarValueCondition52
-            // 
-            scalarValueCondition52.ColumnNumber = 1;
-            scalarValueCondition52.Enabled = true;
-            scalarValueCondition52.ExpectedValue = "1080p";
-            scalarValueCondition52.Name = "scalarValueCondition52";
-            scalarValueCondition52.NullExpected = false;
-            scalarValueCondition52.ResultSet = 3;
-            scalarValueCondition52.RowNumber = 1;
-            // 
-            // scalarValueCondition53
-            // 
-            scalarValueCondition53.ColumnNumber = 1;
-            scalarValueCondition53.Enabled = true;
-            scalarValueCondition53.ExpectedValue = "720p";
-            scalarValueCondition53.Name = "scalarValueCondition53";
-            scalarValueCondition53.NullExpected = false;
-            scalarValueCondition53.ResultSet = 3;
-            scalarValueCondition53.RowNumber = 2;
-            // 
-            // AddExistingVideoWithDifferentResolutionAndInsert_PretestAction
-            // 
-            resources.ApplyResources(AddExistingVideoWithDifferentResolutionAndInsert_PretestAction, "AddExistingVideoWithDifferentResolutionAndInsert_PretestAction");
-            // 
-            // AddExistingVideoWithDifferentCodecAndInsert_TestAction
-            // 
-            AddExistingVideoWithDifferentCodecAndInsert_TestAction.Conditions.Add(rowCountCondition30);
-            AddExistingVideoWithDifferentCodecAndInsert_TestAction.Conditions.Add(scalarValueCondition54);
-            AddExistingVideoWithDifferentCodecAndInsert_TestAction.Conditions.Add(scalarValueCondition55);
-            resources.ApplyResources(AddExistingVideoWithDifferentCodecAndInsert_TestAction, "AddExistingVideoWithDifferentCodecAndInsert_TestAction");
-            // 
-            // rowCountCondition30
-            // 
-            rowCountCondition30.Enabled = true;
-            rowCountCondition30.Name = "rowCountCondition30";
-            rowCountCondition30.ResultSet = 2;
-            rowCountCondition30.RowCount = 2;
-            // 
-            // scalarValueCondition54
-            // 
-            scalarValueCondition54.ColumnNumber = 1;
-            scalarValueCondition54.Enabled = true;
-            scalarValueCondition54.ExpectedValue = "x264";
-            scalarValueCondition54.Name = "scalarValueCondition54";
-            scalarValueCondition54.NullExpected = false;
-            scalarValueCondition54.ResultSet = 2;
-            scalarValueCondition54.RowNumber = 1;
-            // 
-            // scalarValueCondition55
-            // 
-            scalarValueCondition55.ColumnNumber = 1;
-            scalarValueCondition55.Enabled = true;
-            scalarValueCondition55.ExpectedValue = "x265";
-            scalarValueCondition55.Name = "scalarValueCondition55";
-            scalarValueCondition55.NullExpected = false;
-            scalarValueCondition55.ResultSet = 2;
-            scalarValueCondition55.RowNumber = 2;
-            // 
-            // AddExistingVideoWithDifferentCodecAndInsert_PretestAction
-            // 
-            resources.ApplyResources(AddExistingVideoWithDifferentCodecAndInsert_PretestAction, "AddExistingVideoWithDifferentCodecAndInsert_PretestAction");
-            // 
-            // AddExistingVideoWithDifferentRuntimeAndInsert_TestAction
-            // 
-            AddExistingVideoWithDifferentRuntimeAndInsert_TestAction.Conditions.Add(rowCountCondition31);
-            AddExistingVideoWithDifferentRuntimeAndInsert_TestAction.Conditions.Add(scalarValueCondition56);
-            AddExistingVideoWithDifferentRuntimeAndInsert_TestAction.Conditions.Add(scalarValueCondition57);
-            resources.ApplyResources(AddExistingVideoWithDifferentRuntimeAndInsert_TestAction, "AddExistingVideoWithDifferentRuntimeAndInsert_TestAction");
-            // 
-            // rowCountCondition31
-            // 
-            rowCountCondition31.Enabled = true;
-            rowCountCondition31.Name = "rowCountCondition31";
-            rowCountCondition31.ResultSet = 2;
-            rowCountCondition31.RowCount = 2;
-            // 
-            // scalarValueCondition56
-            // 
-            scalarValueCondition56.ColumnNumber = 1;
-            scalarValueCondition56.Enabled = true;
-            scalarValueCondition56.ExpectedValue = "120.95";
-            scalarValueCondition56.Name = "scalarValueCondition56";
-            scalarValueCondition56.NullExpected = false;
-            scalarValueCondition56.ResultSet = 2;
-            scalarValueCondition56.RowNumber = 1;
-            // 
-            // scalarValueCondition57
-            // 
-            scalarValueCondition57.ColumnNumber = 1;
-            scalarValueCondition57.Enabled = true;
-            scalarValueCondition57.ExpectedValue = "180.95";
-            scalarValueCondition57.Name = "scalarValueCondition57";
-            scalarValueCondition57.NullExpected = false;
-            scalarValueCondition57.ResultSet = 2;
-            scalarValueCondition57.RowNumber = 2;
-            // 
-            // AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction
-            // 
-            resources.ApplyResources(AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction, "AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction");
-            // 
-            // AddExistingVideoWithExtendedCutAndInsert_TestAction
-            // 
-            AddExistingVideoWithExtendedCutAndInsert_TestAction.Conditions.Add(rowCountCondition32);
-            AddExistingVideoWithExtendedCutAndInsert_TestAction.Conditions.Add(scalarValueCondition58);
-            AddExistingVideoWithExtendedCutAndInsert_TestAction.Conditions.Add(scalarValueCondition59);
-            resources.ApplyResources(AddExistingVideoWithExtendedCutAndInsert_TestAction, "AddExistingVideoWithExtendedCutAndInsert_TestAction");
-            // 
-            // rowCountCondition32
-            // 
-            rowCountCondition32.Enabled = true;
-            rowCountCondition32.Name = "rowCountCondition32";
-            rowCountCondition32.ResultSet = 2;
-            rowCountCondition32.RowCount = 2;
-            // 
-            // scalarValueCondition58
-            // 
-            scalarValueCondition58.ColumnNumber = 1;
-            scalarValueCondition58.Enabled = true;
-            scalarValueCondition58.ExpectedValue = null;
-            scalarValueCondition58.Name = "scalarValueCondition58";
-            scalarValueCondition58.NullExpected = true;
-            scalarValueCondition58.ResultSet = 2;
-            scalarValueCondition58.RowNumber = 1;
-            // 
-            // scalarValueCondition59
-            // 
-            scalarValueCondition59.ColumnNumber = 1;
-            scalarValueCondition59.Enabled = true;
-            scalarValueCondition59.ExpectedValue = "Directors Cut";
-            scalarValueCondition59.Name = "scalarValueCondition59";
-            scalarValueCondition59.NullExpected = false;
-            scalarValueCondition59.ResultSet = 2;
-            scalarValueCondition59.RowNumber = 2;
-            // 
-            // AddExistingVideoWithExtendedCutAndInsert_PretestAction
-            // 
-            resources.ApplyResources(AddExistingVideoWithExtendedCutAndInsert_PretestAction, "AddExistingVideoWithExtendedCutAndInsert_PretestAction");
-            // 
             // AddExistingVideoAndUpdate_TestAction
             // 
             AddExistingVideoAndUpdate_TestAction.Conditions.Add(notEmptyResultSetCondition1);
@@ -1477,49 +1224,11 @@ namespace VideoDB.UnitTests
             // 
             resources.ApplyResources(testCleanupAction, "testCleanupAction");
             // 
-            // InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction
+            // ShouldReturnExpectedSchemaData
             // 
-            InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction.Conditions.Add(rowCountCondition35);
-            InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction.Conditions.Add(scalarValueCondition61);
-            InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction.Conditions.Add(scalarValueCondition62);
-            resources.ApplyResources(InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction, "InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction");
-            // 
-            // rowCountCondition35
-            // 
-            rowCountCondition35.Enabled = true;
-            rowCountCondition35.Name = "rowCountCondition35";
-            rowCountCondition35.ResultSet = 2;
-            rowCountCondition35.RowCount = 2;
-            // 
-            // scalarValueCondition61
-            // 
-            scalarValueCondition61.ColumnNumber = 1;
-            scalarValueCondition61.Enabled = true;
-            scalarValueCondition61.ExpectedValue = "2";
-            scalarValueCondition61.Name = "scalarValueCondition61";
-            scalarValueCondition61.NullExpected = false;
-            scalarValueCondition61.ResultSet = 2;
-            scalarValueCondition61.RowNumber = 1;
-            // 
-            // scalarValueCondition62
-            // 
-            scalarValueCondition62.ColumnNumber = 1;
-            scalarValueCondition62.Enabled = true;
-            scalarValueCondition62.ExpectedValue = "2";
-            scalarValueCondition62.Name = "scalarValueCondition62";
-            scalarValueCondition62.NullExpected = false;
-            scalarValueCondition62.ResultSet = 2;
-            scalarValueCondition62.RowNumber = 2;
-            // 
-            // InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction
-            // 
-            resources.ApplyResources(InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction, "InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction");
-            // 
-            // AddVideoReturnsInsertedVideoAsResultSetData
-            // 
-            this.AddVideoReturnsInsertedVideoAsResultSetData.PosttestAction = null;
-            this.AddVideoReturnsInsertedVideoAsResultSetData.PretestAction = AddVideoReturnsInsertedVideoAsResultSet_PretestAction;
-            this.AddVideoReturnsInsertedVideoAsResultSetData.TestAction = AddVideoReturnsInsertedVideoAsResultSet_TestAction;
+            this.ShouldReturnExpectedSchemaData.PosttestAction = null;
+            this.ShouldReturnExpectedSchemaData.PretestAction = ShouldReturnExpectedSchema_PretestAction;
+            this.ShouldReturnExpectedSchemaData.TestAction = ShouldReturnExpectedSchema_TestAction;
             // 
             // AddVideoInsertsIntoVideoTableData
             // 
@@ -1617,30 +1326,6 @@ namespace VideoDB.UnitTests
             this.CanInsertVideoUsingExistingStarsData.PretestAction = CanInsertVideoUsingExistingStars_PretestAction;
             this.CanInsertVideoUsingExistingStarsData.TestAction = CanInsertVideoUsingExistingStars_TestAction;
             // 
-            // AddExistingVideoWithDifferentResolutionAndInsertData
-            // 
-            this.AddExistingVideoWithDifferentResolutionAndInsertData.PosttestAction = null;
-            this.AddExistingVideoWithDifferentResolutionAndInsertData.PretestAction = AddExistingVideoWithDifferentResolutionAndInsert_PretestAction;
-            this.AddExistingVideoWithDifferentResolutionAndInsertData.TestAction = AddExistingVideoWithDifferentResolutionAndInsert_TestAction;
-            // 
-            // AddExistingVideoWithDifferentCodecAndInsertData
-            // 
-            this.AddExistingVideoWithDifferentCodecAndInsertData.PosttestAction = null;
-            this.AddExistingVideoWithDifferentCodecAndInsertData.PretestAction = AddExistingVideoWithDifferentCodecAndInsert_PretestAction;
-            this.AddExistingVideoWithDifferentCodecAndInsertData.TestAction = AddExistingVideoWithDifferentCodecAndInsert_TestAction;
-            // 
-            // AddExistingVideoWithDifferentRuntimeAndInsertData
-            // 
-            this.AddExistingVideoWithDifferentRuntimeAndInsertData.PosttestAction = null;
-            this.AddExistingVideoWithDifferentRuntimeAndInsertData.PretestAction = AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction;
-            this.AddExistingVideoWithDifferentRuntimeAndInsertData.TestAction = AddExistingVideoWithDifferentRuntimeAndInsert_TestAction;
-            // 
-            // AddExistingVideoWithExtendedCutAndInsertData
-            // 
-            this.AddExistingVideoWithExtendedCutAndInsertData.PosttestAction = null;
-            this.AddExistingVideoWithExtendedCutAndInsertData.PretestAction = AddExistingVideoWithExtendedCutAndInsert_PretestAction;
-            this.AddExistingVideoWithExtendedCutAndInsertData.TestAction = AddExistingVideoWithExtendedCutAndInsert_TestAction;
-            // 
             // AddExistingVideoAndUpdateData
             // 
             this.AddExistingVideoAndUpdateData.PosttestAction = null;
@@ -1652,12 +1337,6 @@ namespace VideoDB.UnitTests
             this.InsertingDuplicateVideoDoesNotUpdateData.PosttestAction = null;
             this.InsertingDuplicateVideoDoesNotUpdateData.PretestAction = InsertingDuplicateVideoDoesNotUpdate_PretestAction;
             this.InsertingDuplicateVideoDoesNotUpdateData.TestAction = InsertingDuplicateVideoDoesNotUpdate_TestAction;
-            // 
-            // InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData
-            // 
-            this.InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData.PosttestAction = null;
-            this.InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData.PretestAction = InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction;
-            this.InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData.TestAction = InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction;
             // 
             // AddVideoTests
             // 
@@ -1682,9 +1361,9 @@ namespace VideoDB.UnitTests
         //
         #endregion
         [TestMethod()]
-        public void AddVideoReturnsInsertedVideoAsResultSet()
+        public void ShouldReturnExpectedSchema()
         {
-            SqlDatabaseTestActions testActions = this.AddVideoReturnsInsertedVideoAsResultSetData;
+            SqlDatabaseTestActions testActions = this.ShouldReturnExpectedSchemaData;
             // Execute the pre-test script
             // 
             System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
@@ -2073,98 +1752,6 @@ namespace VideoDB.UnitTests
             }
         }
         [TestMethod()]
-        public void AddExistingVideoWithDifferentResolutionAndInsert()
-        {
-            SqlDatabaseTestActions testActions = this.AddExistingVideoWithDifferentResolutionAndInsertData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
-        public void AddExistingVideoWithDifferentCodecAndInsert()
-        {
-            SqlDatabaseTestActions testActions = this.AddExistingVideoWithDifferentCodecAndInsertData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
-        public void AddExistingVideoWithDifferentRuntimeAndInsert()
-        {
-            SqlDatabaseTestActions testActions = this.AddExistingVideoWithDifferentRuntimeAndInsertData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
-        public void AddExistingVideoWithExtendedCutAndInsert()
-        {
-            SqlDatabaseTestActions testActions = this.AddExistingVideoWithExtendedCutAndInsertData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
         public void AddExistingVideoAndUpdate()
         {
             SqlDatabaseTestActions testActions = this.AddExistingVideoAndUpdateData;
@@ -2210,29 +1797,6 @@ namespace VideoDB.UnitTests
                 SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
             }
         }
-        [TestMethod()]
-        public void InsertingDuplicateVideoWillUpdatedAllVideosOfSameId()
-        {
-            SqlDatabaseTestActions testActions = this.InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
 
 
 
@@ -2245,7 +1809,7 @@ namespace VideoDB.UnitTests
 
 
 
-        private SqlDatabaseTestActions AddVideoReturnsInsertedVideoAsResultSetData;
+        private SqlDatabaseTestActions ShouldReturnExpectedSchemaData;
         private SqlDatabaseTestActions AddVideoInsertsIntoVideoTableData;
         private SqlDatabaseTestActions AddGenreWhenNotExistData;
         private SqlDatabaseTestActions DoesNotAddDuplicateGenresData;
@@ -2262,12 +1826,7 @@ namespace VideoDB.UnitTests
         private SqlDatabaseTestActions LinksPersonsWithRolesData;
         private SqlDatabaseTestActions LinksPersonsWithVideoData;
         private SqlDatabaseTestActions CanInsertVideoUsingExistingStarsData;
-        private SqlDatabaseTestActions AddExistingVideoWithDifferentResolutionAndInsertData;
-        private SqlDatabaseTestActions AddExistingVideoWithDifferentCodecAndInsertData;
-        private SqlDatabaseTestActions AddExistingVideoWithDifferentRuntimeAndInsertData;
-        private SqlDatabaseTestActions AddExistingVideoWithExtendedCutAndInsertData;
         private SqlDatabaseTestActions AddExistingVideoAndUpdateData;
         private SqlDatabaseTestActions InsertingDuplicateVideoDoesNotUpdateData;
-        private SqlDatabaseTestActions InsertingDuplicateVideoWillUpdatedAllVideosOfSameIdData;
     }
 }

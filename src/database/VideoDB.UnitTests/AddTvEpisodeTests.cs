@@ -49,21 +49,6 @@ namespace VideoDB.UnitTests
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition expectedSchemaCondition1;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition14;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition15;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithDifferentResolution_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition3;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition1;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition2;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithDifferentResolution_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithDifferentCodec_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition4;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition3;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition4;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithDifferentCodec_PretestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithExtended_TestAction;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition rowCountCondition5;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition5;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition scalarValueCondition6;
-            Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldInsertNewEpisodeWithExtended_PretestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldNotDoAnythingWhenInsertingDuplicateEpisode_TestAction;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.EmptyResultSetCondition emptyResultSetCondition1;
             Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction ShouldNotDoAnythingWhenInsertingDuplicateEpisode_PretestAction;
@@ -108,9 +93,6 @@ namespace VideoDB.UnitTests
             this.ShouldCreateSeriesInVideoData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldCreateEntryInTvEpisodeWhenNotExistData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldReturnExpectedSchemaData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.ShouldInsertNewEpisodeWithDifferentResolutionData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.ShouldInsertNewEpisodeWithDifferentCodecData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
-            this.ShouldInsertNewEpisodeWithExtendedData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldNotDoAnythingWhenInsertingDuplicateEpisodeData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldUpdateEpisodeIfDataChangesData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
             this.ShouldInsertRatingsOfTvEpisodeData = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestActions();
@@ -127,21 +109,6 @@ namespace VideoDB.UnitTests
             expectedSchemaCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ExpectedSchemaCondition();
             rowCountCondition14 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
             rowCountCondition15 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            ShouldInsertNewEpisodeWithDifferentResolution_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition3 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition2 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            ShouldInsertNewEpisodeWithDifferentResolution_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            ShouldInsertNewEpisodeWithDifferentCodec_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition4 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition3 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition4 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            ShouldInsertNewEpisodeWithDifferentCodec_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            ShouldInsertNewEpisodeWithExtended_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
-            rowCountCondition5 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.RowCountCondition();
-            scalarValueCondition5 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            scalarValueCondition6 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.ScalarValueCondition();
-            ShouldInsertNewEpisodeWithExtended_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             ShouldNotDoAnythingWhenInsertingDuplicateEpisode_TestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
             emptyResultSetCondition1 = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions.EmptyResultSetCondition();
             ShouldNotDoAnythingWhenInsertingDuplicateEpisode_PretestAction = new Microsoft.Data.Tools.Schema.Sql.UnitTesting.SqlDatabaseTestAction();
@@ -239,120 +206,6 @@ namespace VideoDB.UnitTests
             rowCountCondition15.Name = "rowCountCondition15";
             rowCountCondition15.ResultSet = 2;
             rowCountCondition15.RowCount = 1;
-            // 
-            // ShouldInsertNewEpisodeWithDifferentResolution_TestAction
-            // 
-            ShouldInsertNewEpisodeWithDifferentResolution_TestAction.Conditions.Add(rowCountCondition3);
-            ShouldInsertNewEpisodeWithDifferentResolution_TestAction.Conditions.Add(scalarValueCondition1);
-            ShouldInsertNewEpisodeWithDifferentResolution_TestAction.Conditions.Add(scalarValueCondition2);
-            resources.ApplyResources(ShouldInsertNewEpisodeWithDifferentResolution_TestAction, "ShouldInsertNewEpisodeWithDifferentResolution_TestAction");
-            // 
-            // rowCountCondition3
-            // 
-            rowCountCondition3.Enabled = true;
-            rowCountCondition3.Name = "rowCountCondition3";
-            rowCountCondition3.ResultSet = 3;
-            rowCountCondition3.RowCount = 2;
-            // 
-            // scalarValueCondition1
-            // 
-            scalarValueCondition1.ColumnNumber = 1;
-            scalarValueCondition1.Enabled = true;
-            scalarValueCondition1.ExpectedValue = "1080p";
-            scalarValueCondition1.Name = "scalarValueCondition1";
-            scalarValueCondition1.NullExpected = false;
-            scalarValueCondition1.ResultSet = 3;
-            scalarValueCondition1.RowNumber = 1;
-            // 
-            // scalarValueCondition2
-            // 
-            scalarValueCondition2.ColumnNumber = 1;
-            scalarValueCondition2.Enabled = true;
-            scalarValueCondition2.ExpectedValue = "10801p";
-            scalarValueCondition2.Name = "scalarValueCondition2";
-            scalarValueCondition2.NullExpected = false;
-            scalarValueCondition2.ResultSet = 3;
-            scalarValueCondition2.RowNumber = 2;
-            // 
-            // ShouldInsertNewEpisodeWithDifferentResolution_PretestAction
-            // 
-            resources.ApplyResources(ShouldInsertNewEpisodeWithDifferentResolution_PretestAction, "ShouldInsertNewEpisodeWithDifferentResolution_PretestAction");
-            // 
-            // ShouldInsertNewEpisodeWithDifferentCodec_TestAction
-            // 
-            ShouldInsertNewEpisodeWithDifferentCodec_TestAction.Conditions.Add(rowCountCondition4);
-            ShouldInsertNewEpisodeWithDifferentCodec_TestAction.Conditions.Add(scalarValueCondition3);
-            ShouldInsertNewEpisodeWithDifferentCodec_TestAction.Conditions.Add(scalarValueCondition4);
-            resources.ApplyResources(ShouldInsertNewEpisodeWithDifferentCodec_TestAction, "ShouldInsertNewEpisodeWithDifferentCodec_TestAction");
-            // 
-            // rowCountCondition4
-            // 
-            rowCountCondition4.Enabled = true;
-            rowCountCondition4.Name = "rowCountCondition4";
-            rowCountCondition4.ResultSet = 3;
-            rowCountCondition4.RowCount = 2;
-            // 
-            // scalarValueCondition3
-            // 
-            scalarValueCondition3.ColumnNumber = 1;
-            scalarValueCondition3.Enabled = true;
-            scalarValueCondition3.ExpectedValue = "x265";
-            scalarValueCondition3.Name = "scalarValueCondition3";
-            scalarValueCondition3.NullExpected = false;
-            scalarValueCondition3.ResultSet = 3;
-            scalarValueCondition3.RowNumber = 1;
-            // 
-            // scalarValueCondition4
-            // 
-            scalarValueCondition4.ColumnNumber = 1;
-            scalarValueCondition4.Enabled = true;
-            scalarValueCondition4.ExpectedValue = "x264";
-            scalarValueCondition4.Name = "scalarValueCondition4";
-            scalarValueCondition4.NullExpected = false;
-            scalarValueCondition4.ResultSet = 3;
-            scalarValueCondition4.RowNumber = 2;
-            // 
-            // ShouldInsertNewEpisodeWithDifferentCodec_PretestAction
-            // 
-            resources.ApplyResources(ShouldInsertNewEpisodeWithDifferentCodec_PretestAction, "ShouldInsertNewEpisodeWithDifferentCodec_PretestAction");
-            // 
-            // ShouldInsertNewEpisodeWithExtended_TestAction
-            // 
-            ShouldInsertNewEpisodeWithExtended_TestAction.Conditions.Add(rowCountCondition5);
-            ShouldInsertNewEpisodeWithExtended_TestAction.Conditions.Add(scalarValueCondition5);
-            ShouldInsertNewEpisodeWithExtended_TestAction.Conditions.Add(scalarValueCondition6);
-            resources.ApplyResources(ShouldInsertNewEpisodeWithExtended_TestAction, "ShouldInsertNewEpisodeWithExtended_TestAction");
-            // 
-            // rowCountCondition5
-            // 
-            rowCountCondition5.Enabled = true;
-            rowCountCondition5.Name = "rowCountCondition5";
-            rowCountCondition5.ResultSet = 3;
-            rowCountCondition5.RowCount = 2;
-            // 
-            // scalarValueCondition5
-            // 
-            scalarValueCondition5.ColumnNumber = 1;
-            scalarValueCondition5.Enabled = true;
-            scalarValueCondition5.ExpectedValue = null;
-            scalarValueCondition5.Name = "scalarValueCondition5";
-            scalarValueCondition5.NullExpected = true;
-            scalarValueCondition5.ResultSet = 3;
-            scalarValueCondition5.RowNumber = 1;
-            // 
-            // scalarValueCondition6
-            // 
-            scalarValueCondition6.ColumnNumber = 1;
-            scalarValueCondition6.Enabled = true;
-            scalarValueCondition6.ExpectedValue = "REPACK";
-            scalarValueCondition6.Name = "scalarValueCondition6";
-            scalarValueCondition6.NullExpected = false;
-            scalarValueCondition6.ResultSet = 3;
-            scalarValueCondition6.RowNumber = 2;
-            // 
-            // ShouldInsertNewEpisodeWithExtended_PretestAction
-            // 
-            resources.ApplyResources(ShouldInsertNewEpisodeWithExtended_PretestAction, "ShouldInsertNewEpisodeWithExtended_PretestAction");
             // 
             // ShouldNotDoAnythingWhenInsertingDuplicateEpisode_TestAction
             // 
@@ -588,14 +441,14 @@ namespace VideoDB.UnitTests
             rowCountCondition13.Enabled = true;
             rowCountCondition13.Name = "rowCountCondition13";
             rowCountCondition13.ResultSet = 1;
-            rowCountCondition13.RowCount = 36;
+            rowCountCondition13.RowCount = 1;
             // 
             // rowCountCondition12
             // 
             rowCountCondition12.Enabled = true;
             rowCountCondition12.Name = "rowCountCondition12";
             rowCountCondition12.ResultSet = 2;
-            rowCountCondition12.RowCount = 36;
+            rowCountCondition12.RowCount = 1;
             // 
             // ShouldInsertNewEpisodeOfExistingSeries_TestAction
             // 
@@ -690,24 +543,6 @@ namespace VideoDB.UnitTests
             this.ShouldReturnExpectedSchemaData.PosttestAction = null;
             this.ShouldReturnExpectedSchemaData.PretestAction = null;
             this.ShouldReturnExpectedSchemaData.TestAction = ShouldReturnExpectedSchema_TestAction;
-            // 
-            // ShouldInsertNewEpisodeWithDifferentResolutionData
-            // 
-            this.ShouldInsertNewEpisodeWithDifferentResolutionData.PosttestAction = null;
-            this.ShouldInsertNewEpisodeWithDifferentResolutionData.PretestAction = ShouldInsertNewEpisodeWithDifferentResolution_PretestAction;
-            this.ShouldInsertNewEpisodeWithDifferentResolutionData.TestAction = ShouldInsertNewEpisodeWithDifferentResolution_TestAction;
-            // 
-            // ShouldInsertNewEpisodeWithDifferentCodecData
-            // 
-            this.ShouldInsertNewEpisodeWithDifferentCodecData.PosttestAction = null;
-            this.ShouldInsertNewEpisodeWithDifferentCodecData.PretestAction = ShouldInsertNewEpisodeWithDifferentCodec_PretestAction;
-            this.ShouldInsertNewEpisodeWithDifferentCodecData.TestAction = ShouldInsertNewEpisodeWithDifferentCodec_TestAction;
-            // 
-            // ShouldInsertNewEpisodeWithExtendedData
-            // 
-            this.ShouldInsertNewEpisodeWithExtendedData.PosttestAction = null;
-            this.ShouldInsertNewEpisodeWithExtendedData.PretestAction = ShouldInsertNewEpisodeWithExtended_PretestAction;
-            this.ShouldInsertNewEpisodeWithExtendedData.TestAction = ShouldInsertNewEpisodeWithExtended_TestAction;
             // 
             // ShouldNotDoAnythingWhenInsertingDuplicateEpisodeData
             // 
@@ -828,75 +663,6 @@ namespace VideoDB.UnitTests
         public void ShouldReturnExpectedSchema()
         {
             SqlDatabaseTestActions testActions = this.ShouldReturnExpectedSchemaData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
-        public void ShouldInsertNewEpisodeWithDifferentResolution()
-        {
-            SqlDatabaseTestActions testActions = this.ShouldInsertNewEpisodeWithDifferentResolutionData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
-        public void ShouldInsertNewEpisodeWithDifferentCodec()
-        {
-            SqlDatabaseTestActions testActions = this.ShouldInsertNewEpisodeWithDifferentCodecData;
-            // Execute the pre-test script
-            // 
-            System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
-            SqlExecutionResult[] pretestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PretestAction);
-            try
-            {
-                // Execute the test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.TestAction != null), "Executing test script...");
-                SqlExecutionResult[] testResults = TestService.Execute(this.ExecutionContext, this.PrivilegedContext, testActions.TestAction);
-            }
-            finally
-            {
-                // Execute the post-test script
-                // 
-                System.Diagnostics.Trace.WriteLineIf((testActions.PosttestAction != null), "Executing post-test script...");
-                SqlExecutionResult[] posttestResults = TestService.Execute(this.PrivilegedContext, this.PrivilegedContext, testActions.PosttestAction);
-            }
-        }
-        [TestMethod()]
-        public void ShouldInsertNewEpisodeWithExtended()
-        {
-            SqlDatabaseTestActions testActions = this.ShouldInsertNewEpisodeWithExtendedData;
             // Execute the pre-test script
             // 
             System.Diagnostics.Trace.WriteLineIf((testActions.PretestAction != null), "Executing pre-test script...");
@@ -1092,9 +858,6 @@ namespace VideoDB.UnitTests
         private SqlDatabaseTestActions ShouldCreateSeriesInVideoData;
         private SqlDatabaseTestActions ShouldCreateEntryInTvEpisodeWhenNotExistData;
         private SqlDatabaseTestActions ShouldReturnExpectedSchemaData;
-        private SqlDatabaseTestActions ShouldInsertNewEpisodeWithDifferentResolutionData;
-        private SqlDatabaseTestActions ShouldInsertNewEpisodeWithDifferentCodecData;
-        private SqlDatabaseTestActions ShouldInsertNewEpisodeWithExtendedData;
         private SqlDatabaseTestActions ShouldNotDoAnythingWhenInsertingDuplicateEpisodeData;
         private SqlDatabaseTestActions ShouldUpdateEpisodeIfDataChangesData;
         private SqlDatabaseTestActions ShouldInsertRatingsOfTvEpisodeData;

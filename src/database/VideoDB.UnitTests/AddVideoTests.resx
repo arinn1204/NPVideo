@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
         PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
         YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
-        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAJMTPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
+        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAPQKPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
         dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
         cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
         cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
@@ -136,43 +136,26 @@
         bWU9InZpZGVvX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2Nj
         dXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJpbWRiX2lkIiB0eXBlPSJ4
         czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAg
-        ICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJtb3ZpZV90aXRsZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2Rh
-        dGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVs
-        ZW1lbnQgbmFtZT0ibW92aWVfcmF0aW5nIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1l
-        c3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJy
-        dW50aW1lIiB0eXBlPSJ4czpkZWNpbWFsIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vy
-        cz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icGxvdCIgdHlwZT0ieHM6c3Ry
-        aW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAg
-        ICAgPHhzOmVsZW1lbnQgbmFtZT0icmVsZWFzZV9kYXRlIiB0eXBlPSJ4czpkYXRlVGltZSIgbXNkYXRh
-        OnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVt
-        ZW50IG5hbWU9InJlc29sdXRpb24iIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFj
-        ZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9ImNvZGVj
-        IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAv
-        Pg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJnZW5yZV9uYW1lIiB0eXBlPSJ4czpzdHJp
-        bmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAg
-        ICA8eHM6ZWxlbWVudCBuYW1lPSJmaXJzdF9uYW1lIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJn
-        ZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBu
-        YW1lPSJtaWRkbGVfbmFtZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIi
-        IG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0ibGFzdF9uYW1l
-        IiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAv
-        Pg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJzdWZmaXgiIHR5cGU9InhzOnN0cmluZyIg
-        bXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4
-        czplbGVtZW50IG5hbWU9InBlcnNvbl9yb2xlIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXRO
-        YW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1l
-        PSJyYXRpbmdfc291cmNlIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIg
-        bWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJyYXRpbmdfdmFs
-        dWUiIHR5cGU9InhzOmRlY2ltYWwiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIw
-        IiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJ1cGRhdGVkIiB0eXBlPSJ4czpib29s
-        ZWFuIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAg
-        IDwveHM6c2VxdWVuY2U+DQogICAgICAgICAgPC94czpjb21wbGV4VHlwZT4NCiAgICAgICAgPC94czpl
-        bGVtZW50Pg0KICAgICAgPC94czpjaG9pY2U+DQogICAgPC94czpjb21wbGV4VHlwZT4NCiAgPC94czpl
-        bGVtZW50Pg0KPC94czpzY2hlbWE+BgUAAACAATxkaWZmZ3I6ZGlmZmdyYW0geG1sbnM6bXNkYXRhPSJ1
-        cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1tc2RhdGEiIHhtbG5zOmRpZmZncj0idXJuOnNjaGVt
-        YXMtbWljcm9zb2Z0LWNvbTp4bWwtZGlmZmdyYW0tdjEiIC8+BAMAAAAOU3lzdGVtLlZlcnNpb24EAAAA
-        Bl9NYWpvcgZfTWlub3IGX0J1aWxkCV9SZXZpc2lvbgAAAAAICAgIAgAAAAAAAAD//////////ws=
+        ICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJ0aXRsZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFy
+        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
+        bmFtZT0ibXBhYV9yYXRpbmciIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0i
+        IiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InJ1bnRpbWUi
+        IHR5cGU9InhzOmRlY2ltYWwiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAv
+        Pg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJwbG90IiB0eXBlPSJ4czpzdHJpbmciIG1z
+        ZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6
+        ZWxlbWVudCBuYW1lPSJyZWxlYXNlX2RhdGUiIHR5cGU9InhzOmRhdGVUaW1lIiBtc2RhdGE6dGFyZ2V0
+        TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFt
+        ZT0idXBkYXRlZCIgdHlwZT0ieHM6Ym9vbGVhbiIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5P
+        Y2N1cnM9IjAiIC8+DQogICAgICAgICAgICA8L3hzOnNlcXVlbmNlPg0KICAgICAgICAgIDwveHM6Y29t
+        cGxleFR5cGU+DQogICAgICAgIDwveHM6ZWxlbWVudD4NCiAgICAgIDwveHM6Y2hvaWNlPg0KICAgIDwv
+        eHM6Y29tcGxleFR5cGU+DQogIDwveHM6ZWxlbWVudD4NCjwveHM6c2NoZW1hPgYFAAAAgAE8ZGlmZmdy
+        OmRpZmZncmFtIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp4bWwtbXNkYXRh
+        IiB4bWxuczpkaWZmZ3I9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206eG1sLWRpZmZncmFtLXYxIiAv
+        PgQDAAAADlN5c3RlbS5WZXJzaW9uBAAAAAZfTWFqb3IGX01pbm9yBl9CdWlsZAlfUmV2aXNpb24AAAAA
+        CAgICAIAAAAAAAAA//////////8L
 </value>
   </data>
-  <data name="AddVideoReturnsInsertedVideoAsResultSet_TestAction.SqlScript" xml:space="preserve">
+  <data name="ShouldReturnExpectedSchema_TestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here to exercise the database object 
 that you want to test.
@@ -223,7 +206,7 @@ INSERT INTO @RATINGS(source, value)
 EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
 </value>
   </data>
-  <data name="AddVideoReturnsInsertedVideoAsResultSet_PretestAction.SqlScript" xml:space="preserve">
+  <data name="ShouldReturnExpectedSchema_PretestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here that you want to run before
 the test script is run.
@@ -284,7 +267,7 @@ INSERT INTO @RATINGS(source, value)
 
 EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
 
-SELECT imdb_id, title, mpaa_rating, (SELECT CONVERT(VARCHAR, runtime, 102)), plot, video_type, release_date, resolution, codec 
+SELECT imdb_id, title, mpaa_rating, (SELECT CONVERT(VARCHAR, runtime, 102)), plot, video_type, release_date
 FROM video.videos
 
 </value>
@@ -1268,11 +1251,8 @@ SELECT @RC = 0,
        @codec = 'x265',
        @modified_by = 'LinksPersonsWithVideoPreTest';
 
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date,
-									resolution,
-									codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution,
-					@codec);</value>
+INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date)
+	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date);</value>
   </data>
   <data name="CanInsertVideoUsingExistingStars_TestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -1387,8 +1367,8 @@ INSERT INTO video.roles(role_name)
 INSERT INTO video.roles(role_name)
 	VALUES('Director');
 
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec);
+INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date)
+	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date);
 
 INSERT INTO video.persons(first_name, middle_name, last_name)
 	VALUES ('T.', null, 'Pain');
@@ -1422,432 +1402,6 @@ INSERT INTO video.person_videos(person_id, video_id)
 
 INSERT INTO video.person_videos(person_id, video_id)
 	VALUES(2, 1);</value>
-  </data>
-  <data name="AddExistingVideoWithDifferentResolutionAndInsert_TestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here to exercise the database object 
-that you want to test.
-
-To test a stored procedure, invoke it here by adding 
-an EXEC statement that has appropriate parameters.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
--- database unit test for video.add_video
-DECLARE @RC AS INT, 
-	@imdb_id AS VARCHAR (32), 
-	@title AS VARCHAR (64), 
-	@mpaa_rating AS VARCHAR (8), 
-	@runtime AS DECIMAL (5, 2), 
-	@plot AS VARCHAR (8000), 
-	@video_type AS VARCHAR (8), 
-	@release_date AS DATETIME, 
-	@resolution AS VARCHAR (16), 
-	@codec AS VARCHAR (8), 
-	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[genre_table_type], 
-	@PERSONS AS [video].[person_table_type], 
-	@RATINGS AS [video].[rating_table_type];
-
-SELECT @RC = 0,
-       @imdb_id = 'tt1234',
-       @title = 'Video Title goes here',
-       @mpaa_rating = 'PG-13',
-       @runtime = 120.95,
-       @plot = 'some plot here',
-       @video_type = 'movie',
-       @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-       @resolution = '1080p',
-       @codec = 'x265',
-       @modified_by = 'AddGenreWhenNotExist';
-
-INSERT INTO @GENRES(name) VALUES('Horror');
-INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
-	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
-
-INSERT INTO @RATINGS(source, value)
-	VALUES ('Metacritic', 11.34);
-
-EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
-
-SELECT DISTINCT *
-FROM video.videos;
-
-SELECT DISTINCT v1.resolution
-FROM video.videos v1
-JOIN video.videos v2
-	ON v1.video_id = v2.video_id
-GROUP BY v1.resolution, v2.resolution;
-
-</value>
-  </data>
-  <data name="AddExistingVideoWithDifferentResolutionAndInsert_PretestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run before
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
-DECLARE @modified DATETIME = GETDATE(),
-	@modified_by VARCHAR(MAX) = 'CanInsertVideoUsingExistingStars',
-	@imdb_id VARCHAR(MAX) = 'tt1234',
-	@title VARCHAR(MAX) = 'Video Title goes here',
-	@mpaa_rating VARCHAR(MAX) = 'PG-13',
-	@runtime DECIMAL(5,2) = 120.95,
-	@plot VARCHAR(MAX) = 'some plot here',
-	@video_type VARCHAR(MAX) = 'movie',
-	@release_date DATETIME = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-	@resolution VARCHAR(MAX) = '720p',
-	@codec VARCHAR(MAX) = 'x265';
-
-
-INSERT INTO video.genres(name)
-	VALUES('Horror');
-
-INSERT INTO video.roles(role_name)
-	VALUES('Director');
-
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec);
-
-INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
-	VALUES ('John', 'F', 'Kennedy', 'III');
-
-INSERT INTO video.ratings(video_id, source, value)
-	VALUES (1, 'Metacritic', 11.34);
-
-INSERT INTO video.person_roles(person_id, role_id)
-	VALUES (1, 1);
-
-INSERT INTO video.genre_videos(genre_id, video_id)
-	VALUES(1, 1);
-
-INSERT INTO video.person_videos(person_id, video_id)
-	VALUES(1, 1);
-</value>
-  </data>
-  <data name="AddExistingVideoWithDifferentCodecAndInsert_TestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here to exercise the database object 
-that you want to test.
-
-To test a stored procedure, invoke it here by adding 
-an EXEC statement that has appropriate parameters.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
--- database unit test for video.add_video
-DECLARE @RC AS INT, 
-	@imdb_id AS VARCHAR (32), 
-	@title AS VARCHAR (64), 
-	@mpaa_rating AS VARCHAR (8), 
-	@runtime AS DECIMAL (5, 2), 
-	@plot AS VARCHAR (8000), 
-	@video_type AS VARCHAR (8), 
-	@release_date AS DATETIME, 
-	@resolution AS VARCHAR (16), 
-	@codec AS VARCHAR (8), 
-	@modified_by AS VARCHAR (64), 
-	@GENRES AS [video].[genre_table_type], 
-	@PERSONS AS [video].[person_table_type], 
-	@RATINGS AS [video].[rating_table_type];
-
-SELECT @RC = 0,
-       @imdb_id = 'tt1234',
-       @title = 'Video Title goes here',
-       @mpaa_rating = 'PG-13',
-       @runtime = 120.95,
-       @plot = 'some plot here',
-       @video_type = 'movie',
-       @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-       @resolution = '1080p',
-       @codec = 'x265',
-       @modified_by = 'AddExistingVideoWithDfrtCodec';
-
-INSERT INTO @GENRES(name) VALUES('Horror');
-INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
-	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
-
-INSERT INTO @RATINGS(source, value)
-	VALUES ('Metacritic', 11.34);
-
-EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
-
-SELECT DISTINCT v1.codec
-FROM video.videos v1
-JOIN video.videos v2
-	ON v1.video_id = v2.video_id;
-
-</value>
-  </data>
-  <data name="AddExistingVideoWithDifferentCodecAndInsert_PretestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run before
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
-DECLARE @modified DATETIME = GETDATE(),
-	@modified_by VARCHAR(64) = 'AddExistingVidWithDfrtCodecPrTst',
-	@imdb_id VARCHAR(MAX) = 'tt1234',
-	@title VARCHAR(MAX) = 'Video Title goes here',
-	@mpaa_rating VARCHAR(MAX) = 'PG-13',
-	@runtime DECIMAL(5,2) = 120.95,
-	@plot VARCHAR(MAX) = 'some plot here',
-	@video_type VARCHAR(MAX) = 'movie',
-	@release_date DATETIME = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-	@resolution VARCHAR(MAX) = '1080p',
-	@codec VARCHAR(MAX) = 'x264';
-
-
-INSERT INTO video.genres(name)
-	VALUES('Horror');
-
-INSERT INTO video.roles(role_name)
-	VALUES('Director');
-
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec);
-
-INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
-	VALUES ('John', 'F', 'Kennedy', 'III');
-
-INSERT INTO video.ratings(video_id, source, value)
-	VALUES (1, 'Metacritic', 11.34);
-
-INSERT INTO video.person_roles(person_id, role_id)
-	VALUES (1, 1);
-
-INSERT INTO video.genre_videos(genre_id, video_id)
-	VALUES(1, 1);
-
-INSERT INTO video.person_videos(person_id, video_id)
-	VALUES(1, 1);
-</value>
-  </data>
-  <data name="AddExistingVideoWithDifferentRuntimeAndInsert_TestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here to exercise the database object 
-that you want to test.
-
-To test a stored procedure, invoke it here by adding 
-an EXEC statement that has appropriate parameters.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
--- database unit test for video.add_video
-DECLARE @RC AS INT, 
-	@imdb_id AS VARCHAR (32), 
-	@title AS VARCHAR (64), 
-	@mpaa_rating AS VARCHAR (8), 
-	@runtime AS DECIMAL (5, 2), 
-	@plot AS VARCHAR (8000), 
-	@video_type AS VARCHAR (8), 
-	@release_date AS DATETIME, 
-	@resolution AS VARCHAR (16), 
-	@codec AS VARCHAR (8), 
-	@modified_by AS VARCHAR (32), 
-	@GENRES AS [video].[genre_table_type], 
-	@PERSONS AS [video].[person_table_type], 
-	@RATINGS AS [video].[rating_table_type];
-
-SELECT @RC = 0,
-       @imdb_id = 'tt1234',
-       @title = 'Video Title goes here',
-       @mpaa_rating = 'PG-13',
-       @runtime = 180.95,
-       @plot = 'some plot here',
-       @video_type = 'movie',
-       @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-       @resolution = '1080p',
-       @codec = 'x265',
-       @modified_by = 'AddExistingVideoWithDfrtRuntime';
-
-INSERT INTO @GENRES(name) VALUES('Horror');
-INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
-	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
-
-INSERT INTO @RATINGS(source, value)
-	VALUES ('Metacritic', 11.34);
-
-EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
-
-SELECT DISTINCT v1.runtime
-FROM video.videos v1
-JOIN video.videos v2
-	ON v1.video_id = v2.video_id;
-
-</value>
-  </data>
-  <data name="AddExistingVideoWithDifferentRuntimeAndInsert_PretestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run before
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
-DECLARE @modified DATETIME = GETDATE(),
-	@modified_by VARCHAR(64) = 'AddExistingVidWithDfrtRnTmePrTst',
-	@imdb_id VARCHAR(MAX) = 'tt1234',
-	@title VARCHAR(MAX) = 'Video Title goes here',
-	@mpaa_rating VARCHAR(MAX) = 'PG-13',
-	@runtime DECIMAL(5,2) = 120.95,
-	@plot VARCHAR(MAX) = 'some plot here',
-	@video_type VARCHAR(MAX) = 'movie',
-	@release_date DATETIME = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-	@resolution VARCHAR(MAX) = '1080p',
-	@codec VARCHAR(MAX) = 'x265';
-
-
-INSERT INTO video.genres(name)
-	VALUES('Horror');
-
-INSERT INTO video.roles(role_name)
-	VALUES('Director');
-
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec);
-
-INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
-	VALUES ('John', 'F', 'Kennedy', 'III');
-
-INSERT INTO video.ratings(video_id, source, value)
-	VALUES (1, 'Metacritic', 11.34);
-
-INSERT INTO video.person_roles(person_id, role_id)
-	VALUES (1, 1);
-
-INSERT INTO video.genre_videos(genre_id, video_id)
-	VALUES(1, 1);
-
-INSERT INTO video.person_videos(person_id, video_id)
-	VALUES(1, 1);
-</value>
-  </data>
-  <data name="AddExistingVideoWithExtendedCutAndInsert_TestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here to exercise the database object 
-that you want to test.
-
-To test a stored procedure, invoke it here by adding 
-an EXEC statement that has appropriate parameters.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
--- database unit test for video.add_video
-DECLARE @RC AS INT, 
-	@imdb_id AS VARCHAR (32), 
-	@title AS VARCHAR (64), 
-	@mpaa_rating AS VARCHAR (8), 
-	@runtime AS DECIMAL (5, 2), 
-	@plot AS VARCHAR (8000), 
-	@video_type AS VARCHAR (8), 
-	@release_date AS DATETIME, 
-	@resolution AS VARCHAR (16), 
-	@codec AS VARCHAR (8), 
-	@modified_by AS VARCHAR (32), 
-	@extended AS VARCHAR(16),
-	@GENRES AS [video].[genre_table_type], 
-	@PERSONS AS [video].[person_table_type], 
-	@RATINGS AS [video].[rating_table_type];
-
-SELECT @RC = 0,
-       @imdb_id = 'tt1234',
-       @title = 'Video Title goes here',
-       @mpaa_rating = 'PG-13',
-       @runtime = 180.95,
-       @plot = 'some plot here',
-       @video_type = 'movie',
-       @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-       @resolution = '1080p',
-       @codec = 'x265',
-	   @extended = 'Directors Cut',
-       @modified_by = 'AddExistingVideoWithDfrtRuntime';
-
-INSERT INTO @GENRES(name) VALUES('Horror');
-INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
-	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
-
-INSERT INTO @RATINGS(source, value)
-	VALUES ('Metacritic', 11.34);
-
-EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, @extended, @GENRES, @PERSONS, @RATINGS;
-
-SELECT DISTINCT v1.extended_edition
-FROM video.videos v1
-JOIN video.videos v2
-	ON v1.video_id = v2.video_id;
-</value>
-  </data>
-  <data name="AddExistingVideoWithExtendedCutAndInsert_PretestAction.SqlScript" xml:space="preserve">
-    <value>
-/*
-Add SQL statements here that you want to run before
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
-DECLARE @modified DATETIME = GETDATE(),
-	@modified_by VARCHAR(64) = 'AddExistingVidWithDfrtRnTmePrTst',
-	@imdb_id VARCHAR(MAX) = 'tt1234',
-	@title VARCHAR(MAX) = 'Video Title goes here',
-	@mpaa_rating VARCHAR(MAX) = 'PG-13',
-	@runtime DECIMAL(5,2) = 120.95,
-	@plot VARCHAR(MAX) = 'some plot here',
-	@video_type VARCHAR(MAX) = 'movie',
-	@release_date DATETIME = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-	@resolution VARCHAR(MAX) = '1080p',
-	@codec VARCHAR(MAX) = 'x265';
-
-
-INSERT INTO video.genres(name)
-	VALUES('Horror');
-
-INSERT INTO video.roles(role_name)
-	VALUES('Director');
-
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec);
-
-INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
-	VALUES ('John', 'F', 'Kennedy', 'III');
-
-INSERT INTO video.ratings(video_id, source, value)
-	VALUES (1, 'Metacritic', 11.34);
-
-INSERT INTO video.person_roles(person_id, role_id)
-	VALUES (1, 1);
-
-INSERT INTO video.genre_videos(genre_id, video_id)
-	VALUES(1, 1);
-
-INSERT INTO video.person_videos(person_id, video_id)
-	VALUES(1, 1);
-</value>
   </data>
   <data name="AddExistingVideoAndUpdate_TestAction.SqlScript" xml:space="preserve">
     <value>/*
@@ -1937,8 +1491,8 @@ INSERT INTO video.genres(name)
 INSERT INTO video.roles(role_name)
 	VALUES('Director');
 
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec);
+INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date)
+	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date);
 
 INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
 	VALUES ('John', 'F', 'Kennedy', 'III');
@@ -2059,8 +1613,8 @@ INSERT INTO video.genres(name)
 INSERT INTO video.roles(role_name)
 	VALUES('Director');
 
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec, added, created_by)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, GETDATE(), (SELECT SYSTEM_USER));
+INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, added, created_by)
+	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, GETDATE(), (SELECT SYSTEM_USER));
 
 INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
 	VALUES ('John', 'F', 'Kennedy', 'III');
@@ -2087,148 +1641,6 @@ In the lower pane, you can add test conditions that verify
 whether the results of your SQL statements match what 
 you expect.
 */</value>
-  </data>
-  <data name="InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_TestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here to exercise the database object 
-that you want to test.
-
-To test a stored procedure, invoke it here by adding 
-an EXEC statement that has appropriate parameters.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
--- database unit test for video.add_video
-DECLARE @RC AS INT, 
-	@imdb_id AS VARCHAR (32), 
-	@title AS VARCHAR (64), 
-	@mpaa_rating AS VARCHAR (8), 
-	@runtime AS DECIMAL (5, 2), 
-	@plot AS VARCHAR (8000), 
-	@video_type AS VARCHAR (8), 
-	@release_date AS DATETIME, 
-	@resolution AS VARCHAR (16), 
-	@codec AS VARCHAR (8), 
-	@GENRES AS [video].[genre_table_type], 
-	@PERSONS AS [video].[person_table_type], 
-	@RATINGS AS [video].[rating_table_type];
-
-SELECT @RC = 0,
-       @imdb_id = 'tt1234',
-       @title = 'Video Title goes here',
-       @mpaa_rating = 'PG-13',
-       @runtime = 120.95,
-       @plot = 'some plot here',
-       @video_type = 'movie',
-       @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-       @resolution = '1080p',
-       @codec = 'x265';
-
-
-INSERT INTO @GENRES(name) VALUES('Action');
-INSERT INTO @PERSONS(first_name, middle_name, last_name, suffix, role_name) 
-	VALUES('John', 'F', 'Kennedy', 'III', 'Director');
-
-INSERT INTO @RATINGS(source, value)
-	VALUES ('Metacritic', 11.34);
-
-EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
-
-SELECT gv.genre_id, gv.video_id
-FROM video.genres g
-INNER JOIN video.genre_videos gv
-	ON g.genre_id = gv.genre_id
-WHERE g.name = 'Action'</value>
-  </data>
-  <data name="InsertingDuplicateVideoWillUpdatedAllVideosOfSameId_PretestAction.SqlScript" xml:space="preserve">
-    <value>/*
-Add SQL statements here that you want to run before
-the test script is run.
-
-In the lower pane, you can add test conditions that verify 
-whether the results of your SQL statements match what 
-you expect.
-*/
-
-DECLARE @RC AS INT, 
-	@modified AS DATETIME,
-	@imdb_id AS VARCHAR (32), 
-	@title AS VARCHAR (64), 
-	@mpaa_rating AS VARCHAR (8), 
-	@runtime AS DECIMAL (5, 2), 
-	@plot AS VARCHAR (8000), 
-	@video_type AS VARCHAR (8), 
-	@release_date AS DATETIME, 
-	@resolution AS VARCHAR (16), 
-	@codec AS VARCHAR (8), 
-	@GENRES AS [video].[genre_table_type], 
-	@PERSONS AS [video].[person_table_type], 
-	@RATINGS AS [video].[rating_table_type];
-
-SELECT @RC = 0,
-       @imdb_id = 'tt1234',
-       @title = 'Video Title goes here',
-       @mpaa_rating = 'PG-13',
-       @runtime = 120.95,
-       @plot = 'some plot here',
-       @video_type = 'movie',
-       @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-       @resolution = '1080p',
-       @codec = 'x265',
-	   @modified = GETDATE();
-
-
-INSERT INTO video.genres(name)
-	VALUES('Horror');
-INSERT INTO video.roles(role_name)
-	VALUES('Director');
-
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec, added, created_by)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, GETDATE(), (SELECT SYSTEM_USER));
-
-INSERT INTO video.persons(first_name, middle_name, last_name, suffix)
-	VALUES ('John', 'F', 'Kennedy', 'III');
-
-INSERT INTO video.ratings(video_id, source, value)
-	VALUES (1, 'Metacritic', 11.34);
-
-INSERT INTO video.person_roles(person_id, role_id)
-	VALUES (1, 1);
-
-INSERT INTO video.genre_videos(genre_id, video_id)
-	VALUES(1, 1);
-
-INSERT INTO video.person_videos(person_id, video_id)
-	VALUES(1, 1);
-
-
-
-SELECT @RC = 0,
-    @imdb_id = 'tt1234',
-    @title = 'Video Title goes here',
-    @mpaa_rating = 'PG-13',
-    @runtime = 120.95,
-    @plot = 'some plot here',
-    @video_type = 'movie',
-    @release_date = (SELECT CONVERT(DATETIME, '12/04/1993', 102)),
-    @resolution = '720p',
-    @codec = 'x264',
-	@modified = GETDATE();
-
-INSERT INTO video.videos(imdb_id, title, mpaa_rating, runtime, plot, video_type, release_date, resolution, codec, added, created_by)
-	VALUES(@imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, GETDATE(), (SELECT SYSTEM_USER));
-
-INSERT INTO video.genre_videos(genre_id, video_id)
-	VALUES(1, 2);
-
-INSERT INTO video.person_videos(person_id, video_id)
-	VALUES(1, 2);
-	
-INSERT INTO video.ratings(video_id, source, value)
-	VALUES (2, 'Metacritic', 11.34);</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
