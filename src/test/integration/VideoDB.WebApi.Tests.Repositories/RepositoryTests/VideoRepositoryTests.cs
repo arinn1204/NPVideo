@@ -23,7 +23,7 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
             var request = RequestGenerator.GetMovieRequest(134132);
             var videoEntered = repository.UpsertMovie(request);
 
-            videoEntered.Count().Should().Be(60);
+            videoEntered.Count().Should().Be(1);
             videoEntered.All(a => a.imdb_id == "tt134132").Should().BeTrue();
 
             var command = @"SELECT COUNT(*)
@@ -40,7 +40,7 @@ WHERE imdb_id = 'tt134132'";
             var rowCount = reader.GetInt32(0);
             sqlCommand.Connection.Close();
 
-            rowCount.Should().Be(60);
+            rowCount.Should().Be(1);
         }
 
         [Test]
@@ -77,7 +77,6 @@ The statement has been terminated.");
 
             videos
                 .Select(s => s.imdb_id)
-                .Distinct()
                 .Should()
                 .HaveCount(10)
                 .And
@@ -102,7 +101,6 @@ The statement has been terminated.");
 
             videos
                 .Select(s => s.imdb_id)
-                .Distinct()
                 .Should()
                 .HaveCount(1)
                 .And
@@ -120,7 +118,6 @@ The statement has been terminated.");
 
             videos
                 .Select(s => s.imdb_id)
-                .Distinct()
                 .Should()
                 .BeEmpty();
         }

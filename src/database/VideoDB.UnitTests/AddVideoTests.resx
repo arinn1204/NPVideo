@@ -120,6 +120,41 @@
   <metadata name="expectedSchemaCondition2.Configuration" xml:space="preserve">
     <value>Press to configure</value>
   </metadata>
+  <data name="expectedSchemaCondition2.Schema" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
+        PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
+        YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
+        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAPsKPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
+        dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
+        cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
+        cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
+        YXRhOklzRGF0YVNldD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0iZW4tVVMiPg0KICAgIDx4czpjb21wbGV4
+        VHlwZT4NCiAgICAgIDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+
+        DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5
+        cGU+DQogICAgICAgICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5h
+        bWU9InZpZGVvX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2Nj
+        dXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJpbWRiX2lkIiB0eXBlPSJ4
+        czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAg
+        ICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJtb3ZpZV90aXRsZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2Rh
+        dGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVs
+        ZW1lbnQgbmFtZT0ibW92aWVfcmF0aW5nIiB0eXBlPSJ4czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1l
+        c3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJy
+        dW50aW1lIiB0eXBlPSJ4czpkZWNpbWFsIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vy
+        cz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0icGxvdCIgdHlwZT0ieHM6c3Ry
+        aW5nIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAg
+        ICAgPHhzOmVsZW1lbnQgbmFtZT0icmVsZWFzZV9kYXRlIiB0eXBlPSJ4czpkYXRlVGltZSIgbXNkYXRh
+        OnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVt
+        ZW50IG5hbWU9InVwZGF0ZWQiIHR5cGU9InhzOmJvb2xlYW4iIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
+        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgPC94czpzZXF1ZW5jZT4NCiAgICAgICAgICA8
+        L3hzOmNvbXBsZXhUeXBlPg0KICAgICAgICA8L3hzOmVsZW1lbnQ+DQogICAgICA8L3hzOmNob2ljZT4N
+        CiAgICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8L3hzOmVsZW1lbnQ+DQo8L3hzOnNjaGVtYT4GBQAAAIAB
+        PGRpZmZncjpkaWZmZ3JhbSB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206eG1s
+        LW1zZGF0YSIgeG1sbnM6ZGlmZmdyPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29tOnhtbC1kaWZmZ3Jh
+        bS12MSIgLz4EAwAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZfQnVpbGQJX1Jldmlz
+        aW9uAAAAAAgICAgCAAAAAAAAAP//////////Cw==
+</value>
+  </data>
   <data name="ShouldReturnExpectedSchema_TestAction.SqlScript" xml:space="preserve">
     <value>/*
 Add SQL statements here to exercise the database object 
@@ -169,44 +204,6 @@ INSERT INTO @RATINGS(source, value)
 	VALUES ('Metacritic', 11.34);
 
 EXECUTE @RC = [video].[usp_add_movie_or_series] @imdb_id, @title, @mpaa_rating, @runtime, @plot, @video_type, @release_date, @resolution, @codec, null, @GENRES, @PERSONS, @RATINGS;
-</value>
-  </data>
-  <metadata name="expectedSchemaCondition2.Configuration" xml:space="preserve">
-    <value>Press to configure</value>
-  </metadata>
-  <data name="expectedSchemaCondition2.Schema" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAE5TeXN0ZW0uRGF0YSwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJl
-        PW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABNTeXN0ZW0uRGF0YS5E
-        YXRhU2V0AwAAABdEYXRhU2V0LlJlbW90aW5nVmVyc2lvbglYbWxTY2hlbWELWG1sRGlmZkdyYW0DAQEO
-        U3lzdGVtLlZlcnNpb24CAAAACQMAAAAGBAAAAPQKPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0i
-        dXRmLTE2Ij8+DQo8eHM6c2NoZW1hIGlkPSJOZXdEYXRhU2V0IiB4bWxucz0iIiB4bWxuczp4cz0iaHR0
-        cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWlj
-        cm9zb2Z0LWNvbTp4bWwtbXNkYXRhIj4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmV3RGF0YVNldCIgbXNk
-        YXRhOklzRGF0YVNldD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0iZW4tVVMiPg0KICAgIDx4czpjb21wbGV4
-        VHlwZT4NCiAgICAgIDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+
-        DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IlRhYmxlIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5
-        cGU+DQogICAgICAgICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5h
-        bWU9InZpZGVvX2lkIiB0eXBlPSJ4czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2Nj
-        dXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJpbWRiX2lkIiB0eXBlPSJ4
-        czpzdHJpbmciIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAg
-        ICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJ0aXRsZSIgdHlwZT0ieHM6c3RyaW5nIiBtc2RhdGE6dGFy
-        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
-        bmFtZT0ibXBhYV9yYXRpbmciIHR5cGU9InhzOnN0cmluZyIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0i
-        IiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9InJ1bnRpbWUi
-        IHR5cGU9InhzOmRlY2ltYWwiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAv
-        Pg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJwbG90IiB0eXBlPSJ4czpzdHJpbmciIG1z
-        ZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6
-        ZWxlbWVudCBuYW1lPSJyZWxlYXNlX2RhdGUiIHR5cGU9InhzOmRhdGVUaW1lIiBtc2RhdGE6dGFyZ2V0
-        TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFt
-        ZT0idXBkYXRlZCIgdHlwZT0ieHM6Ym9vbGVhbiIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5P
-        Y2N1cnM9IjAiIC8+DQogICAgICAgICAgICA8L3hzOnNlcXVlbmNlPg0KICAgICAgICAgIDwveHM6Y29t
-        cGxleFR5cGU+DQogICAgICAgIDwveHM6ZWxlbWVudD4NCiAgICAgIDwveHM6Y2hvaWNlPg0KICAgIDwv
-        eHM6Y29tcGxleFR5cGU+DQogIDwveHM6ZWxlbWVudD4NCjwveHM6c2NoZW1hPgYFAAAAgAE8ZGlmZmdy
-        OmRpZmZncmFtIHhtbG5zOm1zZGF0YT0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp4bWwtbXNkYXRh
-        IiB4bWxuczpkaWZmZ3I9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206eG1sLWRpZmZncmFtLXYxIiAv
-        PgQDAAAADlN5c3RlbS5WZXJzaW9uBAAAAAZfTWFqb3IGX01pbm9yBl9CdWlsZAlfUmV2aXNpb24AAAAA
-        CAgICAIAAAAAAAAA//////////8L
 </value>
   </data>
   <data name="ShouldReturnExpectedSchema_PretestAction.SqlScript" xml:space="preserve">

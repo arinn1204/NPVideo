@@ -58,26 +58,29 @@ namespace Evo.WebApi.Tests.Integration.Features.Steps.Support
                 : Environment.GetEnvironmentVariable("db_catalog");
 
             var command = $@"
-                DELETE FROM video.genre_videos;
-                DELETE FROM video.person_videos;
-                DELETE FROM video.person_roles;
-                DELETE FROM video.genre_tv_episodes;
-                DELETE FROM video.person_tv_episodes;
+DELETE FROM video.genre_videos;
+DELETE FROM video.person_videos;
+DELETE FROM video.person_roles;
+DELETE FROM video.genre_tv_episodes;
+DELETE FROM video.person_tv_episodes;
+DELETE FROM video.video_metadata;
+DELETE FROM video.episode_metadata;
 
-                DELETE FROM video.persons;
-                DELETE FROM video.roles;
-                DELETE FROM video.genres;
-                DELETE FROM video.ratings;
-                DELETE FROM video.tv_episodes;
-                DELETE FROM video.videos;
+DELETE FROM video.persons;
+DELETE FROM video.roles;
+DELETE FROM video.genres;
+DELETE FROM video.ratings;
+DELETE FROM video.tv_episodes;
+DELETE FROM video.videos;
 
-                DBCC CHECKIDENT('{database}.video.videos', RESEED, 0);
-                DBCC CHECKIDENT('{database}.video.tv_episodes', RESEED, 0);
-                DBCC CHECKIDENT('{database}.video.genres', RESEED, 0);
-                DBCC CHECKIDENT('{database}.video.ratings', RESEED, 0);
-                DBCC CHECKIDENT('{database}.video.persons', RESEED, 0);
-                DBCC CHECKIDENT('{database}.video.roles', RESEED, 0);
-                ";
+DBCC CHECKIDENT('{database}.video.videos', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.tv_episodes', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.video_metadata', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.episode_metadata', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.genres', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.ratings', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.persons', RESEED, 0);
+DBCC CHECKIDENT('{database}.video.roles', RESEED, 0);";
 
             var connectionString = configuration.CreateConnectionString();
             using var sqlConnection = new SqlConnection(connectionString);

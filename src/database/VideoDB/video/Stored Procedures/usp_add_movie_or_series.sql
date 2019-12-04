@@ -232,7 +232,7 @@ BEGIN
 
 			IF (@video_type = 'movie')
 			BEGIN
-				SELECT video_id, imdb_id, title, mpaa_rating, runtime, plot, release_date, @is_updated AS 'updated'
+				SELECT video_id, imdb_id, title AS 'movie_title', mpaa_rating AS 'movie_rating', runtime, plot, release_date, @is_updated AS 'updated'
 				FROM video.videos
 				WHERE video_id = @video_id;
 			END

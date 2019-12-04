@@ -33,10 +33,8 @@ namespace VideoDB.WebApi.Repositories
 
         public IEnumerable<MovieDataModel> GetMovies(string imdbId = null)
         {
-            var movieCommand = @"SELECT video_id, imdb_id, movie_title, movie_rating, 
-runtime, plot, release_date, resolution, codec,
-genre_name, first_name, middle_name, last_name, 
-suffix, person_role, rating_source, rating_value
+            var movieCommand = @"
+SELECT video_id, imdb_id, movie_title, movie_rating, runtime, plot, release_date
 FROM video.vw_movies
 WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
 

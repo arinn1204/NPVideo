@@ -61,54 +61,12 @@ namespace VideoDB.WebApi.Tests.Services
                 new MovieViewModel
                 {
                     VideoId = "tt1234",
-                    Codec = "codec",
                     Title = "title",
                     MpaaRating = "R",
                     Plot = "plot",
                     ReleaseDate = DateTime.MaxValue,
-                    Resolution = "resolution",
                     Runtime = 120.33M,
-                    VideoType = VideoType.Movie,
-                    Stars = new[]
-                    {
-                        new StarViewModel
-                        {
-                            FirstName = "Jake",
-                            LastName = "Johnson",
-                            Role = PersonType.Actor
-                        },
-                        new StarViewModel
-                        {
-                            FirstName = "John",
-                            LastName = "Johnson",
-                            Role = PersonType.Director
-                        },
-                        new StarViewModel
-                        {
-                            FirstName = "Jacob",
-                            LastName = "Johnson",
-                            Role = PersonType.Producer
-                        }
-                    },
-                    Genres = new[]
-                    {
-                        new GenreViewModel { Name = "Horror" },
-                        new GenreViewModel { Name = "Action" },
-                        new GenreViewModel { Name = "Adventure" },
-                    },
-                    Ratings = new[]
-                    {
-                        new RatingViewModel 
-                        { 
-                            Source = "Metacritic", 
-                            RatingValue = 11.32M 
-                        },
-                        new RatingViewModel 
-                        { 
-                            Source = "Rotten Tomato", 
-                            RatingValue = 113.32M 
-                        },
-                    }
+                    VideoType = VideoType.Movie
                 });
         }
 
@@ -126,55 +84,13 @@ namespace VideoDB.WebApi.Tests.Services
             result.Episode.Should().BeEquivalentTo(new TvEpisode
             {
                 VideoId = "tt1234",
-                Codec = "codec",
                 EpisodeName = "title",
                 MpaaRating = "R",
                 Plot = "plot",
                 ReleaseDate = DateTime.MaxValue,
-                Resolution = "resolution",
                 Runtime = 120.33M,
                 EpisodeNumber = 1,
-                SeasonNumber = 1,
-                Stars = new[]
-                    {
-                        new StarViewModel
-                        {
-                            FirstName = "Jake",
-                            LastName = "Johnson",
-                            Role = PersonType.Actor
-                        },
-                        new StarViewModel
-                        {
-                            FirstName = "John",
-                            LastName = "Johnson",
-                            Role = PersonType.Director
-                        },
-                        new StarViewModel
-                        {
-                            FirstName = "Jacob",
-                            LastName = "Johnson",
-                            Role = PersonType.Producer
-                        }
-                    },
-                Genres = new[]
-                    {
-                        new GenreViewModel { Name = "Horror" },
-                        new GenreViewModel { Name = "Action" },
-                        new GenreViewModel { Name = "Adventure" },
-                    },
-                Ratings = new[]
-                    {
-                        new RatingViewModel
-                        {
-                            Source = "Metacritic",
-                            RatingValue = 11.32M
-                        },
-                        new RatingViewModel
-                        {
-                            Source = "Rotten Tomato",
-                            RatingValue = 113.32M
-                        },
-                    }
+                SeasonNumber = 1
             });
 
             result.Series.Should().BeEquivalentTo(new SeriesViewModel
@@ -183,47 +99,7 @@ namespace VideoDB.WebApi.Tests.Services
                 VideoId = "tt2222",
                 Title = "title",
                 Plot = "plot",
-                ReleaseDate = DateTime.MaxValue,
-                Stars = new[]
-                   {
-                        new StarViewModel
-                        {
-                            FirstName = "Jake",
-                            LastName = "Johnson",
-                            Role = PersonType.Actor
-                        },
-                        new StarViewModel
-                        {
-                            FirstName = "John",
-                            LastName = "Johnson",
-                            Role = PersonType.Director
-                        },
-                        new StarViewModel
-                        {
-                            FirstName = "Jacob",
-                            LastName = "Johnson",
-                            Role = PersonType.Producer
-                        }
-                    },
-                Genres = new[]
-                   {
-                        new GenreViewModel { Name = "Horror" },
-                        new GenreViewModel { Name = "Action" },
-                        new GenreViewModel { Name = "Adventure" },
-                    },
-                Ratings = new[]
-                   {
-                        new RatingViewModel
-                        {
-                            Source = "Metacritic",
-                            RatingValue = 11.32M
-                        },
-                        new RatingViewModel
-                        {
-                            Source = "Rotten Tomato",
-                            RatingValue = 113.32M
-                        },
-                    }
+                ReleaseDate = DateTime.MaxValue
             });
         }
 
@@ -388,21 +264,11 @@ namespace VideoDB.WebApi.Tests.Services
                             series_id = seriesId,
                             tv_episode_id = episodeId,
                             episode_imdb_id = imdbId,
-                            codec = "codec",
-                            first_name = person.FirstName,
-                            genre_name = genre.Name,
-                            last_name = person.LastName,
-                            middle_name = person.MiddleName,
                             rating = "R",
                             episode_name = "title",
-                            person_role = person.Role.ToString(),
                             plot = "plot",
-                            rating_source = rating.Source,
-                            rating_value = rating.RatingValue,
                             release_date = DateTime.MaxValue,
-                            resolution = "resolution",
                             runtime = 120.33M,
-                            suffix = person.Suffix,
                             episode_number = 1,
                             season_number = 1
                         };
@@ -427,16 +293,8 @@ namespace VideoDB.WebApi.Tests.Services
                         {
                             video_id = seriesId,
                             imdb_id = imdbId,
-                            first_name = person.FirstName,
-                            genre_name = genre.Name,
-                            last_name = person.LastName,
-                            middle_name = person.MiddleName,
-                            person_role = person.Role.ToString(),
                             plot = "plot",
-                            rating_source = rating.Source,
-                            rating_value = rating.RatingValue,
                             release_date = DateTime.MaxValue,
-                            suffix = person.Suffix,
                             title = "title"
                         };
                     }
@@ -462,21 +320,11 @@ namespace VideoDB.WebApi.Tests.Services
                         {
                             video_id = videoId,
                             imdb_id = imdbId,
-                            codec = "codec",
-                            first_name = person.FirstName,
-                            genre_name = genre.Name,
-                            last_name = person.LastName,
-                            middle_name = person.MiddleName,
                             movie_rating = "R",
                             movie_title = "title",
-                            person_role = person.Role.ToString(),
                             plot = "plot",
-                            rating_source = rating.Source,
-                            rating_value = rating.RatingValue,
                             release_date = DateTime.MaxValue,
-                            resolution = "resolution",
-                            runtime = 120.33M,
-                            suffix = person.Suffix
+                            runtime = 120.33M
                         };
                     }
                 }

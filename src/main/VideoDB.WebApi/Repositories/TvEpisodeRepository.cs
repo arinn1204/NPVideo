@@ -37,10 +37,8 @@ namespace VideoDB.WebApi.Repositories
         public IEnumerable<SeriesDataModel> GetTvShows(string imdb_id = null)
         {
             var seriesCommand =
-    @"SELECT video_id, imdb_id, title, plot, release_date,
-    genre_name, first_name, middle_name, last_name, 
-    suffix, person_role, rating_source, rating_value
-FROM video.vw_series
+    @"SELECT video_id, imdb_id, title, plot, release_date, mpaa_rating
+FROM video.vw_tv_series
 WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());
             var command = new SqlCommand(seriesCommand, sqlConnection);
@@ -55,15 +53,12 @@ WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             GetTvEpisodes(string imdb_id = null)
         {
             var tvEpisodeCommand =
-    @"SELECT video_id, imdb_id, title, plot, release_date,
-    genre_name, first_name, middle_name, last_name, 
-    suffix, person_role, rating_source, rating_value
-FROM video.vw_series
+    @"SELECT video_id, imdb_id, title, plot, release_date, mpaa_rating
+FROM video.vw_tv_series
+WHERE @imdb_id IS NULL OR imdb_id = @imdb_id
 
-SELECT tv_episode_id, series_id, episode_imdb_id, season_number, episode_number,
-    episode_name, release_date, plot, resolution, codec,
-    first_name, middle_name, last_name, suffix,
-    person_role, genre_name, rating_source, rating_value
+SELECT tv_episode_id, series_id, imdb_id, season_number, episode_number,
+    episode_name, release_date, plot
 FROM video.vw_tv_episodes
 WHERE @imdb_id IS NULL OR episode_imdb_id = @imdb_id";
             using var sqlConnection = new SqlConnection(_configuration.CreateConnectionString());

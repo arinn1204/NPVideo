@@ -44,50 +44,7 @@ namespace VideoDB.WebApi.Models.Profiles
                     m => m.Select(s => s.release_date)
                           .Distinct()
                           .Single()))
-                .ForMember(dest => dest.Resolution, src => src.MapFrom(
-                    m => m.Select(s => s.resolution)
-                          .Distinct()
-                          .Single()))
-                .ForMember(dest => dest.Codec, src => src.MapFrom(
-                    m => m.Select(s => s.codec)
-                          .Distinct()
-                          .Single()))
-                .ForMember(dest => dest.Genres, src => src.MapFrom(
-                    m => m.DistinctBy(d => d.genre_name)
-                          .Select(s => new GenreViewModel 
-                            { 
-                                Name = s.genre_name
-                            })))
-                .ForMember(dest => dest.Ratings, src => src.MapFrom(
-                    m => m.DistinctBy(d => new { d.rating_source, d.rating_value })
-                          .Select(s => new RatingViewModel 
-                            { 
-                                Source = s.rating_source,
-                                RatingValue = s.rating_value
-                            })))
-                .ForMember(dest => dest.Stars, src => src.MapFrom(
-                    m => m.DistinctBy(d => new 
-                            { 
-                                d.first_name, 
-                                d.middle_name, 
-                                d.last_name, 
-                                d.suffix, 
-                                d.person_role 
-                            })
-                          .Select(s => CreateStarModel(s))));
-        }
-
-        private StarViewModel CreateStarModel(MovieDataModel source)
-        {
-            Enum.TryParse<PersonType>(source.person_role, out var role);
-            return new StarViewModel
-            {
-                FirstName = source.first_name,
-                MiddleName = source.middle_name,
-                LastName = source.last_name,
-                Suffix = source.suffix,
-                Role = role
-            };
+                .ForMember(dest => dest.VideoType, src => src.MapFrom(m => VideoType.Movie));
         }
     }
 }

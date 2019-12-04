@@ -17,12 +17,6 @@ namespace VideoDB.WebApi.Models.ViewModels
         public string EpisodeName { get; set; }
         public string Plot { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public string Resolution { get; set; }
-        public string Codec { get; set; }
-
-        public IEnumerable<GenreViewModel> Genres { get; set; }
-        public IEnumerable<RatingViewModel> Ratings { get; set; }
-        public IEnumerable<StarViewModel> Stars { get; set; }
 
 
         [JsonIgnore]

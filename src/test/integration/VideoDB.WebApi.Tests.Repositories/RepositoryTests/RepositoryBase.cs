@@ -32,25 +32,29 @@ namespace VideoDB.WebApi.Tests.Integration.RepositoryTests
         {
             using var sqlConnection = new SqlConnection(_config.CreateConnectionString());
             using var command = new SqlCommand($@"
-            DELETE FROM video.genre_videos;
-            DELETE FROM video.person_videos;
-            DELETE FROM video.person_roles;
-            DELETE FROM video.genre_tv_episodes;
-            DELETE FROM video.person_tv_episodes;
+DELETE FROM video.genre_videos;
+DELETE FROM video.person_videos;
+DELETE FROM video.person_roles;
+DELETE FROM video.genre_tv_episodes;
+DELETE FROM video.person_tv_episodes;
+DELETE FROM video.video_metadata;
+DELETE FROM video.episode_metadata;
 
-            DELETE FROM video.persons;
-            DELETE FROM video.roles;
-            DELETE FROM video.genres;
-            DELETE FROM video.ratings;
-            DELETE FROM video.tv_episodes;
-            DELETE FROM video.videos;
+DELETE FROM video.persons;
+DELETE FROM video.roles;
+DELETE FROM video.genres;
+DELETE FROM video.ratings;
+DELETE FROM video.tv_episodes;
+DELETE FROM video.videos;
 
-            DBCC CHECKIDENT('{_database}.video.videos', RESEED, 0);
-            DBCC CHECKIDENT('{_database}.video.tv_episodes', RESEED, 0);
-            DBCC CHECKIDENT('{_database}.video.genres', RESEED, 0);
-            DBCC CHECKIDENT('{_database}.video.ratings', RESEED, 0);
-            DBCC CHECKIDENT('{_database}.video.persons', RESEED, 0);
-            DBCC CHECKIDENT('{_database}.video.roles', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.videos', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.tv_episodes', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.video_metadata', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.episode_metadata', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.genres', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.ratings', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.persons', RESEED, 0);
+DBCC CHECKIDENT('{_database}.video.roles', RESEED, 0);
             ", sqlConnection);
 
             command.Connection.Open();

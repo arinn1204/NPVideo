@@ -2,7 +2,7 @@
 (
 	[metadata_id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [episode_id] INT NOT NULL, 
-    [resolution] NVARCHAR(8) NOT NULL, 
+    [resolution] NVARCHAR(16) NOT NULL, 
     [codec] NVARCHAR(8) NOT NULL, 
     [extended_format] NVARCHAR(32) NULL
 	

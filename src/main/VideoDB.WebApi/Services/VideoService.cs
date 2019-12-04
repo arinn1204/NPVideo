@@ -107,13 +107,8 @@ namespace VideoDB.WebApi.Services
             return dataModels.GroupBy(
                 key => key.video_id,
                 (key, dataModels) =>
-                {
-                    var viewModel = _mapper.Map<MovieViewModel>(
-                            dataModels.Where(w => w.video_id == key));
-                    viewModel.VideoType = VideoType.Movie;
-
-                    return viewModel;
-                });
+                    _mapper.Map<MovieViewModel>(
+                        dataModels.Where(w => w.video_id == key)));
         }
     }
 }
