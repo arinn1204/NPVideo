@@ -42,6 +42,7 @@ namespace VideoDB.WebApi.Middleware
             context.Response.StatusCode = ex.GetType().Name switch
             {
                 "EvoNotFoundException" => (int)HttpStatusCode.NotFound,
+                "EvoBadRequestException" => (int)HttpStatusCode.BadRequest,
                 _ => (int)HttpStatusCode.InternalServerError
             };
 

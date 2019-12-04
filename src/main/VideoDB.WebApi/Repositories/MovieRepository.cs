@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Models.Extensions;
 using VideoDB.WebApi.Repositories.Helpers;
@@ -61,6 +62,26 @@ WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             }
             catch (SqlException e)
             {
+                var regex = new Regex(@"(?<=@)(\w+) is a required parameter(?: for video_type = movie)?\.$");
+                var matchGroup = regex.Match(e.Message);
+                if (matchGroup.Success)
+                {
+                    var missingParameter = matchGroup.Groups.Count > 1
+                        ? matchGroup.Groups[1].Value
+                        : matchGroup.Groups[0].Value;
+
+                    var property = missingParameter switch
+                    {
+                        "codec" => "Codec",
+                        "resolution" => "Resolution",
+                        "imdb_id" => "VideoId",
+                        "mpaa_rating" => "MpaaRating",
+                        _ => missingParameter
+                    };
+
+                    throw new EvoBadRequestException($"{property} can not be null.");
+                }
+
                 throw new EvoException(e.Message);
             }
             finally

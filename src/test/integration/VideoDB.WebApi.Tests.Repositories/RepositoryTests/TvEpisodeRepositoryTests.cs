@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Repositories;
+using VideoDB.WebApi.Tests.Extensions;
 using VideoDB.WebApi.Tests.Helpers;
 using VideoDB.WebApi.Tests.Integration.Features.Steps.Support;
 using VideoDB.WebApi.Tests.Integration.RepositoryTests;
@@ -69,16 +70,22 @@ WHERE imdb_id = 'tt134133'";
         }
 
         [Test]
-        public void ShouldThrowExceptionWhenRequestIsNotFormattedCorrectly()
+        public void ShouldThrowExceptionWhenRequestIsInvalid()
         {
             var repository = _fixture.Create<TvEpisodeRepository>();
             var request = RequestGenerator.GetTvEpisodeRequest();
-            request.TvEpisodeId = null;
+
+            request.Actors
+                .First()
+                .Modify(gr => gr.FirstName, null);
+
             Action exception = () => repository.UpsertTvEpisode(request);
 
             exception.Should()
                 .Throw<EvoException>()
-                .WithMessage("@episode_imdb_id is a required parameter.");
+                .WithMessage(@"Cannot insert the value NULL into column 'first_name', table '@persons'; column does not allow nulls. INSERT fails.
+The data for table-valued parameter ""@persons"" doesn't conform to the table type of the parameter. SQL Server error is: 515, state: 2
+The statement has been terminated.");
         }
 
         [Test]
@@ -225,5 +232,31 @@ WHERE imdb_id = 'tt134133'";
                 .Be("tt101");
         }
 
+        [TestCase("VideoId")]
+        [TestCase("Plot")]
+        [TestCase("Title")]
+        [TestCase("MpaaRating")]
+        [TestCase("Codec")]
+        [TestCase("Resolution")]
+        [TestCase("TvEpisodeId")]
+        [TestCase("EpisodeName")]
+        [TestCase("EpisodePlot")]
+        public void ShouldThrowBadRequestExceptionIfStoredProcedureThrowsValidationError(string property)
+        {
+            var repository = _fixture.Create<TvEpisodeRepository>();
+            var request = RequestGenerator.GetTvEpisodeRequest();
+
+            request.GetType()
+                .GetProperty(property)
+                .SetValue(request, null);
+
+            Action exception = 
+                () => repository.UpsertTvEpisode(request);
+
+            exception.Should()
+                .Throw<EvoBadRequestException>()
+                .WithMessage($"{property} can not be null.");
+
+        }
     }
 }

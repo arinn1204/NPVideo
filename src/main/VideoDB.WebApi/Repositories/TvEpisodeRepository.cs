@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using VideoDB.WebApi.Extensions;
 using VideoDB.WebApi.Models.Extensions;
@@ -86,7 +87,7 @@ WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             }
             catch (SqlException e)
             {
-                throw new EvoException(e.Message);
+                HandleSqlException(e);
             }
             finally
             {
@@ -121,7 +122,7 @@ WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
             }
             catch (SqlException e)
             {
-                throw new EvoException(e.Message);
+                HandleSqlException(e);
             }
             finally
             {
@@ -131,5 +132,34 @@ WHERE @imdb_id IS NULL OR imdb_id = @imdb_id";
 
             return (videoModels, episodeModels);
         }
+        private void HandleSqlException(SqlException e)
+        {
+            var regex = new Regex(@"(?<=@)(\w+) is a required parameter\.$");
+            var matchGroup = regex.Match(e.Message);
+            if (matchGroup.Success)
+            {
+                var missingParameter = matchGroup.Groups.Count > 1
+                    ? matchGroup.Groups[1].Value
+                    : matchGroup.Groups[0].Value;
+
+                var property = missingParameter switch
+                {
+                    "codec" => "Codec",
+                    "resolution" => "Resolution",
+                    "mpaa_rating" => "MpaaRating",
+                    "episode_name" => "EpisodeName",
+                    "plot" => "EpisodePlot",
+                    "series_plot" => "Plot",
+                    "series_title" => "Title",
+                    "episode_imdb_id" => "TvEpisodeId",
+                    "series_imdb_id" => "VideoId",
+                    _ => missingParameter
+                };
+
+                throw new EvoBadRequestException($"{property} can not be null.");
+            }
+            throw new EvoException(e.Message);
+        }
+
     }
 }

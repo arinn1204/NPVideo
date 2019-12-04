@@ -79,6 +79,22 @@ namespace VideoDB.WebApi.Tests.Middleware
 
         }
 
+        [Test]
+        public async Task ShouldSetToBadRequestIfBadRequestExceptionIsThrown()
+        {
+            _fixture.Inject<RequestDelegate>((HttpContext context) =>
+            {
+                throw new EvoBadRequestException("Exception thrown!");
+            });
+            var mw = _fixture.Create<ErrorHandlingMiddleware>();
+
+            var (errorResponse, statusCode) = await GetResponseFromContext(mw);
+
+            errorResponse.Error.Should().Be("Exception thrown!");
+            statusCode.Should().Be((int)HttpStatusCode.BadRequest);
+
+        }
+
         private async Task<(ErrorResponse errorResponse, int statusCode)> GetResponseFromContext(ErrorHandlingMiddleware mw)
         {
             var context = new DefaultHttpContext();

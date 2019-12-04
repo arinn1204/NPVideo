@@ -121,5 +121,28 @@ The statement has been terminated.");
                 .Should()
                 .BeEmpty();
         }
+
+        [TestCase("VideoId")]
+        [TestCase("Plot")]
+        [TestCase("Title")]
+        [TestCase("MpaaRating")]
+        [TestCase("Codec")]
+        [TestCase("Resolution")]
+        public void ShouldThrowBadRequestExceptionIfStoredProcedureThrowsValidationError(string property)
+        {
+            var repository = _fixture.Create<MovieRepository>();
+            var request = RequestGenerator.GetMovieRequest();
+
+            request.GetType()
+                .GetProperty(property)
+                .SetValue(request, null);
+
+            Action exception = () => repository.UpsertMovie(request);
+
+            exception.Should()
+                .Throw<EvoBadRequestException>()
+                .WithMessage($"{property} can not be null.");
+
+        }
     }
 }
