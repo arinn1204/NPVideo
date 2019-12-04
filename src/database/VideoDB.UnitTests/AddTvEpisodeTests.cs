@@ -8,6 +8,7 @@ using Microsoft.Data.Tools.Schema.Sql.UnitTesting.Conditions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml.Linq;
 using System.Linq;
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace VideoDB.UnitTests
 {
