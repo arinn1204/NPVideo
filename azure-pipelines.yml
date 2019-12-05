@@ -137,7 +137,7 @@ stages:
       inputs:
         azureSubscription: '$(azure_subscription)'
         package: '$(Pipeline.Workspace)\WebApi'
-        appName: 'VideoDB WebApi'
+        appName: 'VideoDB-WebApi'
   - job: DeployDatabase
     steps:
     - download: current
