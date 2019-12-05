@@ -110,22 +110,6 @@ stages:
           -source '$(db_source)' `
           -Configuration '$(testConfiguration)' `
           -workingDirectory '$(Build.SourcesDirectory)'
-  - job: DeployDevDatabase
-    steps:
-    - download: current
-      artifact: VideoDbDacpac
-    - powershell: 'GCI -r $(Pipeline.Workspace)'
-    - task: SqlAzureDacpacDeployment@1
-      inputs:
-        azureSubscription: $(azure_subscription)
-        authenticationType: aadAuthenticationPassword
-        serverName: $(db_source)
-        databaseName: $(db_catalog)_dev
-        aadSqlUsername: $(db_username)
-        aadSqlPassword: $(db_password)
-        deployType: DacpacTask
-        deploymentAction: Publish
-        dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
