@@ -120,8 +120,9 @@ stages:
     - task: AzureWebApp@1
       inputs:
         azureSubscription: '$(azure_subscription)'
-        package: '$(Pipeline.Workspace)\WebApi'
+        package: '$(Pipeline.Workspace)\**\publish.zip'
         appName: 'VideoDB-WebApi'
+        deploymentMethod: zipDeploy
   - job: DeployDatabase
     steps:
     - download: current
