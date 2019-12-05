@@ -152,4 +152,4 @@ stages:
         aadSqlPassword: $(db_password)
         deployType: DacpacTask
         deploymentAction: Publish
-        dacpacFile: '$(Pipeline.Workspace)\VideoDbDacpac'
+        dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
