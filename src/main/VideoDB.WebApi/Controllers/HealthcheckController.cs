@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoDB.WebApi.Controllers
 {
-    [Route("api/videos/[controller]")]
+    [Route("/[controller]")]
     public class HealthcheckController : BaseController
     {
         [HttpGet]
