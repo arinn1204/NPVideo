@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [video].[tv_episodes] (
     [tv_episode_id]      INT            IDENTITY (1, 1) NOT NULL,
     [series_id]           INT            NOT NULL,
-    [imdb_id] VARCHAR (32)   NOT NULL,
+    [imdb_id] VARCHAR (16)   NOT NULL,
     [season_number]      INT            NOT NULL,
     [episode_number]     INT            NOT NULL,
     [runtime]     NUMERIC(5, 2)            NOT NULL,

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [video].[videos] (
     [video_id]     INT            IDENTITY (1, 1) NOT NULL,
     [video_type]   VARCHAR (8)    NOT NULL,
-    [imdb_id]      VARCHAR (32)   NOT NULL,
+    [imdb_id]      VARCHAR (16)   NOT NULL,
     [title]        VARCHAR (512)   NOT NULL,
     [mpaa_rating]  VARCHAR (8)    NULL,
     [runtime]      DECIMAL (5, 2) NULL,
