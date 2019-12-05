@@ -16,8 +16,6 @@ using VideoDB.WebApi.Controllers;
 namespace Evo.WebApi.Controllers
 {
     [Route("api/videos/[controller]")]
-    [ApiController]
-    [Produces("application/json")]
     public class MoviesController : BaseController
     {
         private readonly IVideoService _videoService;
