@@ -35,20 +35,20 @@ namespace Evo.WebApi.Tests.Controllers
         {
             var request = new MovieRequest()
             {
-                VideoId = "tt1234"
+                VideoId = "tt12341236"
             };
 
             _service.Setup(s => s.UpsertMovie(request))
                 .Returns(new MovieViewModel
                 {
-                    VideoId = "tt1234"
+                    VideoId = "tt12341236"
                 }.Yield());
 
             var result = _controller.UpsertVideo(request) as CreatedResult;
 
             result.Should().NotBe(null);
-            result.Location.Should().Be("/videos/movies/tt1234");
-            (result.Value as IEnumerable<MovieViewModel>).First().VideoId.Should().Be("tt1234");
+            result.Location.Should().Be("/videos/movies/tt12341236");
+            (result.Value as IEnumerable<MovieViewModel>).First().VideoId.Should().Be("tt12341236");
         }
 
         [Test]
@@ -56,13 +56,13 @@ namespace Evo.WebApi.Tests.Controllers
         {
             var request = new MovieRequest()
             {
-                VideoId = "tt1234"
+                VideoId = "tt12341234"
             };
 
             _service.Setup(s => s.UpsertMovie(request))
                 .Returns(new MovieViewModel
                 {
-                    VideoId = "tt1234",
+                    VideoId = "tt12341234",
                     IsUpdated = true
                 }.Yield());
 
@@ -77,15 +77,15 @@ namespace Evo.WebApi.Tests.Controllers
             {
                 new MovieViewModel
                 {
-                    VideoId = "tt1234"
+                    VideoId = "tt12341234"
                 },
                 new MovieViewModel
                 {
-                    VideoId = "tt1235"
+                    VideoId = "tt12341235"
                 },
                 new MovieViewModel
                 {
-                    VideoId = "tt1236"
+                    VideoId = "tt12341236"
                 }
             };
 
@@ -96,9 +96,26 @@ namespace Evo.WebApi.Tests.Controllers
 
             moviesResult.Select(s => s.VideoId)
                 .Should()
-                .BeEquivalentTo(new[] { "tt1234", "tt1235", "tt1236" });
+                .BeEquivalentTo(new[] { "tt12341234", "tt12341235", "tt12341236" });
         }
 
+
+        [TestCase("t12341234")]
+        [TestCase("tt123412")]
+        [TestCase("tt12341342")]
+        public void ShouldThrowBadRequestExceptionIfIdDoesntMeetStandard(string id)
+        {
+            var request = new MovieRequest
+            {
+                VideoId = id
+            };
+
+            Action exception = () => _controller.UpsertVideo(request);
+
+            exception.Should()
+                .Throw<EvoBadRequestException>()
+                .WithMessage(id + " is an invalid format. The required format must match: 'tt\\d{7,9}'");
+        }
 
     }
 }

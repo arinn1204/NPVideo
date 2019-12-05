@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using Evo.WebApi.Exceptions;
@@ -50,6 +51,17 @@ namespace Evo.WebApi.Controllers
         public IActionResult GetAllMovies(string id)
         {
             return Ok(_videoService.GetMovies(id));
+        }
+
+        private void ValidateId(string id)
+        {
+            var regex = new Regex(@"^tt\d{7,9}$");
+            var matcher = regex.Match(id);
+
+            if (!matcher.Success)
+            {
+                throw new EvoBadRequestException(id + " is an invalid format. The required format must match: 'tt\\d{7,9}'");
+            }
         }
 
     }

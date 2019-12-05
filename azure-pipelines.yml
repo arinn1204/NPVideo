@@ -92,6 +92,7 @@ stages:
         arguments: '-c $(buildConfiguration)'    
     - publish: 'src\main\VideoDB.WebApi\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
       artifact: WebApi
+    - powershell: Get-ChildItem -Recurse
 - stage: Integration_Test
   dependsOn: Build_And_Unit_Test
   jobs:
@@ -117,6 +118,7 @@ stages:
     steps:
     - download: current
       artifact: WebApi
+    - powershell: Get-ChildItem -Recurse
     - task: AzureWebApp@1
       inputs:
         azureSubscription: '$(azure_subscription)'
