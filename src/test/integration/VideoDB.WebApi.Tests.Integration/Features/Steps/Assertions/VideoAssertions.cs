@@ -2,6 +2,7 @@
 using Evo.WebApi.Models.Requests;
 using Evo.WebApi.Models.ViewModels;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using MoreLinq;
 using Newtonsoft.Json;
 using System;
@@ -78,7 +79,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                     videoContent.Select(s => s.VideoId)
                         .Single()
                         .Should()
-                        .Be("tt1005");
+                        .Be("tt1000005");
 
                     break;
                 case "TV EPISODE":
@@ -91,14 +92,14 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                         .Series
                         .VideoId
                         .Should()
-                        .Be("tt10000");
+                        .Be("tt1000000");
                     tvEpisodeContent
                         .Single()
                         .Episode
                         .Single()
                         .VideoId
                         .Should()
-                        .Be("tt1005");
+                        .Be("tt10000005");
 
                     break;
                 case "SHOW":
@@ -110,7 +111,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                         .Single()
                         .VideoId
                         .Should()
-                        .Be("tt10000");
+                        .Be("tt1000000");
                     break;
             }
         }
@@ -131,7 +132,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                     videoContent.Should().HaveCount(10);
 
                     videoContent.Select(s => s.VideoId)
-                        .Union(Enumerable.Range(1, 10).Select(s => $"tt{s}"))
+                        .Union(Enumerable.Range(1000000, 10).Select(s => $"tt{s}"))
                         .Should()
                         .HaveCount(10);
 
@@ -147,13 +148,6 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps.Assertions
                         .HaveCount(1);
                     tvEpisodeContent.SelectMany(s => s.Episode)
                         .DistinctBy(d => d.VideoId)
-                        .Should()
-                        .HaveCount(10);
-
-                    tvEpisodeContent.SelectMany(s => s.Episode)
-                        .DistinctBy(d => d.VideoId)
-                        .Select(s => s.VideoId)
-                        .Union(Enumerable.Range(1, 10).Select(s => $"tt{s}"))
                         .Should()
                         .HaveCount(10);
 

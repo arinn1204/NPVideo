@@ -54,6 +54,7 @@ namespace Evo.WebApi.Controllers
         [ProducesResponseType(typeof(IEnumerable<TvEpisodeViewModel>), StatusCodes.Status200OK)]
         public IActionResult GetSpecificTvEpisode([FromRoute] string id)
         {
+            ValidateId(id);
             return Ok(_service.GetTvEpisodes(id));
         }
 
@@ -61,6 +62,7 @@ namespace Evo.WebApi.Controllers
         [ProducesResponseType(typeof(IEnumerable<SeriesViewModel>), StatusCodes.Status200OK)]
         public IActionResult GetSpecificTvShow([FromRoute] string id)
         {
+            ValidateId(id);
             return Ok(_service.GetTvShows(id));
         }
     }

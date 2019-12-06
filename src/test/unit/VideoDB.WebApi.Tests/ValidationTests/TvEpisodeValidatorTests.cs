@@ -21,20 +21,40 @@ namespace VideoDB.WebApi.Tests.ValidationTests
             _validator = new TvEpisodeValidator();
         }
 
-        [TestCase("")]
-        [TestCase("ttttttttttttttttttttttttttttttttt")]
-        public void ShouldFailIfSeriesIdIsIncorrect(string id)
+        [TestCase(0)]
+        [TestCase(10)]
+        public void ShouldFailIfSeriesIdIsIncorrect(int idLength)
         {
+            var id = GenerateId(idLength);
             _validator.ShouldHaveValidationErrorFor(r => r.VideoId, id);
         }
 
-        [Test]
-        public void ShouldPassIfSeriesIdIsCorrect()
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        public void ShouldPassIfSeriesIdIsCorrect(int idLength)
         {
-            _validator.ShouldNotHaveValidationErrorFor(
-                r => r.VideoId,
-                string.Join(string.Empty, Enumerable.Repeat('t', 32)));
+            var id = GenerateId(idLength);
+            _validator.ShouldHaveValidationErrorFor(r => r.VideoId, id);
         }
+
+        [TestCase(0)]
+        [TestCase(10)]
+        public void ShouldFailIfEpisodeIdIsIncorrect(int idLength)
+        {
+            var id = GenerateId(idLength);
+            _validator.ShouldHaveValidationErrorFor(r => r.TvEpisodeId, id);
+        }
+
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        public void ShouldPassIfEpisodeIdIsCorrect(int idLength)
+        {
+            var id = GenerateId(idLength);
+            _validator.ShouldHaveValidationErrorFor(r => r.TvEpisodeId, id);
+        }
+
 
         [Test]
         public void ShouldFailIfSeriesTitleIsEmpty()
@@ -67,21 +87,6 @@ namespace VideoDB.WebApi.Tests.ValidationTests
         public void ShouldFailIfSeriesReleaseDateIsEmpty()
         {
             _validator.ShouldHaveValidationErrorFor(r => r.ReleaseDate, default(DateTime));
-        }
-
-        [TestCase("")]
-        [TestCase("ttttttttttttttttttttttttttttttttt")]
-        public void ShouldFailIfEpisodeIdIsIncorrect(string id) 
-        {
-            _validator.ShouldHaveValidationErrorFor(r => r.TvEpisodeId, id);
-        }
-
-        [Test]
-        public void ShouldNotFailIfEpisodeIdIsMaxLength()
-        {
-            _validator.ShouldNotHaveValidationErrorFor(
-                r => r.VideoId,
-                string.Join(string.Empty, Enumerable.Repeat('t', 32)));
         }
 
         [TestCase(0)]
@@ -171,5 +176,15 @@ namespace VideoDB.WebApi.Tests.ValidationTests
                 r => r.Codec,
                 string.Join(string.Empty, Enumerable.Repeat('t', 9)));
         }
+
+        private string GenerateId(int length)
+        {
+            return "tt" + string.Join(
+                string.Empty,
+                Enumerable.Range(
+                    new Random().Next(1000000, 999999999),
+                    length));
+        }
+
     }
 }

@@ -13,7 +13,7 @@ namespace VideoDB.WebApi.Validators
         {
             RuleFor(request => request.VideoId)
                 .NotEmpty()
-                .Length(1, 32);
+                .Matches(@"^tt\d{7,9}$");
 
             RuleFor(request => request.MpaaRating)
                 .NotEmpty()

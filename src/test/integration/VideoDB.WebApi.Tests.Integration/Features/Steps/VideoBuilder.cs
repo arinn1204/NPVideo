@@ -70,7 +70,7 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             switch (typeOfContent.ToUpperInvariant())
             {
                 case "MOVIE":
-                    foreach (var videoId in Enumerable.Range(1, 10))
+                    foreach (var videoId in Enumerable.Range(1000000, 10))
                     {
                         request = RequestGenerator.GetMovieRequest(videoId);
                         Database.AddRequestItem(request as MovieRequest, config);
@@ -78,9 +78,9 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
                     break;
                 case "SHOW":
                 case "TV EPISODE":
-                    foreach (var tvId in Enumerable.Range(1, 10))
+                    foreach (var tvId in Enumerable.Range(10000000, 10))
                     {
-                        request = RequestGenerator.GetTvEpisodeRequest(100, tvId);
+                        request = RequestGenerator.GetTvEpisodeRequest(1000000, tvId);
                         Database.AddRequestItem(request as TvEpisodeRequest, config);
                     }
                     
@@ -97,28 +97,28 @@ namespace VideoDB.WebApi.Tests.Integration.Features.Steps
             switch (typeOfContent.ToUpperInvariant())
             {
                 case "MOVIE":
-                    foreach (var videoId in Enumerable.Range(1000, 10))
+                    foreach (var videoId in Enumerable.Range(1000000, 10))
                     {
                         var movieRequest = RequestGenerator.GetMovieRequest(videoId);
                         Database.AddRequestItem(movieRequest as MovieRequest, config);
                     }
-                    _container.RegisterInstanceAs<object>("tt1005", name: "RequestID");
+                    _container.RegisterInstanceAs<object>("tt1000005", name: "RequestID");
                     break;
                 case "SHOW":
-                    foreach (var tvId in Enumerable.Range(1000, 10))
+                    foreach (var tvId in Enumerable.Range(10000000, 10))
                     {
-                        var tvRequest = RequestGenerator.GetTvEpisodeRequest(10000, tvId);
+                        var tvRequest = RequestGenerator.GetTvEpisodeRequest(1000000, tvId);
                         Database.AddRequestItem(tvRequest as TvEpisodeRequest, config);
                     }
-                    _container.RegisterInstanceAs<object>("tt10000", name: "RequestID");
+                    _container.RegisterInstanceAs<object>("tt1000000", name: "RequestID");
                     break;
                 case "TV EPISODE":
-                    foreach (var tvId in Enumerable.Range(1000, 10))
+                    foreach (var tvId in Enumerable.Range(10000000, 10))
                     {
-                        var tvRequest = RequestGenerator.GetTvEpisodeRequest(10000, tvId);
+                        var tvRequest = RequestGenerator.GetTvEpisodeRequest(1000000, tvId);
                         Database.AddRequestItem(tvRequest as TvEpisodeRequest, config);
                     }
-                    _container.RegisterInstanceAs<object>("tt1005", name: "RequestID");
+                    _container.RegisterInstanceAs<object>("tt10000005", name: "RequestID");
 
                     break;
                 default:

@@ -16,15 +16,7 @@ namespace VideoDB.WebApi.Tests.ValidationTests
         {
             _validator = new VideoValidator();
         }
-
-        [Test]
-        public void ShouldFailWhenNoIdIsEntered()
-        {
-            _validator.ShouldHaveValidationErrorFor(
-                video => video.VideoId,
-                null as string);
-        }
-
+        
         [Test]
         public void ShouldFailWhenNoTitleIsEntered()
         {
@@ -48,29 +40,13 @@ namespace VideoDB.WebApi.Tests.ValidationTests
                 video => video.Plot,
                 null as string);
         }
-        
+
         [Test]
         public void ShouldFailWhenNoReleaseDateIsEntered()
         {
             _validator.ShouldHaveValidationErrorFor(
                 video => video.ReleaseDate,
                 DateTime.MinValue);
-        }
-
-        [Test]
-        public void ShouldFailWhenIdIsTooLong()
-        {
-            _validator.ShouldHaveValidationErrorFor(
-                video => video.VideoId,
-                string.Join(string.Empty, Enumerable.Repeat('t', 33)));
-        }
-
-        [Test]
-        public void ShouldNotFailWhenIdIsAtMaxSize()
-        {
-            _validator.ShouldNotHaveValidationErrorFor(
-                video => video.VideoId,
-                string.Join(string.Empty, Enumerable.Repeat('t', 32)));
         }
 
         [Test]
@@ -183,6 +159,33 @@ namespace VideoDB.WebApi.Tests.ValidationTests
             _validator.ShouldNotHaveValidationErrorFor(
                 video => video.Extended,
                 null as string);
+        }
+
+
+        [TestCase(0)]
+        [TestCase(10)]
+        public void ShouldFailIfSeriesIdIsIncorrect(int idLength)
+        {
+            var id = GenerateId(idLength);
+            _validator.ShouldHaveValidationErrorFor(r => r.VideoId, id);
+        }
+
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        public void ShouldPassIfSeriesIdIsCorrect(int idLength)
+        {
+            var id = GenerateId(idLength);
+            _validator.ShouldHaveValidationErrorFor(r => r.VideoId, id);
+        }
+
+        private string GenerateId(int length)
+        {
+            return "tt" + string.Join(
+                string.Empty,
+                Enumerable.Range(
+                    new Random().Next(1000000, 999999999),
+                    length));
         }
     }
 }

@@ -134,5 +134,30 @@ namespace VideoDB.WebApi.Tests.ControllerTests
             (result.Value as IEnumerable<SeriesViewModel>).Single().VideoId.Should().Be("tt1234");
         }
 
+        [TestCase("t12341234")]
+        [TestCase("tt123412")]
+        [TestCase("tt1234134212")]
+        public void ShouldThrowBadRequestExceptionIfIdDoesntMeetStandardForEpisodes(string id)
+        {
+            Action exception = () => _controller.GetSpecificTvEpisode(id);
+
+            exception.Should()
+                .Throw<EvoBadRequestException>()
+                .WithMessage(id + " is an invalid format. The required format must match: 'tt\\d{7,9}'");
+        }
+
+        [TestCase("t12341234")]
+        [TestCase("tt123412")]
+        [TestCase("tt1234134212")]
+        public void ShouldThrowBadRequestExceptionIfIdDoesntMeetStandardForShows(string id)
+        {
+            Action exception = () => _controller.GetSpecificTvShow(id);
+
+            exception.Should()
+                .Throw<EvoBadRequestException>()
+                .WithMessage(id + " is an invalid format. The required format must match: 'tt\\d{7,9}'");
+        }
+
+
     }
 }

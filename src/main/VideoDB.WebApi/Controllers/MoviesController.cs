@@ -50,18 +50,8 @@ namespace Evo.WebApi.Controllers
         [ProducesResponseType(typeof(IEnumerable<MovieViewModel>), StatusCodes.Status200OK)]
         public IActionResult GetAllMovies(string id)
         {
+            ValidateId(id);
             return Ok(_videoService.GetMovies(id));
-        }
-
-        private void ValidateId(string id)
-        {
-            var regex = new Regex(@"^tt\d{7,9}$");
-            var matcher = regex.Match(id);
-
-            if (!matcher.Success)
-            {
-                throw new EvoBadRequestException(id + " is an invalid format. The required format must match: 'tt\\d{7,9}'");
-            }
         }
 
     }

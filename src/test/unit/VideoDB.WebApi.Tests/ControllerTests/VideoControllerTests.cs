@@ -102,15 +102,10 @@ namespace Evo.WebApi.Tests.Controllers
 
         [TestCase("t12341234")]
         [TestCase("tt123412")]
-        [TestCase("tt12341342")]
+        [TestCase("tt1234134212")]
         public void ShouldThrowBadRequestExceptionIfIdDoesntMeetStandard(string id)
         {
-            var request = new MovieRequest
-            {
-                VideoId = id
-            };
-
-            Action exception = () => _controller.UpsertVideo(request);
+            Action exception = () => _controller.GetAllMovies(id);
 
             exception.Should()
                 .Throw<EvoBadRequestException>()

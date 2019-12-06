@@ -11,9 +11,15 @@ namespace VideoDB.WebApi.Validators
     {
         public TvEpisodeValidator()
         {
-            RuleFor(r => r.VideoId).NotEmpty().Length(1, 32);
+            RuleFor(r => r.VideoId)
+                .NotEmpty()
+                .Matches(@"^tt\d{7,9}$");
+
+            RuleFor(r => r.TvEpisodeId)
+                .NotEmpty()
+                .Matches(@"^tt\d{7,9}$");
+
             RuleFor(r => r.Title).NotEmpty();
-            RuleFor(r => r.TvEpisodeId).NotEmpty().Length(1, 32);
             RuleFor(r => r.MpaaRating).NotEmpty().Length(1, 8);
             RuleFor(r => r.Plot).NotEmpty();
             RuleFor(r => r.ReleaseDate).NotEqual(default(DateTime));
