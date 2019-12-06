@@ -112,7 +112,7 @@ stages:
           -source '$(db_source)' `
           -Configuration '$(testConfiguration)' `
           -workingDirectory '$(Build.SourcesDirectory)'
-    enabled: false
+      enabled: false
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
