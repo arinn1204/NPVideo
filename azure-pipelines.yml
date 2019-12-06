@@ -26,7 +26,6 @@ stages:
       unitTestName: VideoDB.UnitTests
       unitTestProj: '$(dbLocation)\$(unitTestName)\$(unitTestName).csproj'
       assemblyLocation: $(dbLocation)\$(unitTestName)\bin\$(testConfiguration)
-      System.Debug: true
     steps:
     - task: MSBuild@1
       inputs:
