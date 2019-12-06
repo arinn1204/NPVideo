@@ -40,7 +40,10 @@ namespace VideoDB.WebApi.Controllers
 
             var connectionString = _configuration.CreateConnectionString();
             using var connection = new SqlConnection(connectionString);
-            using var sqlCmd = new SqlCommand("SELECT DB_NAME(), @@VERSION", connection);
+            using var sqlCmd = new SqlCommand("SELECT DB_NAME(), @@VERSION", connection)
+            {
+                CommandTimeout = 5
+            };
 
             sqlCmd.Connection.Open();
             var reader = sqlCmd.ExecuteReader();
