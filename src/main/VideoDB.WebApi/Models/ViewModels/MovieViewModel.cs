@@ -13,13 +13,7 @@ namespace Evo.WebApi.Models.ViewModels
         public decimal Runtime { get; set; }
         public string Plot { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public string Resolution { get; set; }
-        public string Codec { get; set; }
         public VideoType VideoType { get; set; }
-
-        public IEnumerable<GenreViewModel> Genres { get; set; }
-        public IEnumerable<RatingViewModel> Ratings { get; set; }
-        public IEnumerable<StarViewModel> Stars { get; set; }
 
         [JsonIgnore]
         public bool IsUpdated { get; set; }
