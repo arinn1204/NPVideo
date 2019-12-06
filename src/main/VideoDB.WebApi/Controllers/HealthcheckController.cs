@@ -9,8 +9,10 @@ using VideoDB.WebApi.Extensions;
 
 namespace VideoDB.WebApi.Controllers
 {
+    [ApiController]
+    [Produces("application/json")]
     [Route("/[controller]")]
-    public class HealthcheckController : BaseController
+    public class HealthcheckController : Controller
     {
         private readonly IConfiguration _configuration;
 
@@ -45,6 +47,7 @@ namespace VideoDB.WebApi.Controllers
             reader.Read();
             information = information.Append(reader.GetString(0));
             information = information.Append(reader.GetString(1));
+            information = information.Append(reader.GetString(2));
 
             return information;
         }
