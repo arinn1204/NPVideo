@@ -114,7 +114,7 @@ stages:
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
-  - job: DeployWebApi Production
+  - job: DeployWebApiProduction
     steps:
     - download: current
       artifact: WebApi
@@ -139,7 +139,7 @@ stages:
         deployType: DacpacTask
         deploymentAction: Publish
         dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
-  - job: DeployWebApi QA
+  - job: DeployWebApiQA
     steps:
     - download: current
       artifact: WebApi
