@@ -114,11 +114,10 @@ stages:
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
-  - job: DeployWebApi
+  - job: DeployWebApi Production
     steps:
     - download: current
       artifact: WebApi
-    - powershell: Get-ChildItem -Recurse
     - task: AzureWebApp@1
       inputs:
         azureSubscription: '$(azure_subscription)'
@@ -140,3 +139,13 @@ stages:
         deployType: DacpacTask
         deploymentAction: Publish
         dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
+  - job: DeployWebApi QA
+    steps:
+    - download: current
+      artifact: WebApi
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: '$(azure_subscription)'
+        package: '$(Pipeline.Workspace)\**\publish.zip'
+        appName: 'VideoDB-WebApi-QA'
+        deploymentMethod: zipDeploy
