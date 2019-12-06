@@ -127,7 +127,7 @@ stages:
         package: '$(Pipeline.Workspace)\**\publish.zip'
         appName: 'VideoDB-WebApi'
         deploymentMethod: zipDeploy
-    enabled: false
+      enabled: false
   - job: DeployDatabase
     steps:
     - download: current
@@ -143,4 +143,4 @@ stages:
         deployType: DacpacTask
         deploymentAction: Publish
         dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
-    enabled: false
+      enabled: false
