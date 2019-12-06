@@ -49,7 +49,7 @@ namespace VideoDB.WebApi.Services
         {
             var tvShows = _tvEpisodeRepository.GetTvShows(imdbId);
 
-            return tvShows.Any()
+            return imdbId == null || tvShows.Any()
                 ? tvShows.GroupBy(
                 key => key.video_id,
                 (_, dataModels) =>
@@ -61,7 +61,7 @@ namespace VideoDB.WebApi.Services
         {
             var (shows, episodes) = _tvEpisodeRepository.GetTvEpisodes(imdbId);
 
-            if (!shows.Any() || !episodes.Any())
+            if (imdbId != null && (!shows.Any() || !episodes.Any()))
             {
                 throw new EvoNotFoundException($"'{imdbId}' does not exist.");
             }
@@ -91,7 +91,7 @@ namespace VideoDB.WebApi.Services
         {
             var movieDataModel = _videoRepository.GetMovies(imdbId);
 
-            return movieDataModel.Any() 
+            return imdbId == null || movieDataModel.Any() 
                 ? MapToViewModel(movieDataModel)
                 : throw new EvoNotFoundException($"'{imdbId}' does not exist.");
         }

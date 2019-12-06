@@ -246,6 +246,39 @@ namespace VideoDB.WebApi.Tests.Services
                 .WithMessage($"'{id}' does not exist.");
         }
 
+        [TestCase("movie")]
+        [TestCase("show")]
+        [TestCase("tv episode")]
+        public void ShouldNotThrowNotFoundExceptionIfGettingAllVideosButThereAreNone(string type)
+        {
+            _tvRepo.Setup(
+                s => s.GetTvEpisodes(It.IsAny<string>()))
+                .Returns(
+                    (Enumerable.Empty<SeriesDataModel>(),
+                    Enumerable.Empty<TvEpisodeDataModel>()));
+
+            _tvRepo.Setup(
+                s => s.GetTvShows(It.IsAny<string>()))
+                .Returns(Enumerable.Empty<SeriesDataModel>());
+
+            _videoRepo.Setup(s => s.GetMovies(It.IsAny<string>()))
+                .Returns(Enumerable.Empty<MovieDataModel>());
+
+            var service = _fixture.Create<VideoService>();
+
+            var exception = default(Action);
+            var result = Enumerable.Empty<object>();
+            switch (type)
+            {
+                case "movie": exception = () => result = service.GetMovies(); break;
+                case "show": exception = () => result = service.GetTvShows(); break;
+                case "tv episode": exception = () => result = service.GetTvEpisodes(); break;
+            }
+
+            exception.Should().NotThrow();
+            result.Should().BeEmpty();
+        }
+
 
         private IEnumerable<TvEpisodeDataModel> CreateEpisodeModel(string imdbId, int seriesId = 1, int episodeId = 1)
         {
