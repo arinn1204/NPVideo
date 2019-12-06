@@ -28,7 +28,6 @@ namespace VideoDB.WebApi.Controllers
 
             return Ok(new
             {
-                AddedVariable = Environment.GetEnvironmentVariable("SampleApplicationVariable"),
                 DbName = information.First(),
                 DbVersion = information.Skip(1).First()
             });
