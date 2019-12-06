@@ -110,6 +110,16 @@ stages:
           -source '$(db_source)' `
           -Configuration '$(testConfiguration)' `
           -workingDirectory '$(Build.SourcesDirectory)'
+  - job: DeployWebApiQA
+    steps:
+    - download: current
+      artifact: WebApi
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: '$(azure_subscription)'
+        package: '$(Pipeline.Workspace)\**\publish.zip'
+        appName: 'VideoDB-WebApi-QA'
+        deploymentMethod: zipDeploy
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
@@ -138,13 +148,3 @@ stages:
         deployType: DacpacTask
         deploymentAction: Publish
         dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
-  - job: DeployWebApiQA
-    steps:
-    - download: current
-      artifact: WebApi
-    - task: AzureWebApp@1
-      inputs:
-        azureSubscription: '$(azure_subscription)'
-        package: '$(Pipeline.Workspace)\**\publish.zip'
-        appName: 'VideoDB-WebApi-QA'
-        deploymentMethod: zipDeploy
