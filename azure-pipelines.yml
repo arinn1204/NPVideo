@@ -90,9 +90,10 @@ stages:
         command: publish
         projects: 'src\main\VideoDB.WebApi\VideoDB.WebApi.csproj'
         arguments: '-c $(buildConfiguration)'    
+    - powershell: Get-ChildItem -Recurse src\main\VideoDB.WebApi\bin\$(buildConfiguration)
     - publish: 'src\main\VideoDB.WebApi\bin\$(buildConfiguration)\netcoreapp3.0\publish.zip'
       artifact: WebApi
-    - powershell: Get-ChildItem -Recurse
+    - powershell: Get-ChildItem -Recurse src\main\VideoDB.WebApi\bin\$(buildConfiguration)
 - stage: Integration_Test
   dependsOn: Build_And_Unit_Test
   jobs:
@@ -111,6 +112,7 @@ stages:
           -source '$(db_source)' `
           -Configuration '$(testConfiguration)' `
           -workingDirectory '$(Build.SourcesDirectory)'
+    enabled: false
 - stage: Deployment
   dependsOn: Integration_Test
   jobs:
@@ -125,6 +127,7 @@ stages:
         package: '$(Pipeline.Workspace)\**\publish.zip'
         appName: 'VideoDB-WebApi'
         deploymentMethod: zipDeploy
+    enabled: false
   - job: DeployDatabase
     steps:
     - download: current
@@ -140,3 +143,4 @@ stages:
         deployType: DacpacTask
         deploymentAction: Publish
         dacpacFile: $(Pipeline.Workspace)\**\*.dacpac
+    enabled: false
