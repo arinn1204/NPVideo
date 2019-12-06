@@ -47,7 +47,6 @@ namespace VideoDB.WebApi.Controllers
             reader.Read();
             information = information.Append(reader.GetString(0));
             information = information.Append(reader.GetString(1));
-            information = information.Append(reader.GetString(2));
 
             return information;
         }
